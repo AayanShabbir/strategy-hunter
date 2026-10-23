@@ -102,3 +102,4 @@ websockets==17.3
 widgetsnbextension==4.0.16
 wrapt==2.5.2rc1
 yfinance==1.7.0
+optuna==5.0.0  # added 2026-10-23 (MIT)

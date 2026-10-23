@@ -63,7 +63,11 @@ def bench_trend(D, bench="BTC/USD", n=100):
     C = D["close"]; tf = "1Day" if (C.index == C.index.normalize()).all() else "1Hour"
     b = data.load([bench], tf)["close"][bench].reindex(C.index).ffill(); m = (b > b.rolling(n).mean()).values
     return pd.DataFrame(np.repeat(m[:, None], C.shape[1], 1), index=C.index, columns=C.columns)
-FILTERS = dict(bench_trend=bench_trend, trend_sma=trend_sma, relvol=relvol, vol_regime=vol_regime, rsi_band=rsi_band, session=session)
+def day_of_week(D, days=(0, 1, 2, 3, 4)):
+    """Allow positions only on listed weekdays (Mon=0..Sun=6) of the decision bar."""
+    days = [days] if isinstance(days, int) else list(days); m = np.isin(D["close"].index.dayofweek, days)
+    return pd.DataFrame(np.repeat(m[:, None], D["close"].shape[1], 1), index=D["close"].index, columns=D["close"].columns)
+FILTERS = dict(day_of_week=day_of_week, bench_trend=bench_trend, trend_sma=trend_sma, relvol=relvol, vol_regime=vol_regime, rsi_band=rsi_band, session=session)
 def position(D, idea, base_params, filters):
     P = IDEAS[idea](D, **base_params)
     for fn, fp in filters: P = P.where(FILTERS[fn](D, **fp).fillna(False), 0.0)
