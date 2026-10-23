@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Strategy Hunter CLI. Research/paper only; places no orders.
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PYTHONPATH="$DIR${PYTHONPATH:+:$PYTHONPATH}" exec /workspace/research_lab/.venv17/bin/python -m hunt_engine.cli "$@"

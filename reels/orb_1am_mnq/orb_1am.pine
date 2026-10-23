@@ -1,0 +1,71 @@
+//@version=6
+// 1:00-1:15am NY opening-range breakout, MNQ1! 5m. Research only. Prompt source: @theagent_trades reel.
+strategy("ORB 1am NY - MNQ (research)", overlay=true, initial_capital=10000, default_qty_type=strategy.fixed, default_qty_value=1,
+     commission_type=strategy.commission.cash_per_contract, commission_value=0.62, slippage=1, process_orders_on_close=false, calc_on_every_tick=false)
+
+tz        = "America/New_York"
+rngSess   = input.session("0100-0115", "Range window (NY)")
+tradeSess = input.session("0115-0930", "Trade window (NY)")
+rr        = input.float(0.5, "Target (R)", step=0.1)
+// ---- regime filters (toggle one at a time to compare) ----
+useEma  = input.bool(false, "F1 EMA trend (longs above / shorts below)")
+emaLen  = input.int(50, "  EMA length")
+useAtr  = input.bool(false, "F2 Calm volatility (ATR < N-day median)")
+atrLen  = input.int(14, "  ATR length")
+useWid  = input.bool(false, "F3 Range width between min/max x 20-day median")
+wMin    = input.float(0.5, "  min x")
+wMax    = input.float(2.0, "  max x")
+useDow  = input.bool(false, "F4 Tue-Thu only")
+useVwap = input.bool(false, "F5 VWAP side (longs above / shorts below)")
+
+inRng   = not na(time(timeframe.period, rngSess, tz))
+inTrade = not na(time(timeframe.period, tradeSess, tz))
+
+var float rh = na
+var float rl = na
+var bool traded = false
+var array<float> widths = array.new<float>()
+var array<float> atrs   = array.new<float>()
+atrV = ta.atr(atrLen)
+if inRng and not inRng[1]
+    rh := high
+    rl := low
+    traded := false
+else if inRng
+    rh := math.max(rh, high)
+    rl := math.min(rl, low)
+rangeDone = not inRng and inRng[1]
+var float medW = na
+var float medA = na
+if rangeDone
+    medW := widths.size() >= 5 ? widths.median() : na
+    medA := atrs.size()   >= 5 ? atrs.median()   : na
+    widths.push(rh - rl)
+    atrs.push(atrV)
+    if widths.size() > 20
+        widths.shift()
+        atrs.shift()
+
+ema  = ta.ema(close, emaLen)
+vw   = ta.vwap(hlc3)
+w    = rh - rl
+dow  = dayofweek(time, tz)
+okAll = (not useAtr or (not na(medA) and atrV < medA)) and (not useWid or (not na(medW) and w >= wMin*medW and w <= wMax*medW)) and (not useDow or (dow >= dayofweek.tuesday and dow <= dayofweek.thursday))
+okL = okAll and (not useEma or close > ema) and (not useVwap or close > vw)
+okS = okAll and (not useEma or close < ema) and (not useVwap or close < vw)
+
+flat = strategy.position_size == 0
+if inTrade and not inRng and flat and not traded and not na(rh)
+    if close > rh and okL      // body close above range
+        traded := true
+        strategy.entry("L", strategy.long)
+        strategy.exit("Lx", "L", stop=rl, limit=close + rr*(close - rl))
+    else if close < rl and okS // body close below range
+        traded := true
+        strategy.entry("S", strategy.short)
+        strategy.exit("Sx", "S", stop=rh, limit=close - rr*(rh - close))
+if not inTrade and inTrade[1]
+    strategy.close_all("session end")
+
+plot(inTrade ? rh : na, "Range high", color.green, style=plot.style_linebr)
+plot(inTrade ? rl : na, "Range low",  color.red,   style=plot.style_linebr)

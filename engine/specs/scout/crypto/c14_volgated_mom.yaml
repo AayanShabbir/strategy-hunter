@@ -1,0 +1,15 @@
+id: c14_volgated_mom_v1
+hypothesis: "Trend (close > 20/50d SMA) gated by low volatility (ATR% < 4%/6%) and RSI14 regime 50-80/100 (volatility-managed momentum proxy, Barroso & Santa-Clara 2015) beats buy-and-hold OOS. Long/flat spot, 25+10 bps/side, 5x ATR stop, UTC daily bars. Strategy Scout crypto batch 2 (pre-registered 2026-10-23 before results)."
+base: {idea: sma_cross, params: {fast: [1], slow: [20, 50]}}
+filters: [{name: vol_regime, params: {n: [14], max_atr_pct: [0.04, 0.06]}}, {name: rsi_band, params: {n: [14], lo: [50], hi: [80, 100]}}]
+universe:
+  ALTS: [SOL/USD, ETH/USD, AVAX/USD, LINK/USD, DOGE/USD, LTC/USD]
+  BTC_ETH: [BTC/USD, ETH/USD]
+timeframe: 1Day
+direction: long_flat
+costs: {fee_bps: 25, slippage_bps: 10}
+stop: {atr_mult: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000
+author: scout

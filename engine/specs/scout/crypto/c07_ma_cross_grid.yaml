@@ -1,0 +1,15 @@
+id: c07_ma_cross_grid_v1
+hypothesis: "MA crossover grid (trend; Hudson & Urquhart 2021 MA family) beats buy-and-hold OOS. Long/flat spot, 25+10 bps/side, 5x ATR stop, UTC daily bars. Strategy Scout crypto batch 2 (pre-registered 2026-10-23 before results)."
+base: {idea: sma_cross, params: {fast: [5, 10, 20], slow: [50, 100, 150, 200]}}
+filters: []
+universe:
+  ALTS: [SOL/USD, ETH/USD, AVAX/USD, LINK/USD, DOGE/USD, LTC/USD]
+  BTC_ETH: [BTC/USD, ETH/USD]
+timeframe: 1Day
+direction: long_flat
+costs: {fee_bps: 25, slippage_bps: 10}
+stop: {atr_mult: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000
+author: scout

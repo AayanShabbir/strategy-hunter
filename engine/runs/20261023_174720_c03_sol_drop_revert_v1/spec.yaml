@@ -1,0 +1,15 @@
+id: c03_sol_drop_revert_v1
+author: scout
+hypothesis: "After a sharp sell-off (3-day return below -15% or -25%) buying SOL/alts and holding a fixed 3 or 7 days beats buy-and-hold OOS net of 35 bps/side (short-term reversal / liquidity provision, Kozlowski et al. 2021; note Zaremba et al. 2021 find the largest coins show daily momentum instead, so this is a genuine test). 5x ATR stop. Strategy Scout crypto submission."
+base: {idea: drop_revert, params: {n: [3], drop: [0.15, 0.25], hold: [3, 7]}}
+filters: []
+universe:
+  SOL: [SOL/USD]
+  ALTS: [SOL/USD, ETH/USD, AVAX/USD, LINK/USD, DOGE/USD, LTC/USD]
+stop: {atr_mult: 5}
+timeframe: 1Day
+direction: long_flat
+costs: {fee_bps: 25, slippage_bps: 10}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

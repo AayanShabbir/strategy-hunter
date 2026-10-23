@@ -1,0 +1,18 @@
+{
+ "run_id": "20261023_174700_s04_52wk_high_v1",
+ "spec_hash": "95be418d78064159d37ec80e9bfb633ef17dd280ccf5b8a176f42938ee7105b0",
+ "rows": {
+  "MEGA|donchian(entry_n=252,exit_n=20)+trend_sma(n=200)": 442,
+  "MEGA|donchian(entry_n=252,exit_n=50)+trend_sma(n=200)": 443,
+  "MEGA|donchian(entry_n=252,exit_n=100)+trend_sma(n=200)": 444,
+  "SECTORS|donchian(entry_n=252,exit_n=20)+trend_sma(n=200)": 445,
+  "SECTORS|donchian(entry_n=252,exit_n=50)+trend_sma(n=200)": 446,
+  "SECTORS|donchian(entry_n=252,exit_n=100)+trend_sma(n=200)": 447,
+  "BROAD|donchian(entry_n=252,exit_n=20)+trend_sma(n=200)": 448,
+  "BROAD|donchian(entry_n=252,exit_n=50)+trend_sma(n=200)": 449,
+  "BROAD|donchian(entry_n=252,exit_n=100)+trend_sma(n=200)": 450
+ },
+ "N_after_reserve": 450,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:47:00.228444-04:00"
+}

@@ -1,0 +1,27 @@
+{
+ "run_id": "20261023_174750_c09_supertrend_trail_v1",
+ "spec_hash": "dac9565cc0b8790658d8c3b1523a9003b742e250ef3af411aa68fba75fbc37ae",
+ "rows": {
+  "ALTS|supertrend(atr_n=7,mult=2)": 560,
+  "ALTS|supertrend(atr_n=7,mult=3)": 561,
+  "ALTS|supertrend(atr_n=7,mult=4)": 562,
+  "ALTS|supertrend(atr_n=10,mult=2)": 563,
+  "ALTS|supertrend(atr_n=10,mult=3)": 564,
+  "ALTS|supertrend(atr_n=10,mult=4)": 565,
+  "ALTS|supertrend(atr_n=14,mult=2)": 566,
+  "ALTS|supertrend(atr_n=14,mult=3)": 567,
+  "ALTS|supertrend(atr_n=14,mult=4)": 568,
+  "BTC_ETH|supertrend(atr_n=7,mult=2)": 569,
+  "BTC_ETH|supertrend(atr_n=7,mult=3)": 570,
+  "BTC_ETH|supertrend(atr_n=7,mult=4)": 571,
+  "BTC_ETH|supertrend(atr_n=10,mult=2)": 572,
+  "BTC_ETH|supertrend(atr_n=10,mult=3)": 573,
+  "BTC_ETH|supertrend(atr_n=10,mult=4)": 574,
+  "BTC_ETH|supertrend(atr_n=14,mult=2)": 575,
+  "BTC_ETH|supertrend(atr_n=14,mult=3)": 576,
+  "BTC_ETH|supertrend(atr_n=14,mult=4)": 577
+ },
+ "N_after_reserve": 577,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:47:50.775330-04:00"
+}

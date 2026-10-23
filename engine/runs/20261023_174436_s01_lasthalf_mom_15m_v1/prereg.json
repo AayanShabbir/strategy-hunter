@@ -1,0 +1,17 @@
+{
+ "run_id": "20261023_174436_s01_lasthalf_mom_15m_v1",
+ "spec_hash": "96549da34ec95124e5f856f9a1edd65b5022c5966604acd44b8399f330f42d6d",
+ "rows": {
+  "HIBETA|sma_cross(fast=2,slow=13)+session(end=15:30,start=15:15)+relvol(min_ratio=1.0,n=20)": 399,
+  "HIBETA|sma_cross(fast=2,slow=13)+session(end=15:30,start=15:15)+relvol(min_ratio=1.5,n=20)": 400,
+  "HIBETA|sma_cross(fast=2,slow=26)+session(end=15:30,start=15:15)+relvol(min_ratio=1.0,n=20)": 401,
+  "HIBETA|sma_cross(fast=2,slow=26)+session(end=15:30,start=15:15)+relvol(min_ratio=1.5,n=20)": 402,
+  "HIBETA|sma_cross(fast=4,slow=13)+session(end=15:30,start=15:15)+relvol(min_ratio=1.0,n=20)": 403,
+  "HIBETA|sma_cross(fast=4,slow=13)+session(end=15:30,start=15:15)+relvol(min_ratio=1.5,n=20)": 404,
+  "HIBETA|sma_cross(fast=4,slow=26)+session(end=15:30,start=15:15)+relvol(min_ratio=1.0,n=20)": 405,
+  "HIBETA|sma_cross(fast=4,slow=26)+session(end=15:30,start=15:15)+relvol(min_ratio=1.5,n=20)": 406
+ },
+ "N_after_reserve": 406,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:44:36.015434-04:00"
+}

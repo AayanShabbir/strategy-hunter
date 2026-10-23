@@ -1,0 +1,26 @@
+hunt: h13_top_scorer
+date: 2026-10-22
+written_before_any_results: true
+requested_by: Aayan via Herald (Hunt #13). Research only, no orders, nothing changes on desk.
+data: Alpaca IEX 15m bars (alpaca-py, paper data keys from env), RTH 09:30-16:00 ET, 2024-10-15..2026-10-21
+universe: /workspace/trading-desk/state/liquid500_2026-10-16.json (500 names, today's liquid list -> SURVIVORSHIP-BIASED), minus desk_common.symbol_block names (leveraged/bond/cash). SPY kept for benchmark only, not tradable.
+features (per symbol, completed bar i, no look-ahead):
+  trend: (close - EMA20(close, 15m bars, continuous across days)) / ATR14
+  candle: (close - open) / (high - low), 0 if high==low
+  vwap: (close - session VWAP from bar vwap*volume cumsum) / ATR14
+  relvol: volume / mean volume of the same bar-of-day over the prior 20 sessions (needs >=10)
+  eligible: all four finite, ATR14>0, bar close price >= $5
+scoring (cross-sectional each bar over eligible names, pct rank p in (0,1], u = 2p-1):
+  V0_cont: D = mean(u_trend, u_candle, u_vwap); score = D * p_relvol; pick name with max |score|; side = sign(score) (continuation)
+  V1_fade: same score and pick as V0; side = -sign(score) (fade)
+  V2_cont_no_candle: D = mean(u_trend, u_vwap); score = D * p_relvol; side = sign(score)
+  variant_count: 3 (no others, no parameter search)
+threshold: per variant, the 90th percentile of the per-bar top |score| over IS bars only; trade only when top |score| >= threshold. Frozen before OOS is touched.
+execution: signal at close of bar i; enter at open of bar i+1; no signals from bars starting after 14:45 ET; one open position max per variant (signals while in a trade are ignored); stop = entry -/+ 1.5*ATR14(bar i); target = 2R; each bar check stop BEFORE target; stop fills at the bar extreme (long: bar low, short: bar high) -- i.e. at or worse than the stop; target fills at target price; otherwise flat at close of the 15:45 bar. Shorts assume borrow available.
+costs: 5 bps/side fees + 2 bps/side slippage = 14 bps round trip on every trade
+sizing: 10% of equity per trade, cash-only, idle cash earns 0
+split: by trading days, IS = oldest 70%, OOS = newest 30%
+benchmarks: SPY buy&hold (IEX 15:45 bar close daily), 70% SPY + 30% cash (daily rebalanced)
+checks: per-variant OOS one-sided t-test on net trade returns; Holm over all ledger tests (324 prior at p=1 + 3 = 327); DSR (Bailey-LdP) on OOS daily returns with N=327 trials; PBO via CSCV (16 blocks) on the 3 variants' full-period daily returns; arch SPA (stationary bootstrap, 10k reps) vs SPY and vs 70/30 on OOS daily returns; quantstats tearsheet for best-OOS-Sharpe variant.
+pass_bar: ALL of: OOS return > 0, OOS Sharpe > SPY OOS Sharpe, Holm p < 0.05, DSR > 0.95, PBO < 0.5, SPA p < 0.05 vs both benchmarks.
+tuning: none. Failure reported as-is. Jev (TypeSafe) untested -- waitlist only, no access.

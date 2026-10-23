@@ -1,0 +1,18 @@
+# Regression port of Hunt #16 (daily part): Supertrend long/flat grid. Must reproduce 0 passes.
+id: h16_supertrend_port
+author: herald
+hypothesis: "Supertrend(ATR n, mult m) long/flat beats buy-and-hold after costs (friend's Robinhood claim)."
+base:
+  idea: supertrend
+  params: {atr_n: [7, 10, 14], mult: [2, 3, 4]}
+filters: []
+universe:
+  SPY: [SPY]
+  QQQ: [QQQ]
+  BASKET: [AAPL, MSFT, NVDA, AMZN, GOOGL, META, AVGO, JPM, LLY, TSLA]
+timeframe: 1Day
+direction: long_flat
+costs: {fee_bps: 0, slippage_bps: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

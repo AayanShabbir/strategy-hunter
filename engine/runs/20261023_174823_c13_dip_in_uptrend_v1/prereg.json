@@ -1,0 +1,33 @@
+{
+ "run_id": "20261023_174823_c13_dip_in_uptrend_v1",
+ "spec_hash": "58efafa3b00735e8bc856103a37752c26c2f1d319f42997e886e0a3895cb3caa",
+ "rows": {
+  "ALTS|drop_revert(drop=0.08,hold=2,n=1)+trend_sma(n=100)": 640,
+  "ALTS|drop_revert(drop=0.08,hold=2,n=3)+trend_sma(n=100)": 641,
+  "ALTS|drop_revert(drop=0.08,hold=2,n=5)+trend_sma(n=100)": 642,
+  "ALTS|drop_revert(drop=0.08,hold=5,n=1)+trend_sma(n=100)": 643,
+  "ALTS|drop_revert(drop=0.08,hold=5,n=3)+trend_sma(n=100)": 644,
+  "ALTS|drop_revert(drop=0.08,hold=5,n=5)+trend_sma(n=100)": 645,
+  "ALTS|drop_revert(drop=0.12,hold=2,n=1)+trend_sma(n=100)": 646,
+  "ALTS|drop_revert(drop=0.12,hold=2,n=3)+trend_sma(n=100)": 647,
+  "ALTS|drop_revert(drop=0.12,hold=2,n=5)+trend_sma(n=100)": 648,
+  "ALTS|drop_revert(drop=0.12,hold=5,n=1)+trend_sma(n=100)": 649,
+  "ALTS|drop_revert(drop=0.12,hold=5,n=3)+trend_sma(n=100)": 650,
+  "ALTS|drop_revert(drop=0.12,hold=5,n=5)+trend_sma(n=100)": 651,
+  "BTC_ETH|drop_revert(drop=0.08,hold=2,n=1)+trend_sma(n=100)": 652,
+  "BTC_ETH|drop_revert(drop=0.08,hold=2,n=3)+trend_sma(n=100)": 653,
+  "BTC_ETH|drop_revert(drop=0.08,hold=2,n=5)+trend_sma(n=100)": 654,
+  "BTC_ETH|drop_revert(drop=0.08,hold=5,n=1)+trend_sma(n=100)": 655,
+  "BTC_ETH|drop_revert(drop=0.08,hold=5,n=3)+trend_sma(n=100)": 656,
+  "BTC_ETH|drop_revert(drop=0.08,hold=5,n=5)+trend_sma(n=100)": 657,
+  "BTC_ETH|drop_revert(drop=0.12,hold=2,n=1)+trend_sma(n=100)": 658,
+  "BTC_ETH|drop_revert(drop=0.12,hold=2,n=3)+trend_sma(n=100)": 659,
+  "BTC_ETH|drop_revert(drop=0.12,hold=2,n=5)+trend_sma(n=100)": 660,
+  "BTC_ETH|drop_revert(drop=0.12,hold=5,n=1)+trend_sma(n=100)": 661,
+  "BTC_ETH|drop_revert(drop=0.12,hold=5,n=3)+trend_sma(n=100)": 662,
+  "BTC_ETH|drop_revert(drop=0.12,hold=5,n=5)+trend_sma(n=100)": 663
+ },
+ "N_after_reserve": 663,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:48:23.591814-04:00"
+}

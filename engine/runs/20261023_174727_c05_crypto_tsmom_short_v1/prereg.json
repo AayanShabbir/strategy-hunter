@@ -1,0 +1,18 @@
+{
+ "run_id": "20261023_174727_c05_crypto_tsmom_short_v1",
+ "spec_hash": "eae14d8ec9b646d00ab65ad2b5c20603c63778e01bb4b5753cf10cab2ececf49",
+ "rows": {
+  "SOL|sma_cross(fast=1,slow=7)": 491,
+  "SOL|sma_cross(fast=1,slow=14)": 492,
+  "SOL|sma_cross(fast=1,slow=28)": 493,
+  "ALTS|sma_cross(fast=1,slow=7)": 494,
+  "ALTS|sma_cross(fast=1,slow=14)": 495,
+  "ALTS|sma_cross(fast=1,slow=28)": 496,
+  "BTC_ETH|sma_cross(fast=1,slow=7)": 497,
+  "BTC_ETH|sma_cross(fast=1,slow=14)": 498,
+  "BTC_ETH|sma_cross(fast=1,slow=28)": 499
+ },
+ "N_after_reserve": 499,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:47:27.080337-04:00"
+}

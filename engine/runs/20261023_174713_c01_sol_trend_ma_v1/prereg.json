@@ -1,0 +1,17 @@
+{
+ "run_id": "20261023_174713_c01_sol_trend_ma_v1",
+ "spec_hash": "c206eaae0dfdda78e1d586ee056a3d12e2f252c862d72aa1d16264d63920b6a4",
+ "rows": {
+  "SOL|sma_cross(fast=1,slow=50)": 459,
+  "SOL|sma_cross(fast=1,slow=100)": 460,
+  "SOL|sma_cross(fast=10,slow=50)": 461,
+  "SOL|sma_cross(fast=10,slow=100)": 462,
+  "ALTS|sma_cross(fast=1,slow=50)": 463,
+  "ALTS|sma_cross(fast=1,slow=100)": 464,
+  "ALTS|sma_cross(fast=10,slow=50)": 465,
+  "ALTS|sma_cross(fast=10,slow=100)": 466
+ },
+ "N_after_reserve": 466,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:47:13.317376-04:00"
+}

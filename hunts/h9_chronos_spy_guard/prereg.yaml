@@ -1,0 +1,18 @@
+hunt: h9_chronos_spy_guard
+date: 2026-10-22
+written_before_any_results: true
+model: amazon/chronos-bolt-small (open weights, Apache-2.0, zero-shot, CPU; pinned HF revision recorded in run log). No fine-tuning.
+data: Alpaca IEX daily SPY bars, /workspace/trading-desk/validation/data/ALL_1d.pkl (G-038 compliant; 2020-07-27..2026-10-14)
+input: last 256 SPY daily closes (strictly up to and including day t close); forecast horizon 5 trading days; quantiles 0.1/0.5/0.9
+first_signal_day: index 256 (earlier days excluded from all stats)
+variants (exactly 2, no others, no parameter search):
+  V1 chronos_median_trend: hold SPY on day t+1 if median 5d forecast >= close_t, else cash (0%)
+  V2 chronos_q10_guard:    hold SPY on day t+1 unless q10 5d forecast / close_t - 1 < -4%, then cash
+execution: signal at close t, trade at open t+1, return measured open->open; cash earns 0
+costs_bps_per_side: 5 (charged on each change of position)
+split: {is: oldest 70% of signal days, oos: newest 30%}
+benchmarks: [SPY open->open buy&hold, 70% SPY + 30% cash]
+desk-context test: 70% sleeve replaced by guarded SPY vs plain 70% SPY core
+checks: vectorbt backtest; CPCV (skfolio CombinatorialPurgedCV, 6 folds, 2 test, purge 5) path Sharpe distribution; PBO (pypbo CSCV over the 2 variants + SPY) ; DSR using ledger N; Holm: p_adj from multipletests(holm) with this hunt p-values plus 296 prior tests at p=1 (equivalent to p*rank bound at N=298); SPA (arch) vs SPY and vs 70/30
+pass_bar: OOS Sharpe > SPY OOS Sharpe AND OOS return > 0 AND IS Sharpe > SPY IS Sharpe AND Holm-adjusted p < 0.05 at N=298 AND SPA p < 0.05 vs both benchmarks AND PBO < 0.5 AND DSR > 0.95
+tuning: none. Failure is reported as-is.

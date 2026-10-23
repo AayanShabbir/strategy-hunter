@@ -1,0 +1,8 @@
+hunt: h7_overnight_repro
+purpose: reproduce Hunt #7 overnight_after_down1 on the research_lab stack (no tuning)
+rule: "SPY/QQQ/IWM: open->15:45-bar close < -1% -> buy next bar open (15:45), sell next day 09:30 open; $3.33k each"
+costs_bps_per_side: 5
+split: {is: oldest 70% of days, oos: newest 30%}
+benchmark: SPY open->next open
+data: /workspace/trading-desk/validation/strategy_hunt_7/ (data7.load, cached IEX 15m)
+pass_bar: OOS>0 and IS>0 and Holm-adjusted p<0.05 over cumulative N

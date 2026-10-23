@@ -1,0 +1,17 @@
+id: s05_tsmom_crossasset_v1
+author: scout
+hypothesis: "Time-series momentum across asset classes (Moskowitz, Ooi & Pedersen 2012, JFE; Faber 2007): holding non-equity-index ETFs (metals, miners, oil, REITs, Treasuries, intl equity, small caps) only when price > its 6- or 12-month SMA beats buy-and-hold of the same basket OOS after 5 bps/side, because trend persistence in these markets is less arbitraged than in megacap US stocks (which already failed in h16/h17). Long/flat only, wide 4x ATR stop."
+base:
+  idea: sma_cross
+  params: {fast: [1], slow: [126, 252]}
+filters: []
+universe:
+  REAL: [GLD, SLV, GDX, USO, VNQ]
+  BONDS_INTL: [TLT, IEF, EEM, EFA, IWM]
+timeframe: 1Day
+stop: {atr_mult: 4}
+direction: long_flat
+costs: {fee_bps: 0, slippage_bps: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

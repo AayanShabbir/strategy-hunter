@@ -1,0 +1,798 @@
+{
+ "variants": {
+  "ALTS|sma_cross(fast=1,slow=10)+bench_trend(bench=BTC/USD,n=50)": {
+   "row": 578,
+   "IS": {
+    "ret": 232.84,
+    "sharpe": 0.99,
+    "maxdd": -36.18
+   },
+   "OOS": {
+    "ret": 32.32,
+    "sharpe": 0.57,
+    "maxdd": -41.23
+   },
+   "BH_OOS": {
+    "ret": 193.2,
+    "sharpe": 0.86,
+    "maxdd": -60.28
+   },
+   "trades": 583,
+   "time_in_mkt": 0.306,
+   "cost_stop": 0.0204,
+   "WF": [
+    23.27,
+    7.34
+   ],
+   "p_twin": 0.52048,
+   "random_median_oos": 39.72,
+   "real_twin_basis": 32.44,
+   "SPA": 0.8595,
+   "holm": 1.0,
+   "DSR": 0.2939,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "ALTS|sma_cross(fast=1,slow=10)+bench_trend(bench=BTC/USD,n=100)": {
+   "row": 579,
+   "IS": {
+    "ret": 113.52,
+    "sharpe": 0.71,
+    "maxdd": -46.98
+   },
+   "OOS": {
+    "ret": 15.21,
+    "sharpe": 0.37,
+    "maxdd": -44.09
+   },
+   "BH_OOS": {
+    "ret": 193.2,
+    "sharpe": 0.86,
+    "maxdd": -60.28
+   },
+   "trades": 562,
+   "time_in_mkt": 0.279,
+   "cost_stop": 0.0207,
+   "WF": [
+    33.93,
+    -13.98
+   ],
+   "p_twin": 0.55045,
+   "random_median_oos": 29.46,
+   "real_twin_basis": 15.28,
+   "SPA": 0.8885,
+   "holm": 1.0,
+   "DSR": 0.2023,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "ALTS|sma_cross(fast=1,slow=10)+bench_trend(bench=BTC/USD,n=200)": {
+   "row": 580,
+   "IS": {
+    "ret": -2.34,
+    "sharpe": 0.08,
+    "maxdd": -48.71
+   },
+   "OOS": {
+    "ret": -23.69,
+    "sharpe": -0.18,
+    "maxdd": -60.16
+   },
+   "BH_OOS": {
+    "ret": 193.2,
+    "sharpe": 0.86,
+    "maxdd": -60.28
+   },
+   "trades": 561,
+   "time_in_mkt": 0.265,
+   "cost_stop": 0.0203,
+   "WF": [
+    16.33,
+    -34.4
+   ],
+   "p_twin": 0.91309,
+   "random_median_oos": 36.46,
+   "real_twin_basis": -23.72,
+   "SPA": 0.925,
+   "holm": 1.0,
+   "DSR": 0.051,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "ALTS|sma_cross(fast=1,slow=20)+bench_trend(bench=BTC/USD,n=50)": {
+   "row": 581,
+   "IS": {
+    "ret": 214.42,
+    "sharpe": 0.9,
+    "maxdd": -41.14
+   },
+   "OOS": {
+    "ret": 34.33,
+    "sharpe": 0.58,
+    "maxdd": -30.76
+   },
+   "BH_OOS": {
+    "ret": 193.2,
+    "sharpe": 0.86,
+    "maxdd": -60.28
+   },
+   "trades": 411,
+   "time_in_mkt": 0.334,
+   "cost_stop": 0.0205,
+   "WF": [
+    32.41,
+    1.45
+   ],
+   "p_twin": 0.56444,
+   "random_median_oos": 62.13,
+   "real_twin_basis": 35.05,
+   "SPA": 0.8495,
+   "holm": 1.0,
+   "DSR": 0.2985,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "ALTS|sma_cross(fast=1,slow=20)+bench_trend(bench=BTC/USD,n=100)": {
+   "row": 582,
+   "IS": {
+    "ret": 186.31,
+    "sharpe": 0.89,
+    "maxdd": -39.1
+   },
+   "OOS": {
+    "ret": 17.12,
+    "sharpe": 0.39,
+    "maxdd": -37.02
+   },
+   "BH_OOS": {
+    "ret": 193.2,
+    "sharpe": 0.86,
+    "maxdd": -60.28
+   },
+   "trades": 372,
+   "time_in_mkt": 0.298,
+   "cost_stop": 0.021,
+   "WF": [
+    34.42,
+    -12.87
+   ],
+   "p_twin": 0.66134,
+   "random_median_oos": 77.0,
+   "real_twin_basis": 17.74,
+   "SPA": 0.8805,
+   "holm": 1.0,
+   "DSR": 0.2125,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "ALTS|sma_cross(fast=1,slow=20)+bench_trend(bench=BTC/USD,n=200)": {
+   "row": 583,
+   "IS": {
+    "ret": 24.83,
+    "sharpe": 0.32,
+    "maxdd": -37.44
+   },
+   "OOS": {
+    "ret": -2.28,
+    "sharpe": 0.15,
+    "maxdd": -44.35
+   },
+   "BH_OOS": {
+    "ret": 193.2,
+    "sharpe": 0.86,
+    "maxdd": -60.28
+   },
+   "trades": 358,
+   "time_in_mkt": 0.274,
+   "cost_stop": 0.0205,
+   "WF": [
+    27.48,
+    -23.35
+   ],
+   "p_twin": 0.78621,
+   "random_median_oos": 54.57,
+   "real_twin_basis": -1.81,
+   "SPA": 0.9085,
+   "holm": 1.0,
+   "DSR": 0.1269,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "ALTS|sma_cross(fast=1,slow=50)+bench_trend(bench=BTC/USD,n=50)": {
+   "row": 584,
+   "IS": {
+    "ret": 151.95,
+    "sharpe": 0.73,
+    "maxdd": -53.31
+   },
+   "OOS": {
+    "ret": 2.52,
+    "sharpe": 0.22,
+    "maxdd": -37.73
+   },
+   "BH_OOS": {
+    "ret": 193.2,
+    "sharpe": 0.86,
+    "maxdd": -60.28
+   },
+   "trades": 319,
+   "time_in_mkt": 0.356,
+   "cost_stop": 0.0205,
+   "WF": [
+    7.53,
+    -4.66
+   ],
+   "p_twin": 0.78821,
+   "random_median_oos": 59.72,
+   "real_twin_basis": 3.17,
+   "SPA": 0.9045,
+   "holm": 1.0,
+   "DSR": 0.1464,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "ALTS|sma_cross(fast=1,slow=50)+bench_trend(bench=BTC/USD,n=100)": {
+   "row": 585,
+   "IS": {
+    "ret": 198.46,
+    "sharpe": 0.88,
+    "maxdd": -46.58
+   },
+   "OOS": {
+    "ret": -5.0,
+    "sharpe": 0.13,
+    "maxdd": -42.19
+   },
+   "BH_OOS": {
+    "ret": 193.2,
+    "sharpe": 0.86,
+    "maxdd": -60.28
+   },
+   "trades": 277,
+   "time_in_mkt": 0.328,
+   "cost_stop": 0.0213,
+   "WF": [
+    10.58,
+    -14.09
+   ],
+   "p_twin": 0.82118,
+   "random_median_oos": 67.49,
+   "real_twin_basis": -4.43,
+   "SPA": 0.9145,
+   "holm": 1.0,
+   "DSR": 0.1184,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "ALTS|sma_cross(fast=1,slow=50)+bench_trend(bench=BTC/USD,n=200)": {
+   "row": 586,
+   "IS": {
+    "ret": 42.55,
+    "sharpe": 0.42,
+    "maxdd": -41.32
+   },
+   "OOS": {
+    "ret": -4.3,
+    "sharpe": 0.14,
+    "maxdd": -41.09
+   },
+   "BH_OOS": {
+    "ret": 193.2,
+    "sharpe": 0.86,
+    "maxdd": -60.28
+   },
+   "trades": 238,
+   "time_in_mkt": 0.296,
+   "cost_stop": 0.0206,
+   "WF": [
+    4.01,
+    -7.99
+   ],
+   "p_twin": 0.83716,
+   "random_median_oos": 80.01,
+   "real_twin_basis": -3.73,
+   "SPA": 0.9115,
+   "holm": 1.0,
+   "DSR": 0.1211,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "BTC_ETH|sma_cross(fast=1,slow=10)+bench_trend(bench=BTC/USD,n=50)": {
+   "row": 587,
+   "IS": {
+    "ret": 15.01,
+    "sharpe": 0.24,
+    "maxdd": -46.69
+   },
+   "OOS": {
+    "ret": 15.97,
+    "sharpe": 0.41,
+    "maxdd": -25.85
+   },
+   "BH_OOS": {
+    "ret": 56.21,
+    "sharpe": 0.69,
+    "maxdd": -48.06
+   },
+   "trades": 207,
+   "time_in_mkt": 0.367,
+   "cost_stop": 0.0291,
+   "WF": [
+    -6.87,
+    24.52
+   ],
+   "p_twin": 0.2977,
+   "random_median_oos": 0.99,
+   "real_twin_basis": 15.99,
+   "SPA": 0.8605,
+   "holm": 1.0,
+   "DSR": 0.2136,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "BTC_ETH|sma_cross(fast=1,slow=10)+bench_trend(bench=BTC/USD,n=100)": {
+   "row": 588,
+   "IS": {
+    "ret": 27.41,
+    "sharpe": 0.32,
+    "maxdd": -40.44
+   },
+   "OOS": {
+    "ret": 3.74,
+    "sharpe": 0.19,
+    "maxdd": -30.62
+   },
+   "BH_OOS": {
+    "ret": 56.21,
+    "sharpe": 0.69,
+    "maxdd": -48.06
+   },
+   "trades": 204,
+   "time_in_mkt": 0.338,
+   "cost_stop": 0.0303,
+   "WF": [
+    -0.52,
+    4.29
+   ],
+   "p_twin": 0.40759,
+   "random_median_oos": -2.89,
+   "real_twin_basis": 3.74,
+   "SPA": 0.9195,
+   "holm": 1.0,
+   "DSR": 0.136,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": false,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "BTC_ETH|sma_cross(fast=1,slow=10)+bench_trend(bench=BTC/USD,n=200)": {
+   "row": 589,
+   "IS": {
+    "ret": -23.4,
+    "sharpe": -0.14,
+    "maxdd": -45.71
+   },
+   "OOS": {
+    "ret": -29.31,
+    "sharpe": -0.48,
+    "maxdd": -48.34
+   },
+   "BH_OOS": {
+    "ret": 56.21,
+    "sharpe": 0.69,
+    "maxdd": -48.06
+   },
+   "trades": 207,
+   "time_in_mkt": 0.321,
+   "cost_stop": 0.0302,
+   "WF": [
+    -11.33,
+    -20.28
+   ],
+   "p_twin": 0.87812,
+   "random_median_oos": -6.08,
+   "real_twin_basis": -29.36,
+   "SPA": 0.4905,
+   "holm": 1.0,
+   "DSR": 0.0207,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": false,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "BTC_ETH|sma_cross(fast=1,slow=20)+bench_trend(bench=BTC/USD,n=50)": {
+   "row": 590,
+   "IS": {
+    "ret": 0.65,
+    "sharpe": 0.16,
+    "maxdd": -57.48
+   },
+   "OOS": {
+    "ret": 21.37,
+    "sharpe": 0.47,
+    "maxdd": -25.23
+   },
+   "BH_OOS": {
+    "ret": 56.21,
+    "sharpe": 0.69,
+    "maxdd": -48.06
+   },
+   "trades": 148,
+   "time_in_mkt": 0.404,
+   "cost_stop": 0.0284,
+   "WF": [
+    0.31,
+    20.99
+   ],
+   "p_twin": 0.33467,
+   "random_median_oos": 8.25,
+   "real_twin_basis": 21.43,
+   "SPA": 0.8425,
+   "holm": 1.0,
+   "DSR": 0.2392,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "BTC_ETH|sma_cross(fast=1,slow=20)+bench_trend(bench=BTC/USD,n=100)": {
+   "row": 591,
+   "IS": {
+    "ret": 32.68,
+    "sharpe": 0.35,
+    "maxdd": -31.88
+   },
+   "OOS": {
+    "ret": 18.88,
+    "sharpe": 0.43,
+    "maxdd": -24.94
+   },
+   "BH_OOS": {
+    "ret": 56.21,
+    "sharpe": 0.69,
+    "maxdd": -48.06
+   },
+   "trades": 134,
+   "time_in_mkt": 0.357,
+   "cost_stop": 0.0291,
+   "WF": [
+    3.12,
+    15.29
+   ],
+   "p_twin": 0.37063,
+   "random_median_oos": 8.96,
+   "real_twin_basis": 18.92,
+   "SPA": 0.8625,
+   "holm": 1.0,
+   "DSR": 0.2226,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "BTC_ETH|sma_cross(fast=1,slow=20)+bench_trend(bench=BTC/USD,n=200)": {
+   "row": 592,
+   "IS": {
+    "ret": -6.55,
+    "sharpe": 0.05,
+    "maxdd": -34.78
+   },
+   "OOS": {
+    "ret": 11.58,
+    "sharpe": 0.32,
+    "maxdd": -36.18
+   },
+   "BH_OOS": {
+    "ret": 56.21,
+    "sharpe": 0.69,
+    "maxdd": -48.06
+   },
+   "trades": 129,
+   "time_in_mkt": 0.331,
+   "cost_stop": 0.0295,
+   "WF": [
+    8.59,
+    2.75
+   ],
+   "p_twin": 0.42458,
+   "random_median_oos": 6.74,
+   "real_twin_basis": 11.62,
+   "SPA": 0.9225,
+   "holm": 1.0,
+   "DSR": 0.1798,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "BTC_ETH|sma_cross(fast=1,slow=50)+bench_trend(bench=BTC/USD,n=50)": {
+   "row": 593,
+   "IS": {
+    "ret": 49.19,
+    "sharpe": 0.41,
+    "maxdd": -62.2
+   },
+   "OOS": {
+    "ret": 36.49,
+    "sharpe": 0.67,
+    "maxdd": -24.69
+   },
+   "BH_OOS": {
+    "ret": 56.21,
+    "sharpe": 0.69,
+    "maxdd": -48.06
+   },
+   "trades": 103,
+   "time_in_mkt": 0.478,
+   "cost_stop": 0.0292,
+   "WF": [
+    1.56,
+    34.39
+   ],
+   "p_twin": 0.22977,
+   "random_median_oos": 12.37,
+   "real_twin_basis": 36.56,
+   "SPA": 0.7865,
+   "holm": 1.0,
+   "DSR": 0.3424,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "BTC_ETH|sma_cross(fast=1,slow=50)+bench_trend(bench=BTC/USD,n=100)": {
+   "row": 594,
+   "IS": {
+    "ret": 139.04,
+    "sharpe": 0.76,
+    "maxdd": -37.37
+   },
+   "OOS": {
+    "ret": 38.26,
+    "sharpe": 0.69,
+    "maxdd": -23.64
+   },
+   "BH_OOS": {
+    "ret": 56.21,
+    "sharpe": 0.69,
+    "maxdd": -48.06
+   },
+   "trades": 83,
+   "time_in_mkt": 0.415,
+   "cost_stop": 0.0302,
+   "WF": [
+    4.06,
+    32.86
+   ],
+   "p_twin": 0.22478,
+   "random_median_oos": 13.48,
+   "real_twin_basis": 38.3,
+   "SPA": 0.7645,
+   "holm": 1.0,
+   "DSR": 0.3506,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": false,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  },
+  "BTC_ETH|sma_cross(fast=1,slow=50)+bench_trend(bench=BTC/USD,n=200)": {
+   "row": 595,
+   "IS": {
+    "ret": 62.02,
+    "sharpe": 0.51,
+    "maxdd": -29.21
+   },
+   "OOS": {
+    "ret": 36.4,
+    "sharpe": 0.67,
+    "maxdd": -24.9
+   },
+   "BH_OOS": {
+    "ret": 56.21,
+    "sharpe": 0.69,
+    "maxdd": -48.06
+   },
+   "trades": 72,
+   "time_in_mkt": 0.382,
+   "cost_stop": 0.0312,
+   "WF": [
+    -2.11,
+    39.33
+   ],
+   "p_twin": 0.28671,
+   "random_median_oos": 16.99,
+   "real_twin_basis": 36.44,
+   "SPA": 0.778,
+   "holm": 1.0,
+   "DSR": 0.341,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": false,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   }
+  }
+ },
+ "N": 595,
+ "PBO": 0.3,
+ "n_pass": 0,
+ "min_trades": 100,
+ "window": {
+  "start": "2021-01-01",
+  "end": "2025-10-22",
+  "oos_start": "2024-05-14"
+ },
+ "bar": {
+  "holm": 0.05,
+  "dsr": 0.95,
+  "spa": 0.05,
+  "pbo": 0.5,
+  "cost_stop": 0.03
+ },
+ "ts": "2026-10-23T17:48:05.076054-04:00",
+ "run_id": "20261023_174757_c10_btc_gated_trend_v1",
+ "spec_id": "c10_btc_gated_trend_v1",
+ "spec_hash": "1b5c39c463148e6c17e1cf5f23ca1e748e60d5c1b49e82317c2f4e4091b8eadd"
+}

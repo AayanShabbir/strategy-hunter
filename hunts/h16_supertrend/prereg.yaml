@@ -1,0 +1,18 @@
+hunt: h16_supertrend (Hunt #16)
+written_before_any_results: true   # 2026-10-22 ~23:35 ET, before any Supertrend signal computed
+research_only: true  # no orders, no desk config changes
+motivation: friend's claim of large profits with Robinhood Supertrend indicator
+indicator: Supertrend(ATR n, mult m), Wilder ATR, hl2 +/- m*ATR bands with standard trailing rules; trend flips up when close > upper final band, down when close < lower final band
+data: Alpaca IEX via existing pickles: validation/hunt2/d1_500.pkl (daily 2016-01..2026-10), validation/data/ALL_15m.pkl (15m 2020-07..2026-10)
+execution: signal on bar close, trade next bar open (no lookahead)
+costs: 5 bps/side (fee+slippage) daily; 5 bps/side 15m
+modes: long_flat (long when up, cash when down) -- only mode allowed (shorts blocked, no written short plan). "long-only" = long_flat.
+universes:
+  SPY; QQQ; BASKET = 10 mega-caps (AAPL MSFT NVDA AMZN GOOGL META AVGO JPM LLY TSLA) equal-weight of per-stock Supertrend sleeves (survivor-biased: chosen with 2026 hindsight)
+grid: ATR in {7,10,14} x mult in {2,3,4} = 9 per universe; default = 10/3
+daily trials: 3 universes x 9 = 27
+intraday trials: SPY and QQQ 15m, 10/3 only, regular session, flat at 15:45 bar = 2
+N_this_hunt: 29 ; N_new: 377 (rows #349-377); pass bar applied at ledger N=392 at run time (Scout h17 added 15)
+split: IS oldest 70% of days, OOS newest 30%
+benchmark: SPY buy-and-hold (and own-asset buy&hold for QQQ/basket)
+pass bar (all required): OOS return > 0 and > SPY OOS; random-twin p (10000 random long/flat schedules with same OOS exposure & #switches) Holm @ N=377 < 0.05; DSR > 0.95 at N=377; Hansen SPA vs SPY p < 0.05; PBO (CSCV, 16 blocks, across 29) < 0.5

@@ -1,0 +1,17 @@
+hunt: h11_candle_setups
+date: 2026-10-22
+written_before_any_results: true
+requested_by: Aayan ("trade based on the candles and trends and trade a lot"); go-live on paper is NOT gated on this result (his call)
+code: /workspace/trading-desk/candle_setups.py (TA-Lib CDLENGULFING/CDLHAMMER/CDLSHOOTINGSTAR, EMA, ATR; BSD) - same code as live
+setups (exactly 6, no others, no parameter search): L_TREND_PB, L_PDH_BRK, L_VWAP_RCL, S_TREND_PB, S_PDL_BRK, S_VWAP_LOSS
+timeframes: [15m, 1h (resampled from 15m, bar-start labels)]  -> 12 tests
+data: Alpaca IEX 15m, /workspace/trading-desk/validation/data/ALL_15m.pkl, RTH only, 2024-10-14..2026-10-14 (2 years);
+  universe = the 50 stored symbols minus desk-excluded (cash/bond/leveraged) - survivorship-biased (today's liquid names)
+execution: signal at bar close, enter next bar open; stop 1.5xATR14, target 2R; stop assumed first if both hit in one bar;
+  flatten at the day's last RTH bar close; no entries on bars closing after 15:00 ET; shorts assume borrow always available
+costs_bps_per_side: 5
+portfolio: 10% of equity per trade, max 5 concurrent (first-come by entry time), all 12 combined; cash earns 0
+benchmarks: [SPY buy&hold daily close, 70% SPY + 30% cash]
+checks: per-test mean net return/trade t-test; Holm over the 12 with 298 prior tests at p=1 (N=310); portfolio Sharpe/return/maxDD vs SPY
+pass_bar: combined portfolio Sharpe > SPY Sharpe AND return > 0 AND Holm p < 0.05 for at least one test. PBO/SPA not run (quick test, stated)
+tuning: none. Failure reported as-is.

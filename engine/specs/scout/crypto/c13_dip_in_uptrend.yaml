@@ -1,0 +1,15 @@
+id: c13_dip_in_uptrend_v1
+hypothesis: "Buy 1/3/5-day drops of 8%/12% held 2/5 days only above the 100d SMA (dip in uptrend) beats buy-and-hold OOS. Long/flat spot, 25+10 bps/side, 5x ATR stop, UTC daily bars. Strategy Scout crypto batch 2 (pre-registered 2026-10-23 before results)."
+base: {idea: drop_revert, params: {n: [1, 3, 5], drop: [0.08, 0.12], hold: [2, 5]}}
+filters: [{name: trend_sma, params: {n: [100]}}]
+universe:
+  ALTS: [SOL/USD, ETH/USD, AVAX/USD, LINK/USD, DOGE/USD, LTC/USD]
+  BTC_ETH: [BTC/USD, ETH/USD]
+timeframe: 1Day
+direction: long_flat
+costs: {fee_bps: 25, slippage_bps: 10}
+stop: {atr_mult: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000
+author: scout

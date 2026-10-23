@@ -1,0 +1,19 @@
+id: s04_52wk_high_v1
+author: scout
+hypothesis: "52-week-high proximity (George & Hwang 2004, JF): anchoring makes investors under-react near the 52w high; buying a close above the prior 252-day high (above SMA200) and exiting on an N-day low beats buy-and-hold after costs."
+base:
+  idea: donchian
+  params: {entry_n: [252], exit_n: [20, 50, 100]}
+filters:
+  - {name: trend_sma, params: {n: [200]}}
+universe:
+  MEGA: [AAPL, MSFT, NVDA, AMZN, GOOGL, META, AVGO, JPM, LLY, TSLA, COST, NFLX]
+  SECTORS: [XLK, XLF, XLE, XLV, XLI, XLY, XLP, XLU, XLB, XLRE, XLC]
+  BROAD: [HD, PG, KO, PEP, WMT, UNH, JNJ, MRK, ABBV, V, MA, CAT, GE, HON, LIN, MCD, ORCL, CSCO, CRM, ADBE, TXN, QCOM, IBM, GS, MS, BAC, XOM, CVX, NEE, AMGN]
+timeframe: 1Day
+stop: {atr_mult: 4}
+direction: long_flat
+costs: {fee_bps: 0, slippage_bps: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

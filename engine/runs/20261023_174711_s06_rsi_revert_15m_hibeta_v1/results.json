@@ -1,0 +1,196 @@
+{
+ "variants": {
+  "HIBETA|rsi_revert(entry=10,exit=50,n=3)+session(end=15:30,start=10:00)+trend_sma(n=200)": {
+   "row": 455,
+   "IS": {
+    "ret": 0.0,
+    "sharpe": 0.0,
+    "maxdd": 0.0
+   },
+   "OOS": {
+    "ret": 0.0,
+    "sharpe": 0.0,
+    "maxdd": 0.0
+   },
+   "BH_OOS": {
+    "ret": -2.96,
+    "sharpe": -0.2,
+    "maxdd": -13.63
+   },
+   "trades": 0,
+   "time_in_mkt": 0.0,
+   "cost_stop": Infinity,
+   "WF": [
+    0.0,
+    0.0
+   ],
+   "p_twin": 0.25375,
+   "random_median_oos": -2.51,
+   "real_twin_basis": 0.0,
+   "SPA": 0.442,
+   "holm": 1.0,
+   "DSR": 0.0,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": true,
+    "min_trades": false,
+    "cost_stop": false,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   }
+  },
+  "HIBETA|rsi_revert(entry=10,exit=70,n=3)+session(end=15:30,start=10:00)+trend_sma(n=200)": {
+   "row": 456,
+   "IS": {
+    "ret": 0.0,
+    "sharpe": 0.0,
+    "maxdd": 0.0
+   },
+   "OOS": {
+    "ret": 0.0,
+    "sharpe": 0.0,
+    "maxdd": 0.0
+   },
+   "BH_OOS": {
+    "ret": -2.96,
+    "sharpe": -0.2,
+    "maxdd": -13.63
+   },
+   "trades": 0,
+   "time_in_mkt": 0.0,
+   "cost_stop": Infinity,
+   "WF": [
+    0.0,
+    0.0
+   ],
+   "p_twin": 0.26274,
+   "random_median_oos": -2.34,
+   "real_twin_basis": 0.0,
+   "SPA": 0.442,
+   "holm": 1.0,
+   "DSR": 0.0,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": true,
+    "min_trades": false,
+    "cost_stop": false,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   }
+  },
+  "HIBETA|rsi_revert(entry=20,exit=50,n=3)+session(end=15:30,start=10:00)+trend_sma(n=200)": {
+   "row": 457,
+   "IS": {
+    "ret": 0.0,
+    "sharpe": 0.0,
+    "maxdd": 0.0
+   },
+   "OOS": {
+    "ret": 0.0,
+    "sharpe": 0.0,
+    "maxdd": 0.0
+   },
+   "BH_OOS": {
+    "ret": -2.96,
+    "sharpe": -0.2,
+    "maxdd": -13.63
+   },
+   "trades": 0,
+   "time_in_mkt": 0.0,
+   "cost_stop": Infinity,
+   "WF": [
+    0.0,
+    0.0
+   ],
+   "p_twin": 0.28871,
+   "random_median_oos": -2.15,
+   "real_twin_basis": 0.0,
+   "SPA": 0.442,
+   "holm": 1.0,
+   "DSR": 0.0,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": true,
+    "min_trades": false,
+    "cost_stop": false,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   }
+  },
+  "HIBETA|rsi_revert(entry=20,exit=70,n=3)+session(end=15:30,start=10:00)+trend_sma(n=200)": {
+   "row": 458,
+   "IS": {
+    "ret": 0.0,
+    "sharpe": 0.0,
+    "maxdd": 0.0
+   },
+   "OOS": {
+    "ret": 0.0,
+    "sharpe": 0.0,
+    "maxdd": 0.0
+   },
+   "BH_OOS": {
+    "ret": -2.96,
+    "sharpe": -0.2,
+    "maxdd": -13.63
+   },
+   "trades": 0,
+   "time_in_mkt": 0.0,
+   "cost_stop": Infinity,
+   "WF": [
+    0.0,
+    0.0
+   ],
+   "p_twin": 0.29171,
+   "random_median_oos": -2.17,
+   "real_twin_basis": 0.0,
+   "SPA": 0.442,
+   "holm": 1.0,
+   "DSR": 0.0,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": true,
+    "min_trades": false,
+    "cost_stop": false,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   }
+  }
+ },
+ "N": 458,
+ "PBO": 1.0,
+ "n_pass": 0,
+ "min_trades": 100,
+ "window": {
+  "start": "2024-09-03",
+  "end": "2025-10-22",
+  "oos_start": "2025-06-23"
+ },
+ "bar": {
+  "holm": 0.05,
+  "dsr": 0.95,
+  "spa": 0.05,
+  "pbo": 0.5,
+  "cost_stop": 0.03
+ },
+ "ts": "2026-10-23T17:47:13.306057-04:00",
+ "run_id": "20261023_174711_s06_rsi_revert_15m_hibeta_v1",
+ "spec_id": "s06_rsi_revert_15m_hibeta_v1",
+ "spec_hash": "a709691b7cf1e97eb6513929d2ac154959e2aa4d6250604bad1c6838796332c8"
+}

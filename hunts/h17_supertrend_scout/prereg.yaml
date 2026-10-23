@@ -1,0 +1,28 @@
+hunt: h17_supertrend_scout (Hunt #17)  # independent Supertrend test, research/paper only, no orders, no desk changes
+written_before_any_results: true   # 2026-10-22 ~23:50 ET, before any h17 signal computed; h16 had no results yet (its run crashed: no arch module)
+indicator: Supertrend(ATR n, mult m), Wilder ATR, hl2 +/- m*ATR, standard trailing final bands (same function as h16 for comparability)
+execution: signal on completed bar close, fill next bar open. No lookahead.
+costs: stocks/ETFs 5 bps fee + 2 bps slippage = 7 bps/side; crypto 20 bps/side; shorts: no borrow fee modeled (optimistic)
+split: IS oldest 70% of bars, OOS newest 30% (per series calendar)
+coordination: h16 pre-registered 29 trials (SPY/QQQ/10-megacap BASKET daily long_flat, ATR {7,10,14} x mult {2,3,4}; SPY/QQQ 15m 10/3). h17 does NOT repeat any of them. h16 has 29 rows reserved as #349-377 (not yet run). h17 rows = #378-392.
+trials (15, all fixed at 10/3 to avoid re-running h16's grid):
+  - T1 SPY_LS: long when up, SHORT when down (daily)
+  - T2 QQQ_LS
+  - T3 SPY_SMA200: long only when ST up AND close > SMA200, else cash
+  - T4 QQQ_SMA200
+  - T5 BASKET_SMA200 (h16's 10 mega-caps, equal weight of per-stock sleeves)
+  - T6 SPY_RV: enter long only on the ST flip-up bar if volume / mean(volume prior 20 bars) >= 1.5; exit on ST flip-down; cash otherwise
+  - T7 QQQ_RV
+  - T8 BASKET_RV
+  - T9 SPY_1h: 1h bars (15m IEX resampled, regular session 09:30-16:00), long_flat, flat at the last bar of each session, no overnight
+  - T10 QQQ_1h
+  - T11 TOP50_LF: 50 symbols with highest median dollar volume over IS window from d1_500 (excl SPY,QQQ), equal-weight long_flat sleeves (survivor-biased universe)
+  - T12 BTC_LF: BTC/USD daily (Alpaca crypto, public endpoint), long_flat
+  - T13 ETH_LF
+  - T14 BTC_LS
+  - T15 ETH_LS
+N_runtime: 348 (ledger) + 29 (h16 reserved) + 15 = 392
+benchmarks: SPY buy&hold; 70% SPY + 30% cash; own-asset buy&hold for crypto/QQQ/baskets
+pass bar (all required): OOS total return > 0 and > SPY (crypto: > own buy&hold); random-twin p (10000 run-length-shuffled position schedules, same exposure and #switches) with Holm at N=392 < 0.05; DSR > 0.95 at N=392; Hansen SPA p < 0.05 vs SPY AND vs 70/30 (crypto: vs own B&H); PBO (CSCV 16 blocks across the stock trials on common dates) < 0.5
+no tuning: params above are final; failures reported as-is
+engine: numpy/pandas vector backtest (vectorbt not installed in lab venv; same signal->next-open logic)

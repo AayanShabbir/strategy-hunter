@@ -1,0 +1,25 @@
+{
+ "run_id": "20261023_174831_c14_volgated_mom_v1",
+ "spec_hash": "265cfe48c0ee3763100e7a8725f1eb91fc698f197e3368de7c5dfa0f5b905ed3",
+ "rows": {
+  "ALTS|sma_cross(fast=1,slow=20)+vol_regime(max_atr_pct=0.04,n=14)+rsi_band(hi=80,lo=50,n=14)": 664,
+  "ALTS|sma_cross(fast=1,slow=20)+vol_regime(max_atr_pct=0.04,n=14)+rsi_band(hi=100,lo=50,n=14)": 665,
+  "ALTS|sma_cross(fast=1,slow=20)+vol_regime(max_atr_pct=0.06,n=14)+rsi_band(hi=80,lo=50,n=14)": 666,
+  "ALTS|sma_cross(fast=1,slow=20)+vol_regime(max_atr_pct=0.06,n=14)+rsi_band(hi=100,lo=50,n=14)": 667,
+  "ALTS|sma_cross(fast=1,slow=50)+vol_regime(max_atr_pct=0.04,n=14)+rsi_band(hi=80,lo=50,n=14)": 668,
+  "ALTS|sma_cross(fast=1,slow=50)+vol_regime(max_atr_pct=0.04,n=14)+rsi_band(hi=100,lo=50,n=14)": 669,
+  "ALTS|sma_cross(fast=1,slow=50)+vol_regime(max_atr_pct=0.06,n=14)+rsi_band(hi=80,lo=50,n=14)": 670,
+  "ALTS|sma_cross(fast=1,slow=50)+vol_regime(max_atr_pct=0.06,n=14)+rsi_band(hi=100,lo=50,n=14)": 671,
+  "BTC_ETH|sma_cross(fast=1,slow=20)+vol_regime(max_atr_pct=0.04,n=14)+rsi_band(hi=80,lo=50,n=14)": 672,
+  "BTC_ETH|sma_cross(fast=1,slow=20)+vol_regime(max_atr_pct=0.04,n=14)+rsi_band(hi=100,lo=50,n=14)": 673,
+  "BTC_ETH|sma_cross(fast=1,slow=20)+vol_regime(max_atr_pct=0.06,n=14)+rsi_band(hi=80,lo=50,n=14)": 674,
+  "BTC_ETH|sma_cross(fast=1,slow=20)+vol_regime(max_atr_pct=0.06,n=14)+rsi_band(hi=100,lo=50,n=14)": 675,
+  "BTC_ETH|sma_cross(fast=1,slow=50)+vol_regime(max_atr_pct=0.04,n=14)+rsi_band(hi=80,lo=50,n=14)": 676,
+  "BTC_ETH|sma_cross(fast=1,slow=50)+vol_regime(max_atr_pct=0.04,n=14)+rsi_band(hi=100,lo=50,n=14)": 677,
+  "BTC_ETH|sma_cross(fast=1,slow=50)+vol_regime(max_atr_pct=0.06,n=14)+rsi_band(hi=80,lo=50,n=14)": 678,
+  "BTC_ETH|sma_cross(fast=1,slow=50)+vol_regime(max_atr_pct=0.06,n=14)+rsi_band(hi=100,lo=50,n=14)": 679
+ },
+ "N_after_reserve": 679,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:48:31.008084-04:00"
+}

@@ -1,0 +1,144 @@
+{
+ "IS": [
+  "2020-08-25",
+  "2024-12-06"
+ ],
+ "OOS": [
+  "2024-12-09",
+  "2026-10-14"
+ ],
+ "E1_month_end_rebal_flow": {
+  "IS": {
+   "ret": 10.92,
+   "sh": 0.57,
+   "dd": -4.0,
+   "days_in": 84
+  },
+  "OOS": {
+   "ret": 3.81,
+   "sh": 0.78,
+   "dd": -2.88,
+   "days_in": 30
+  },
+  "p_excessSPY": 0.8423,
+  "p_mean_gt0": 0.1454,
+  "holm": 1.0,
+  "spa_vs_SPY_7030": [
+   0.878,
+   0.854
+  ],
+  "pass": false
+ },
+ "E2_letf_close_reversal": {
+  "IS": {
+   "ret": -3.74,
+   "sh": -0.06,
+   "dd": -22.53,
+   "days_in": 171
+  },
+  "OOS": {
+   "ret": 2.29,
+   "sh": 0.22,
+   "dd": -7.06,
+   "days_in": 48
+  },
+  "p_excessSPY": 0.8471,
+  "p_mean_gt0": 0.3851,
+  "holm": 1.0,
+  "spa_vs_SPY_7030": [
+   0.871,
+   0.838
+  ],
+  "pass": false
+ },
+ "E3_credit_calm_equity_panic": {
+  "IS": {
+   "ret": 1.97,
+   "sh": 0.14,
+   "dd": -5.99,
+   "days_in": 34
+  },
+  "OOS": {
+   "ret": 1.84,
+   "sh": 0.23,
+   "dd": -7.12,
+   "days_in": 27
+  },
+  "p_excessSPY": 0.873,
+  "p_mean_gt0": 0.378,
+  "holm": 1.0,
+  "spa_vs_SPY_7030": [
+   0.915,
+   0.907
+  ],
+  "pass": false
+ },
+ "E4_defensive_lead_guard": {
+  "IS": {
+   "ret": 42.1,
+   "sh": 0.64,
+   "dd": -29.76,
+   "days_in": 931
+  },
+  "OOS": {
+   "ret": 17.16,
+   "sh": 0.8,
+   "dd": -13.68,
+   "days_in": 396
+  },
+  "p_excessSPY": 0.7232,
+  "p_mean_gt0": 0.1381,
+  "holm": 1.0,
+  "spa_vs_SPY_7030": [
+   0.905,
+   0.592
+  ],
+  "pass": false
+ },
+ "SPY": {
+  "IS": {
+   "ret": 77.24,
+   "sh": 0.89,
+   "dd": -25.38,
+   "days_in": 1077
+  },
+  "OOS": {
+   "ret": 26.76,
+   "sh": 0.87,
+   "dd": -18.98,
+   "days_in": 462
+  }
+ },
+ "SPY70_cash30": {
+  "IS": {
+   "ret": 51.15,
+   "sh": 0.89,
+   "dd": -18.14,
+   "days_in": 1077
+  },
+  "OOS": {
+   "ret": 18.66,
+   "sh": 0.87,
+   "dd": -13.6,
+   "days_in": 462
+  }
+ },
+ "N1_nfl_wind_10_14_under": {
+  "IS": {
+   "bets": 930,
+   "push": 14,
+   "win": 51.86,
+   "roi": -0.99,
+   "p": 0.6372496024545053
+  },
+  "OOS": {
+   "bets": 294,
+   "push": 2,
+   "win": 59.93,
+   "roi": 14.32,
+   "p": 0.00563615758828705,
+   "holm": 1
+  },
+  "pass": false
+ }
+}

@@ -1,0 +1,15 @@
+id: c02_sol_breakout_v1
+author: scout
+hypothesis: "Long/flat Donchian breakout (buy close above prior N-day high, exit below prior M-day low) on SOL and an alt basket beats buy-and-hold OOS net of 35 bps/side, since breakout/channel rules are among the trend families that survived data-snooping controls in crypto (Hudson & Urquhart 2021). 5x ATR stop. Strategy Scout crypto submission."
+base: {idea: donchian, params: {entry_n: [20, 55], exit_n: [10, 20]}}
+filters: []
+universe:
+  SOL: [SOL/USD]
+  ALTS: [SOL/USD, ETH/USD, AVAX/USD, LINK/USD, DOGE/USD, LTC/USD]
+stop: {atr_mult: 5}
+timeframe: 1Day
+direction: long_flat
+costs: {fee_bps: 25, slippage_bps: 10}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

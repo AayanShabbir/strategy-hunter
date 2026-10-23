@@ -1,0 +1,43 @@
+# secrets
+.env
+.env.*
+*.env
+*.key
+*.pem
+*secret*
+*credential*
+*token*.json
+# environments
+.venv*/
+**/.venv*/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+# data (re-downloadable; never commit market data or the sealed vault)
+data/
+engine/data_cache/
+engine/vault/data/
+*.parquet
+*.feather
+*.h5
+*.csv
+*.zip
+*.gz
+*.mp4
+*.mov
+*.jpg
+*.png
+# large run artifacts
+hunts/h14_evidence/
+hunts/h15_lit4/
+hunts/h12_original/kalshi_events.json
+*.bak_*
+*.log
+.drain.lock
+*.lock
+!requirements.lock.txt
+!nautilus/requirements.lock
+hunts/h10_ig_carousel/*.html
+hunts/h10_ig_carousel/urls.txt
+hunts/h12_original/poly_markets.json

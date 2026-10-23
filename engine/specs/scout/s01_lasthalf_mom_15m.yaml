@@ -1,0 +1,19 @@
+id: s01_lasthalf_mom_15m_v1
+author: scout
+hypothesis: "Intraday momentum (Gao, Han, Li & Zhou 2018, JFE): when the day's trend is up into 15:30, holding long for the final 30 min (15:30-16:00) on high-beta liquid names beats buy-and-hold after 5 bps/side. Held only in last 30 min via session filter (signal bars 15:15-15:30 ET, filled next open, flat at close). SPY/QQQ excluded: 15m ATR too small to pass cost<=3% of stop."
+base:
+  idea: sma_cross
+  params: {fast: [2, 4], slow: [13, 26]}
+filters:
+  - {name: session, params: {start: ["15:15"], end: ["15:30"]}}
+  - {name: relvol, params: {n: [20], min_ratio: [1.0, 1.5]}}
+universe:
+  HIBETA: [NVDA, TSLA, AMD, COIN, MSTR, PLTR]
+timeframe: 15Min
+flat_eod: true
+stop: {atr_mult: 8}
+direction: long_flat
+costs: {fee_bps: 0, slippage_bps: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

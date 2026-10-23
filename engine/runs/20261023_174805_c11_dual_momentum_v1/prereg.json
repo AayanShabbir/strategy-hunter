@@ -1,0 +1,29 @@
+{
+ "run_id": "20261023_174805_c11_dual_momentum_v1",
+ "spec_hash": "27b3ef6f3db3c9ce0db2e165c17e03af69148dffe63bf5cb155cff49116efce4",
+ "rows": {
+  "ALTS|rel_strength(abs_filter=True,bench=BTC/USD,n=7)": 596,
+  "ALTS|rel_strength(abs_filter=True,bench=BTC/USD,n=14)": 597,
+  "ALTS|rel_strength(abs_filter=True,bench=BTC/USD,n=21)": 598,
+  "ALTS|rel_strength(abs_filter=True,bench=BTC/USD,n=30)": 599,
+  "ALTS|rel_strength(abs_filter=True,bench=BTC/USD,n=60)": 600,
+  "ALTS|rel_strength(abs_filter=True,bench=ETH/USD,n=7)": 601,
+  "ALTS|rel_strength(abs_filter=True,bench=ETH/USD,n=14)": 602,
+  "ALTS|rel_strength(abs_filter=True,bench=ETH/USD,n=21)": 603,
+  "ALTS|rel_strength(abs_filter=True,bench=ETH/USD,n=30)": 604,
+  "ALTS|rel_strength(abs_filter=True,bench=ETH/USD,n=60)": 605,
+  "ALTS|rel_strength(abs_filter=False,bench=BTC/USD,n=7)": 606,
+  "ALTS|rel_strength(abs_filter=False,bench=BTC/USD,n=14)": 607,
+  "ALTS|rel_strength(abs_filter=False,bench=BTC/USD,n=21)": 608,
+  "ALTS|rel_strength(abs_filter=False,bench=BTC/USD,n=30)": 609,
+  "ALTS|rel_strength(abs_filter=False,bench=BTC/USD,n=60)": 610,
+  "ALTS|rel_strength(abs_filter=False,bench=ETH/USD,n=7)": 611,
+  "ALTS|rel_strength(abs_filter=False,bench=ETH/USD,n=14)": 612,
+  "ALTS|rel_strength(abs_filter=False,bench=ETH/USD,n=21)": 613,
+  "ALTS|rel_strength(abs_filter=False,bench=ETH/USD,n=30)": 614,
+  "ALTS|rel_strength(abs_filter=False,bench=ETH/USD,n=60)": 615
+ },
+ "N_after_reserve": 615,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:48:05.099904-04:00"
+}

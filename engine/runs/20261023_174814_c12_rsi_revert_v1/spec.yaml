@@ -1,0 +1,15 @@
+id: c12_rsi_revert_v1
+hypothesis: "Short RSI oversold reversion (RSI 2/3 < 5/10/20, exit > 50/70) beats buy-and-hold OOS (reversal, Kozlowski et al. 2021). Long/flat spot, 25+10 bps/side, 5x ATR stop, UTC daily bars. Strategy Scout crypto batch 2 (pre-registered 2026-10-23 before results)."
+base: {idea: rsi_revert, params: {n: [2, 3], entry: [5, 10, 20], exit: [50, 70]}}
+filters: []
+universe:
+  ALTS: [SOL/USD, ETH/USD, AVAX/USD, LINK/USD, DOGE/USD, LTC/USD]
+  BTC_ETH: [BTC/USD, ETH/USD]
+timeframe: 1Day
+direction: long_flat
+costs: {fee_bps: 25, slippage_bps: 10}
+stop: {atr_mult: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000
+author: scout

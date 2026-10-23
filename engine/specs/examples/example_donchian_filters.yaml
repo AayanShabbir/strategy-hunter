@@ -1,0 +1,19 @@
+# Example Scout spec (not queued). One base idea, bounded grid, <=4 filters.
+id: s_donchian_trend_relvol_v1
+author: scout
+hypothesis: "55/20 Donchian breakouts on liquid mega-caps, only above SMA200 with rising volume, beat buy-and-hold after costs."
+base:
+  idea: donchian
+  params: {entry_n: [20, 55], exit_n: [10, 20]}
+filters:
+  - {name: trend_sma, params: {n: [200]}}
+  - {name: relvol, params: {n: [20], min_ratio: [1.0, 1.5]}}
+universe:
+  MEGA: [AAPL, MSFT, NVDA, AMZN, GOOGL, META, AVGO, JPM, LLY, TSLA, COST, NFLX]
+timeframe: 1Day
+direction: long_flat
+costs: {fee_bps: 0, slippage_bps: 5}
+stop: {atr_mult: 3}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

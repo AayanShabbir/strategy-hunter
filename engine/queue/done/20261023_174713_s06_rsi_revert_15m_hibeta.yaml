@@ -1,0 +1,19 @@
+id: s06_rsi_revert_15m_hibeta_v1
+author: scout
+hypothesis: "Intraday liquidity-provision reversal (Nagel 2012, RFS; Heston, Korajczyk & Sadka 2010): on high-beta liquid names, buying a 15m RSI(3) washout inside a 15m uptrend (SMA200) between 10:00 and 15:30 ET and exiting on rebound, flat by close, beats buy-and-hold after 5 bps/side. Distinct from s02 (1h megacap) and from intraday trend ideas that died on costs (h11, h16 15m). Stop 8x ATR so cost <= 3% of stop."
+base:
+  idea: rsi_revert
+  params: {n: [3], entry: [10, 20], exit: [50, 70]}
+filters:
+  - {name: session, params: {start: ["10:00"], end: ["15:30"]}}
+  - {name: trend_sma, params: {n: [200]}}
+universe:
+  HIBETA: [NVDA, TSLA, AMD, COIN, MSTR, PLTR]
+timeframe: 15Min
+flat_eod: true
+stop: {atr_mult: 8}
+direction: long_flat
+costs: {fee_bps: 0, slippage_bps: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

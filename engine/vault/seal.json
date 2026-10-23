@@ -1,0 +1,6 @@
+{
+ "vault_start": "2025-10-23",
+ "sealed_at": "2026-10-23T02:37:22.707285-04:00",
+ "months": 12,
+ "rule": "hunt runs see bars strictly before vault_start; vault-test only, once per candidate"
+}

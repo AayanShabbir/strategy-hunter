@@ -1,0 +1,15 @@
+id: c01_sol_trend_ma_v1
+author: scout
+hypothesis: "Long/flat spot SOL (and an alt basket incl. SOL) while fast SMA > slow SMA on UTC daily bars beats buy-and-hold OOS after Alpaca tier-1 taker fee 25 bps + 10 bps slippage per side, because crypto shows time-series momentum and technical trend rules cut its deep drawdowns (Liu & Tsyvinski 2021 RFS; Hudson & Urquhart 2021). Wide 5x ATR stop. Strategy Scout crypto submission."
+base: {idea: sma_cross, params: {fast: [1, 10], slow: [50, 100]}}
+filters: []
+universe:
+  SOL: [SOL/USD]
+  ALTS: [SOL/USD, ETH/USD, AVAX/USD, LINK/USD, DOGE/USD, LTC/USD]
+stop: {atr_mult: 5}
+timeframe: 1Day
+direction: long_flat
+costs: {fee_bps: 25, slippage_bps: 10}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

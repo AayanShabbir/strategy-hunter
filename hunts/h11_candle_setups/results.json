@@ -1,0 +1,144 @@
+{
+ "universe": 44,
+ "period": [
+  "2024-10-14",
+  "2026-10-15"
+ ],
+ "all_signals_trades": 49939,
+ "portfolio_trades": 6864,
+ "portfolio_trades_per_day": 13.73,
+ "portfolio": {
+  "total_%": -52.46,
+  "cagr_%": -31.25,
+  "sharpe": -3.78,
+  "maxdd_%": -53.64
+ },
+ "SPY": {
+  "total_%": 31.79,
+  "cagr_%": 14.93,
+  "sharpe": 0.93,
+  "maxdd_%": -19.08
+ },
+ "SPY70_cash30": {
+  "total_%": 22.0,
+  "cagr_%": 10.54,
+  "sharpe": 0.93,
+  "maxdd_%": -13.67
+ },
+ "portfolio_win%": 37.0,
+ "portfolio_avg_bps": -10.69,
+ "long_only_avg_bps": -9.8,
+ "short_only_avg_bps": -12.17,
+ "gross_avg_bps_before_costs": -0.89,
+ "tests": [
+  {
+   "test": "15m:L_PDH_BRK",
+   "trades": 5816,
+   "win%": 36.9,
+   "avg_bps": -10.75,
+   "avg_R": -0.167,
+   "p": 0.9999999989990032,
+   "holm_p": 1.0
+  },
+  {
+   "test": "15m:L_TREND_PB",
+   "trades": 7045,
+   "win%": 37.1,
+   "avg_bps": -13.0,
+   "avg_R": -0.271,
+   "p": 1.0,
+   "holm_p": 1.0
+  },
+  {
+   "test": "15m:L_VWAP_RCL",
+   "trades": 7536,
+   "win%": 39.0,
+   "avg_bps": -7.88,
+   "avg_R": -0.158,
+   "p": 0.999999957297322,
+   "holm_p": 1.0
+  },
+  {
+   "test": "15m:S_PDL_BRK",
+   "trades": 5076,
+   "win%": 36.9,
+   "avg_bps": -12.4,
+   "avg_R": -0.137,
+   "p": 0.9999999998253276,
+   "holm_p": 1.0
+  },
+  {
+   "test": "15m:S_TREND_PB",
+   "trades": 4726,
+   "win%": 39.3,
+   "avg_bps": -10.0,
+   "avg_R": -0.175,
+   "p": 0.9999999999999971,
+   "holm_p": 1.0
+  },
+  {
+   "test": "15m:S_VWAP_LOSS",
+   "trades": 7450,
+   "win%": 37.7,
+   "avg_bps": -11.46,
+   "avg_R": -0.167,
+   "p": 0.9999999999999998,
+   "holm_p": 1.0
+  },
+  {
+   "test": "1h:L_PDH_BRK",
+   "trades": 3889,
+   "win%": 45.8,
+   "avg_bps": -7.51,
+   "avg_R": -0.069,
+   "p": 0.9986444758534385,
+   "holm_p": 1.0
+  },
+  {
+   "test": "1h:L_TREND_PB",
+   "trades": 1014,
+   "win%": 42.7,
+   "avg_bps": -13.56,
+   "avg_R": -0.098,
+   "p": 0.9999803452355966,
+   "holm_p": 1.0
+  },
+  {
+   "test": "1h:L_VWAP_RCL",
+   "trades": 1628,
+   "win%": 46.4,
+   "avg_bps": -4.63,
+   "avg_R": -0.071,
+   "p": 0.9222890321711099,
+   "holm_p": 1.0
+  },
+  {
+   "test": "1h:S_PDL_BRK",
+   "trades": 3506,
+   "win%": 42.6,
+   "avg_bps": -19.94,
+   "avg_R": -0.103,
+   "p": 0.9999999999827406,
+   "holm_p": 1.0
+  },
+  {
+   "test": "1h:S_TREND_PB",
+   "trades": 671,
+   "win%": 41.6,
+   "avg_bps": 1.3,
+   "avg_R": -0.032,
+   "p": 0.3994620264729725,
+   "holm_p": 1.0
+  },
+  {
+   "test": "1h:S_VWAP_LOSS",
+   "trades": 1582,
+   "win%": 44.1,
+   "avg_bps": -9.73,
+   "avg_R": -0.078,
+   "p": 0.9981549390082243,
+   "holm_p": 1.0
+  }
+ ],
+ "pass": false
+}

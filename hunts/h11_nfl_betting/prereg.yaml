@@ -1,0 +1,26 @@
+hunt: h11_nfl_betting
+registered: 2026-10-22 (written before any strategy result was computed)
+note: folder h11_candle_setups already exists; this hunt uses id h11_nfl_betting as requested by Herald.
+data:
+  source: nflverse/nfldata data/games.csv (https://github.com/nflverse/nfldata), downloaded 2026-10-22, sha256 in data/games.sha256
+  license: no LICENSE file found in nflverse/nfldata repo -> license UNVERIFIED; used for private research only, credit nflverse / Lee Sharpe.
+  lines: spread_line / total_line documented by nflverse as "the spread line"/"total line"; whether these are CLOSING lines is UNVERIFIED (generally described as closing by the community).
+  scope: NFL regular + postseason, seasons 1999-2026 (2026 partial, completed games only). College excluded (no free keyless closing-line source found; CollegeFootballData requires an API key/sign-up).
+split: IS = seasons 1999-2018 (20 seasons); OOS = seasons 2019-2026 (newest ~30% of 28 seasons)
+pricing: every bet at -110 (win +0.9091u, loss -1u, push 0). Break-even 52.38%.
+stats: bets, pushes, win% (ex-push), ROI per bet risked, one-sided binomial p vs 0.5238 (ex-push), 10k bootstrap 95% CI of ROI, Holm at cumulative ledger N = 298 + 9 = 307.
+pass_rule: OOS ROI > 0 AND OOS Holm-adjusted p < 0.05 AND IS ROI > 0. No parameter tuning.
+untestable:
+  closing_line_value: needs our bet price vs close; only one line per game -> untestable as a strategy.
+  line_moves: no free open lines in dataset -> untestable.
+  fade_public: no free historical public-betting % -> untestable.
+strategies:
+  S1_home_dog: bet home team ATS when spread_line < 0.
+  S2_div_home_dog: S1 and div_game == 1.
+  S3_wind_under: bet UNDER when roof in (outdoors, open) and wind >= 15 mph.
+  S4_cold_under: bet UNDER when roof in (outdoors, open) and temp <= 32 F.
+  S5_rest_edge: team with rest >= 13 days facing opponent with rest <= 8 -> bet rested team ATS (both rested -> no bet).
+  S6_short_week_fade: team with rest <= 4 facing opponent rest >= 7 -> bet the opponent ATS.
+  S7_west_early_east: away team in Pacific {SEA,SF,LA,LAC,OAK,LV,SD} at home team in Eastern time zone {NE,NYJ,NYG,BUF,MIA,PHI,PIT,BAL,WAS,CLE,CIN,ATL,CAR,TB,JAX,IND,DET} with gametime <= 13:05 local -> bet home ATS.
+  S8_elo_vs_line: own Elo from game results only (start 1500, K=20, home field 65 Elo, MOV multiplier ln(|mov|+1)*2.2/((elo_diff_winner*0.001)+2.2), regress 1/3 to 1500 each season); pre-game predicted home margin = (elo_home+65-elo_away)/25; bet home ATS if pred - spread_line >= 3, away ATS if <= -3.
+  S9_big_dog: bet the underdog ATS when |spread_line| >= 10.

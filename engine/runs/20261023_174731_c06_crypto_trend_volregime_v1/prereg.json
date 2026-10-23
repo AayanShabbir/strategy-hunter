@@ -1,0 +1,21 @@
+{
+ "run_id": "20261023_174731_c06_crypto_trend_volregime_v1",
+ "spec_hash": "6a9680145e3e80c0fea0d1c0ecc97cc6d63dffcfa955064e4ecafb4069e4dfad",
+ "rows": {
+  "SOL|supertrend(atr_n=10,mult=3)+vol_regime(max_atr_pct=0.05,n=14)": 500,
+  "SOL|supertrend(atr_n=10,mult=3)+vol_regime(max_atr_pct=0.08,n=14)": 501,
+  "SOL|supertrend(atr_n=10,mult=4)+vol_regime(max_atr_pct=0.05,n=14)": 502,
+  "SOL|supertrend(atr_n=10,mult=4)+vol_regime(max_atr_pct=0.08,n=14)": 503,
+  "ALTS|supertrend(atr_n=10,mult=3)+vol_regime(max_atr_pct=0.05,n=14)": 504,
+  "ALTS|supertrend(atr_n=10,mult=3)+vol_regime(max_atr_pct=0.08,n=14)": 505,
+  "ALTS|supertrend(atr_n=10,mult=4)+vol_regime(max_atr_pct=0.05,n=14)": 506,
+  "ALTS|supertrend(atr_n=10,mult=4)+vol_regime(max_atr_pct=0.08,n=14)": 507,
+  "BTC_ETH|supertrend(atr_n=10,mult=3)+vol_regime(max_atr_pct=0.05,n=14)": 508,
+  "BTC_ETH|supertrend(atr_n=10,mult=3)+vol_regime(max_atr_pct=0.08,n=14)": 509,
+  "BTC_ETH|supertrend(atr_n=10,mult=4)+vol_regime(max_atr_pct=0.05,n=14)": 510,
+  "BTC_ETH|supertrend(atr_n=10,mult=4)+vol_regime(max_atr_pct=0.08,n=14)": 511
+ },
+ "N_after_reserve": 511,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:47:31.418717-04:00"
+}

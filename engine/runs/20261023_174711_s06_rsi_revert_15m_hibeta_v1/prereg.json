@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_174711_s06_rsi_revert_15m_hibeta_v1",
+ "spec_hash": "a709691b7cf1e97eb6513929d2ac154959e2aa4d6250604bad1c6838796332c8",
+ "rows": {
+  "HIBETA|rsi_revert(entry=10,exit=50,n=3)+session(end=15:30,start=10:00)+trend_sma(n=200)": 455,
+  "HIBETA|rsi_revert(entry=10,exit=70,n=3)+session(end=15:30,start=10:00)+trend_sma(n=200)": 456,
+  "HIBETA|rsi_revert(entry=20,exit=50,n=3)+session(end=15:30,start=10:00)+trend_sma(n=200)": 457,
+  "HIBETA|rsi_revert(entry=20,exit=70,n=3)+session(end=15:30,start=10:00)+trend_sma(n=200)": 458
+ },
+ "N_after_reserve": 458,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:47:11.294457-04:00"
+}

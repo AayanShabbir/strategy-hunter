@@ -1,0 +1,17 @@
+{
+ "run_id": "20261023_174723_c04_sol_rel_strength_v1",
+ "spec_hash": "9bbe700d915562e6e2d5c5a7eec4d937a2c5ec5c3ebc106239f71d5b0f48eb30",
+ "rows": {
+  "SOL|rel_strength(abs_filter=True,bench=BTC/USD,n=14)": 483,
+  "SOL|rel_strength(abs_filter=True,bench=BTC/USD,n=30)": 484,
+  "SOL|rel_strength(abs_filter=True,bench=ETH/USD,n=14)": 485,
+  "SOL|rel_strength(abs_filter=True,bench=ETH/USD,n=30)": 486,
+  "ALTS|rel_strength(abs_filter=True,bench=BTC/USD,n=14)": 487,
+  "ALTS|rel_strength(abs_filter=True,bench=BTC/USD,n=30)": 488,
+  "ALTS|rel_strength(abs_filter=True,bench=ETH/USD,n=14)": 489,
+  "ALTS|rel_strength(abs_filter=True,bench=ETH/USD,n=30)": 490
+ },
+ "N_after_reserve": 490,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:47:23.282912-04:00"
+}

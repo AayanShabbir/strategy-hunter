@@ -1,0 +1,21 @@
+hunt: h12_original
+registered: 2026-10-22 (written before any h12 result was computed; never edited after)
+ledger_N_note: HUNT_LEDGER.md says 307 but research_lab/ledger says 310 = 298 + 12 (h11_candle_setups) and does not include the 9 h11_nfl_betting trials. True cumulative before h12 = 298 + 12 + 9 = 319. Holm uses N = 319 + trials in this hunt.
+data:
+  stocks: /workspace/trading-desk/validation/data/ALL_1d.pkl (Alpaca IEX daily bars, 100 symbols, 2020-07-27..2026-10-14). Survivor-biased universe.
+  nfl: research_lab/hunts/h11_nfl_betting/data/games.csv (nflverse; same file, sha256 unchanged)
+  prediction_markets: Polymarket gamma API + Kalshi public trade API, read-only, no keys.
+costs: 5 bps per side on every stock/ETF trade (entry and exit). NFL at -110.
+split: stocks IS = first 70% of trading days, OOS = newest 30%. Signals at close t, fill next open (unless stated open->close).
+benchmarks: SPY buy-and-hold and 70% SPY + 30% cash over the same OOS window.
+pass_rule_stocks: OOS total return > 0 AND OOS Sharpe > SPY OOS Sharpe AND one-sided t-test p (daily strat minus SPY daily excess, or mean>0 for market-neutral/timing vs cash where stated) Holm-adjusted at N < 0.05 AND IS mean return > 0. Plus SPA p < 0.05 vs SPY and vs 70/30. No tuning.
+strategies:
+  E1_month_end_rebal_flow: thesis = balanced funds/pensions rebalance at month end, buying the laggard asset. At close of the 4th-to-last trading day of each month compute MTD (from prior month-end close) return of SPY minus TLT = D. If D <= -3% hold SPY long; if D >= +3% hold SPY short; else flat. Enter next open, exit at close of last trading day of month.
+  E2_letf_close_reversal: thesis = leveraged-ETF daily rebalancing pushes the close in the day's direction (mechanical, non-informational flow), which partly reverses next day. If QQQ close-to-close return >= +2% go short QQQ next open, exit next close; if <= -2% go long QQQ next open, exit next close.
+  E3_credit_calm_equity_panic: thesis = equity holders over-react while credit (more informed, institutional) stays calm. If SPY 10-day return <= -3% AND HYG 10-day return >= -0.5% at close t, buy SPY at next open, hold 5 trading days (exit close of day 5). Overlapping signals extend the hold. Else cash.
+  E4_defensive_lead_guard: thesis = sector rotation into utilities ahead of equity weakness (slow institutional de-risking). Hold SPY when XLK 20-day return minus XLU 20-day return > -5%; else cash. Daily decision at close, trade next open.
+  N1_nfl_wind_10_14_under: follow-up to S3 using DISJOINT games, never used as confirmation: bet UNDER when roof outdoors/open and 10 <= wind <= 14 mph. IS 1999-2018, OOS 2019-2026. -110. pass = OOS ROI>0 AND IS ROI>0 AND Holm p<0.05 (one-sided binomial vs 52.38%).
+untested_prediction_markets:
+  P1_poly_kalshi_gap: buy the cheaper side when the same binary event is priced >= 5c apart after fees on Polymarket vs Kalshi. Snapshot only; no matched historical order-book history on box -> not backtestable this hunt (0 trials).
+  P2_fed_odds_to_stocks: shift in Kalshi/Polymarket Fed-cut odds as a next-day XLF/TLT signal. History too short and needs per-market candle pulls; 0 trials this hunt.
+trials_counted: 5 (E1-E4, N1). New N = 324.

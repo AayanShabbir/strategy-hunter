@@ -1,0 +1,17 @@
+{
+ "run_id": "20261023_174443_s02_reversal_1h_megacap_v1",
+ "spec_hash": "00a201c3f45f69c49ce04c2cdb91cfae83dda0c73253faf9ad2ce8bcc0cd86b8",
+ "rows": {
+  "MEGA|rsi_revert(entry=15,exit=50,n=3)+session(end=15:00,start=10:30)+trend_sma(n=200)": 407,
+  "MEGA|rsi_revert(entry=15,exit=50,n=5)+session(end=15:00,start=10:30)+trend_sma(n=200)": 408,
+  "MEGA|rsi_revert(entry=15,exit=70,n=3)+session(end=15:00,start=10:30)+trend_sma(n=200)": 409,
+  "MEGA|rsi_revert(entry=15,exit=70,n=5)+session(end=15:00,start=10:30)+trend_sma(n=200)": 410,
+  "MEGA|rsi_revert(entry=25,exit=50,n=3)+session(end=15:00,start=10:30)+trend_sma(n=200)": 411,
+  "MEGA|rsi_revert(entry=25,exit=50,n=5)+session(end=15:00,start=10:30)+trend_sma(n=200)": 412,
+  "MEGA|rsi_revert(entry=25,exit=70,n=3)+session(end=15:00,start=10:30)+trend_sma(n=200)": 413,
+  "MEGA|rsi_revert(entry=25,exit=70,n=5)+session(end=15:00,start=10:30)+trend_sma(n=200)": 414
+ },
+ "N_after_reserve": 414,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:44:43.691375-04:00"
+}

@@ -1,0 +1,17 @@
+id: c06_crypto_trend_volregime_v1
+author: scout
+hypothesis: "Supertrend(10, 3 or 4) long/flat, allowed only when ATR14/price is below 5% or 8% (volatility-regime gate as a long/flat proxy for volatility-managed momentum, Barroso & Santa-Clara 2015; crypto risk-managed momentum, FMPM 2025) beats buy-and-hold OOS on SOL, alts, and BTC+ETH net of 35 bps/side. 5x ATR stop. Strategy Scout crypto submission."
+base: {idea: supertrend, params: {atr_n: [10], mult: [3, 4]}}
+filters:
+  - {name: vol_regime, params: {n: [14], max_atr_pct: [0.05, 0.08]}}
+universe:
+  SOL: [SOL/USD]
+  ALTS: [SOL/USD, ETH/USD, AVAX/USD, LINK/USD, DOGE/USD, LTC/USD]
+  BTC_ETH: [BTC/USD, ETH/USD]
+stop: {atr_mult: 5}
+timeframe: 1Day
+direction: long_flat
+costs: {fee_bps: 25, slippage_bps: 10}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

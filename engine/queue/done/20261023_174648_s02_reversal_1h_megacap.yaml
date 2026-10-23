@@ -1,0 +1,19 @@
+id: s02_reversal_1h_megacap_v1
+author: scout
+hypothesis: "Short-horizon reversal in liquid large caps (Lehmann 1990; Jegadeesh 1990; intraday liquidity-provision reversal, Nagel 2012): buying 1h oversold RSI(3/5) dips within an uptrend (1h SMA200) and exiting on rebound, flat by close, beats buy-and-hold after costs. Not RSI(2)-daily; 1h bars, session 10:30-15:00 ET."
+base:
+  idea: rsi_revert
+  params: {n: [3, 5], entry: [15, 25], exit: [50, 70]}
+filters:
+  - {name: session, params: {start: ["10:30"], end: ["15:00"]}}
+  - {name: trend_sma, params: {n: [200]}}
+universe:
+  MEGA: [AAPL, MSFT, NVDA, AMZN, GOOGL, META, AVGO, JPM, LLY, TSLA]
+timeframe: 1Hour
+flat_eod: true
+stop: {atr_mult: 8}
+direction: long_flat
+costs: {fee_bps: 0, slippage_bps: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

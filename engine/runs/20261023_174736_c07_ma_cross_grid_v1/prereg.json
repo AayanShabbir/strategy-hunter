@@ -1,0 +1,33 @@
+{
+ "run_id": "20261023_174736_c07_ma_cross_grid_v1",
+ "spec_hash": "b004aa9de9ebe350d28e9162da7adeef2a14775a434b57a893200dbaae8dc372",
+ "rows": {
+  "ALTS|sma_cross(fast=5,slow=50)": 512,
+  "ALTS|sma_cross(fast=5,slow=100)": 513,
+  "ALTS|sma_cross(fast=5,slow=150)": 514,
+  "ALTS|sma_cross(fast=5,slow=200)": 515,
+  "ALTS|sma_cross(fast=10,slow=50)": 516,
+  "ALTS|sma_cross(fast=10,slow=100)": 517,
+  "ALTS|sma_cross(fast=10,slow=150)": 518,
+  "ALTS|sma_cross(fast=10,slow=200)": 519,
+  "ALTS|sma_cross(fast=20,slow=50)": 520,
+  "ALTS|sma_cross(fast=20,slow=100)": 521,
+  "ALTS|sma_cross(fast=20,slow=150)": 522,
+  "ALTS|sma_cross(fast=20,slow=200)": 523,
+  "BTC_ETH|sma_cross(fast=5,slow=50)": 524,
+  "BTC_ETH|sma_cross(fast=5,slow=100)": 525,
+  "BTC_ETH|sma_cross(fast=5,slow=150)": 526,
+  "BTC_ETH|sma_cross(fast=5,slow=200)": 527,
+  "BTC_ETH|sma_cross(fast=10,slow=50)": 528,
+  "BTC_ETH|sma_cross(fast=10,slow=100)": 529,
+  "BTC_ETH|sma_cross(fast=10,slow=150)": 530,
+  "BTC_ETH|sma_cross(fast=10,slow=200)": 531,
+  "BTC_ETH|sma_cross(fast=20,slow=50)": 532,
+  "BTC_ETH|sma_cross(fast=20,slow=100)": 533,
+  "BTC_ETH|sma_cross(fast=20,slow=150)": 534,
+  "BTC_ETH|sma_cross(fast=20,slow=200)": 535
+ },
+ "N_after_reserve": 535,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:47:36.007538-04:00"
+}

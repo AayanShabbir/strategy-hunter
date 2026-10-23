@@ -1,0 +1,33 @@
+{
+ "run_id": "20261023_174743_c08_donchian_grid_v1",
+ "spec_hash": "fe617f96081f31b59c5490062e2f17a1a52e8dd0b8b455a6a5b50673b7d74054",
+ "rows": {
+  "ALTS|donchian(entry_n=10,exit_n=5)": 536,
+  "ALTS|donchian(entry_n=10,exit_n=10)": 537,
+  "ALTS|donchian(entry_n=10,exit_n=20)": 538,
+  "ALTS|donchian(entry_n=20,exit_n=5)": 539,
+  "ALTS|donchian(entry_n=20,exit_n=10)": 540,
+  "ALTS|donchian(entry_n=20,exit_n=20)": 541,
+  "ALTS|donchian(entry_n=30,exit_n=5)": 542,
+  "ALTS|donchian(entry_n=30,exit_n=10)": 543,
+  "ALTS|donchian(entry_n=30,exit_n=20)": 544,
+  "ALTS|donchian(entry_n=55,exit_n=5)": 545,
+  "ALTS|donchian(entry_n=55,exit_n=10)": 546,
+  "ALTS|donchian(entry_n=55,exit_n=20)": 547,
+  "BTC_ETH|donchian(entry_n=10,exit_n=5)": 548,
+  "BTC_ETH|donchian(entry_n=10,exit_n=10)": 549,
+  "BTC_ETH|donchian(entry_n=10,exit_n=20)": 550,
+  "BTC_ETH|donchian(entry_n=20,exit_n=5)": 551,
+  "BTC_ETH|donchian(entry_n=20,exit_n=10)": 552,
+  "BTC_ETH|donchian(entry_n=20,exit_n=20)": 553,
+  "BTC_ETH|donchian(entry_n=30,exit_n=5)": 554,
+  "BTC_ETH|donchian(entry_n=30,exit_n=10)": 555,
+  "BTC_ETH|donchian(entry_n=30,exit_n=20)": 556,
+  "BTC_ETH|donchian(entry_n=55,exit_n=5)": 557,
+  "BTC_ETH|donchian(entry_n=55,exit_n=10)": 558,
+  "BTC_ETH|donchian(entry_n=55,exit_n=20)": 559
+ },
+ "N_after_reserve": 559,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T17:47:43.249239-04:00"
+}

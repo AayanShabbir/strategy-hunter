@@ -1,0 +1,12 @@
+{
+  "nautilus_version": "1.231.0",
+  "data": "SPY 1Day 2016-01-04..2025-10-22 (2466 bars, pre-vault)",
+  "strategy": "SMA20/50 long-flat, 10 sh, FixedFeeModel $1.00 per fill",
+  "fills": 44,
+  "positions": 22,
+  "commissions_usd": 44.0,
+  "start_usd": 10000,
+  "end_usd": 12744.6,
+  "return_pct": 27.45,
+  "buyhold_spy_pct": 287.06
+}

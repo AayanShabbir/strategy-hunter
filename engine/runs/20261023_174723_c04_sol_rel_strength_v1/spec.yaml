@@ -1,0 +1,15 @@
+id: c04_sol_rel_strength_v1
+author: scout
+hypothesis: "Holding SOL (or each alt) only while its 14- or 30-day return beats BTC's or ETH's over the same window AND is positive beats buy-and-hold OOS net of 35 bps/side (cross-sectional crypto momentum at 1-4 week horizons, Liu, Tsyvinski & Wu 2022 JF). 5x ATR stop. Strategy Scout crypto submission."
+base: {idea: rel_strength, params: {bench: [BTC/USD, ETH/USD], n: [14, 30], abs_filter: [true]}}
+filters: []
+universe:
+  SOL: [SOL/USD]
+  ALTS: [SOL/USD, ETH/USD, AVAX/USD, LINK/USD, DOGE/USD, LTC/USD]
+stop: {atr_mult: 5}
+timeframe: 1Day
+direction: long_flat
+costs: {fee_bps: 25, slippage_bps: 10}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000
