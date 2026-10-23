@@ -18,7 +18,7 @@ def vault_test(run_id, variant, loader=None, n_random=2000):
     dW = np.abs(np.diff(np.vstack([np.zeros((1, W.shape[1])), W.values]), axis=0))
     real = float(np.prod(1 + (W.values * np.nan_to_num(R.values) - fee * dW).mean(1)) - 1)
     p, rmed = G.random_twin(W, R, fee, real, n=n_random, seed=7)
-    out = dict(VAULT=G.stats(dr), BH=G.stats(bh), p_twin=p, random_median=rmed,
+    ann = G.ann_factor(s['universe'][vd['basket']]); out = dict(VAULT=G.stats(dr, ann), BH=G.stats(bh, ann), p_twin=p, random_median=rmed,
                window=f"{dr.index[0].date()}..{dr.index[-1].date()}" if len(dr) else "empty")
     out["pass"] = bool(out["VAULT"]["ret"] > 0 and out["VAULT"]["ret"] > out["BH"]["ret"] and p < 0.05)
     vault.record(cand, out); print(json.dumps(out, indent=1)); return out

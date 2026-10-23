@@ -31,7 +31,7 @@ def _evaluate(s, vs, rows, loader, n_random):
     Dall = loader(syms, tf, allow_vault=False)
     cfg = s.get("split", {}); is_frac = cfg.get("is_frac", 0.7); k_wf = cfg.get("wf_folds", 2)
     fee_side = (s["costs"].get("fee_bps", 0) + s["costs"].get("slippage_bps", 5)) / 1e4
-    min_trades = int(s.get("min_trades", 100)); out = {}; daily = {}
+    min_trades = int(s.get("min_trades", 100)); out = {}; daily = {}; ann = G.ann_factor(syms, tf)
     for v in vs:
         D = {c: x[s["universe"][v["basket"]]] for c, x in Dall.items()}
         bt = run_variant(D, s, v); idx = bt["bar_ret"].index; cut = _split(idx, is_frac); oos = idx >= cut
@@ -43,7 +43,7 @@ def _evaluate(s, vs, rows, loader, n_random):
         real = float(np.prod(1 + (Wo.values * np.nan_to_num(Ro.values) - fee_side * dW).mean(1)) - 1)
         p, rmed = G.random_twin(Wo, Ro, fee_side, real, n=n_random, seed=rows[v["name"]])
         o = dr[dr.index >= dcut]; folds = [o.iloc[ix] for ix in np.array_split(np.arange(len(o)), k_wf)]
-        out[v["name"]] = dict(row=rows[v["name"]], IS=G.stats(dr[dr.index < dcut]), OOS=G.stats(o), BH_OOS=G.stats(bh[bh.index >= dcut]),
+        out[v["name"]] = dict(row=rows[v["name"]], IS=G.stats(dr[dr.index < dcut], ann), OOS=G.stats(o, ann), BH_OOS=G.stats(bh[bh.index >= dcut], ann), CPCV=G.cpcv(dr, ann=ann),
             trades=bt["trades"], time_in_mkt=round(bt["time_in_mkt"], 3), cost_stop=round(float(bt["cost_stop"]), 4),
             WF=[G.stats(f)["ret"] for f in folds], p_twin=round(p, 5), random_median_oos=rmed, real_twin_basis=round(real * 100, 2),
             SPA=round(G.spa_p(bh.reindex(o.index).fillna(0).values, o.values), 4))
@@ -59,9 +59,10 @@ def _evaluate(s, vs, rows, loader, n_random):
     for k, x in out.items():
         x["holm"] = round(hadj[x["row"]], 5); x["DSR"] = round(G.dsr(oosM[k], srv, N), 4)
         x["pass"], x["checks"] = G.verdict(x, min_trades, pbo); npass += x["pass"]
+        x["dd_improvement_vs_bh"] = round(x["OOS"]["maxdd"] - x["BH_OOS"]["maxdd"], 2)   # diagnostic (+ = shallower DD); not a gate
     return dict(variants=out, N=N, PBO=round(pbo, 3), n_pass=int(npass), min_trades=min_trades,
                 window=dict(start=str(M.index[0].date()), end=str(M.index[-1].date()), oos_start=str(oosM.index[0].date())),
-                bar=G.BAR, ts=now_et().isoformat())
+                ann_factor=ann, bar=G.BAR, ts=now_et().isoformat())
 def _row(k, x):
     f = [c for c, ok in x["checks"].items() if not ok]
     return (f"| {x['row']} | {k} | {x['OOS']['ret']}/{x['OOS']['sharpe']}/{x['OOS']['maxdd']} | {x['BH_OOS']['ret']} | {x['trades']} | "
