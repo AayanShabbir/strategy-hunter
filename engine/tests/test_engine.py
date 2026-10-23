@@ -81,3 +81,29 @@ def test_status_and_drain_see_same_pending(sandbox, tmp_path, capsys):
     assert names == ["qa.yaml", "qb.yml"] and all(p["variants"] == 4 for p in st["pending"])
     done = queue.drain(cap=200, dry=True)
     assert [d["spec"] for d in done] == names and queue.used_tonight()[0] == 0 and len(os.listdir(pend)) == 3
+# ---------- frontier upgrades (2026-10-23)
+def test_ann_factor_crypto_vs_stock():
+    from hunt_engine.gauntlet import ann_factor, stats
+    assert ann_factor(["SOL/USD"]) == 365 and ann_factor(["AAPL"]) == 252
+    r = pd.Series(np.random.default_rng(1).normal(0.001, 0.01, 500))
+    assert abs(stats(r, 365)["sharpe"] / stats(r, 252)["sharpe"] - np.sqrt(365 / 252)) < 0.02
+def test_numba_twin_matches_python_in_distribution():
+    from hunt_engine.gauntlet import random_twin
+    rng = np.random.default_rng(0); T = 600
+    W = pd.DataFrame((rng.random((T, 2)) < 0.5).astype(float)); R = pd.DataFrame(rng.normal(0, 0.01, (T, 2)))
+    pf, mf = random_twin(W, R, 5e-4, 0.0, n=400, seed=3, fast=True); ps, ms = random_twin(W, R, 5e-4, 0.0, n=400, seed=3, fast=False)
+    assert abs(pf - ps) < 0.12 and abs(mf - ms) < 3.0
+def test_cpcv_paths():
+    from hunt_engine.gauntlet import cpcv
+    c = cpcv(np.random.default_rng(0).normal(0.002, 0.01, 600)); assert c["n_paths"] == 15 and c["frac_positive"] > 0.8
+def test_day_of_week_filter():
+    from hunt_engine.signals import day_of_week
+    D = synth_loader(["AAA"], "1Day"); m = day_of_week(D, days=[0]); assert (D["close"].index[m["AAA"].values].dayofweek == 0).all()
+def test_generator_emits_valid_specs():
+    from hunt_engine import generate as GEN, spec as S
+    sp = GEN.generate(20, dict(A=["AAA", "BBB"]), seed=5)
+    assert len(sp) == 20 and all(2 <= len(S.variants(x)) <= 200 for x in sp)
+def test_optuna_counts_every_trial(sandbox, tmp_path):
+    from hunt_engine import optimize as O, ledger, spec as S
+    r = O.optimize(write(tmp_path, id="opt"), n_trials=6, loader=synth_loader, out_dir=str(tmp_path))
+    assert ledger.current_N() == 392 + 6 and r["spec"] and S.load(r["spec"])[0]["id"] == "opt_opt0"
