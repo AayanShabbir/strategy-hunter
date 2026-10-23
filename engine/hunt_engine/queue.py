@@ -11,7 +11,7 @@ def used_tonight():
 def pending_specs():
     """Single source of truth for status and drain: *.yaml/*.yml in queue/pending, oldest first (symlinks followed)."""
     d = os.path.join(paths()["queue"], "pending")
-    return sorted((f for f in glob.glob(os.path.join(d, "*.y*ml")) if os.path.isfile(f)), key=os.path.getmtime)
+    return sorted((f for f in glob.glob(os.path.join(d, "*.y*ml")) if os.path.isfile(f)), key=lambda f: (os.lstat(f).st_mtime_ns, os.path.basename(f)))  # lstat: a symlink sorts by when it was queued, not its target's mtime
 def drain(cap=200, max_specs=None, dry=False):
     q = paths()["queue"]; [os.makedirs(os.path.join(q, d), exist_ok=True) for d in ("pending", "done", "failed")]
     try: lk = FileLock(os.path.join(q, ".drain.lock"), timeout=0); lk.acquire()
