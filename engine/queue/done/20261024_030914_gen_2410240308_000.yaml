@@ -1,0 +1,27 @@
+id: gen_2410240308_000
+hypothesis: 'grammar draw seed=2410240308: supertrend+relvol'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 7
+    - 14
+    mult:
+    - 3
+    - 4
+filters:
+- name: relvol
+  params:
+    min_ratio: 1.0
+universe:
+  megacap:
+  - AAPL
+  - MSFT
+  - AMZN
+  - GOOGL
+  - META
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

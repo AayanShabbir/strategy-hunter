@@ -1,0 +1,17 @@
+{
+ "run_id": "20261024_030914_gen_2410240309_000",
+ "spec_hash": "4ebaf45ae1f6a618bcef8748c6a26e5c64fd5841f887680ab046effcc4c38e28",
+ "rows": {
+  "sectors|drop_revert(drop=0.05,hold=3,n=3)": 1607,
+  "sectors|drop_revert(drop=0.05,hold=3,n=5)": 1608,
+  "sectors|drop_revert(drop=0.05,hold=10,n=3)": 1609,
+  "sectors|drop_revert(drop=0.05,hold=10,n=5)": 1610,
+  "sectors|drop_revert(drop=0.1,hold=3,n=3)": 1611,
+  "sectors|drop_revert(drop=0.1,hold=3,n=5)": 1612,
+  "sectors|drop_revert(drop=0.1,hold=10,n=3)": 1613,
+  "sectors|drop_revert(drop=0.1,hold=10,n=5)": 1614
+ },
+ "N_after_reserve": 1614,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T03:09:14.433988-04:00"
+}

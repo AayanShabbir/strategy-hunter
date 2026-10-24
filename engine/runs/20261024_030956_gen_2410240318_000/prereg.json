@@ -1,0 +1,25 @@
+{
+ "run_id": "20261024_030956_gen_2410240318_000",
+ "spec_hash": "e015e0abdf1a02cd4b24f08c701ac2e5c5b9bf547f591e7e379387d2aabf14c4",
+ "rows": {
+  "hibeta|sma_cross(fast=5,slow=100)+day_of_week(days=1)": 1675,
+  "hibeta|sma_cross(fast=5,slow=100)+day_of_week(days=2)": 1676,
+  "hibeta|sma_cross(fast=5,slow=100)+day_of_week(days=3)": 1677,
+  "hibeta|sma_cross(fast=5,slow=100)+day_of_week(days=4)": 1678,
+  "hibeta|sma_cross(fast=5,slow=150)+day_of_week(days=1)": 1679,
+  "hibeta|sma_cross(fast=5,slow=150)+day_of_week(days=2)": 1680,
+  "hibeta|sma_cross(fast=5,slow=150)+day_of_week(days=3)": 1681,
+  "hibeta|sma_cross(fast=5,slow=150)+day_of_week(days=4)": 1682,
+  "hibeta|sma_cross(fast=10,slow=100)+day_of_week(days=1)": 1683,
+  "hibeta|sma_cross(fast=10,slow=100)+day_of_week(days=2)": 1684,
+  "hibeta|sma_cross(fast=10,slow=100)+day_of_week(days=3)": 1685,
+  "hibeta|sma_cross(fast=10,slow=100)+day_of_week(days=4)": 1686,
+  "hibeta|sma_cross(fast=10,slow=150)+day_of_week(days=1)": 1687,
+  "hibeta|sma_cross(fast=10,slow=150)+day_of_week(days=2)": 1688,
+  "hibeta|sma_cross(fast=10,slow=150)+day_of_week(days=3)": 1689,
+  "hibeta|sma_cross(fast=10,slow=150)+day_of_week(days=4)": 1690
+ },
+ "N_after_reserve": 1690,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T03:09:56.464584-04:00"
+}

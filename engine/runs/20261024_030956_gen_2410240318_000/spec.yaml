@@ -1,0 +1,31 @@
+id: gen_2410240318_000
+hypothesis: 'grammar draw seed=2410240318: sma_cross+day_of_week'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 5
+    - 10
+    slow:
+    - 100
+    - 150
+filters:
+- name: day_of_week
+  params:
+    days:
+    - 1
+    - 2
+    - 3
+    - 4
+universe:
+  hibeta:
+  - TSLA
+  - NVDA
+  - AMD
+  - COIN
+  - PLTR
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

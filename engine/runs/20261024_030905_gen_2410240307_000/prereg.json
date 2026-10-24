@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_030905_gen_2410240307_000",
+ "spec_hash": "147e15467c1dd35e56c094613d0417fd981bec426f35152d7dd76809f408bcf0",
+ "rows": {
+  "megacap|sma_cross(fast=5,slow=50)": 1599,
+  "megacap|sma_cross(fast=5,slow=150)": 1600,
+  "megacap|sma_cross(fast=10,slow=50)": 1601,
+  "megacap|sma_cross(fast=10,slow=150)": 1602
+ },
+ "N_after_reserve": 1602,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T03:09:05.916386-04:00"
+}

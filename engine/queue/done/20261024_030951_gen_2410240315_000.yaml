@@ -1,0 +1,31 @@
+id: gen_2410240315_000
+hypothesis: 'grammar draw seed=2410240315: supertrend+day_of_week'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 7
+    - 10
+    mult:
+    - 2
+    - 4
+filters:
+- name: day_of_week
+  params:
+    days:
+    - 0
+    - 1
+    - 2
+    - 3
+universe:
+  crypto_d:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+  - AVAX/USD
+  - LINK/USD
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100
