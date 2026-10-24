@@ -19,10 +19,12 @@ from typing import Optional
 
 from . import DATA_DIR, DEFAULT_DB
 from .auditor import AuditConfig, Auditor
+from .costs import ImpactModel
 from .data import build_search_panel, synthetic_panel
 from .llm import make_backend
 from .miner import Miner
-from .shared_ledger import SharedLedger, compute_baseline
+from .shared_ledger import SharedLedger, scan_sde_ledger
+from .signing import DEFAULT_KEY_DIR, KeyStore
 from .trader import Trader
 from .worker import worker_main
 
@@ -47,8 +49,24 @@ class SwarmConfig:
     tick_s: float = 0.5
     join_timeout_s: float = 20.0
     llm_timeout_s: float = 600.0
-    baseline: Optional[dict] = None          # override (tests); None => computed from engine state + SDE ledger
+    baseline: Optional[dict] = None          # pin the baseline (tests); None => read LIVE at every run start and before every audit
     stop_file: Optional[str] = None
+    # ---- SDE connection (all off by default; `hunt swarm-start --sde-policy` turns them on)
+    dsl: str = "sde"                         # sde | ext | mixed   (ext = the opt-in blueprint operator set, see dsl_ext.py)
+    sde_policy: Optional[str] = None         # run id / prefix / dir of a trained GFlowNet (runs_sde/<run>/policy.pt)
+    policy_share: float = 0.5                # share of each generator batch drawn from the policy
+    sde_pool: Optional[str] = None           # run whose pool.json members are proposed once (source 'sde_pool')
+    sde_ledger: Optional[str] = None         # SDE hash-chained ledger (None => src/audit/ledger.jsonl)
+    mirror: bool = False                     # write swarm trials/verdicts into the SDE ledger (shared N, no double count)
+    # ---- blueprint features (opt-in so the default stays the audited original behaviour)
+    signing: bool = False                    # Ed25519-signed task/result/verdict bundles
+    key_dir: Optional[str] = None
+    impact: bool = False                     # square-root market-impact cost on top of the flat 5 bp
+    impact_eta: float = 1.0
+    impact_aum: float = 50e6
+    allocation: str = "mvo"                  # trader weights: mvo | erc | equal
+    redis: Optional[str] = None              # None | "embedded" (private redis-server, fakeredis fallback) | redis://host:port/db
+    duckdb_path: Optional[str] = None        # DuckDB analytics mirror
 
 
 class Swarm:
@@ -70,10 +88,17 @@ class Swarm:
     def _panel(self):
         return synthetic_panel(**self.cfg.panel_spec) if self.cfg.panel_spec else build_search_panel()
 
+    def _impact(self) -> ImpactModel:
+        return ImpactModel(eta=self.cfg.impact_eta, aum=self.cfg.impact_aum)
+
+    _redis_url: Optional[str] = None
+
     def _spawn_workers(self) -> None:
         for i in range(self.cfg.workers):
             p = self.ctx.Process(target=worker_main, name=f"swarm-worker-{i}", daemon=True,
-                                 args=(self.cfg.db, f"worker_{os.getpid()}_{i}", self.stop_event, os.getpid(), None, None, self.cfg.panel_spec))
+                                 args=(self.cfg.db, f"worker_{os.getpid()}_{i}", self.stop_event, os.getpid(), None, None, self.cfg.panel_spec,
+                                       self._impact().asdict() if self.cfg.impact else None, (self.cfg.key_dir or DEFAULT_KEY_DIR) if self.cfg.signing else None,
+                                       self._redis_url, "swarm"))
             p.start()
             self.procs.append(p)
 
@@ -113,15 +138,56 @@ class Swarm:
     def run(self) -> dict:
         cfg, led = self.cfg, self.ledger
         t0 = time.time()
-        if led.get_meta("baseline") is None:
-            led.set_baseline(cfg.baseline if cfg.baseline is not None else compute_baseline())
+        # N baseline = engine N + SDE ledger trials, read LIVE now (never a frozen number); refreshed again before every audit
+        baseline = led.refresh_baseline(sde_ledger=cfg.sde_ledger, baseline=cfg.baseline)
+        keystore = KeyStore(cfg.key_dir) if cfg.signing else None
+        redis_srv, coord = None, None
+        if cfg.redis:
+            from .redis_coord import Coordinator, EmbeddedRedis
+            if cfg.redis in ("embedded", "auto"):
+                redis_srv = EmbeddedRedis()
+                self._redis_url = redis_srv.url
+            else:
+                self._redis_url = cfg.redis
+            coord = Coordinator(self._redis_url, node="coordinator")
+        analytics = None
+        if cfg.duckdb_path:
+            from .analytics import Analytics
+            analytics = Analytics(cfg.duckdb_path)
         panel = self._panel()
         led.set_meta("calendar", panel.calendar())
         n_start = led.n_trials()
         eval0 = self._done_count()
-        miner = Miner(led, seed=cfg.seed, llm=make_backend(cfg.llm, **({"timeout_s": cfg.llm_timeout_s} if cfg.llm == "mailbox" else {})))
-        auditor = Auditor(led, cfg.audit_cfg)
-        trader = Trader.from_panel(led, panel)
+        policy = None
+        if cfg.sde_policy:
+            from .sde_bridge import PolicySource
+            policy = PolicySource(cfg.sde_policy, seed=cfg.seed)
+        sde_seen = scan_sde_ledger(baseline["sde_ledger"], want_hashes=True)["hashes"] if baseline.get("sde_ledger") and (policy or cfg.sde_pool) else None
+        miner = Miner(led, seed=cfg.seed, llm=make_backend(cfg.llm, **({"timeout_s": cfg.llm_timeout_s} if cfg.llm == "mailbox" else {})),
+                      dsl=cfg.dsl, policy=policy, policy_share=cfg.policy_share, sde_seen=sde_seen, keystore=keystore, coordinator=coord)
+        auditor = Auditor(led, cfg.audit_cfg, keystore=keystore, coordinator=coord)
+        trader = Trader.from_panel(led, panel, allocation=cfg.allocation, keystore=keystore)
+        mirror_stats = {"mirrored_trials": 0, "mirrored_audits": 0}
+        last_sync = 0.0
+
+        def housekeeping(force: bool = False) -> None:
+            nonlocal last_sync
+            if not force and time.time() - last_sync < 5.0:
+                return
+            last_sync = time.time()
+            if coord is not None:
+                coord.heartbeat("coordinator", f"n={led.n_trials()}")
+                drift = coord.reconcile_n(led.n_swarm_trials())
+                if drift:
+                    led.log_event("cluster", "redis_n_drift", {"drift": drift})
+                coord.resync([r[0] for r in led.conn.execute("SELECT id FROM trials WHERE status='PENDING' ORDER BY id")])
+            if cfg.mirror:
+                from .sde_bridge import mirror_to_sde
+                s = mirror_to_sde(led, cfg.sde_ledger)
+                mirror_stats["mirrored_trials"] += s["mirrored_trials"]
+                mirror_stats["mirrored_audits"] += s["mirrored_audits"]
+            if analytics is not None:
+                analytics.sync(led)
         target = None if (cfg.continuous or cfg.max_trials is None) else cfg.max_trials
         issued = 0                                  # NEW tasks issued by this run
         published: list = []
@@ -132,7 +198,12 @@ class Swarm:
         reason = "completed"
         try:
             self._spawn_workers()
+            if cfg.sde_pool or (policy is not None and cfg.sde_pool is None):
+                from .sde_bridge import load_pool
+                imp = miner.import_sde_pool(load_pool(cfg.sde_pool or cfg.sde_policy), limit=target)
+                issued += len(imp)
             while True:
+                housekeeping()
                 if self._signalled:
                     reason = "signal"
                     break
@@ -169,14 +240,29 @@ class Swarm:
         finally:
             info = self.shutdown()
             self._restore_signals()
+        led.maybe_refresh_baseline(0.0)
         # final pass (also after a signal: whatever finished gets audited)
         if led.evaluated_unaudited(1):
             auditor.audit_pending()
             trader.run_once()
             if cfg.publish:
                 published += self._publish()
+        housekeeping(force=True)
+        glob = None
+        if cfg.mirror:
+            from .sde_bridge import global_count
+            glob = global_count(led, cfg.sde_ledger, baseline.get("engine_state"))
+        if redis_srv is not None:
+            redis_srv.stop()
+        if analytics is not None:
+            analytics.close()
         c = led.counts()
         self.report = {
+            "baseline": {k: baseline.get(k) for k in ("engine_n", "sde_n", "swarm_mirrored_in_sde_ledger", "read_utc", "live")},
+            "baseline_at_end": {k: (led.get_meta("baseline") or {}).get(k) for k in ("engine_n", "sde_n", "read_utc")},
+            "global_count": glob, "mirror": mirror_stats if cfg.mirror else None, "allocation": led.get_meta("allocation"),
+            "redis": None if not cfg.redis else {"kind": redis_srv.kind if redis_srv else "external", "ok": coord.ok if coord else None},
+            "sources": miner.stats.get("by_source"), "degenerate_rejected": miner.stats.get("degenerate", 0),
             "stop_reason": reason, "elapsed_s": round(time.time() - t0, 1), "new_tasks_issued": issued,
             "n_trials_start": n_start, "n_trials_end": led.n_trials(), "baseline_n": led.baseline_n(), "ledger_counts": c,
             "new_evaluated_or_error": self._done_count() - eval0,

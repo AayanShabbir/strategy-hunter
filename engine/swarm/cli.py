@@ -1,6 +1,7 @@
 """CLI glue for the swarm; registered into `hunt` (engine/hunt_engine/cli.py) via `add_subparsers` / `dispatch`.
 
   ./engine/hunt swarm-start --workers 4 [--max-trials 200 | --continuous] [--llm none|mailbox|openai] [--db PATH]
+  ./engine/hunt swarm-start --sde-policy sp500_s2 --workers 4      # connected mode: GFlowNet proposals + SDE pool + shared N + signing + impact
   ./engine/hunt swarm-status [--db PATH]
   ./engine/hunt swarm-llm-check '<expr>' ['<expr>' ...]
   ./engine/hunt swarm-llm-ping [--timeout 600] [--backend mailbox|openai]
@@ -27,21 +28,42 @@ def add_subparsers(sub) -> None:
     s.add_argument("--no-publish", action="store_true"); s.add_argument("--no-tearsheet", action="store_true"); s.add_argument("--no-mlflow", action="store_true")
     s.add_argument("--synthetic", action="store_true", help="smoke-test on a synthetic panel instead of the S&P 500 search window")
     s.add_argument("--json", action="store_true", help="print the final report as JSON only")
+    s.add_argument("--sde-policy", default=None, help="trained GFlowNet run (id, prefix like sp500_s2, or dir with policy.pt): extra proposal source; "
+                   "also turns on the SDE ledger mirror and imports that run's pool.json")
+    s.add_argument("--policy-share", type=float, default=0.5, help="share of each generator batch sampled from the policy (default 0.5)")
+    s.add_argument("--sde-pool", default=None, help="run whose pool.json members are re-evaluated once (default: the --sde-policy run; 'none' disables)")
+    s.add_argument("--sde-ledger", default=None, help="SDE ledger path (default src/audit/ledger.jsonl)")
+    s.add_argument("--mirror", action="store_true", help="write swarm trials/verdicts into the SDE ledger (implied by --sde-policy/--sde-pool)")
+    s.add_argument("--no-mirror", action="store_true")
+    s.add_argument("--dsl", choices=["sde", "ext", "mixed"], default="sde", help="formula dialect: SDE grammar (default), opt-in extended operator set, or both")
+    s.add_argument("--no-signing", action="store_true", help="disable Ed25519 signed bundles"); s.add_argument("--key-dir", default=None)
+    s.add_argument("--no-impact", action="store_true", help="flat 5 bp cost only (no square-root impact)")
+    s.add_argument("--impact-eta", type=float, default=1.0); s.add_argument("--aum", type=float, default=50e6)
+    s.add_argument("--allocation", choices=["mvo", "erc", "equal"], default="mvo")
+    s.add_argument("--redis", default=None, help="'embedded' (private redis-server, fakeredis fallback) or redis://host:port/db")
+    s.add_argument("--duckdb", default=None, help="DuckDB analytics mirror path")
     st = sub.add_parser("swarm-status", help="ledger N, counts, audit verdicts, factor pool"); st.add_argument("--db", default=DEFAULT_DB)
     c = sub.add_parser("swarm-llm-check", help="syntax-check formulas against the swarm DSL (for the Swarm Miner agent)"); c.add_argument("expressions", nargs="+")
+    c.add_argument("--dsl", choices=["sde", "ext", "mixed"], default="sde")
     p = sub.add_parser("swarm-llm-ping", help="send one small request through the LLM backend and wait for the answer")
     p.add_argument("--timeout", type=float, default=600.0); p.add_argument("--backend", choices=["mailbox", "openai"], default="mailbox")
     p.add_argument("--root", default=None, help="mailbox directory override")
 
 
-def llm_check(exprs: list[str]) -> int:
-    from src.dsl.grammar import DSLSyntaxError, ast_hash, parse_expr
+def llm_check(exprs: list[str], dsl: str = "sde") -> int:
+    from .dialect import SyntaxErrors, hash_any, parse_any
+    from .simplify import degenerate_reasons
     bad = 0
     for e in exprs:
         try:
-            n = parse_expr(e)
-            print(f"VALID {ast_hash(n)} {n.size()}")
-        except DSLSyntaxError as ex:
+            n = parse_any(e, allow_ext=dsl in ("ext", "mixed"))
+            deg = degenerate_reasons(n)
+            if deg:
+                bad += 1
+                print(f"DEGENERATE {'+'.join(deg)} (would be rejected free, never evaluated)")
+                continue
+            print(f"VALID {hash_any(n)} {n.size()}")
+        except SyntaxErrors as ex:
             bad += 1
             print(f"INVALID {ex}")
     return 1 if bad else 0
@@ -78,7 +100,12 @@ def llm_ping(backend: str = "mailbox", timeout: float = 600.0, root: str | None 
 
 def swarm_start(a) -> int:
     from .cluster import Swarm, SwarmConfig
-    cfg = SwarmConfig(workers=a.workers, db=a.db, max_trials=None if a.continuous else a.max_trials, continuous=a.continuous,
+    connected = bool(a.sde_policy or (a.sde_pool and a.sde_pool != "none"))
+    sde_pool = "" if a.sde_pool == "none" else a.sde_pool
+    cfg = SwarmConfig(dsl=a.dsl, sde_policy=a.sde_policy, policy_share=a.policy_share, sde_pool=sde_pool, sde_ledger=a.sde_ledger,
+                      mirror=(connected or a.mirror) and not a.no_mirror, signing=not a.no_signing, key_dir=a.key_dir, impact=not a.no_impact,
+                      impact_eta=a.impact_eta, impact_aum=a.aum, allocation=a.allocation, redis=a.redis, duckdb_path=a.duckdb,
+                      workers=a.workers, db=a.db, max_trials=None if a.continuous else a.max_trials, continuous=a.continuous,
                       max_seconds=a.max_seconds, llm=a.llm, seed=a.seed, publish=not a.no_publish, tearsheet=not a.no_tearsheet,
                       mlflow=not a.no_mlflow, panel_spec={"n_days": 700, "n_assets": 60, "seed": a.seed} if a.synthetic else None)
     if not a.json:
@@ -96,7 +123,7 @@ def dispatch(a) -> int:
         print(json.dumps(status(a.db), indent=1, default=str))
         return 0
     if a.cmd == "swarm-llm-check":
-        return llm_check(a.expressions)
+        return llm_check(a.expressions, getattr(a, 'dsl', 'sde'))
     if a.cmd == "swarm-llm-ping":
         return llm_ping(a.backend, a.timeout, a.root)
     raise SystemExit(f"unknown swarm command {a.cmd}")

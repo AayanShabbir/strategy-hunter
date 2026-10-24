@@ -37,6 +37,17 @@ DSL_SPEC = {
     "notes": "TsStd is the rolling standard deviation and its 2nd argument must be one of the windows. Log(x)=log(|x|+1e-8). "
              "Add is commutative (argument order is ignored).",
 }
+EXT_DSL_SPEC = {
+    "dialect": "extended",
+    "features": ["close", "high", "low", "volume", "returns", "tp"],
+    "cross_sectional": ["cs_rank(x)", "cs_normalize(x)"], "time_series": ["ts_mean(x, W)", "ts_std(x, W)", "ts_delta(x, W)", "ts_decay_linear(x, W)"],
+    "arithmetic": ["multiply(x, y)", "add(x, y)", "subtract(x, y)", "divide(x, y)", "abs(x)", "log(x)", "sign(x)"],
+    "windows": "integer W in 1..252 (ts_std and ts_decay_linear need W >= 2)", "constants": "plain numbers, e.g. 0.5",
+    "max_nodes": 10, "max_depth": 4,
+    "notes": "No `$` prefix in this dialect. `returns` = close/close[-1]-1, `tp` = (high+low+close)/3 (typical price). There is no `open` or `vwap`. "
+             "Window integers are parameters, not nodes. multiply/add are commutative. Formulas that cancel themselves (subtract(x, x), divide(x, x)) "
+             "or are constants are rejected free of charge as degenerate.",
+}
 DATA_SCOPE = ("S&P 500 daily bars, search data only (train 2010-2016 + validation 2017). Test years and the sealed vault are never "
               "used or described.")
 
@@ -51,7 +62,7 @@ def new_request_id() -> str:
 
 def build_request(kind: str, persona: str, n: int, *, avoid_recent: list[dict], n_total_tried: int, blacklisted_subtrees: list[str],
                   feedback: Optional[list[dict]] = None, max_nodes: int = 32, ttl_s: float = 3600.0, abandon_after_s: float = 3600.0,
-                  min_ted: float = 0.35, support_max: float = 0.15, subtree_max_depth: int = 3) -> dict:
+                  min_ted: float = 0.35, support_max: float = 0.15, subtree_max_depth: int = 3, dialect: str = "sde") -> dict:
     if kind not in ("propose", "refine"):
         raise ValueError(kind)
     now = datetime.now(timezone.utc)
@@ -59,7 +70,7 @@ def build_request(kind: str, persona: str, n: int, *, avoid_recent: list[dict], 
         "protocol": PROTOCOL, "id": new_request_id(), "created_utc": _iso(now), "expires_at": _iso(now + timedelta(seconds=ttl_s)),
         "abandon_after_utc": _iso(now + timedelta(seconds=abandon_after_s)),
         "kind": kind, "persona": persona, "persona_brief": PERSONAS.get(persona, ""), "n": int(n),
-        "dsl": dict(DSL_SPEC, max_nodes=max_nodes),
+        "dsl": dict(EXT_DSL_SPEC) if dialect == "ext" else dict(DSL_SPEC, max_nodes=max_nodes),
         "constraints": {"min_normalized_ted": min_ted, "frequent_subtree_support_max": support_max, "subtree_max_depth": subtree_max_depth},
         "avoid": {"n_total_tried": int(n_total_tried), "recent": avoid_recent[:200], "blacklisted_subtrees": blacklisted_subtrees[:100]},
         "feedback": feedback or [], "data_scope": DATA_SCOPE,

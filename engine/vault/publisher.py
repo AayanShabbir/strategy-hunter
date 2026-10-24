@@ -141,15 +141,121 @@ if __name__ == "__main__":
 '''
 
 
+# Standalone evaluator for the opt-in extended dialect (a pandas/scipy transcription of swarm.dsl_ext.evaluate_reference; JSON AST in).
+_EXT_EVAL = '''ENODE_EPS = 1e-8
+FEATURE_MAP = {{"close": "$close", "high": "$high", "low": "$low", "volume": "$volume"}}
+
+
+def _tradable(panel: dict, member=None):
+    c, v = panel["$close"].to_numpy(float), panel["$volume"].to_numpy(float)
+    ok = np.isfinite(c) & (c > 0) & np.isfinite(v) & (v > 0)
+    return ok if member is None else ok & np.asarray(member, bool)
+
+
+def _eval(node: dict, panel: dict, mask=None) -> pd.DataFrame:
+    """Extended-dialect evaluator (pandas rolling + scipy rank). `mask` restricts the cross-sectional ops to tradable names."""
+    from scipy.stats import rankdata
+    c = panel["$close"].astype(float)
+    t = node["node_type"]
+    if t == "constant":
+        return pd.DataFrame(float(node["constant_value"]), index=c.index, columns=c.columns)
+    if t == "feature":
+        f = node["feature_name"]
+        if f == "returns":
+            return c / c.shift(1) - 1.0
+        if f == "tp":
+            return (panel["$high"].astype(float) + panel["$low"].astype(float) + c) / 3.0
+        return panel[FEATURE_MAP[f]].astype(float)
+    op, args = node["operator"], [_eval(a, panel, mask) for a in node["arguments"]]
+    args = [a.where(np.isfinite(a)) for a in args]
+    x, w = args[0], node.get("lookback_window")
+    with np.errstate(all="ignore"):
+        if op in ("cs_rank", "cs_normalize"):
+            v = x.to_numpy(float)
+            if mask is not None:
+                v = np.where(mask, v, np.nan)
+            out = np.full_like(v, np.nan)
+            for i in range(v.shape[0]):
+                fin = np.isfinite(v[i])
+                k = int(fin.sum())
+                if k == 0:
+                    continue
+                if op == "cs_rank":
+                    out[i, fin] = rankdata(v[i, fin], method="average") / k
+                elif k > 1:
+                    out[i, fin] = (v[i, fin] - v[i, fin].mean()) / (v[i, fin].std(ddof=1) + ENODE_EPS)
+            return pd.DataFrame(out, index=c.index, columns=c.columns)
+        if op == "ts_mean":
+            return x.rolling(w, min_periods=w).mean()
+        if op == "ts_std":
+            return x.rolling(w, min_periods=w).std(ddof=1)
+        if op == "ts_decay_linear":
+            wt = np.arange(1, w + 1, dtype=float)
+            wt /= wt.sum()
+            return x.rolling(w, min_periods=w).apply(lambda a: float(np.dot(a, wt)), raw=True)
+        if op == "ts_delta":
+            return x - x.shift(w)
+        if op == "abs":
+            return x.abs()
+        if op == "log":
+            return np.log(x.abs() + ENODE_EPS)
+        if op == "sign":
+            return np.sign(x)
+        b = args[1]
+        if op == "multiply":
+            return x * b
+        if op == "add":
+            return x + b
+        if op == "subtract":
+            return x - b
+        if op == "divide":
+            s = np.sign(b).replace(0, 1.0)
+            return x / (b + s * ENODE_EPS)
+    raise ValueError("unsupported operator " + str(op))
+
+
+'''
+
+
+def _is_ext_row(row: dict) -> bool:
+    from swarm.dialect import dialect_of_expr
+    return dialect_of_expr(row["canonical"]) == "ext"
+
+
 def compile_survivor_source(row: dict, created: Optional[str] = None) -> str:
-    """Render the standalone Python source for one ledger row (a dict with expression/ast_json/ast_hash/sign/metrics/audit)."""
+    """Render the standalone Python source for one ledger row (a dict with expression/ast_json/ast_hash/sign/metrics/audit).
+    Rows in the opt-in extended dialect get the extended standalone evaluator in place of the SDE one."""
     from swarm.shared_ledger import utc_now
     audit = json.loads(row.get("audit_json") or "{}")
     gates = {k: bool(v.get("pass")) for k, v in audit.get("gates", {}).items()}
     meta = {"metrics": json.loads(row.get("metrics_json") or "{}"), "gates": gates, "n_trials_at_audit": audit.get("n_trials_at_audit")}
-    return _TEMPLATE.format(ast_hash=row["ast_hash"], created=created or utc_now(), expression=row["canonical"], sign=int(row["sign"] or 1),
-                            n_trials=audit.get("n_trials_at_audit"), gates=gates, ast_json=row["ast_json"],
-                            meta_json=json.dumps(meta, default=float))
+    tpl = _TEMPLATE
+    if _is_ext_row(row):
+        a, b = tpl.index("def _eval(node: dict, panel: dict)"), tpl.index("def compute_signal")
+        tpl = tpl[:a] + _EXT_EVAL + tpl[b:]
+        assert "F = _eval(AST, panel).to_numpy(dtype=float)" in tpl
+        tpl = tpl.replace("F = _eval(AST, panel).to_numpy(dtype=float)", "F = _eval(AST, panel, _tradable(panel, member)).to_numpy(dtype=float)")
+    return tpl.format(ast_hash=row["ast_hash"], created=created or utc_now(), expression=row["canonical"], sign=int(row["sign"] or 1),
+                      n_trials=audit.get("n_trials_at_audit"), gates=gates, ast_json=row["ast_json"],
+                      meta_json=json.dumps(meta, default=float))
+
+
+REGISTRY_MODEL, REGISTRY_ALIAS = "swarm_survivors", "research_candidate"
+
+
+def _utc_stamp() -> str:
+    from swarm.shared_ledger import utc_now
+    return utc_now()
+
+
+def pit_hash(canonical: str, net_returns, stamp: str) -> str:
+    """Blueprint point-in-time hash: SHA256(AST || OOS return vector || timestamp). Here the vector is the search-window net returns
+    (the swarm never sees an out-of-sample year), stored little-endian float64 so the hash is reproducible from returns.csv."""
+    h = hashlib.sha256()
+    h.update(canonical.encode())
+    h.update(np.ascontiguousarray(net_returns, dtype="<f8").tobytes())
+    h.update(stamp.encode())
+    return h.hexdigest()
 
 
 def _sha(path: str) -> str:
@@ -190,8 +296,18 @@ def _mlflow_log(manifest: dict, files: list[str], tracking_uri: str) -> Optional
                 if isinstance(v.get(k), (int, float)) and v.get(k) is not None and np.isfinite(v[k]):
                     mlflow.log_metric(f"{g}_{k}", float(v[k]))
         mlflow.set_tags({"stage": "swarm_survivor", "scope": "search-data-only"})
+        mlflow.set_tags({"pit_hash": manifest.get("pit_hash", ""), "model_stage": REGISTRY_ALIAS})
         for f in files:
             mlflow.log_artifact(f)
+        try:                                              # model registry: a version per survivor, alias = promotion stage
+            if not client.search_registered_models(f"name='{REGISTRY_MODEL}'"):
+                client.create_registered_model(REGISTRY_MODEL, description="Swarm survivors: research candidates (search data only)")
+            mv = client.create_model_version(REGISTRY_MODEL, source=f"{run.info.artifact_uri}", run_id=run.info.run_id,
+                                             tags={"ast_hash": manifest["ast_hash"], "pit_hash": manifest.get("pit_hash", "")})
+            client.set_registered_model_alias(REGISTRY_MODEL, REGISTRY_ALIAS, mv.version)
+            manifest["registry"]["version"] = str(mv.version)
+        except Exception as e:                            # registry is best-effort; the run itself is already logged
+            manifest["registry"]["error"] = f"{type(e).__name__}: {e}"[:200]
         return run.info.run_id
 
 
@@ -217,10 +333,14 @@ def publish_survivor(ledger: SharedLedger, row: dict, out_root: Optional[str] = 
         qs.reports.html(s, output=ts, title=f"Swarm survivor {row['ast_hash'][:10]}  {row['canonical'][:80]}", benchmark=None)
         files.append(ts)
     audit = json.loads(row.get("audit_json") or "{}")
+    stamp = _utc_stamp()
     manifest = {"trial_id": row["id"], "ast_hash": row["ast_hash"], "expression": row["canonical"], "ast_json": json.loads(row["ast_json"]),
                 "sign": int(row["sign"] or 1), "metrics": json.loads(row.get("metrics_json") or "{}"), "gates": audit.get("gates", {}),
                 "n_trials_at_audit": audit.get("n_trials_at_audit"), "calendar": "real search-window dates" if real_cal else "SYNTHETIC business-day calendar (no calendar in ledger)",
-                "scope": audit.get("scope"), "sha256": {os.path.basename(p): _sha(p) for p in files}}
+                "scope": audit.get("scope"), "sha256": {os.path.basename(p): _sha(p) for p in files},
+                "pit_hash": pit_hash(row["canonical"], rets["net"], stamp), "pit_hash_scheme": "sha256(canonical AST || float64 search-window net returns || timestamp)",
+                "pit_timestamp": stamp, "bundle_signature": audit.get("signature"),
+                "registry": {"model": REGISTRY_MODEL, "alias": REGISTRY_ALIAS, "note": "research candidate, search data only; promotion beyond this alias is a human decision"}}
     manifest["mlflow_run_id"] = None if mlflow_uri == "disabled" else _mlflow_log(manifest, files, mlflow_uri or f"sqlite:///{os.path.join(DATA_DIR, 'mlflow', 'mlflow.db')}")
     with open(os.path.join(d, "manifest.json"), "w") as f:
         json.dump(manifest, f, indent=1, default=float)

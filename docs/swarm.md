@@ -31,6 +31,72 @@ Shutdown (any reason) sets a stop event, joins the workers (terminating only if 
 then audits whatever finished. Workers also exit if the coordinator disappears, so a killed run leaves no orphans.
 `data/` is git-ignored: the ledger, panel cache, LLM mailbox and MLflow store are local state.
 
+## Connected to the SDE (one command, one count)
+
+```bash
+./engine/hunt swarm-start --sde-policy sp500_s2 --workers 4              # trained GFlowNet as an extra proposal source + SDE pool + shared N
+./engine/hunt swarm-start --sde-policy sp500_s2 --workers 4 --policy-share 0.7 --max-trials 300
+./engine/hunt swarm-start --workers 4 --dsl mixed --allocation erc --redis embedded --duckdb data/swarm/analytics.duckdb
+```
+
+`--sde-policy` takes a run id, a prefix (`sp500_s2`, the newest match wins) or a directory holding `policy.pt`. It turns on three things:
+
+1. **Policy proposals.** `GFlowNetPolicy.load_state_dict(torch.load(policy.pt))`, sampled with a seeded generator under `no_grad`; `--policy-share` of every
+   generator batch (default 0.5) comes from it, tagged `source=sde_policy`. They pass exactly the same gates as every other proposal
+   (grammar and node limit → degenerate check → AST hash/novelty/TED >= 0.35 against everything tried → worker re-validation → audit).
+   An AST the SDE already evaluated (read from the SDE ledger) is a counted `sde_seen` duplicate, not re-evaluated.
+2. **SDE pool re-evaluation.** `runs_sde/<run>/pool.json` members are proposed once as `source=sde_pool` and run through the *same* worker/auditor
+   (so they face the swarm's CPCV/DSR/SPA at the global N, not the SDE's own bar). No parallel implementation: workers call
+   `src.portfolio.long_short.{tradable_mask, zscore_rows, leverage_normalized_weights, backtest}` and the Auditor `src.validation.*`; the trader's IC is
+   `src.portfolio` IC. `test_swarm_connect.py::test_swarm_and_sde_evaluators_agree_on_returns` asserts the swarm net-return vector equals
+   `phase3_eval.trial_returns` (rtol 1e-6) on the same panel and the same AST hash.
+3. **Shared ledger.** Every swarm trial (accepted *or* rejected) is appended to `src/audit/ledger.jsonl` (hash-chained, flock) as
+   `kind:"trial", origin:"swarm", universe:"swarm:sp500"` (no `ic`, so the SDE's duplicate logic and `phase3_eval.ledger_trials` ignore it) and every audit
+   verdict as `kind:"swarm_audit"`. A re-audit that changes a verdict is appended as a superseding line (the ledger is append-only).
+   The swarm resumes the mirror from the ledger itself (highest mirrored `swarm_trial_id` for this db id, under a flock), so re-running never duplicates.
+
+### The N rule (no frozen baseline)
+
+`N = engine N (data/state.json) + SDE ledger `trial` lines excluding origin:"swarm" + swarm rows`. Engine and SDE parts are **re-read live** at every run start,
+every audit pass (`maybe_refresh_baseline`) and at the end of a run (report keys `baseline`, `baseline_at_end`, `global_count`); they are cached by file size/mtime.
+The old hard-coded 84,610 is gone. `global_count()` reports the swarm's view and the SDE ledger's view and `in_sync`; swarm rows are counted once because
+mirrored lines are excluded from the SDE-side term. If the engine hunts while the swarm runs, the next audit pass sees the larger N.
+
+### Degenerate formulas (free rejects)
+
+`simplify.py` detects `self_cancel` (`Sub(x,x)`), `self_ratio` (`Div(x,x)`), `redundant_term` (a self-cancelling sub-term inside an Add/Sub), `div_by_const0`,
+and `constant` signals. The miner rejects them before a trial is costed (`REJECTED_DEGENERATE`, no trial id, no N) and reports them in
+`stats["degenerate"]` / the `degenerate_rejected` event; the worker re-checks. SDE pool results are not altered: degenerate members are simply not re-proposed.
+Several SDE pool members are of this form (the SDE spends trials on them; the swarm does not).
+
+### Dialects
+
+Default is the SDE grammar. `--dsl ext` (or `mixed`) enables the opt-in blueprint operator set in `dsl_ext.py`: features `close high low volume returns tp`; ops
+`add subtract multiply divide abs log sign ts_mean ts_std ts_delta ts_decay_linear cs_rank cs_normalize` (look-back 1-252); <= 10 nodes, operator depth <= 4;
+the draft-07 JSON schema is validated; blueprint "forbidden" operators (`future_shift`, `lookahead_max`, `unadjusted_close`, `target_return`) are syntax errors.
+Evaluation is torch `unfold` on the swarm path and cross-checked against an independent numpy/pandas reference; causality is tested. `open` and `vwap` are
+impossible: the panel is daily OHLCV-adjusted with no open/vwap column. `$`-prefixed SDE formulas stay SDE-only unless `allow_ext` is set, so default behaviour and every
+SDE number are unchanged. The standalone survivor script supports both dialects.
+
+### Cost, trader, signing, coordination
+
+* **Square-root impact** (`costs.py`, default on in the CLI; `--no-impact`): slippage per asset = η·(|Δw|·AUM/ADV$)^0.5·σ with η=1, AUM $50M, 20-day trailing ADV$ and σ
+  through t-1 (no look-ahead; NaN → cross-sectional median), added to the flat 5 bp. Per-asset trades are computed from the backtest's own drifted weights and
+  asserted to sum to the backtest turnover. The cost vector is stored with the returns; the Auditor re-applies it per CPCV fold.
+* **Sign handling**: the worker stores the sign +1 gross/turnover/cost (the Auditor re-orients per fold) and the exact flipped-book net when sign = -1, as the SDE flips
+  the signal (a flipped book's pre-trade weights drift differently at second order, so `-W` is not exactly `W` under impact).
+* **Trader**: modified Gram-Schmidt orthogonalises each candidate against the pool signals (`orth_residual_frac/ic` recorded); admission is still ρ < 0.30 and ΔIC > 0 on the
+  equal-weight pool (so the directive's rule is unchanged); after each admission `allocate()` stores `allocation` in the ledger meta: Ledoit-Wolf shrinkage covariance,
+  ERC (log-barrier) or max-Sharpe MVO (SLSQP, long-only simplex; ERC fallback when no positive mean), 5% per-asset cap on the combined book. `--allocation mvo|erc|equal`.
+* **Signed bundles**: Ed25519 per role (miner signs tasks, worker signs result digests including the return vectors, auditor signs verdicts); keys in
+  `data/swarm/keys/<role>.key` (0600, O_EXCL create). Workers refuse a task with a bad signature; the Auditor rejects (gate `signature`) a result whose digest does not verify;
+  the Trader refuses an unsigned/forged APPROVED verdict. **Honest scope**: all roles run as the same OS user on one box, so this is integrity/provenance against accidents and
+  tampering with the DB, not a security boundary against someone who can read the key files.
+* **Redis** (`--redis embedded|redis://…`): accelerator only; SQLite stays authoritative. Hint queue of pending ids (a claim still goes through `BEGIN IMMEDIATE`), Redlock-style
+  audit lock with TTL, heartbeats, an N counter mirror with drift reconciliation. If Redis dies everything degrades to the SQLite path. `embedded` starts a private `redis-server`
+  (apt `redis-server` 8.x) or falls back to fakeredis.
+* **DuckDB** (`--duckdb path`): incremental analytics mirror of trials (funnel by source/status, novelty-subtree support). The SQL blacklist is tested equal to `NoveltyMemory.blacklist()`.
+
 ## Components (`engine/swarm/`, `engine/vault/publisher.py`)
 
 | Module | Role |
@@ -81,7 +147,8 @@ and re-score it on the PIT windows (`src/` PIT tool) before believing it.
 
 For each APPROVED formula (ledger order): max |mean daily cross-sectional correlation| with every pool member must be < 0.30, and
 ΔIC = IC(equal-weight pool + candidate) − IC(pool) must be > 0 (IC = mean daily rank-free cross-sectional IC vs the 20-day forward
-return, SDE definitions). Pool cap 50. Decisions are logged (`INTEGRATED`, `REJECTED_CORRELATED`, `REJECTED_NO_DELTA_IC`, `REJECTED_POOL_FULL`).
+return, SDE definitions). Pool cap 50. Decisions are logged (`INTEGRATED`, `REJECTED_CORRELATED`, `REJECTED_NO_DELTA_IC`, `REJECTED_POOL_FULL`,
+`REJECTED_BAD_SIGNATURE`). Gram-Schmidt residual diagnostics and ERC / MVO allocation weights: see "Cost, trader, signing, coordination".
 
 ## Publisher
 
@@ -92,28 +159,26 @@ numerically equal to the swarm's own backtest to 1e-9). Run it directly for a se
 candidates**: long-short, not tradable on the desk, never seen 2018-2020 or any sealed holdout; the next step for any survivor is the
 SDE's untouched test years and then the engine's one-shot `vault-test`, not capital.
 
-## Deviations from the blueprint (and why)
+## Deviations from the blueprint
 
-* **Operators**: the blueprint JSON used a richer operator set; the repo's DSL has `Log, TsStd, Add, Sub, Div` over `$close $high $low $volume`.
-  AST JSON and the LLM prompt use the real grammar. A richer grammar needs `src/dsl/grammar.py` changes (out of scope).
-* **Path**: DSL is `src/dsl/grammar.py`, not `engine/dsl/grammar.py` (shim added).
-* **Cohort-level PBO / SPA** instead of per-formula numbers (statistically they cannot be per formula), see above.
-* **Storage**: SQLite WAL only. No Redis, no DuckDB (not trivial to add, and unnecessary at 8 CPUs).
-* **Not implemented**: signed bundles / cryptographic signatures on task payloads (the worker instead re-hashes the AST), the square-root
-  market-impact slippage model (flat 5 bp one-way; turnover > 12x and net Sharpe < 0.8 are recorded as informational flags, not gates),
-  Gram-Schmidt orthogonalisation and risk-parity weights in the Trader (equal-weight pool), GPU path (code is device-agnostic but untested: no GPU on the box).
-* The LLM layer was added by a later change of plan (file mailbox to a Grok Bot agent instead of an API key).
+See [swarm_vs_blueprint.md](swarm_vs_blueprint.md) (table: item → done / changed / impossible → reason).
 
 ## Honest expectations
 
-The null result is the expected one. With N ≈ 85k the DSR bar is very high; in the first real 300-formula dry run every formula failed
+Bounded dry run on the real S&P 500 search window, 2026-10-24 (`swarm-start --sde-policy sp500_s2 --workers 4 --max-trials 150 --redis embedded --duckdb …`, ~75 s,
+two consecutive runs): 300 new formulas (policy / pool / generator sources), 0 approved, **0 survivors**, nothing published; every audited formula (598 in the ledger) failed DSR; most also failed SPA, and
+many CPCV. Live N at the end: engine 2,578 + SDE 109,479 + swarm 1,188 = 113,245 = the SDE ledger's own count (`in_sync`). 104 degenerate samples were rejected free in the
+second run. A first version of that run had workers unsigned in the cluster and every audit failed on the `signature` gate; that was a bug, fixed (CLI regression test), and the 150
+affected formulas were re-audited on merit (superseding `swarm_audit` lines in the SDE ledger).
+
+The null result is the expected one. With N ≈ 112k (engine + SDE + swarm, read live) the DSR bar is very high; in the first real 300-formula dry run every formula failed
 DSR and none survived (see the report in the commit message / `swarm-status`). Rejected formulas are kept (with all gate numbers), because
 they are the evidence for what N means. Do not read PBO < 0.10 on a cohort of look-alike formulas as evidence of an edge.
 
 ## Tests
 
-`cd engine && ../.venv17/bin/python -m pytest -q` (37 swarm tests + 18 engine tests): real multiprocessing counting and claiming;
+`cd engine && ../.venv17/bin/python -m pytest -q` (engine suite: 96 tests = the original 55 + 19 connection + 21 blueprint-feature + 1 CLI signing regression; `tests_sde/` has the SDE's 76): real multiprocessing counting and claiming;
 TED/frequent-subtree constraints; tensor == SDE evaluator, causality; auditor on known-null (0 survivors) vs planted-signal data;
 trader ρ/ΔIC; publisher end-to-end incl. standalone script; mailbox protocol with a fake responder; OpenAI-compatible backend
-against a local fake server; CLI bounded run, SIGTERM in continuous mode, no orphans. **The live Swarm Miner agent has not been tested
-by these tests.**
+against a local fake server; CLI bounded run, SIGTERM in continuous mode, no orphans. LLM-sourced proposals (`source=llm:<id>`) are tested through the ledger with a fake responder. **The live Swarm Miner agent
+(agent-in-the-loop) path has never been run.**

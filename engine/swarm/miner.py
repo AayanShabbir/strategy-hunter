@@ -21,7 +21,10 @@ import numpy as np
 from src.dsl.grammar import BINARY, FEATURES, MAX_LEN, WINDOWS, DSLSyntaxError, parse_expr
 
 from . import PROTOCOL
-from .ast_json import node_hash, node_to_json
+from .dialect import SyntaxErrors, dialect_of_node, hash_any as node_hash, parse_any, to_json_any as node_to_json
+from .dsl_ext import ExtGenerator
+from .signing import task_payload
+from .simplify import degenerate_reasons
 from .llm import PERSONAS, LLMBackend, build_request, validate_response
 from .novelty import NoveltyMemory
 from .shared_ledger import SharedLedger, utc_now
@@ -79,9 +82,18 @@ class SymbolicGenerator:
 class Miner:
     def __init__(self, ledger: SharedLedger, seed: int = 0, agent_id: str = "miner_0", max_nodes: int = MAX_LEN, min_ted: float = 0.35,
                  support_max: float = 0.15, min_history: int = 30, llm: Optional[LLMBackend] = None, llm_max_pending: int = 1,
-                 llm_min_interval_s: float = 60.0, llm_n: int = 8):
+                 llm_min_interval_s: float = 60.0, llm_n: int = 8, dsl: str = "sde", policy=None, policy_share: float = 0.5,
+                 sde_seen: Optional[set] = None, keystore=None, coordinator=None):
+        """`dsl`: generator dialect - 'sde' (default, unchanged behaviour), 'ext' (blueprint operators) or 'mixed'.
+        `policy`: optional `sde_bridge.PolicySource` (trained GFlowNet) used for `policy_share` of every generator batch.
+        `sde_seen`: ast hashes already tried by the SDE; a proposal hitting one is a counted duplicate (not re-evaluated)."""
         self.ledger, self.agent_id, self.max_nodes = ledger, agent_id, max_nodes
         self.gen = SymbolicGenerator(seed, max_nodes)
+        self.dsl = dsl
+        self.ext_gen = ExtGenerator(seed + 7919) if dsl in ("ext", "mixed") else None
+        self.policy, self.policy_share = policy, float(policy_share)
+        self.sde_seen = sde_seen if sde_seen is not None else set()
+        self.keystore, self.coord = keystore, coordinator
         self.memory = NoveltyMemory(min_ted=min_ted, support_max=support_max, min_history=min_history)
         self.last_id = 0
         self.temperature = 0.5
@@ -89,7 +101,8 @@ class Miner:
         self.persona_i = 0
         self.llm, self.llm_max_pending, self.llm_min_interval, self.llm_n = llm, llm_max_pending, llm_min_interval_s, llm_n
         self._last_llm = 0.0
-        self.stats = {"generated": 0, "accepted": 0, "rejected": {}, "llm_requests": 0, "llm_responses": 0, "llm_proposals": 0, "reheats": 0}
+        self.stats = {"generated": 0, "sampled": 0, "accepted": 0, "rejected": {}, "llm_requests": 0, "llm_responses": 0, "llm_proposals": 0, "reheats": 0,
+                      "degenerate": {}, "by_source": {}}
         self.refresh_memory()
 
     # ------------------------------------------------------------------ memory vault
@@ -98,38 +111,59 @@ class Miner:
         n = 0
         for tid, h, canon in self.ledger.history_since(self.last_id):
             self.last_id = max(self.last_id, tid)
-            if canon and self.memory.add(parse_expr(canon), h):
+            if canon and self.memory.add(parse_any(canon, 64), h):
                 n += 1
         return n
 
     # ------------------------------------------------------------------ screening (syntax -> novelty -> register)
-    def screen(self, expression: str, source: str, persona: str = "", hypothesis: str = "", parent_hash: str = "") -> dict:
-        """Run one proposal through the state machine and register it in the shared ledger (counted as a trial in every case)."""
+    def screen(self, expression: str, source: str, persona: str = "", hypothesis: str = "", parent_hash: str = "", allow_seen: bool = False) -> dict:
+        """Run one proposal through the state machine and register it in the shared ledger.
+
+        Counted as a trial in every case EXCEPT `REJECTED_DEGENERATE`: a formula that algebra already proves self-cancelling or
+        constant (`Sub(x, x)`, `Div(x, x)`, ...) is rejected before it costs a trial - it is equivalent to a trivial formula, carries
+        no information, and is reported (miner stats + a `degenerate_rejected` event) instead. Syntax errors stay counted."""
         self.refresh_memory()
         kw = dict(persona=persona, hypothesis=hypothesis, parent_hash=parent_hash)
         try:
-            node = parse_expr(expression)                       # AST_SYNTAX_CHECK (also enforces MAX_LEN = 32 nodes)
-            if node.size() > self.max_nodes:
-                raise DSLSyntaxError(f"{node.size()} nodes > limit {self.max_nodes}")
-        except DSLSyntaxError as e:
+            node = parse_any(expression, self.max_nodes, allow_ext=self.dsl != "sde")        # AST_SYNTAX_CHECK (SDE: MaxLen 32 nodes; extended: 10 nodes / depth 4)
+        except SyntaxErrors as e:
             tid = self.ledger.record_proposal(expression, source, self.agent_id, "REJECTED_SYNTAX", reject_reason="syntax", reject_detail={"error": str(e)}, **kw)
-            return self._tally({"trial_id": tid, "status": "REJECTED_SYNTAX", "reason": "syntax", "detail": str(e), "assignment": None})
+            return self._tally({"trial_id": tid, "status": "REJECTED_SYNTAX", "reason": "syntax", "detail": str(e), "assignment": None}, source)
+        reasons = degenerate_reasons(node)                      # DEGENERACY: algebraic, data-free, free of charge
+        if reasons:
+            key = "+".join(reasons)
+            self.stats["degenerate"][key] = self.stats["degenerate"].get(key, 0) + 1
+            self.ledger.log_event(self.agent_id, "degenerate_rejected", {"expression": expression[:300], "source": source, "reasons": reasons})
+            return self._tally({"trial_id": None, "status": "REJECTED_DEGENERATE", "reason": "degenerate", "detail": reasons, "assignment": None}, source)
         h = node_hash(node)
+        if h in self.sde_seen and not allow_seen:               # already a counted SDE trial: a counted swarm duplicate, not re-evaluated
+            tid = self.ledger.record_proposal(expression, source, self.agent_id, "REJECTED_NOVELTY", ast_hash=h, canonical=node.canonical(),
+                                              reject_reason="sde_seen", reject_detail={"note": "identical AST already in the SDE ledger"}, **kw)
+            return self._tally({"trial_id": tid, "status": "REJECTED_NOVELTY", "reason": "sde_seen", "detail": {}, "assignment": None}, source)
         ok, reason, detail = self.memory.check(node, h)         # NOVELTY_FILTER
         if not ok:
             tid = self.ledger.record_proposal(expression, source, self.agent_id, "REJECTED_NOVELTY", ast_hash=h, canonical=node.canonical(),
                                               reject_reason=reason, reject_detail=detail, **kw)
-            return self._tally({"trial_id": tid, "status": "REJECTED_NOVELTY", "reason": reason, "detail": detail, "assignment": None})
+            return self._tally({"trial_id": tid, "status": "REJECTED_NOVELTY", "reason": reason, "detail": detail, "assignment": None}, source)
         task = {"protocol": PROTOCOL, "expression": node.canonical(), "ast_hash": h, "ast": node_to_json(node), "source": source,
-                "persona": persona, "agent_id": self.agent_id, "created_utc": utc_now(), "max_nodes": self.max_nodes}
+                "dsl": dialect_of_node(node), "persona": persona, "agent_id": self.agent_id, "created_utc": utc_now(), "max_nodes": self.max_nodes}
+        if self.keystore is not None:                           # signed task bundle (verified by the Worker)
+            task["signature"] = self.keystore.sign("miner", task_payload(task))
         tid = self.ledger.record_proposal(expression, source, self.agent_id, "PENDING", ast_hash=h, canonical=node.canonical(),
                                           ast_json=task["ast"], task_json=task, **kw)
         self.memory.add(node, h)
         self.last_id = max(self.last_id, tid)
+        if self.coord is not None:
+            self.coord.push_task(tid)
+            self.coord.incr_n()
         task = dict(task, trial_id=tid, task_id=f"task_{tid}")
-        return self._tally({"trial_id": tid, "status": "PENDING", "reason": "ok", "detail": detail, "assignment": task})
+        return self._tally({"trial_id": tid, "status": "PENDING", "reason": "ok", "detail": detail, "assignment": task}, source)
 
-    def _tally(self, r: dict) -> dict:
+    def _tally(self, r: dict, source: str = "") -> dict:
+        base = source.split(":")[0] or "?"
+        bs = self.stats["by_source"].setdefault(base, {"proposed": 0, "accepted": 0})
+        bs["proposed"] += 1
+        bs["accepted"] += int(r["status"] == "PENDING")
         if r["status"] == "PENDING":
             self.stats["accepted"] += 1
         else:
@@ -137,25 +171,53 @@ class Miner:
         return r
 
     # ------------------------------------------------------------------ generator path
+    def _sample_generator(self, persona: str) -> tuple[str, str]:
+        """(expression, source) from the symbolic generator(s); 'mixed' alternates the two dialects."""
+        use_ext = self.dsl == "ext" or (self.dsl == "mixed" and self.stats["sampled"] % 2 == 1)
+        if use_ext:
+            return self.ext_gen.sample(persona, self.temperature), "generator_ext"
+        return self.gen.sample(persona, self.temperature), "generator"
+
     def propose_batch(self, n: int, persona: Optional[str] = None, max_attempts: Optional[int] = None) -> list[dict]:
-        """Generate until `n` assignments pass the novelty filter or `max_attempts` proposals were made (all counted)."""
+        """Generate until `n` assignments pass the filters or `max_attempts` proposals were made (all but degenerate ones counted).
+        With a GFlowNet `policy` attached, `policy_share` of the batch is sampled from it (source 'sde_policy'), the rest from the
+        symbolic generator; every sample goes through the identical `screen`."""
         out, attempts, cap = [], 0, max_attempts or n * 20
+        n_pol = int(round(n * self.policy_share)) if self.policy is not None else 0
         while len(out) < n and attempts < cap:
             p = persona or PERSONA_ORDER[self.persona_i % len(PERSONA_ORDER)]
             self.persona_i += 1
-            r = self.screen(self.gen.sample(p, self.temperature), source="generator", persona=p)
+            if len(out) < n_pol and self.policy is not None:
+                expr, src, p = self.policy.sample(), "sde_policy", "sde_policy"
+            else:
+                expr, src = self._sample_generator(p)
+            r = self.screen(expr, source=src, persona=p)
             attempts += 1
-            self.stats["generated"] += 1
+            self.stats["sampled"] += 1
+            self.stats["generated"] += int(r["trial_id"] is not None)      # `generated` = proposals that cost a trial (degenerate ones are free)
             if r["assignment"]:
                 out.append(r["assignment"])
                 self.fail_streak = 0
                 self.temperature = max(0.5, self.temperature - 0.1)
-            elif r["reason"] in ("ted", "duplicate", "frequent_subtree"):
+            elif r["reason"] in ("ted", "duplicate", "frequent_subtree") and src != "sde_policy":
                 self.fail_streak += 1
                 if self.fail_streak > 3 and self.temperature < 0.9:       # path-collapse recovery (blueprint Table 4)
                     self.temperature = 0.9
                     self.stats["reheats"] += 1
                     self.ledger.log_event(self.agent_id, "path_collapse_reheat", {"fail_streak": self.fail_streak})
+        return out
+
+    def import_sde_pool(self, members: list[dict], limit: Optional[int] = None) -> list[dict]:
+        """Propose the SDE factor-pool formulas once (source 'sde_pool'). Members already present in this ledger are skipped silently
+        (nothing was proposed, so nothing is counted); degenerate members (e.g. `Sub($close, $close)`) are rejected free and reported."""
+        out = []
+        have = {r[0] for r in self.ledger.conn.execute("SELECT ast_hash FROM trials WHERE ast_hash IS NOT NULL")}
+        for m in members[: limit or len(members)]:
+            if m.get("ast_hash") in have:
+                continue
+            r = self.screen(m["expr"], "sde_pool", "sde_pool", hypothesis=f"SDE pool member (train IC {m.get('train_ic')})", allow_seen=True)
+            if r["assignment"]:
+                out.append(r["assignment"])
         return out
 
     # ------------------------------------------------------------------ LLM path (non-blocking)
@@ -184,7 +246,8 @@ class Miner:
         self.refresh_memory()
         req = build_request(kind, persona, self.llm_n, avoid_recent=self.ledger.recent_formulas(200), n_total_tried=self.ledger.n_swarm_trials(),
                             blacklisted_subtrees=self.memory.blacklist(), feedback=fb if kind == "refine" else [], max_nodes=self.max_nodes,
-                            min_ted=self.memory.min_ted, support_max=self.memory.support_max)
+                            min_ted=self.memory.min_ted, support_max=self.memory.support_max,
+                            dialect="ext" if self.dsl == "ext" else "sde")
         self.llm.submit(req)
         self._last_llm = time.time()
         self.stats["llm_requests"] += 1

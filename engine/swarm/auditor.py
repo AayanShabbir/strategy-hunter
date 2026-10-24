@@ -13,8 +13,9 @@ A candidate is APPROVED only if ALL gates pass (blueprint Table 3; thresholds ar
      test: the candidate's studentised statistic is compared with the bootstrap distribution of the MAXIMUM statistic over the whole
      cohort (single-step, family-wise error 5%), so searching many formulas cannot manufacture significance.
 Gates are computed for every candidate (cheap ones first, CSCV/SPA once per cohort) so rejected formulas get complete feedback.
-Not implemented from the blueprint's table (listed in docs/swarm.md): signed signatures on bundles, the square-root market-impact
-slippage model; turnover (<12x) and net-Sharpe flags are recorded as informational flags, not gates.
+Bundles are Ed25519-signed per role (`signing.py`): the Auditor verifies the Worker's signature over the stored return vectors
+before auditing, and signs its own verdict for the Trader. Costs come from the Worker's stored per-day `cost` vector (flat +
+square-root impact). Turnover (<12x) and net-Sharpe flags are recorded as informational flags, not gates.
 """
 from __future__ import annotations
 
@@ -30,6 +31,7 @@ from src.validation.dsr import deflated_sharpe
 from src.validation.spa import stationary_bootstrap_idx
 
 from .shared_ledger import SharedLedger
+from .signing import KeyStore, audit_payload, result_payload
 
 
 @dataclass
@@ -55,11 +57,11 @@ def _sr(r: np.ndarray) -> float:
     return float(r.mean() / sd) if sd > 0 else 0.0
 
 
-def gate_cpcv(gross: np.ndarray, turnover: np.ndarray, cost_bps: float, cfg: AuditConfig) -> dict:
+def gate_cpcv(gross: np.ndarray, turnover: np.ndarray, cost_bps: float, cfg: AuditConfig, cost: Optional[np.ndarray] = None) -> dict:
     """Leak-free sign selection inside purged/embargoed CPCV folds; returns path-Sharpe summary and the verdict."""
     T = len(gross)
     splits = cpcv_splits(T, cfg.cpcv_groups, cfg.cpcv_k, cfg.cpcv_purge, cfg.cpcv_embargo)
-    cost = cost_bps * 1e-4 * turnover
+    cost = cost_bps * 1e-4 * turnover if cost is None else cost          # the Worker's own per-day cost vector (flat + impact) when stored
     rets, signs = [], []
     for s in splits:
         tr = s["train"]
@@ -127,7 +129,7 @@ def audit_cohort(items: list[dict], n_trials: int, var_sr: float, n_var: int, cf
     for j, it in enumerate(items):
         if it["id"] not in targets:
             continue
-        g_cpcv = gate_cpcv(it["gross"][-T:], it["turnover"][-T:], it["cost_bps"], cfg)
+        g_cpcv = gate_cpcv(it["gross"][-T:], it["turnover"][-T:], it["cost_bps"], cfg, None if it.get("cost") is None else it["cost"][-T:])
         g_dsr = gate_dsr(it["net"][-T:], n_trials, var_sr, n_var, cfg)
         pbo_v = pbo.get("pbo")
         g_pbo = {"pass": bool(pbo_v is not None and np.isfinite(pbo_v) and pbo_v < cfg.pbo_max), "pbo": None if pbo_v is None or not np.isfinite(pbo_v) else float(pbo_v),
@@ -151,8 +153,10 @@ def audit_cohort(items: list[dict], n_trials: int, var_sr: float, n_var: int, cf
 
 
 class Auditor:
-    def __init__(self, ledger: SharedLedger, cfg: Optional[AuditConfig] = None):
+    def __init__(self, ledger: SharedLedger, cfg: Optional[AuditConfig] = None, keystore: Optional[KeyStore] = None,
+                 require_signature: bool = True, coordinator=None, refresh_baseline_s: float = 30.0):
         self.ledger, self.cfg = ledger, cfg or AuditConfig()
+        self.keystore, self.require_signature, self.coord, self.refresh_s = keystore, require_signature, coordinator, refresh_baseline_s
 
     def _item(self, row: dict) -> Optional[dict]:
         r = self.ledger.get_returns(row["id"])
@@ -160,20 +164,61 @@ class Auditor:
             return None
         m = json.loads(row["metrics_json"] or "{}")
         return {"id": row["id"], "ast_hash": row["ast_hash"], "net": r["net"], "gross": r["gross"], "turnover": r["turnover"],
-                "cost_bps": m.get("cost_bps", 5.0), "metrics": m}
+                "cost": r.get("cost"), "cost_bps": m.get("cost_bps", 5.0), "metrics": m}
+
+    def _verify_result(self, row: dict, item: dict) -> tuple[bool, str]:
+        """Check the Worker's signature over the stored result (metrics + return vectors). Unsigned rows only pass when signatures are optional."""
+        if self.keystore is None:
+            return True, "signatures off"
+        sig = json.loads(row["result_sig"]) if row.get("result_sig") else None
+        if sig is None:
+            return (not self.require_signature), "unsigned result"
+        payload = result_payload(row["id"], row["ast_hash"], json.loads(row["metrics_json"] or "{}").get("worker", ""), item["metrics"],
+                                 item["net"], item["gross"], item["turnover"], item["cost"])
+        return self.keystore.verify(payload, sig, "worker")
 
     def audit_pending(self, limit: int = 200) -> dict:
-        """Audit every evaluated, un-audited trial (one cohort pass). Returns {'approved': [...ids], 'rejected': [...ids]}."""
+        """Audit every evaluated, un-audited trial (one cohort pass). Returns {'approved': [...ids], 'rejected': [...ids]}.
+        The pass holds the (Redis, if configured) audit lock so two auditor processes never audit the same cohort; the baseline is
+        re-read live first so N reflects the engine + SDE ledgers as they are now."""
+        if self.coord is not None:
+            with self.coord.lock("audit", ttl_ms=120_000, wait_s=30.0) as got:
+                if not got:
+                    return {"approved": [], "rejected": [], "audited": 0, "skipped": "audit lock busy"}
+                return self._audit_pending(limit)
+        return self._audit_pending(limit)
+
+    def _audit_pending(self, limit: int) -> dict:
+        self.ledger.maybe_refresh_baseline(self.refresh_s)
         rows = self.ledger.evaluated_unaudited(limit)
         if not rows:
             return {"approved": [], "rejected": [], "audited": 0}
         ids = {r["id"] for r in rows}
         ctx = self.ledger.recent_evaluated(max(self.cfg.cohort_cap - len(rows), 0), exclude=ids)
-        items = [it for it in (self._item(r) for r in rows + ctx) if it is not None]
+        items, bad = [], {}
+        for r in rows + ctx:
+            it = self._item(r)
+            if it is None:
+                continue
+            ok, why = self._verify_result(r, it)
+            if not ok:
+                if r["id"] in ids:                              # a target with a bad result signature is rejected outright, never audited
+                    bad[r["id"]] = why
+                    continue
+                continue                                         # a bad context row is simply excluded from the cohort
+            items.append(it)
         var_sr, n_var = self.ledger.sharpe_variance()
-        res = audit_cohort(items, self.ledger.n_trials(), var_sr, n_var, self.cfg, targets=ids)
+        res = audit_cohort(items, self.ledger.n_trials(), var_sr, n_var, self.cfg, targets=ids - set(bad)) if items else {}
         approved, rejected = [], []
+        for tid, why in bad.items():
+            row = next(r for r in rows if r["id"] == tid)
+            bundle = {"overall_status": "REJECTED", "failed_gates": ["signature"], "gates": {"signature": {"pass": False, "reason": why}},
+                      "rejection_reason": "BAD_RESULT_SIGNATURE", "n_trials_at_audit": int(self.ledger.n_trials()), "ast_hash": row["ast_hash"], "flags": {}}
+            res[tid] = bundle
         for tid, bundle in res.items():
+            if self.keystore is not None:
+                row = next(r for r in rows if r["id"] == tid)
+                bundle["signature"] = self.keystore.sign("auditor", audit_payload(tid, row["ast_hash"], bundle))
             self.ledger.set_audit(tid, bundle["overall_status"], bundle)
             (approved if bundle["overall_status"] == "APPROVED" else rejected).append(tid)
         self.ledger.log_event("auditor", "audit_pass", {"audited": len(res), "approved": len(approved), "n_trials": self.ledger.n_trials(),

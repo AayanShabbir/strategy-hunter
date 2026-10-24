@@ -119,3 +119,22 @@ def test_llm_ping_times_out_cleanly():
     from swarm.cli import llm_ping
     with tempfile.TemporaryDirectory() as d:
         assert llm_ping("mailbox", 0.3, d, poll_interval=0.1) == 2
+
+
+def test_signing_works_across_worker_processes_and_audits_are_judged_on_merit_and_mirrored():
+    """Regression: workers once ran unsigned in the cluster (key dir not passed), so every audit failed on the 'signature' gate."""
+    with tempfile.TemporaryDirectory() as d:
+        env = {"SWARM_DATA_DIR": os.path.join(d, "swarm"), "SWARM_LLM_MAILBOX": os.path.join(d, "mb")}
+        db, sde = os.path.join(d, "trials.db"), os.path.join(d, "sde_ledger.jsonl")
+        r = _run(["swarm-start", "--workers", "2", "--max-trials", "20", "--synthetic", "--db", db, "--no-mlflow", "--no-tearsheet", "--json",
+                  "--mirror", "--sde-ledger", sde, "--sde-pool", ""], env)
+        assert r.returncode == 0, r.stderr[-2000:]
+        rep = json.loads(r.stdout.strip().splitlines()[-1])
+        assert sorted(os.listdir(os.path.join(d, "swarm", "keys"))) == ["auditor.key", "miner.key", "worker.key"]
+        import sqlite3
+        c = sqlite3.connect(db)
+        gates = [json.loads(a).get("failed_gates") or [] for (a,) in c.execute("SELECT audit_json FROM trials WHERE audit_status IS NOT NULL")]
+        assert len(gates) >= 15 and not any("signature" in g for g in gates)
+        assert rep["global_count"]["in_sync"] and rep["global_count"]["swarm_mirrored_in_sde"] == rep["ledger_counts"]["swarm_trials"]
+        lines = [json.loads(x) for x in open(sde)]
+        assert sum(1 for x in lines if x["kind"] == "swarm_audit") == len(gates)
