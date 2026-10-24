@@ -4,7 +4,7 @@ Research/paper only. The engine has no order code and never reads/writes /worksp
 ## Your loop
 1. Write ONE spec per idea family (YAML, below). `./hunt validate <spec>` prints the variant count.
 2. `./hunt enqueue <spec>` copies it into `queue/pending/`. Don't run hand-made one-off hunts any more.
-3. The nightly job runs `./hunt drain --cap 200`: oldest specs first, at most 200 variants per night (false-discovery budget). Specs over budget wait for the next night. Bad specs go to `queue/failed/` with a `.log`.
+3. The nightly job runs `./hunt drain --cap 2400`: oldest specs first, at most 2400 variants per night (raised from 200 on 2026-10-23, Aayan-approved, so the hourly search truly runs hourly) (false-discovery budget). Specs over budget wait for the next night. Bad specs go to `queue/failed/` with a `.log`.
 4. Next morning read `runs/<run_id>/report.md` (and `results.json`), write a short post-mortem, propose at most 5 new families.
 5. A variant with `pass: true` may take exactly ONE `./hunt vault-test <run_id> --variant "<name>"`. A vault fail is final. Vault survivors go to paper incubation (Phase 3) and then to Aayan for a written OK. Nothing reaches the desk otherwise.
 

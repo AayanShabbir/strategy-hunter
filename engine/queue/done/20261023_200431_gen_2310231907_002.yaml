@@ -1,0 +1,23 @@
+id: gen_2310231907_002
+hypothesis: 'grammar draw seed=2310231907: supertrend'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 7
+    - 14
+    mult:
+    - 2
+    - 3
+filters: []
+universe:
+  crypto_d:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+  - AVAX/USD
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

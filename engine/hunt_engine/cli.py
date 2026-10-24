@@ -14,7 +14,7 @@ def main(argv=None):
     r = sub.add_parser("run"); r.add_argument("spec"); r.add_argument("--allow-rerun", action="store_true")
     v = sub.add_parser("validate"); v.add_argument("spec")
     q = sub.add_parser("enqueue"); q.add_argument("spec")
-    d = sub.add_parser("drain"); d.add_argument("--cap", type=int, default=200); d.add_argument("--max-specs", type=int); d.add_argument("--dry", action="store_true", help="list what would run; runs nothing")
+    d = sub.add_parser("drain"); d.add_argument("--cap", type=int, default=2400); d.add_argument("--max-specs", type=int); d.add_argument("--dry", action="store_true", help="list what would run; runs nothing")
     t = sub.add_parser("vault-test"); t.add_argument("run_id"); t.add_argument("--variant", required=True)
     sub.add_parser("status")
     g = sub.add_parser("generate", help="draw N valid specs from the grammar (does not run them)"); g.add_argument("--n", type=int, default=10)

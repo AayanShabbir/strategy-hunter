@@ -1,0 +1,19 @@
+id: s08_orb_15m_hibeta_v1
+author: scout
+hypothesis: "Opening-range breakout (Zarattini & Aziz 2023, SSRN 4416622 'Can Day Trading Really Be Profitable?'; Crabel 1990): on high-beta liquid names, going long when a 15m close breaks the prior 2- or 4-bar high during 09:45 to 10:30/11:30 ET on above-average volume (relvol >= 1.5), exiting on a 8-bar low or session end, flat by close, beats buy-and-hold after 5 bps/side. Distinct from s01 (last half hour) and s06 (RSI dips). Session filter mandatory. 8x ATR stop for cost <= 3% of stop. Pre-registered 2026-10-23."
+base:
+  idea: donchian
+  params: {entry_n: [2, 4], exit_n: [8]}
+filters:
+  - {name: session, params: {start: ["09:45"], end: ["10:30", "11:30"]}}
+  - {name: relvol, params: {n: [20], min_ratio: [1.5]}}
+universe:
+  HIBETA: [NVDA, TSLA, AMD, COIN, MSTR, PLTR]
+timeframe: 15Min
+flat_eod: true
+stop: {atr_mult: 8}
+direction: long_flat
+costs: {fee_bps: 0, slippage_bps: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

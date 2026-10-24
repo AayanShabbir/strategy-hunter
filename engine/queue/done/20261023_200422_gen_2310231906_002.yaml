@@ -1,0 +1,30 @@
+id: gen_2310231906_002
+hypothesis: 'grammar draw seed=2310231906: rsi_revert+trend_sma'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 2
+    - 3
+    entry:
+    - 5
+    - 20
+    exit:
+    - 70
+    - 80
+filters:
+- name: trend_sma
+  params:
+    n: 100
+universe:
+  hibeta:
+  - TSLA
+  - NVDA
+  - AMD
+  - COIN
+  - MSTR
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

@@ -1,0 +1,30 @@
+id: gen_2310231908_002
+hypothesis: 'grammar draw seed=2310231908: drop_revert+relvol'
+base:
+  idea: drop_revert
+  params:
+    n:
+    - 1
+    - 3
+    drop:
+    - 0.05
+    - 0.15
+    hold:
+    - 3
+    - 10
+filters:
+- name: relvol
+  params:
+    min_ratio: 1.0
+universe:
+  semis:
+  - NVDA
+  - AMD
+  - AVGO
+  - MU
+  - SMCI
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

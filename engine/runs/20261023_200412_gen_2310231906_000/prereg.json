@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_200412_gen_2310231906_000",
+ "spec_hash": "d70cbd3f3d7a964ebdf0ae1591ede87a83b7d61f6396595acda964887933a2aa",
+ "rows": {
+  "hibeta|donchian(entry_n=20,exit_n=10)": 715,
+  "hibeta|donchian(entry_n=20,exit_n=20)": 716,
+  "hibeta|donchian(entry_n=100,exit_n=10)": 717,
+  "hibeta|donchian(entry_n=100,exit_n=20)": 718
+ },
+ "N_after_reserve": 718,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T20:04:12.166355-04:00"
+}

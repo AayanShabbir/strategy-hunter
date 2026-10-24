@@ -1,0 +1,17 @@
+{
+ "run_id": "20261023_200458_gen_2310231908_001",
+ "spec_hash": "0bb941f05c74b8ee23c0efa1511b8fd39218539213a7f478aed07a3ccb1a7917",
+ "rows": {
+  "semis|drop_revert(drop=0.05,hold=3,n=1)": 767,
+  "semis|drop_revert(drop=0.05,hold=3,n=3)": 768,
+  "semis|drop_revert(drop=0.05,hold=10,n=1)": 769,
+  "semis|drop_revert(drop=0.05,hold=10,n=3)": 770,
+  "semis|drop_revert(drop=0.1,hold=3,n=1)": 771,
+  "semis|drop_revert(drop=0.1,hold=3,n=3)": 772,
+  "semis|drop_revert(drop=0.1,hold=10,n=1)": 773,
+  "semis|drop_revert(drop=0.1,hold=10,n=3)": 774
+ },
+ "N_after_reserve": 774,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T20:04:58.811960-04:00"
+}

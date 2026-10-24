@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_195906_s10_index_dip_in_uptrend_v1",
+ "spec_hash": "e16b8f7f9f2baea3722418f5ddc32c05ea3ef69a29d2af0326abf2d790cd6639",
+ "rows": {
+  "US_INDEX|drop_revert(drop=0.03,hold=5,n=3)+trend_sma(n=200)": 691,
+  "US_INDEX|drop_revert(drop=0.03,hold=5,n=5)+trend_sma(n=200)": 692,
+  "US_INDEX|drop_revert(drop=0.05,hold=5,n=3)+trend_sma(n=200)": 693,
+  "US_INDEX|drop_revert(drop=0.05,hold=5,n=5)+trend_sma(n=200)": 694
+ },
+ "N_after_reserve": 694,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T19:59:06.269283-04:00"
+}

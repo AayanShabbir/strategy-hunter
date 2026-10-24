@@ -1,0 +1,17 @@
+id: s10_index_dip_in_uptrend_v1
+author: scout
+hypothesis: "Short-horizon index reversal (Lo & MacKinlay 1990 contrarian profits; Nagel 2012 liquidity provision): buying a broad US index ETF after a 3- or 5-day drop of 3% or 5% while above its 200-day SMA, held 5 days, beats buy-and-hold of the same basket OOS after 5 bps/side. Daily index ETFs only (s02/s06 were intraday single stocks; c03/c13 crypto). 5x ATR stop so cost <= 3% of stop."
+base:
+  idea: drop_revert
+  params: {n: [3, 5], drop: [0.03, 0.05], hold: [5]}
+filters:
+  - {name: trend_sma, params: {n: [200]}}
+universe:
+  US_INDEX: [SPY, QQQ, IWM, DIA, MDY]
+timeframe: 1Day
+stop: {atr_mult: 5}
+direction: long_flat
+costs: {fee_bps: 0, slippage_bps: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

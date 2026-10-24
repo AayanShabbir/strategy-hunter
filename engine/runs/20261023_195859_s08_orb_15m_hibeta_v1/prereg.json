@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_195859_s08_orb_15m_hibeta_v1",
+ "spec_hash": "89e4b879bd6397ce6fd7bacf89203d9314ea6c1342c23f71b3c69721a80328f7",
+ "rows": {
+  "HIBETA|donchian(entry_n=2,exit_n=8)+session(end=10:30,start=09:45)+relvol(min_ratio=1.5,n=20)": 684,
+  "HIBETA|donchian(entry_n=2,exit_n=8)+session(end=11:30,start=09:45)+relvol(min_ratio=1.5,n=20)": 685,
+  "HIBETA|donchian(entry_n=4,exit_n=8)+session(end=10:30,start=09:45)+relvol(min_ratio=1.5,n=20)": 686,
+  "HIBETA|donchian(entry_n=4,exit_n=8)+session(end=11:30,start=09:45)+relvol(min_ratio=1.5,n=20)": 687
+ },
+ "N_after_reserve": 687,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T19:58:59.067601-04:00"
+}

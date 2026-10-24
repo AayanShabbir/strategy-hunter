@@ -1,0 +1,30 @@
+id: gen_2310231906_001
+hypothesis: 'grammar draw seed=2310231906: drop_revert+rsi_band'
+base:
+  idea: drop_revert
+  params:
+    n:
+    - 1
+    - 3
+    drop:
+    - 0.05
+    - 0.1
+    hold:
+    - 3
+    - 10
+filters:
+- name: rsi_band
+  params:
+    hi: 70
+universe:
+  hibeta:
+  - TSLA
+  - NVDA
+  - AMD
+  - COIN
+  - MSTR
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

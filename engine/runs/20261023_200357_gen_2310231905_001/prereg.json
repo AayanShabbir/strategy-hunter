@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_200357_gen_2310231905_001",
+ "spec_hash": "7bb35aba6d16d8e2a340424b92926d23cd78e18d6d1190c6b67c0cd4cc0faeb0",
+ "rows": {
+  "crypto|donchian(entry_n=20,exit_n=10)+vol_regime(max_atr_pct=0.06)": 703,
+  "crypto|donchian(entry_n=20,exit_n=20)+vol_regime(max_atr_pct=0.06)": 704,
+  "crypto|donchian(entry_n=100,exit_n=10)+vol_regime(max_atr_pct=0.06)": 705,
+  "crypto|donchian(entry_n=100,exit_n=20)+vol_regime(max_atr_pct=0.06)": 706
+ },
+ "N_after_reserve": 706,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T20:03:57.396506-04:00"
+}

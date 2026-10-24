@@ -1,0 +1,29 @@
+id: gen_2310231907_000
+hypothesis: 'grammar draw seed=2310231907: drop_revert+relvol'
+base:
+  idea: drop_revert
+  params:
+    n:
+    - 1
+    - 3
+    drop:
+    - 0.05
+    - 0.1
+    hold:
+    - 3
+    - 10
+filters:
+- name: relvol
+  params:
+    min_ratio: 1.2
+universe:
+  crypto_d:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+  - AVAX/USD
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

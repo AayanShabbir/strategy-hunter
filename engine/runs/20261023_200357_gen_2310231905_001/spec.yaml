@@ -1,0 +1,25 @@
+id: gen_2310231905_001
+hypothesis: 'grammar draw seed=2310231905: donchian+vol_regime'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 20
+    - 100
+    exit_n:
+    - 10
+    - 20
+filters:
+- name: vol_regime
+  params:
+    max_atr_pct: 0.06
+universe:
+  crypto:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

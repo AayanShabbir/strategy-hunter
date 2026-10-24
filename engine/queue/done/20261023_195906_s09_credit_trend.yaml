@@ -1,0 +1,16 @@
+id: s09_credit_trend_v1
+author: scout
+hypothesis: "Bond/credit time-series momentum (Hurst, Ooi & Pedersen 2017 'A Century of Evidence on Trend-Following'; Moskowitz, Ooi & Pedersen 2012): holding credit ETFs (HY, EM debt, IG) only while price > its 50/100/200-day SMA beats buy-and-hold of the same basket OOS after 5 bps/side, by sidestepping credit-spread blowouts. New universe (s05 used TLT/IEF, not credit). Low ETF volatility, so a 10x ATR stop is pre-registered to meet cost <= 3% of stop."
+base:
+  idea: sma_cross
+  params: {fast: [1], slow: [50, 100, 200]}
+filters: []
+universe:
+  CREDIT: [HYG, JNK, EMB, LQD]
+timeframe: 1Day
+stop: {atr_mult: 10}
+direction: long_flat
+costs: {fee_bps: 0, slippage_bps: 5}
+min_trades: 100
+split: {is_frac: 0.7, wf_folds: 2}
+n_random: 1000

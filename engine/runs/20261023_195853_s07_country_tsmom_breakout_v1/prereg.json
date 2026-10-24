@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_195853_s07_country_tsmom_breakout_v1",
+ "spec_hash": "b6f151fda3c82cde92218aae0d9abb50ede1c8482761aac125b84c6fa312eebe",
+ "rows": {
+  "COUNTRIES|donchian(entry_n=126,exit_n=21)": 680,
+  "COUNTRIES|donchian(entry_n=126,exit_n=63)": 681,
+  "COUNTRIES|donchian(entry_n=252,exit_n=21)": 682,
+  "COUNTRIES|donchian(entry_n=252,exit_n=63)": 683
+ },
+ "N_after_reserve": 683,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T19:58:53.035635-04:00"
+}

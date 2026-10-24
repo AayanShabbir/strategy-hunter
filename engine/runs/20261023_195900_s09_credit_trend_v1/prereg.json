@@ -1,0 +1,12 @@
+{
+ "run_id": "20261023_195900_s09_credit_trend_v1",
+ "spec_hash": "682d1e33d67a70d93d2360e6f5340a5ffb0610d4bfe76eb44bded0e569a8a1ee",
+ "rows": {
+  "CREDIT|sma_cross(fast=1,slow=50)": 688,
+  "CREDIT|sma_cross(fast=1,slow=100)": 689,
+  "CREDIT|sma_cross(fast=1,slow=200)": 690
+ },
+ "N_after_reserve": 690,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T19:59:00.593726-04:00"
+}

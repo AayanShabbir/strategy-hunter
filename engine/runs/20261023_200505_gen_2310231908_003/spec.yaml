@@ -1,0 +1,24 @@
+id: gen_2310231908_003
+hypothesis: 'grammar draw seed=2310231908: supertrend'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 7
+    - 14
+    mult:
+    - 3
+    - 4
+filters: []
+universe:
+  semis:
+  - NVDA
+  - AMD
+  - AVGO
+  - MU
+  - SMCI
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

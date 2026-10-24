@@ -1,0 +1,221 @@
+{
+ "variants": {
+  "COUNTRIES|donchian(entry_n=126,exit_n=21)": {
+   "row": 680,
+   "IS": {
+    "ret": 6.03,
+    "sharpe": 0.16,
+    "maxdd": -15.47
+   },
+   "OOS": {
+    "ret": 3.28,
+    "sharpe": 0.21,
+    "maxdd": -6.68
+   },
+   "BH_OOS": {
+    "ret": 64.42,
+    "sharpe": 1.1,
+    "maxdd": -17.12
+   },
+   "CPCV": {
+    "median_sharpe": 0.18,
+    "frac_positive": 0.933,
+    "n_paths": 15
+   },
+   "trades": 102,
+   "time_in_mkt": 0.287,
+   "cost_stop": 0.0199,
+   "WF": [
+    -1.33,
+    4.67
+   ],
+   "p_twin": 0.996,
+   "random_median_oos": 28.36,
+   "real_twin_basis": 4.24,
+   "SPA": 0.5035,
+   "holm": 1.0,
+   "DSR": 0.4808,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 10.44
+  },
+  "COUNTRIES|donchian(entry_n=126,exit_n=63)": {
+   "row": 681,
+   "IS": {
+    "ret": 15.8,
+    "sharpe": 0.28,
+    "maxdd": -21.27
+   },
+   "OOS": {
+    "ret": 5.16,
+    "sharpe": 0.27,
+    "maxdd": -9.18
+   },
+   "BH_OOS": {
+    "ret": 64.42,
+    "sharpe": 1.1,
+    "maxdd": -17.12
+   },
+   "CPCV": {
+    "median_sharpe": 0.26,
+    "frac_positive": 0.933,
+    "n_paths": 15
+   },
+   "trades": 56,
+   "time_in_mkt": 0.409,
+   "cost_stop": 0.0173,
+   "WF": [
+    -2.56,
+    7.92
+   ],
+   "p_twin": 1.0,
+   "random_median_oos": 28.69,
+   "real_twin_basis": 5.74,
+   "SPA": 0.508,
+   "holm": 1.0,
+   "DSR": 0.5242,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 7.94
+  },
+  "COUNTRIES|donchian(entry_n=252,exit_n=21)": {
+   "row": 682,
+   "IS": {
+    "ret": 6.28,
+    "sharpe": 0.2,
+    "maxdd": -11.28
+   },
+   "OOS": {
+    "ret": 1.11,
+    "sharpe": 0.1,
+    "maxdd": -6.57
+   },
+   "BH_OOS": {
+    "ret": 64.42,
+    "sharpe": 1.1,
+    "maxdd": -17.12
+   },
+   "CPCV": {
+    "median_sharpe": 0.17,
+    "frac_positive": 1.0,
+    "n_paths": 15
+   },
+   "trades": 75,
+   "time_in_mkt": 0.211,
+   "cost_stop": 0.0202,
+   "WF": [
+    -1.57,
+    2.72
+   ],
+   "p_twin": 0.999,
+   "random_median_oos": 28.84,
+   "real_twin_basis": 2.12,
+   "SPA": 0.5035,
+   "holm": 1.0,
+   "DSR": 0.4058,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 10.55
+  },
+  "COUNTRIES|donchian(entry_n=252,exit_n=63)": {
+   "row": 683,
+   "IS": {
+    "ret": 13.26,
+    "sharpe": 0.28,
+    "maxdd": -18.53
+   },
+   "OOS": {
+    "ret": 2.09,
+    "sharpe": 0.15,
+    "maxdd": -8.46
+   },
+   "BH_OOS": {
+    "ret": 64.42,
+    "sharpe": 1.1,
+    "maxdd": -17.12
+   },
+   "CPCV": {
+    "median_sharpe": 0.21,
+    "frac_positive": 1.0,
+    "n_paths": 15
+   },
+   "trades": 43,
+   "time_in_mkt": 0.303,
+   "cost_stop": 0.0191,
+   "WF": [
+    -2.41,
+    4.61
+   ],
+   "p_twin": 0.998,
+   "random_median_oos": 29.05,
+   "real_twin_basis": 3.01,
+   "SPA": 0.497,
+   "holm": 1.0,
+   "DSR": 0.4415,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 8.66
+  }
+ },
+ "N": 683,
+ "PBO": 0.684,
+ "n_pass": 0,
+ "min_trades": 100,
+ "window": {
+  "start": "2016-01-04",
+  "end": "2025-10-22",
+  "oos_start": "2022-11-09"
+ },
+ "ann_factor": 252,
+ "bar": {
+  "holm": 0.05,
+  "dsr": 0.95,
+  "spa": 0.05,
+  "pbo": 0.5,
+  "cost_stop": 0.03
+ },
+ "ts": "2026-10-23T19:58:59.056417-04:00",
+ "run_id": "20261023_195853_s07_country_tsmom_breakout_v1",
+ "spec_id": "s07_country_tsmom_breakout_v1",
+ "spec_hash": "b6f151fda3c82cde92218aae0d9abb50ede1c8482761aac125b84c6fa312eebe"
+}

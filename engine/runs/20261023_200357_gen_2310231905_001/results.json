@@ -1,0 +1,221 @@
+{
+ "variants": {
+  "crypto|donchian(entry_n=20,exit_n=10)+vol_regime(max_atr_pct=0.06)": {
+   "row": 703,
+   "IS": {
+    "ret": 263.81,
+    "sharpe": 0.99,
+    "maxdd": -60.1
+   },
+   "OOS": {
+    "ret": -2.64,
+    "sharpe": 0.09,
+    "maxdd": -35.62
+   },
+   "BH_OOS": {
+    "ret": 428.6,
+    "sharpe": 1.01,
+    "maxdd": -50.26
+   },
+   "CPCV": {
+    "median_sharpe": 0.6,
+    "frac_positive": 0.667,
+    "n_paths": 15
+   },
+   "trades": 1653,
+   "time_in_mkt": 0.35,
+   "cost_stop": 0.1027,
+   "WF": [
+    3.75,
+    -6.16
+   ],
+   "p_twin": 0.8002,
+   "random_median_oos": 53.47,
+   "real_twin_basis": -2.3,
+   "SPA": 0.923,
+   "holm": 1.0,
+   "DSR": 0.0385,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": false,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 14.64
+  },
+  "crypto|donchian(entry_n=20,exit_n=20)+vol_regime(max_atr_pct=0.06)": {
+   "row": 704,
+   "IS": {
+    "ret": 159.82,
+    "sharpe": 0.77,
+    "maxdd": -71.87
+   },
+   "OOS": {
+    "ret": -5.08,
+    "sharpe": 0.08,
+    "maxdd": -45.63
+   },
+   "BH_OOS": {
+    "ret": 428.6,
+    "sharpe": 1.01,
+    "maxdd": -50.26
+   },
+   "CPCV": {
+    "median_sharpe": 0.54,
+    "frac_positive": 0.667,
+    "n_paths": 15
+   },
+   "trades": 1285,
+   "time_in_mkt": 0.467,
+   "cost_stop": 0.0997,
+   "WF": [
+    3.98,
+    -8.71
+   ],
+   "p_twin": 0.86613,
+   "random_median_oos": 60.75,
+   "real_twin_basis": -4.47,
+   "SPA": 0.922,
+   "holm": 1.0,
+   "DSR": 0.0385,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": false,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 4.63
+  },
+  "crypto|donchian(entry_n=100,exit_n=10)+vol_regime(max_atr_pct=0.06)": {
+   "row": 705,
+   "IS": {
+    "ret": 9.61,
+    "sharpe": 0.23,
+    "maxdd": -43.58
+   },
+   "OOS": {
+    "ret": 31.24,
+    "sharpe": 0.97,
+    "maxdd": -15.33
+   },
+   "BH_OOS": {
+    "ret": 428.6,
+    "sharpe": 1.01,
+    "maxdd": -50.26
+   },
+   "CPCV": {
+    "median_sharpe": 0.76,
+    "frac_positive": 0.667,
+    "n_paths": 15
+   },
+   "trades": 695,
+   "time_in_mkt": 0.158,
+   "cost_stop": 0.0988,
+   "WF": [
+    11.62,
+    17.58
+   ],
+   "p_twin": 0.66334,
+   "random_median_oos": 92.96,
+   "real_twin_basis": 31.26,
+   "SPA": 0.8925,
+   "holm": 1.0,
+   "DSR": 0.2293,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": false,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 34.93
+  },
+  "crypto|donchian(entry_n=100,exit_n=20)+vol_regime(max_atr_pct=0.06)": {
+   "row": 706,
+   "IS": {
+    "ret": 15.78,
+    "sharpe": 0.29,
+    "maxdd": -49.56
+   },
+   "OOS": {
+    "ret": 33.55,
+    "sharpe": 0.91,
+    "maxdd": -22.39
+   },
+   "BH_OOS": {
+    "ret": 428.6,
+    "sharpe": 1.01,
+    "maxdd": -50.26
+   },
+   "CPCV": {
+    "median_sharpe": 0.86,
+    "frac_positive": 0.667,
+    "n_paths": 15
+   },
+   "trades": 566,
+   "time_in_mkt": 0.225,
+   "cost_stop": 0.0965,
+   "WF": [
+    21.82,
+    9.63
+   ],
+   "p_twin": 0.65335,
+   "random_median_oos": 177.37,
+   "real_twin_basis": 33.57,
+   "SPA": 0.891,
+   "holm": 1.0,
+   "DSR": 0.2114,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": false,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 27.87
+  }
+ },
+ "N": 706,
+ "PBO": 0.441,
+ "n_pass": 0,
+ "min_trades": 100,
+ "window": {
+  "start": "2021-01-01",
+  "end": "2025-10-22",
+  "oos_start": "2024-05-14"
+ },
+ "ann_factor": 365,
+ "bar": {
+  "holm": 0.05,
+  "dsr": 0.95,
+  "spa": 0.05,
+  "pbo": 0.5,
+  "cost_stop": 0.03
+ },
+ "ts": "2026-10-23T20:04:04.656893-04:00",
+ "run_id": "20261023_200357_gen_2310231905_001",
+ "spec_id": "gen_2310231905_001",
+ "spec_hash": "7bb35aba6d16d8e2a340424b92926d23cd78e18d6d1190c6b67c0cd4cc0faeb0"
+}

@@ -1,0 +1,221 @@
+{
+ "variants": {
+  "HIBETA|donchian(entry_n=2,exit_n=8)+session(end=10:30,start=09:45)+relvol(min_ratio=1.5,n=20)": {
+   "row": 684,
+   "IS": {
+    "ret": -0.48,
+    "sharpe": -0.26,
+    "maxdd": -1.63
+   },
+   "OOS": {
+    "ret": 0.88,
+    "sharpe": 3.05,
+    "maxdd": -0.14
+   },
+   "BH_OOS": {
+    "ret": -2.96,
+    "sharpe": -0.2,
+    "maxdd": -13.63
+   },
+   "CPCV": {
+    "median_sharpe": 0.01,
+    "frac_positive": 0.533,
+    "n_paths": 15
+   },
+   "trades": 90,
+   "time_in_mkt": 0.003,
+   "cost_stop": 0.0194,
+   "WF": [
+    0.55,
+    0.32
+   ],
+   "p_twin": 0.2028,
+   "random_median_oos": -2.33,
+   "real_twin_basis": 0.88,
+   "SPA": 0.4125,
+   "holm": 1.0,
+   "DSR": 0.9946,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": true,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": true,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 13.49
+  },
+  "HIBETA|donchian(entry_n=2,exit_n=8)+session(end=11:30,start=09:45)+relvol(min_ratio=1.5,n=20)": {
+   "row": 685,
+   "IS": {
+    "ret": -1.11,
+    "sharpe": -0.82,
+    "maxdd": -1.58
+   },
+   "OOS": {
+    "ret": 0.93,
+    "sharpe": 3.01,
+    "maxdd": -0.14
+   },
+   "BH_OOS": {
+    "ret": -2.96,
+    "sharpe": -0.2,
+    "maxdd": -13.63
+   },
+   "CPCV": {
+    "median_sharpe": -0.1,
+    "frac_positive": 0.4,
+    "n_paths": 15
+   },
+   "trades": 110,
+   "time_in_mkt": 0.004,
+   "cost_stop": 0.0194,
+   "WF": [
+    0.55,
+    0.37
+   ],
+   "p_twin": 0.17283,
+   "random_median_oos": -2.63,
+   "real_twin_basis": 0.93,
+   "SPA": 0.413,
+   "holm": 1.0,
+   "DSR": 0.9924,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": true,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": true,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 13.49
+  },
+  "HIBETA|donchian(entry_n=4,exit_n=8)+session(end=10:30,start=09:45)+relvol(min_ratio=1.5,n=20)": {
+   "row": 686,
+   "IS": {
+    "ret": -0.32,
+    "sharpe": -0.17,
+    "maxdd": -1.43
+   },
+   "OOS": {
+    "ret": 0.88,
+    "sharpe": 3.05,
+    "maxdd": -0.14
+   },
+   "BH_OOS": {
+    "ret": -2.96,
+    "sharpe": -0.2,
+    "maxdd": -13.63
+   },
+   "CPCV": {
+    "median_sharpe": 0.17,
+    "frac_positive": 0.6,
+    "n_paths": 15
+   },
+   "trades": 83,
+   "time_in_mkt": 0.003,
+   "cost_stop": 0.0195,
+   "WF": [
+    0.55,
+    0.32
+   ],
+   "p_twin": 0.1978,
+   "random_median_oos": -2.71,
+   "real_twin_basis": 0.88,
+   "SPA": 0.4125,
+   "holm": 1.0,
+   "DSR": 0.9946,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": true,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": true,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 13.49
+  },
+  "HIBETA|donchian(entry_n=4,exit_n=8)+session(end=11:30,start=09:45)+relvol(min_ratio=1.5,n=20)": {
+   "row": 687,
+   "IS": {
+    "ret": -0.8,
+    "sharpe": -0.59,
+    "maxdd": -1.25
+   },
+   "OOS": {
+    "ret": 0.93,
+    "sharpe": 3.01,
+    "maxdd": -0.14
+   },
+   "BH_OOS": {
+    "ret": -2.96,
+    "sharpe": -0.2,
+    "maxdd": -13.63
+   },
+   "CPCV": {
+    "median_sharpe": 0.07,
+    "frac_positive": 0.533,
+    "n_paths": 15
+   },
+   "trades": 100,
+   "time_in_mkt": 0.004,
+   "cost_stop": 0.0198,
+   "WF": [
+    0.55,
+    0.37
+   ],
+   "p_twin": 0.1998,
+   "random_median_oos": -2.86,
+   "real_twin_basis": 0.93,
+   "SPA": 0.413,
+   "holm": 1.0,
+   "DSR": 0.9924,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": true,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": true,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 13.49
+  }
+ },
+ "N": 687,
+ "PBO": 0.695,
+ "n_pass": 0,
+ "min_trades": 100,
+ "window": {
+  "start": "2024-09-03",
+  "end": "2025-10-22",
+  "oos_start": "2025-06-23"
+ },
+ "ann_factor": 252,
+ "bar": {
+  "holm": 0.05,
+  "dsr": 0.95,
+  "spa": 0.05,
+  "pbo": 0.5,
+  "cost_stop": 0.03
+ },
+ "ts": "2026-10-23T19:59:00.580855-04:00",
+ "run_id": "20261023_195859_s08_orb_15m_hibeta_v1",
+ "spec_id": "s08_orb_15m_hibeta_v1",
+ "spec_hash": "89e4b879bd6397ce6fd7bacf89203d9314ea6c1342c23f71b3c69721a80328f7"
+}

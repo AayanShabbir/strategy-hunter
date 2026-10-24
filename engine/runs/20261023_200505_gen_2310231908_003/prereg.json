@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_200505_gen_2310231908_003",
+ "spec_hash": "c2f42e65f9481d20c5731a2f4f7e4ba442da66b22a964cdde7e5d70bb0687d18",
+ "rows": {
+  "semis|supertrend(atr_n=7,mult=3)": 783,
+  "semis|supertrend(atr_n=7,mult=4)": 784,
+  "semis|supertrend(atr_n=14,mult=3)": 785,
+  "semis|supertrend(atr_n=14,mult=4)": 786
+ },
+ "N_after_reserve": 786,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T20:05:05.843454-04:00"
+}
