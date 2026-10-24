@@ -1,0 +1,41 @@
+name: ci
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  sde-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install light deps (CPU torch, no market-data or vectorbt stack)
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy pandas scipy pytest
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+      - name: SDE tests (synthetic data only; none need market data)
+        run: PYTHONPATH=. python -m pytest tests_sde -m "not data"
+
+  lint-and-hygiene:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff
+      - name: ruff correctness lint (src, tests_sde)
+        run: ruff check src tests_sde
+      - name: byte-compile engine and SDE (syntax only; engine tests need the heavy vectorbt stack and run on the box)
+        run: python -m compileall -q engine/hunt_engine src tests_sde
+      - name: no secrets / data / weights tracked
+        run: |
+          bad=$(git ls-files | grep -Ei '(^|/)\.env|\.pem$|\.key$|\.pt$|\.parquet$|\.feather$|src/audit/ledger\.jsonl$|engine/vault/data/' || true)
+          if [ -n "$bad" ]; then echo "forbidden tracked files:"; echo "$bad"; exit 1; fi

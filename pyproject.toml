@@ -1,0 +1,39 @@
+# Tooling config only. The SDE packages (src/, tests_sde/) are run from the repo root
+# with PYTHONPATH=. ; engine/ has its own pytest.ini and is run from engine/.
+[project]
+name = "strategy-hunter"
+version = "0.3.0"
+description = "Research-only strategy finder (engine/) and Strategy Discovery Engine (src/). Places no orders."
+requires-python = ">=3.11"
+readme = "README.md"
+license = { file = "LICENSE" }
+
+[tool.pytest.ini_options]
+# Applies when pytest is run from the repo root. engine/pytest.ini wins when run inside engine/.
+testpaths = ["tests_sde"]
+pythonpath = ["."]
+addopts = "-q"
+markers = [
+  "data: needs local market data under data/ (skipped in CI; none of the current tests need it)",
+  "slow: takes more than ~30 s",
+]
+filterwarnings = ["ignore::DeprecationWarning", "ignore::FutureWarning"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["engine", "vendor", "hunts", "nautilus", "reels", "crypto", "data", "runs_sde", ".venv17", ".venv_ts"]
+
+[tool.ruff.lint]
+# Correctness lint only (syntax errors, undefined names, unused imports/variables).
+# The SDE code is deliberately dense (blueprint-faithful, semicolons, long lines), so
+# style rules and `ruff format` are NOT enforced; see CONTRIBUTING.md.
+select = ["E9", "F"]
+
+[tool.ruff.lint.per-file-ignores]
+# Known unused imports/variables left as-is so lint never edits modules that live
+# training / evaluation jobs import. Tidy after the CSI500/CSI1000 runs finish.
+"src/portfolio/combine.py" = ["F401"]
+"src/rewards/multi_faceted.py" = ["F401"]
+"src/train/*.py" = ["F401", "F841"]
+"tests_sde/*.py" = ["F401"]

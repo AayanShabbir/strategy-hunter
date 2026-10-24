@@ -46,3 +46,7 @@ hunts/h12_original/poly_markets.json
 # SDE live ledger (append-only, 20+ MB); a gzip snapshot is committed instead
 src/audit/ledger.jsonl
 !src/audit/ledger_*.jsonl.gz
+
+# tooling caches
+.ruff_cache/
+.mypy_cache/
