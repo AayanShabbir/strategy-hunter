@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_210404_gen_2310232111_000",
+ "spec_hash": "4ec01582c1cc955c7b68169755305507d6977952d675eb28ec2f82a2cb6932b3",
+ "rows": {
+  "sectors|donchian(entry_n=20,exit_n=10)+vol_regime(max_atr_pct=0.02)": 911,
+  "sectors|donchian(entry_n=20,exit_n=20)+vol_regime(max_atr_pct=0.02)": 912,
+  "sectors|donchian(entry_n=100,exit_n=10)+vol_regime(max_atr_pct=0.02)": 913,
+  "sectors|donchian(entry_n=100,exit_n=20)+vol_regime(max_atr_pct=0.02)": 914
+ },
+ "N_after_reserve": 914,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T21:04:04.040128-04:00"
+}

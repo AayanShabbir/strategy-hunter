@@ -1,0 +1,17 @@
+{
+ "run_id": "20261023_210424_gen_2310232121_002",
+ "spec_hash": "38d289afa69ee51f5fb2bb7ae63c3bb2f7979935dcc1c30edc65f6023b1388b8",
+ "rows": {
+  "megacap|drop_revert(drop=0.05,hold=5,n=1)+rsi_band(hi=80)": 947,
+  "megacap|drop_revert(drop=0.05,hold=5,n=3)+rsi_band(hi=80)": 948,
+  "megacap|drop_revert(drop=0.05,hold=10,n=1)+rsi_band(hi=80)": 949,
+  "megacap|drop_revert(drop=0.05,hold=10,n=3)+rsi_band(hi=80)": 950,
+  "megacap|drop_revert(drop=0.15,hold=5,n=1)+rsi_band(hi=80)": 951,
+  "megacap|drop_revert(drop=0.15,hold=5,n=3)+rsi_band(hi=80)": 952,
+  "megacap|drop_revert(drop=0.15,hold=10,n=1)+rsi_band(hi=80)": 953,
+  "megacap|drop_revert(drop=0.15,hold=10,n=3)+rsi_band(hi=80)": 954
+ },
+ "N_after_reserve": 954,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T21:04:24.136281-04:00"
+}

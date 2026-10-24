@@ -1,0 +1,417 @@
+{
+ "variants": {
+  "megacap|drop_revert(drop=0.05,hold=5,n=1)+rsi_band(hi=80)": {
+   "row": 947,
+   "IS": {
+    "ret": 2.24,
+    "sharpe": 0.4,
+    "maxdd": -1.65
+   },
+   "OOS": {
+    "ret": 2.1,
+    "sharpe": 0.38,
+    "maxdd": -2.86
+   },
+   "BH_OOS": {
+    "ret": 26.77,
+    "sharpe": 0.77,
+    "maxdd": -19.49
+   },
+   "CPCV": {
+    "median_sharpe": 0.5,
+    "frac_positive": 0.733,
+    "n_paths": 15
+   },
+   "trades": 34,
+   "time_in_mkt": 0.003,
+   "cost_stop": 0.0455,
+   "WF": [
+    4.45,
+    -2.25
+   ],
+   "p_twin": 0.93407,
+   "random_median_oos": 12.62,
+   "real_twin_basis": 1.7,
+   "SPA": 0.876,
+   "holm": 1.0,
+   "DSR": 0.3289,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": false,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 16.63
+  },
+  "megacap|drop_revert(drop=0.05,hold=5,n=3)+rsi_band(hi=80)": {
+   "row": 948,
+   "IS": {
+    "ret": -1.52,
+    "sharpe": -0.15,
+    "maxdd": -3.69
+   },
+   "OOS": {
+    "ret": 4.24,
+    "sharpe": 0.85,
+    "maxdd": -1.6
+   },
+   "BH_OOS": {
+    "ret": 26.77,
+    "sharpe": 0.77,
+    "maxdd": -19.49
+   },
+   "CPCV": {
+    "median_sharpe": 0.17,
+    "frac_positive": 0.533,
+    "n_paths": 15
+   },
+   "trades": 121,
+   "time_in_mkt": 0.011,
+   "cost_stop": 0.0558,
+   "WF": [
+    4.12,
+    0.11
+   ],
+   "p_twin": 0.81918,
+   "random_median_oos": 12.59,
+   "real_twin_basis": 5.25,
+   "SPA": 0.864,
+   "holm": 1.0,
+   "DSR": 0.5977,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": false,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 17.89
+  },
+  "megacap|drop_revert(drop=0.05,hold=10,n=1)+rsi_band(hi=80)": {
+   "row": 949,
+   "IS": {
+    "ret": 3.15,
+    "sharpe": 0.44,
+    "maxdd": -2.4
+   },
+   "OOS": {
+    "ret": 2.14,
+    "sharpe": 0.38,
+    "maxdd": -3.23
+   },
+   "BH_OOS": {
+    "ret": 26.77,
+    "sharpe": 0.77,
+    "maxdd": -19.49
+   },
+   "CPCV": {
+    "median_sharpe": 0.37,
+    "frac_positive": 0.8,
+    "n_paths": 15
+   },
+   "trades": 34,
+   "time_in_mkt": 0.005,
+   "cost_stop": 0.0455,
+   "WF": [
+    3.44,
+    -1.26
+   ],
+   "p_twin": 0.94306,
+   "random_median_oos": 13.0,
+   "real_twin_basis": 1.37,
+   "SPA": 0.8755,
+   "holm": 1.0,
+   "DSR": 0.3366,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": false,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 16.26
+  },
+  "megacap|drop_revert(drop=0.05,hold=10,n=3)+rsi_band(hi=80)": {
+   "row": 950,
+   "IS": {
+    "ret": -4.45,
+    "sharpe": -0.36,
+    "maxdd": -7.69
+   },
+   "OOS": {
+    "ret": 5.05,
+    "sharpe": 0.73,
+    "maxdd": -3.31
+   },
+   "BH_OOS": {
+    "ret": 26.77,
+    "sharpe": 0.77,
+    "maxdd": -19.49
+   },
+   "CPCV": {
+    "median_sharpe": -0.02,
+    "frac_positive": 0.467,
+    "n_paths": 15
+   },
+   "trades": 117,
+   "time_in_mkt": 0.02,
+   "cost_stop": 0.0558,
+   "WF": [
+    5.12,
+    -0.07
+   ],
+   "p_twin": 0.5994,
+   "random_median_oos": 12.48,
+   "real_twin_basis": 10.46,
+   "SPA": 0.8465,
+   "holm": 1.0,
+   "DSR": 0.5256,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": false,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 16.18
+  },
+  "megacap|drop_revert(drop=0.15,hold=5,n=1)+rsi_band(hi=80)": {
+   "row": 951,
+   "IS": {
+    "ret": 0.6,
+    "sharpe": 0.23,
+    "maxdd": -1.0
+   },
+   "OOS": {
+    "ret": 0.0,
+    "sharpe": 0.0,
+    "maxdd": 0.0
+   },
+   "BH_OOS": {
+    "ret": 26.77,
+    "sharpe": 0.77,
+    "maxdd": -19.49
+   },
+   "CPCV": {
+    "median_sharpe": 0.0,
+    "frac_positive": 0.467,
+    "n_paths": 15
+   },
+   "trades": 4,
+   "time_in_mkt": 0.0,
+   "cost_stop": 0.0072,
+   "WF": [
+    0.0,
+    0.0
+   ],
+   "p_twin": 0.93806,
+   "random_median_oos": 13.28,
+   "real_twin_basis": 0.0,
+   "SPA": 0.907,
+   "holm": 1.0,
+   "DSR": 0.0,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 19.49
+  },
+  "megacap|drop_revert(drop=0.15,hold=5,n=3)+rsi_band(hi=80)": {
+   "row": 952,
+   "IS": {
+    "ret": -0.52,
+    "sharpe": -0.17,
+    "maxdd": -1.95
+   },
+   "OOS": {
+    "ret": 0.89,
+    "sharpe": 0.83,
+    "maxdd": 0.0
+   },
+   "BH_OOS": {
+    "ret": 26.77,
+    "sharpe": 0.77,
+    "maxdd": -19.49
+   },
+   "CPCV": {
+    "median_sharpe": 0.0,
+    "frac_positive": 0.467,
+    "n_paths": 15
+   },
+   "trades": 9,
+   "time_in_mkt": 0.001,
+   "cost_stop": 0.0083,
+   "WF": [
+    0.89,
+    0.0
+   ],
+   "p_twin": 0.89211,
+   "random_median_oos": 13.07,
+   "real_twin_basis": 0.89,
+   "SPA": 0.9015,
+   "holm": 1.0,
+   "DSR": 0.6519,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 19.49
+  },
+  "megacap|drop_revert(drop=0.15,hold=10,n=1)+rsi_band(hi=80)": {
+   "row": 953,
+   "IS": {
+    "ret": 1.31,
+    "sharpe": 0.39,
+    "maxdd": -1.02
+   },
+   "OOS": {
+    "ret": 0.0,
+    "sharpe": 0.0,
+    "maxdd": 0.0
+   },
+   "BH_OOS": {
+    "ret": 26.77,
+    "sharpe": 0.77,
+    "maxdd": -19.49
+   },
+   "CPCV": {
+    "median_sharpe": 0.22,
+    "frac_positive": 0.6,
+    "n_paths": 15
+   },
+   "trades": 4,
+   "time_in_mkt": 0.001,
+   "cost_stop": 0.0072,
+   "WF": [
+    0.0,
+    0.0
+   ],
+   "p_twin": 0.94505,
+   "random_median_oos": 13.28,
+   "real_twin_basis": 0.0,
+   "SPA": 0.907,
+   "holm": 1.0,
+   "DSR": 0.0,
+   "pass": false,
+   "checks": {
+    "oos_positive": false,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 19.49
+  },
+  "megacap|drop_revert(drop=0.15,hold=10,n=3)+rsi_band(hi=80)": {
+   "row": 954,
+   "IS": {
+    "ret": 0.69,
+    "sharpe": 0.16,
+    "maxdd": -1.94
+   },
+   "OOS": {
+    "ret": 0.83,
+    "sharpe": 0.65,
+    "maxdd": -0.38
+   },
+   "BH_OOS": {
+    "ret": 26.77,
+    "sharpe": 0.77,
+    "maxdd": -19.49
+   },
+   "CPCV": {
+    "median_sharpe": 0.24,
+    "frac_positive": 0.733,
+    "n_paths": 15
+   },
+   "trades": 9,
+   "time_in_mkt": 0.002,
+   "cost_stop": 0.0083,
+   "WF": [
+    0.83,
+    0.0
+   ],
+   "p_twin": 0.9031,
+   "random_median_oos": 12.91,
+   "real_twin_basis": 0.84,
+   "SPA": 0.9035,
+   "holm": 1.0,
+   "DSR": 0.4832,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": false
+   },
+   "dd_improvement_vs_bh": 19.11
+  }
+ },
+ "N": 954,
+ "PBO": 0.901,
+ "n_pass": 0,
+ "min_trades": 100,
+ "window": {
+  "start": "2020-07-27",
+  "end": "2025-10-22",
+  "oos_start": "2024-03-25"
+ },
+ "ann_factor": 252,
+ "bar": {
+  "holm": 0.05,
+  "dsr": 0.95,
+  "spa": 0.05,
+  "pbo": 0.5,
+  "cost_stop": 0.03
+ },
+ "ts": "2026-10-23T21:04:27.645926-04:00",
+ "run_id": "20261023_210424_gen_2310232121_002",
+ "spec_id": "gen_2310232121_002",
+ "spec_hash": "38d289afa69ee51f5fb2bb7ae63c3bb2f7979935dcc1c30edc65f6023b1388b8"
+}

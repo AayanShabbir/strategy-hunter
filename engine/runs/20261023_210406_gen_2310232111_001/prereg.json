@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_210406_gen_2310232111_001",
+ "spec_hash": "d3d408584d13d036befb89eda99275ef25efce38e53f5e4d857edb28331b38d1",
+ "rows": {
+  "sectors|supertrend(atr_n=7,mult=2)": 915,
+  "sectors|supertrend(atr_n=7,mult=4)": 916,
+  "sectors|supertrend(atr_n=10,mult=2)": 917,
+  "sectors|supertrend(atr_n=10,mult=4)": 918
+ },
+ "N_after_reserve": 918,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T21:04:06.950170-04:00"
+}

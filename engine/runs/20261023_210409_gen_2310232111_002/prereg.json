@@ -1,0 +1,17 @@
+{
+ "run_id": "20261023_210409_gen_2310232111_002",
+ "spec_hash": "2e95d3bd585333ed5c106ef9e7a5ca7128c91612d7bd7ace9bf7bed746c3da96",
+ "rows": {
+  "sectors|drop_revert(drop=0.1,hold=3,n=1)+vol_regime(max_atr_pct=0.04)": 919,
+  "sectors|drop_revert(drop=0.1,hold=3,n=5)+vol_regime(max_atr_pct=0.04)": 920,
+  "sectors|drop_revert(drop=0.1,hold=5,n=1)+vol_regime(max_atr_pct=0.04)": 921,
+  "sectors|drop_revert(drop=0.1,hold=5,n=5)+vol_regime(max_atr_pct=0.04)": 922,
+  "sectors|drop_revert(drop=0.15,hold=3,n=1)+vol_regime(max_atr_pct=0.04)": 923,
+  "sectors|drop_revert(drop=0.15,hold=3,n=5)+vol_regime(max_atr_pct=0.04)": 924,
+  "sectors|drop_revert(drop=0.15,hold=5,n=1)+vol_regime(max_atr_pct=0.04)": 925,
+  "sectors|drop_revert(drop=0.15,hold=5,n=5)+vol_regime(max_atr_pct=0.04)": 926
+ },
+ "N_after_reserve": 926,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T21:04:09.938704-04:00"
+}

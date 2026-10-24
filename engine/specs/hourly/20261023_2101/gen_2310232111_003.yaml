@@ -1,0 +1,34 @@
+id: gen_2310232111_003
+hypothesis: 'grammar draw seed=2310232111: rsi_revert+trend_sma'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 2
+    - 5
+    entry:
+    - 5
+    - 10
+    exit:
+    - 70
+    - 80
+filters:
+- name: trend_sma
+  params:
+    n: 50
+universe:
+  sectors:
+  - XLK
+  - XLF
+  - XLE
+  - XLV
+  - XLI
+  - XLY
+  - XLP
+  - XLU
+  - XLB
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

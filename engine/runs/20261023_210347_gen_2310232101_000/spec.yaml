@@ -1,0 +1,27 @@
+id: gen_2310232101_000
+hypothesis: 'grammar draw seed=2310232101: rsi_revert'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 2
+    - 3
+    entry:
+    - 10
+    - 20
+    exit:
+    - 60
+    - 70
+filters: []
+universe:
+  crypto_d:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+  - AVAX/USD
+  - LINK/USD
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

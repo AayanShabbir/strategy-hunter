@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_210417_gen_2310232121_000",
+ "spec_hash": "f46570f523962db100bce6a6c2e30c910c8317e58795cac550840970e7996d22",
+ "rows": {
+  "megacap|supertrend(atr_n=10,mult=2)+vol_regime(max_atr_pct=0.06)": 935,
+  "megacap|supertrend(atr_n=10,mult=3)+vol_regime(max_atr_pct=0.06)": 936,
+  "megacap|supertrend(atr_n=14,mult=2)+vol_regime(max_atr_pct=0.06)": 937,
+  "megacap|supertrend(atr_n=14,mult=3)+vol_regime(max_atr_pct=0.06)": 938
+ },
+ "N_after_reserve": 938,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T21:04:17.091628-04:00"
+}
