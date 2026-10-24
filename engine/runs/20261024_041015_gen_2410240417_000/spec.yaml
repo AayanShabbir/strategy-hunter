@@ -1,0 +1,30 @@
+id: gen_2410240417_000
+hypothesis: 'grammar draw seed=2410240417: rsi_revert+rsi_band'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 3
+    - 5
+    entry:
+    - 5
+    - 10
+    exit:
+    - 60
+    - 80
+filters:
+- name: rsi_band
+  params:
+    hi: 60
+universe:
+  REAL:
+  - GLD
+  - SLV
+  - GDX
+  - USO
+  - VNQ
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

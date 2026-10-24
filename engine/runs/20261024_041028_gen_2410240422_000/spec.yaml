@@ -1,0 +1,27 @@
+id: gen_2410240422_000
+hypothesis: 'grammar draw seed=2410240422: donchian+rsi_band'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 20
+    - 55
+    exit_n:
+    - 10
+    - 20
+filters:
+- name: rsi_band
+  params:
+    hi: 80
+universe:
+  semis:
+  - NVDA
+  - AMD
+  - AVGO
+  - TSM
+  - QCOM
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

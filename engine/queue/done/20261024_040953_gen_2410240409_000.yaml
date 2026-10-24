@@ -1,0 +1,31 @@
+id: gen_2410240409_000
+hypothesis: 'grammar draw seed=2410240409: rsi_revert+vol_regime'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 2
+    - 5
+    entry:
+    - 5
+    - 10
+    exit:
+    - 70
+    - 80
+filters:
+- name: vol_regime
+  params:
+    max_atr_pct: 0.06
+universe:
+  ALTS:
+  - SOL/USD
+  - ETH/USD
+  - AVAX/USD
+  - LINK/USD
+  - DOGE/USD
+  - LTC/USD
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

@@ -1,0 +1,26 @@
+id: gen_2410240421_000
+hypothesis: 'grammar draw seed=2410240421: sma_cross+trend_sma'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 10
+    - 20
+    slow:
+    - 50
+    - 200
+filters:
+- name: trend_sma
+  params:
+    n: 100
+universe:
+  defensive:
+  - GLD
+  - TLT
+  - LLY
+  - JPM
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

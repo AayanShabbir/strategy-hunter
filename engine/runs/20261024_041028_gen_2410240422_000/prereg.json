@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_041028_gen_2410240422_000",
+ "spec_hash": "68036752d41191c8332c80edd5a1d2c22e83fcbb2f1d3ca1f617262e8d2304b5",
+ "rows": {
+  "semis|donchian(entry_n=20,exit_n=10)+rsi_band(hi=80)": 1771,
+  "semis|donchian(entry_n=20,exit_n=20)+rsi_band(hi=80)": 1772,
+  "semis|donchian(entry_n=55,exit_n=10)+rsi_band(hi=80)": 1773,
+  "semis|donchian(entry_n=55,exit_n=20)+rsi_band(hi=80)": 1774
+ },
+ "N_after_reserve": 1774,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T04:10:28.986238-04:00"
+}

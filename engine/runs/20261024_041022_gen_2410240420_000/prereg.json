@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_041022_gen_2410240420_000",
+ "spec_hash": "879d40f8a307722e5ad3e14ec620340daf36c7bd295f6faeeaf5a0cb80d1ef37",
+ "rows": {
+  "sector_etf|sma_cross(fast=5,slow=50)+vol_regime(max_atr_pct=0.04)": 1763,
+  "sector_etf|sma_cross(fast=5,slow=100)+vol_regime(max_atr_pct=0.04)": 1764,
+  "sector_etf|sma_cross(fast=50,slow=50)+vol_regime(max_atr_pct=0.04)": 1765,
+  "sector_etf|sma_cross(fast=50,slow=100)+vol_regime(max_atr_pct=0.04)": 1766
+ },
+ "N_after_reserve": 1766,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T04:10:22.980002-04:00"
+}

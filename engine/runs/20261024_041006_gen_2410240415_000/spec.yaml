@@ -1,0 +1,32 @@
+id: gen_2410240415_000
+hypothesis: 'grammar draw seed=2410240415: supertrend+vol_regime'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 7
+    - 10
+    mult:
+    - 2
+    - 3
+filters:
+- name: vol_regime
+  params:
+    max_atr_pct: 0.06
+universe:
+  MEGA:
+  - AAPL
+  - MSFT
+  - NVDA
+  - AMZN
+  - GOOGL
+  - META
+  - AVGO
+  - JPM
+  - LLY
+  - TSLA
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

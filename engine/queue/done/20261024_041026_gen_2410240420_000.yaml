@@ -1,0 +1,29 @@
+id: gen_2410240420_000
+hypothesis: 'grammar draw seed=2410240420: sma_cross+vol_regime'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 5
+    - 50
+    slow:
+    - 50
+    - 100
+filters:
+- name: vol_regime
+  params:
+    max_atr_pct: 0.04
+universe:
+  sector_etf:
+  - QQQ
+  - IWM
+  - XLK
+  - XLE
+  - XLF
+  - XLV
+  - XLI
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_041031_gen_2410240423_000",
+ "spec_hash": "b19998ead7fc5e7262a177af9bc22797129c15c3a6d131312fdc598fe4e7f5e6",
+ "rows": {
+  "BONDS_INTL|sma_cross(fast=5,slow=50)": 1775,
+  "BONDS_INTL|sma_cross(fast=5,slow=200)": 1776,
+  "BONDS_INTL|sma_cross(fast=20,slow=50)": 1777,
+  "BONDS_INTL|sma_cross(fast=20,slow=200)": 1778
+ },
+ "N_after_reserve": 1778,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T04:10:31.858602-04:00"
+}

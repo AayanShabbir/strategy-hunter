@@ -1,0 +1,52 @@
+id: gen_2410240408_000
+hypothesis: 'grammar draw seed=2410240408: drop_revert'
+base:
+  idea: drop_revert
+  params:
+    n:
+    - 1
+    - 5
+    drop:
+    - 0.05
+    - 0.1
+    hold:
+    - 3
+    - 5
+filters: []
+universe:
+  BROAD:
+  - HD
+  - PG
+  - KO
+  - PEP
+  - WMT
+  - UNH
+  - JNJ
+  - MRK
+  - ABBV
+  - V
+  - MA
+  - CAT
+  - GE
+  - HON
+  - LIN
+  - MCD
+  - ORCL
+  - CSCO
+  - CRM
+  - ADBE
+  - TXN
+  - QCOM
+  - IBM
+  - GS
+  - MS
+  - BAC
+  - XOM
+  - CVX
+  - NEE
+  - AMGN
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

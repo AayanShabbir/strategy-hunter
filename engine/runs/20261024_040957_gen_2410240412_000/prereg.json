@@ -1,0 +1,17 @@
+{
+ "run_id": "20261024_040957_gen_2410240412_000",
+ "spec_hash": "410c897bfe7ac741bca534f07f0e2192cac28abb90f58c339e58143eba07cf78",
+ "rows": {
+  "BTC_ETH|drop_revert(drop=0.05,hold=3,n=1)": 1719,
+  "BTC_ETH|drop_revert(drop=0.05,hold=3,n=3)": 1720,
+  "BTC_ETH|drop_revert(drop=0.05,hold=5,n=1)": 1721,
+  "BTC_ETH|drop_revert(drop=0.05,hold=5,n=3)": 1722,
+  "BTC_ETH|drop_revert(drop=0.15,hold=3,n=1)": 1723,
+  "BTC_ETH|drop_revert(drop=0.15,hold=3,n=3)": 1724,
+  "BTC_ETH|drop_revert(drop=0.15,hold=5,n=1)": 1725,
+  "BTC_ETH|drop_revert(drop=0.15,hold=5,n=3)": 1726
+ },
+ "N_after_reserve": 1726,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T04:09:57.283394-04:00"
+}

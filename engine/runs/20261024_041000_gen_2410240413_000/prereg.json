@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_041000_gen_2410240413_000",
+ "spec_hash": "85374cd3455226ac9c0f7658fc9561d6a9fe3463b17c43ec9af541e293a51a43",
+ "rows": {
+  "CREDIT|donchian(entry_n=20,exit_n=10)+relvol(min_ratio=1.0)": 1727,
+  "CREDIT|donchian(entry_n=20,exit_n=20)+relvol(min_ratio=1.0)": 1728,
+  "CREDIT|donchian(entry_n=100,exit_n=10)+relvol(min_ratio=1.0)": 1729,
+  "CREDIT|donchian(entry_n=100,exit_n=20)+relvol(min_ratio=1.0)": 1730
+ },
+ "N_after_reserve": 1730,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T04:10:00.039665-04:00"
+}
