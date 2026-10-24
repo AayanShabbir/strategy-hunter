@@ -1,0 +1,28 @@
+id: gen_2610241202_000
+hypothesis: 'grammar draw seed=2610241202: rsi_revert+relvol'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 3
+    - 5
+    entry:
+    - 5
+    - 10
+    exit:
+    - 60
+    - 70
+filters:
+- name: relvol
+  params:
+    min_ratio: 1.0
+universe:
+  sectors:
+  - XLF
+  - XLK
+  - XLY
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_120804_gen_2610241213_000",
+ "spec_hash": "2015707410ea65380c4564cf44b67ab8cfff80da6ab470af999c994390988cb4",
+ "rows": {
+  "index|supertrend(atr_n=7,mult=2)+trend_sma(n=100)": 2571,
+  "index|supertrend(atr_n=7,mult=4)+trend_sma(n=100)": 2572,
+  "index|supertrend(atr_n=14,mult=2)+trend_sma(n=100)": 2573,
+  "index|supertrend(atr_n=14,mult=4)+trend_sma(n=100)": 2574
+ },
+ "N_after_reserve": 2574,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T12:08:04.833438-04:00"
+}

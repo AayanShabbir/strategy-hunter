@@ -1,0 +1,25 @@
+{
+ "run_id": "20261024_120800_gen_2610241212_000",
+ "spec_hash": "6943eb8c5a835bcedf0e229ca3604a03a6a48ed05dee23651f759e509e9d9293",
+ "rows": {
+  "sectors|sma_cross(fast=20,slow=50)+day_of_week(days=1)": 2555,
+  "sectors|sma_cross(fast=20,slow=50)+day_of_week(days=2)": 2556,
+  "sectors|sma_cross(fast=20,slow=50)+day_of_week(days=3)": 2557,
+  "sectors|sma_cross(fast=20,slow=50)+day_of_week(days=4)": 2558,
+  "sectors|sma_cross(fast=20,slow=200)+day_of_week(days=1)": 2559,
+  "sectors|sma_cross(fast=20,slow=200)+day_of_week(days=2)": 2560,
+  "sectors|sma_cross(fast=20,slow=200)+day_of_week(days=3)": 2561,
+  "sectors|sma_cross(fast=20,slow=200)+day_of_week(days=4)": 2562,
+  "sectors|sma_cross(fast=50,slow=50)+day_of_week(days=1)": 2563,
+  "sectors|sma_cross(fast=50,slow=50)+day_of_week(days=2)": 2564,
+  "sectors|sma_cross(fast=50,slow=50)+day_of_week(days=3)": 2565,
+  "sectors|sma_cross(fast=50,slow=50)+day_of_week(days=4)": 2566,
+  "sectors|sma_cross(fast=50,slow=200)+day_of_week(days=1)": 2567,
+  "sectors|sma_cross(fast=50,slow=200)+day_of_week(days=2)": 2568,
+  "sectors|sma_cross(fast=50,slow=200)+day_of_week(days=3)": 2569,
+  "sectors|sma_cross(fast=50,slow=200)+day_of_week(days=4)": 2570
+ },
+ "N_after_reserve": 2570,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T12:08:00.113825-04:00"
+}

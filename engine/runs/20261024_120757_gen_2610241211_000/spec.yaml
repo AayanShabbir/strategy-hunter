@@ -1,0 +1,24 @@
+id: gen_2610241211_000
+hypothesis: 'grammar draw seed=2610241211: supertrend+trend_sma'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 7
+    - 10
+    mult:
+    - 3
+    - 4
+filters:
+- name: trend_sma
+  params:
+    n: 100
+universe:
+  megacap:
+  - AAPL
+  - MSFT
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100
