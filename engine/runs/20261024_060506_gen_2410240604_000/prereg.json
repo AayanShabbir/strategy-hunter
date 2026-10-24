@@ -1,0 +1,25 @@
+{
+ "run_id": "20261024_060506_gen_2410240604_000",
+ "spec_hash": "630af81a08ea221636fddcc87909c1cc38b507f1fc8170b94a2ce443aacda863",
+ "rows": {
+  "BROAD|sma_cross(fast=10,slow=50)+day_of_week(days=1)": 1915,
+  "BROAD|sma_cross(fast=10,slow=50)+day_of_week(days=2)": 1916,
+  "BROAD|sma_cross(fast=10,slow=50)+day_of_week(days=3)": 1917,
+  "BROAD|sma_cross(fast=10,slow=50)+day_of_week(days=4)": 1918,
+  "BROAD|sma_cross(fast=10,slow=150)+day_of_week(days=1)": 1919,
+  "BROAD|sma_cross(fast=10,slow=150)+day_of_week(days=2)": 1920,
+  "BROAD|sma_cross(fast=10,slow=150)+day_of_week(days=3)": 1921,
+  "BROAD|sma_cross(fast=10,slow=150)+day_of_week(days=4)": 1922,
+  "BROAD|sma_cross(fast=20,slow=50)+day_of_week(days=1)": 1923,
+  "BROAD|sma_cross(fast=20,slow=50)+day_of_week(days=2)": 1924,
+  "BROAD|sma_cross(fast=20,slow=50)+day_of_week(days=3)": 1925,
+  "BROAD|sma_cross(fast=20,slow=50)+day_of_week(days=4)": 1926,
+  "BROAD|sma_cross(fast=20,slow=150)+day_of_week(days=1)": 1927,
+  "BROAD|sma_cross(fast=20,slow=150)+day_of_week(days=2)": 1928,
+  "BROAD|sma_cross(fast=20,slow=150)+day_of_week(days=3)": 1929,
+  "BROAD|sma_cross(fast=20,slow=150)+day_of_week(days=4)": 1930
+ },
+ "N_after_reserve": 1930,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T06:05:06.826820-04:00"
+}

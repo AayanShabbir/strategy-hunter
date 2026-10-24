@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_060515_gen_2410240606_000",
+ "spec_hash": "b99b8e550a08752d5f7fd7da5195300795db6b8ff20fc041434f027fad8a1e78",
+ "rows": {
+  "hibeta|sma_cross(fast=10,slow=150)+relvol(min_ratio=1.0)": 1939,
+  "hibeta|sma_cross(fast=10,slow=200)+relvol(min_ratio=1.0)": 1940,
+  "hibeta|sma_cross(fast=20,slow=150)+relvol(min_ratio=1.0)": 1941,
+  "hibeta|sma_cross(fast=20,slow=200)+relvol(min_ratio=1.0)": 1942
+ },
+ "N_after_reserve": 1942,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T06:05:15.150553-04:00"
+}

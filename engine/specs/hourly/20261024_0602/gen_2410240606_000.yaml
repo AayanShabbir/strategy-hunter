@@ -1,0 +1,27 @@
+id: gen_2410240606_000
+hypothesis: 'grammar draw seed=2410240606: sma_cross+relvol'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 10
+    - 20
+    slow:
+    - 150
+    - 200
+filters:
+- name: relvol
+  params:
+    min_ratio: 1.0
+universe:
+  hibeta:
+  - TSLA
+  - NVDA
+  - AMD
+  - COIN
+  - MSTR
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

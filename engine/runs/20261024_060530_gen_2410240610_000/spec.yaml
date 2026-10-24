@@ -1,0 +1,33 @@
+id: gen_2410240610_000
+hypothesis: 'grammar draw seed=2410240610: supertrend+day_of_week'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 7
+    - 10
+    mult:
+    - 2
+    - 4
+filters:
+- name: day_of_week
+  params:
+    days:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+universe:
+  megacap:
+  - AAPL
+  - MSFT
+  - NVDA
+  - AMZN
+  - META
+  - GOOGL
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100
