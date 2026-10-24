@@ -1,0 +1,24 @@
+id: gen_2410240212_000
+hypothesis: 'grammar draw seed=2410240212: supertrend'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 7
+    - 10
+    mult:
+    - 3
+    - 4
+filters: []
+universe:
+  hibeta:
+  - TSLA
+  - NVDA
+  - AMD
+  - COIN
+  - MSTR
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

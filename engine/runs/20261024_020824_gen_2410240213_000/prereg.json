@@ -1,0 +1,17 @@
+{
+ "run_id": "20261024_020824_gen_2410240213_000",
+ "spec_hash": "81ae0b2884e4f9e601cc5030d10f07109be303d4641eba34a6e30696ef6c4834",
+ "rows": {
+  "defensive|rsi_revert(entry=5,exit=60,n=2)": 1571,
+  "defensive|rsi_revert(entry=5,exit=60,n=5)": 1572,
+  "defensive|rsi_revert(entry=5,exit=80,n=2)": 1573,
+  "defensive|rsi_revert(entry=5,exit=80,n=5)": 1574,
+  "defensive|rsi_revert(entry=20,exit=60,n=2)": 1575,
+  "defensive|rsi_revert(entry=20,exit=60,n=5)": 1576,
+  "defensive|rsi_revert(entry=20,exit=80,n=2)": 1577,
+  "defensive|rsi_revert(entry=20,exit=80,n=5)": 1578
+ },
+ "N_after_reserve": 1578,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T02:08:24.042787-04:00"
+}

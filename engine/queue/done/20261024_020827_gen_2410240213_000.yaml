@@ -1,0 +1,26 @@
+id: gen_2410240213_000
+hypothesis: 'grammar draw seed=2410240213: rsi_revert'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 2
+    - 5
+    entry:
+    - 5
+    - 20
+    exit:
+    - 60
+    - 80
+filters: []
+universe:
+  defensive:
+  - GLD
+  - TLT
+  - LLY
+  - JPM
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

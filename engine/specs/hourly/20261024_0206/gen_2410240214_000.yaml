@@ -1,0 +1,28 @@
+id: gen_2410240214_000
+hypothesis: 'grammar draw seed=2410240214: drop_revert+vol_regime'
+base:
+  idea: drop_revert
+  params:
+    n:
+    - 1
+    - 3
+    drop:
+    - 0.05
+    - 0.1
+    hold:
+    - 3
+    - 5
+filters:
+- name: vol_regime
+  params:
+    max_atr_pct: 0.06
+universe:
+  crypto:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

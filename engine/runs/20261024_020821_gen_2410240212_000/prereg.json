@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_020821_gen_2410240212_000",
+ "spec_hash": "89212d665db4424a9da8823180900919ea5abb4bd40bc48f17d3eac6724b837b",
+ "rows": {
+  "hibeta|supertrend(atr_n=7,mult=3)": 1567,
+  "hibeta|supertrend(atr_n=7,mult=4)": 1568,
+  "hibeta|supertrend(atr_n=10,mult=3)": 1569,
+  "hibeta|supertrend(atr_n=10,mult=4)": 1570
+ },
+ "N_after_reserve": 1570,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T02:08:21.325761-04:00"
+}
