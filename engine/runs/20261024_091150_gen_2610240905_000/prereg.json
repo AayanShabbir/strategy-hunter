@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_091150_gen_2610240905_000",
+ "spec_hash": "84ede1718b13c8762ea27b39585a784f1b6043f3c52fc718269fe90b863b9533",
+ "rows": {
+  "crypto|supertrend(atr_n=7,mult=2)+vol_regime(max_atr_pct=0.04)": 2211,
+  "crypto|supertrend(atr_n=7,mult=4)+vol_regime(max_atr_pct=0.04)": 2212,
+  "crypto|supertrend(atr_n=10,mult=2)+vol_regime(max_atr_pct=0.04)": 2213,
+  "crypto|supertrend(atr_n=10,mult=4)+vol_regime(max_atr_pct=0.04)": 2214
+ },
+ "N_after_reserve": 2214,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T09:11:51.000708-04:00"
+}

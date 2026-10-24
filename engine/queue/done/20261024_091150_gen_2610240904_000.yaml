@@ -1,0 +1,23 @@
+id: gen_2610240904_000
+hypothesis: 'grammar draw seed=2610240904: sma_cross+rsi_band'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 5
+    - 20
+    slow:
+    - 100
+    - 200
+filters:
+- name: rsi_band
+  params:
+    hi: 80
+universe:
+  crypto:
+  - BTC/USD
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

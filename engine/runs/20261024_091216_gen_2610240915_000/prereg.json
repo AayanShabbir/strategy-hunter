@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_091216_gen_2610240915_000",
+ "spec_hash": "9b85522a2c854130e7978ece78c08294b7a65a0a8ab54ea4fc1178c5b9c5a083",
+ "rows": {
+  "megacap|supertrend(atr_n=7,mult=2)": 2263,
+  "megacap|supertrend(atr_n=7,mult=4)": 2264,
+  "megacap|supertrend(atr_n=10,mult=2)": 2265,
+  "megacap|supertrend(atr_n=10,mult=4)": 2266
+ },
+ "N_after_reserve": 2266,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T09:12:16.976456-04:00"
+}

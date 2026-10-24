@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_091208_gen_2610240911_000",
+ "spec_hash": "fee0f29db860b5b1a53a0211dd76eb5cb32589a828d0de992272c49833994a3a",
+ "rows": {
+  "sectors|supertrend(atr_n=10,mult=2)": 2247,
+  "sectors|supertrend(atr_n=10,mult=4)": 2248,
+  "sectors|supertrend(atr_n=14,mult=2)": 2249,
+  "sectors|supertrend(atr_n=14,mult=4)": 2250
+ },
+ "N_after_reserve": 2250,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T09:12:08.736482-04:00"
+}

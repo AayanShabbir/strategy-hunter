@@ -1,0 +1,29 @@
+id: gen_2610240908_000
+hypothesis: 'grammar draw seed=2610240908: rsi_revert+vol_regime'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 3
+    - 5
+    entry:
+    - 5
+    - 20
+    exit:
+    - 60
+    - 70
+filters:
+- name: vol_regime
+  params:
+    max_atr_pct: 0.02
+universe:
+  index:
+  - SPY
+  - QQQ
+  - IWM
+  - DIA
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

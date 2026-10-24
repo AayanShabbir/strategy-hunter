@@ -1,0 +1,31 @@
+id: gen_2610240906_000
+hypothesis: 'grammar draw seed=2610240906: rsi_revert'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 2
+    - 5
+    entry:
+    - 5
+    - 10
+    exit:
+    - 70
+    - 80
+filters: []
+universe:
+  sectors:
+  - XLK
+  - XLF
+  - XLE
+  - XLV
+  - XLI
+  - XLY
+  - XLP
+  - XLU
+  - XLB
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100
