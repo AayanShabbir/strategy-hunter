@@ -4,6 +4,8 @@ All dates America/New_York.
 ## 2026-10-24 (v0.3.0-sde-phase3, repo restructure)
 ### Added
 - Root README (architecture diagram, quickstart, status), ARCHITECTURE.md, CONTRIBUTING.md, docs/README.md index, docs/runs_sde.md, LICENSE (proprietary), pyproject.toml (pytest + ruff), Makefile, .editorconfig, PR template, CI workflow (.github/workflows/ci.yml).
+### Fixed
+- `src/data/` (loader.py, __init__.py) was never tracked: the unanchored `data/` ignore rule matched it. Now tracked; rule anchored to `/data/`. A fresh clone previously could not import `src.data` (found by the new CI).
 ### Changed
 - Old root README's manual-hunt section moved verbatim to docs/hunt_howto.md; docs/sde_plan.md status updated (Phase 3 done, Phase 4 components built).
 ### Unchanged
