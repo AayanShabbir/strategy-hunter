@@ -1,0 +1,33 @@
+id: gen_2310232012_000
+hypothesis: 'grammar draw seed=2310232012: donchian+day_of_week'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 55
+    - 100
+    exit_n:
+    - 10
+    - 20
+filters:
+- name: day_of_week
+  params:
+    days:
+    - 0
+    - 1
+    - 2
+    - 3
+universe:
+  sector_etf:
+  - QQQ
+  - IWM
+  - XLK
+  - XLE
+  - XLF
+  - XLV
+  - XLI
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

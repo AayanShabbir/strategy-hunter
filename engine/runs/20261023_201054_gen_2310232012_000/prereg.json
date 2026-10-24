@@ -1,0 +1,25 @@
+{
+ "run_id": "20261023_201054_gen_2310232012_000",
+ "spec_hash": "96ec04e9f0947f37483d82f00f70db7c4700a155ccd190bea79a5eef186179f6",
+ "rows": {
+  "sector_etf|donchian(entry_n=55,exit_n=10)+day_of_week(days=0)": 807,
+  "sector_etf|donchian(entry_n=55,exit_n=10)+day_of_week(days=1)": 808,
+  "sector_etf|donchian(entry_n=55,exit_n=10)+day_of_week(days=2)": 809,
+  "sector_etf|donchian(entry_n=55,exit_n=10)+day_of_week(days=3)": 810,
+  "sector_etf|donchian(entry_n=55,exit_n=20)+day_of_week(days=0)": 811,
+  "sector_etf|donchian(entry_n=55,exit_n=20)+day_of_week(days=1)": 812,
+  "sector_etf|donchian(entry_n=55,exit_n=20)+day_of_week(days=2)": 813,
+  "sector_etf|donchian(entry_n=55,exit_n=20)+day_of_week(days=3)": 814,
+  "sector_etf|donchian(entry_n=100,exit_n=10)+day_of_week(days=0)": 815,
+  "sector_etf|donchian(entry_n=100,exit_n=10)+day_of_week(days=1)": 816,
+  "sector_etf|donchian(entry_n=100,exit_n=10)+day_of_week(days=2)": 817,
+  "sector_etf|donchian(entry_n=100,exit_n=10)+day_of_week(days=3)": 818,
+  "sector_etf|donchian(entry_n=100,exit_n=20)+day_of_week(days=0)": 819,
+  "sector_etf|donchian(entry_n=100,exit_n=20)+day_of_week(days=1)": 820,
+  "sector_etf|donchian(entry_n=100,exit_n=20)+day_of_week(days=2)": 821,
+  "sector_etf|donchian(entry_n=100,exit_n=20)+day_of_week(days=3)": 822
+ },
+ "N_after_reserve": 822,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T20:10:54.673945-04:00"
+}

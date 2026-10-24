@@ -853,3 +853,203 @@ N_cumulative: 786
 | 786 | semis|supertrend(atr_n=14,mult=4) | 20.96/0.56/-22.05 | -38.66 | 2011 | 0.0925 | 0.11189 (-30.99) | 1.0 | 0.4623 | 0.118 | False | cost_stop, walk_forward, holm, dsr, spa, pbo |
 
 N_cumulative: 786
+
+## Engine prereg 20261023_201037_gen_2310232009_000 (gen_2310232009_000, sha256 ade992db81a8): rows #787-790 RESERVED (4 variants). Counted in N.
+N_cumulative: 790
+
+## Engine run 20261023_201037_gen_2310232009_000 (gen_2310232009_000): rows #787-790. 0/4 pass. PBO 0.713. Bar applied at N=790. Report: engine/runs/20261023_201037_gen_2310232009_000/report.md
+
+| # | variant | OOS ret/Sh/DD | B&H OOS | trades | cost/stop | twin p (rand med%) | Holm | DSR | SPA | pass | failed checks |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 787 | crypto|supertrend(atr_n=10,mult=2) | -11.55/-0.04/-36.31 | 428.6 | 2369 | 0.0971 | 0.83417 (132.6) | 1.0 | 0.323 | 0.9215 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+| 788 | crypto|supertrend(atr_n=10,mult=3) | -9.6/-0.01/-44.27 | 428.6 | 1339 | 0.0981 | 0.91209 (95.61) | 1.0 | 0.3397 | 0.9235 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+| 789 | crypto|supertrend(atr_n=14,mult=2) | -4.81/0.1/-37.43 | 428.6 | 2376 | 0.0958 | 0.76124 (50.17) | 1.0 | 0.3864 | 0.9175 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+| 790 | crypto|supertrend(atr_n=14,mult=3) | 0.35/0.19/-41.76 | 428.6 | 1347 | 0.0966 | 0.82517 (156.31) | 1.0 | 0.4294 | 0.92 | False | beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+
+N_cumulative: 790
+
+## Engine prereg 20261023_201046_gen_2310232010_000 (gen_2310232010_000, sha256 16762eaafeae): rows #791-798 RESERVED (8 variants). Counted in N.
+N_cumulative: 798
+
+## Engine run 20261023_201046_gen_2310232010_000 (gen_2310232010_000): rows #791-798. 0/8 pass. PBO 0.272. Bar applied at N=798. Report: engine/runs/20261023_201046_gen_2310232010_000/report.md
+
+| # | variant | OOS ret/Sh/DD | B&H OOS | trades | cost/stop | twin p (rand med%) | Holm | DSR | SPA | pass | failed checks |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 791 | crypto_d|drop_revert(drop=0.1,hold=3,n=1)+vol_regime(max_atr_pct=0.04) | 0.0/0.0/0.0 | 268.18 | 0 | inf | 0.94705 (214.85) | 1.0 | 0.0 | 0.892 | False | oos_positive, beats_buy_hold, min_trades, cost_stop, walk_forward, holm, dsr, spa |
+| 792 | crypto_d|drop_revert(drop=0.1,hold=3,n=5)+vol_regime(max_atr_pct=0.04) | 1.09/0.76/-0.48 | 268.18 | 4 | 0.0255 | 0.89111 (176.43) | 1.0 | 0.5559 | 0.89 | False | beats_buy_hold, min_trades, holm, dsr, spa |
+| 793 | crypto_d|drop_revert(drop=0.1,hold=5,n=1)+vol_regime(max_atr_pct=0.04) | 0.0/0.0/0.0 | 268.18 | 0 | inf | 0.93906 (214.85) | 1.0 | 0.0 | 0.892 | False | oos_positive, beats_buy_hold, min_trades, cost_stop, walk_forward, holm, dsr, spa |
+| 794 | crypto_d|drop_revert(drop=0.1,hold=5,n=5)+vol_regime(max_atr_pct=0.04) | 0.88/0.46/-1.56 | 268.18 | 4 | 0.0255 | 0.91508 (44.2) | 1.0 | 0.3983 | 0.892 | False | beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+| 795 | crypto_d|drop_revert(drop=0.15,hold=3,n=1)+vol_regime(max_atr_pct=0.04) | 0.0/0.0/0.0 | 268.18 | 0 | inf | 0.93706 (214.85) | 1.0 | 0.0 | 0.892 | False | oos_positive, beats_buy_hold, min_trades, cost_stop, walk_forward, holm, dsr, spa |
+| 796 | crypto_d|drop_revert(drop=0.15,hold=3,n=5)+vol_regime(max_atr_pct=0.04) | 0.0/0.0/0.0 | 268.18 | 0 | inf | 0.93706 (32.26) | 1.0 | 0.0 | 0.892 | False | oos_positive, beats_buy_hold, min_trades, cost_stop, walk_forward, holm, dsr, spa |
+| 797 | crypto_d|drop_revert(drop=0.15,hold=5,n=1)+vol_regime(max_atr_pct=0.04) | 0.0/0.0/0.0 | 268.18 | 0 | inf | 0.93407 (214.85) | 1.0 | 0.0 | 0.892 | False | oos_positive, beats_buy_hold, min_trades, cost_stop, walk_forward, holm, dsr, spa |
+| 798 | crypto_d|drop_revert(drop=0.15,hold=5,n=5)+vol_regime(max_atr_pct=0.04) | 0.0/0.0/0.0 | 268.18 | 0 | inf | 0.92408 (32.26) | 1.0 | 0.0 | 0.892 | False | oos_positive, beats_buy_hold, min_trades, cost_stop, walk_forward, holm, dsr, spa |
+
+N_cumulative: 798
+
+## Engine prereg 20261023_201048_gen_2310232011_000 (gen_2310232011_000, sha256 60bdecd7082b): rows #799-806 RESERVED (8 variants). Counted in N.
+N_cumulative: 806
+
+## Engine run 20261023_201048_gen_2310232011_000 (gen_2310232011_000): rows #799-806. 0/8 pass. PBO 0.544. Bar applied at N=806. Report: engine/runs/20261023_201048_gen_2310232011_000/report.md
+
+| # | variant | OOS ret/Sh/DD | B&H OOS | trades | cost/stop | twin p (rand med%) | Holm | DSR | SPA | pass | failed checks |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 799 | megacap|rsi_revert(entry=10,exit=60,n=2)+relvol(min_ratio=1.0) | 19.29/0.72/-3.4 | 214.9 | 530 | 0.0441 | 0.999 (76.14) | 1.0 | 0.5125 | 0.485 | False | beats_buy_hold, cost_stop, holm, dsr, spa, pbo |
+| 800 | megacap|rsi_revert(entry=10,exit=60,n=5)+relvol(min_ratio=1.0) | 6.54/0.92/-1.23 | 214.9 | 62 | 0.0392 | 0.995 (76.65) | 1.0 | 0.6844 | 0.496 | False | beats_buy_hold, min_trades, cost_stop, holm, dsr, spa, pbo |
+| 801 | megacap|rsi_revert(entry=10,exit=80,n=2)+relvol(min_ratio=1.0) | 22.04/0.76/-5.76 | 214.9 | 661 | 0.0427 | 0.996 (71.98) | 1.0 | 0.5476 | 0.4845 | False | beats_buy_hold, cost_stop, holm, dsr, spa, pbo |
+| 802 | megacap|rsi_revert(entry=10,exit=80,n=5)+relvol(min_ratio=1.0) | 6.03/0.38/-4.96 | 214.9 | 168 | 0.0353 | 0.996 (76.17) | 1.0 | 0.2584 | 0.4995 | False | beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+| 803 | megacap|rsi_revert(entry=20,exit=60,n=2)+relvol(min_ratio=1.0) | 34.07/1.03/-4.04 | 214.9 | 809 | 0.0442 | 0.98102 (71.49) | 1.0 | 0.7782 | 0.487 | False | beats_buy_hold, cost_stop, holm, dsr, spa, pbo |
+| 804 | megacap|rsi_revert(entry=20,exit=60,n=5)+relvol(min_ratio=1.0) | 28.8/1.03/-2.97 | 214.9 | 346 | 0.0398 | 0.99401 (77.16) | 1.0 | 0.8145 | 0.4875 | False | beats_buy_hold, cost_stop, holm, dsr, spa, pbo |
+| 805 | megacap|rsi_revert(entry=20,exit=80,n=2)+relvol(min_ratio=1.0) | 35.14/1.0/-6.16 | 214.9 | 933 | 0.0437 | 0.96803 (70.67) | 1.0 | 0.7467 | 0.4875 | False | beats_buy_hold, cost_stop, holm, dsr, spa, pbo |
+| 806 | megacap|rsi_revert(entry=20,exit=80,n=5)+relvol(min_ratio=1.0) | 31.85/0.97/-8.24 | 214.9 | 672 | 0.0388 | 0.97902 (74.52) | 1.0 | 0.7108 | 0.499 | False | beats_buy_hold, cost_stop, holm, dsr, spa, pbo |
+
+N_cumulative: 806
+
+## Engine prereg 20261023_201054_gen_2310232012_000 (gen_2310232012_000, sha256 96ec04e9f094): rows #807-822 RESERVED (16 variants). Counted in N.
+N_cumulative: 822
+
+## Engine run 20261023_201054_gen_2310232012_000 (gen_2310232012_000): rows #807-822. 0/16 pass. PBO 0.445. Bar applied at N=822. Report: engine/runs/20261023_201054_gen_2310232012_000/report.md
+
+| # | variant | OOS ret/Sh/DD | B&H OOS | trades | cost/stop | twin p (rand med%) | Holm | DSR | SPA | pass | failed checks |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 807 | sector_etf|donchian(entry_n=55,exit_n=10)+day_of_week(days=0) | -0.96/-0.12/-3.47 | 63.33 | 1151 | 0.0812 | 1.0 (22.01) | 1.0 | 0.0003 | 0.495 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 808 | sector_etf|donchian(entry_n=55,exit_n=10)+day_of_week(days=1) | 3.98/0.49/-3.41 | 63.33 | 1275 | 0.0821 | 0.995 (21.97) | 1.0 | 0.0095 | 0.499 | False | beats_buy_hold, cost_stop, holm, dsr, spa |
+| 809 | sector_etf|donchian(entry_n=55,exit_n=10)+day_of_week(days=2) | -9.05/-1.06/-10.8 | 63.33 | 1275 | 0.0818 | 1.0 (21.47) | 1.0 | 0.0 | 0.4875 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 810 | sector_etf|donchian(entry_n=55,exit_n=10)+day_of_week(days=3) | -5.34/-0.6/-6.87 | 63.33 | 1263 | 0.0822 | 1.0 (21.3) | 1.0 | 0.0 | 0.488 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 811 | sector_etf|donchian(entry_n=55,exit_n=20)+day_of_week(days=0) | 1.28/0.15/-3.65 | 63.33 | 1500 | 0.0791 | 0.995 (20.79) | 1.0 | 0.0016 | 0.4975 | False | beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 812 | sector_etf|donchian(entry_n=55,exit_n=20)+day_of_week(days=1) | 3.87/0.41/-3.37 | 63.33 | 1666 | 0.08 | 0.98801 (19.72) | 1.0 | 0.007 | 0.495 | False | beats_buy_hold, cost_stop, holm, dsr, spa |
+| 813 | sector_etf|donchian(entry_n=55,exit_n=20)+day_of_week(days=2) | -11.55/-1.15/-13.35 | 63.33 | 1651 | 0.08 | 1.0 (20.08) | 1.0 | 0.0 | 0.4945 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 814 | sector_etf|donchian(entry_n=55,exit_n=20)+day_of_week(days=3) | -3.72/-0.33/-7.63 | 63.33 | 1630 | 0.0801 | 1.0 (20.03) | 1.0 | 0.0001 | 0.496 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 815 | sector_etf|donchian(entry_n=100,exit_n=10)+day_of_week(days=0) | -1.35/-0.21/-3.84 | 63.33 | 950 | 0.0844 | 1.0 (23.21) | 1.0 | 0.0002 | 0.498 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 816 | sector_etf|donchian(entry_n=100,exit_n=10)+day_of_week(days=1) | 3.56/0.52/-4.03 | 63.33 | 1063 | 0.0858 | 0.999 (22.57) | 1.0 | 0.0113 | 0.496 | False | beats_buy_hold, cost_stop, holm, dsr, spa |
+| 817 | sector_etf|donchian(entry_n=100,exit_n=10)+day_of_week(days=2) | -6.9/-0.93/-8.33 | 63.33 | 1070 | 0.0853 | 1.0 (22.97) | 1.0 | 0.0 | 0.492 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 818 | sector_etf|donchian(entry_n=100,exit_n=10)+day_of_week(days=3) | -4.26/-0.51/-6.22 | 63.33 | 1063 | 0.0857 | 1.0 (22.87) | 1.0 | 0.0 | 0.493 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 819 | sector_etf|donchian(entry_n=100,exit_n=20)+day_of_week(days=0) | 0.2/0.04/-3.07 | 63.33 | 1256 | 0.0821 | 1.0 (22.21) | 1.0 | 0.0009 | 0.499 | False | beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 820 | sector_etf|donchian(entry_n=100,exit_n=20)+day_of_week(days=1) | 3.44/0.42/-3.08 | 63.33 | 1412 | 0.0829 | 0.99001 (21.08) | 1.0 | 0.0076 | 0.5015 | False | beats_buy_hold, cost_stop, holm, dsr, spa |
+| 821 | sector_etf|donchian(entry_n=100,exit_n=20)+day_of_week(days=2) | -9.72/-1.08/-11.21 | 63.33 | 1402 | 0.0828 | 1.0 (21.21) | 1.0 | 0.0 | 0.5005 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 822 | sector_etf|donchian(entry_n=100,exit_n=20)+day_of_week(days=3) | -2.82/-0.26/-7.06 | 63.33 | 1385 | 0.0833 | 1.0 (21.32) | 1.0 | 0.0001 | 0.4975 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+
+N_cumulative: 822
+
+## Engine prereg 20261023_201100_gen_2310232013_000 (gen_2310232013_000, sha256 d7e97c82a1ec): rows #823-826 RESERVED (4 variants). Counted in N.
+N_cumulative: 826
+
+## Engine run 20261023_201100_gen_2310232013_000 (gen_2310232013_000): rows #823-826. 0/4 pass. PBO 0.491. Bar applied at N=826. Report: engine/runs/20261023_201100_gen_2310232013_000/report.md
+
+| # | variant | OOS ret/Sh/DD | B&H OOS | trades | cost/stop | twin p (rand med%) | Holm | DSR | SPA | pass | failed checks |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 823 | defensive|sma_cross(fast=20,slow=50)+vol_regime(max_atr_pct=0.02) | 37.47/1.69/-4.97 | 104.36 | 140 | 0.052 | 0.61638 (41.59) | 1.0 | 0.9876 | 0.5005 | False | beats_buy_hold, cost_stop, holm, spa |
+| 824 | defensive|sma_cross(fast=20,slow=200)+vol_regime(max_atr_pct=0.02) | 43.79/1.88/-4.06 | 104.36 | 105 | 0.0511 | 0.4975 (43.4) | 1.0 | 0.9947 | 0.501 | False | beats_buy_hold, cost_stop, holm, spa |
+| 825 | defensive|sma_cross(fast=50,slow=50)+vol_regime(max_atr_pct=0.02) | 0.0/0.0/0.0 | 104.36 | 0 | inf | 1.0 (56.9) | 1.0 | 0.0 | 0.502 | False | oos_positive, beats_buy_hold, min_trades, cost_stop, walk_forward, holm, dsr, spa |
+| 826 | defensive|sma_cross(fast=50,slow=200)+vol_regime(max_atr_pct=0.02) | 43.73/1.92/-4.28 | 104.36 | 97 | 0.0511 | 0.45954 (41.69) | 1.0 | 0.9957 | 0.5075 | False | beats_buy_hold, min_trades, cost_stop, holm, spa |
+
+N_cumulative: 826
+
+## Engine prereg 20261023_201102_gen_2310232014_000 (gen_2310232014_000, sha256 9366729f6098): rows #827-834 RESERVED (8 variants). Counted in N.
+N_cumulative: 834
+
+## Engine run 20261023_201102_gen_2310232014_000 (gen_2310232014_000): rows #827-834. 0/8 pass. PBO 0.216. Bar applied at N=834. Report: engine/runs/20261023_201102_gen_2310232014_000/report.md
+
+| # | variant | OOS ret/Sh/DD | B&H OOS | trades | cost/stop | twin p (rand med%) | Holm | DSR | SPA | pass | failed checks |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 827 | megacap_h|rsi_revert(entry=5,exit=60,n=3) | 4.3/0.5/-6.2 | 43.45 | 518 | 0.1253 | 0.85115 (15.88) | 1.0 | 0.0141 | 0.4985 | False | beats_buy_hold, cost_stop, holm, dsr, spa |
+| 828 | megacap_h|rsi_revert(entry=5,exit=60,n=5) | 4.01/1.24/-1.3 | 43.45 | 46 | 0.1035 | 0.97103 (19.96) | 1.0 | 0.0527 | 0.9605 | False | beats_buy_hold, min_trades, cost_stop, holm, dsr, spa |
+| 829 | megacap_h|rsi_revert(entry=5,exit=80,n=3) | 15.19/1.2/-7.19 | 43.45 | 470 | 0.127 | 0.5964 (16.29) | 1.0 | 0.0945 | 0.9175 | False | beats_buy_hold, cost_stop, holm, dsr, spa |
+| 830 | megacap_h|rsi_revert(entry=5,exit=80,n=5) | 9.44/2.19/-0.74 | 43.45 | 46 | 0.1035 | 0.8951 (20.5) | 1.0 | 0.4897 | 0.9215 | False | beats_buy_hold, min_trades, cost_stop, holm, dsr, spa |
+| 831 | megacap_h|rsi_revert(entry=20,exit=60,n=3) | 0.12/0.06/-13.54 | 43.45 | 1982 | 0.1283 | 0.47752 (6.84) | 1.0 | 0.0027 | 0.4935 | False | beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 832 | megacap_h|rsi_revert(entry=20,exit=60,n=5) | 11.14/0.72/-10.8 | 43.45 | 859 | 0.1277 | 0.60939 (14.58) | 1.0 | 0.0178 | 0.9525 | False | beats_buy_hold, cost_stop, holm, dsr, spa |
+| 833 | megacap_h|rsi_revert(entry=20,exit=80,n=3) | 10.89/0.5/-17.06 | 43.45 | 1417 | 0.1301 | 0.26474 (9.84) | 1.0 | 0.011 | 0.499 | False | beats_buy_hold, cost_stop, holm, dsr, spa |
+| 834 | megacap_h|rsi_revert(entry=20,exit=80,n=5) | 40.71/1.46/-13.41 | 43.45 | 574 | 0.1306 | 0.21678 (16.19) | 1.0 | 0.1389 | 0.614 | False | beats_buy_hold, cost_stop, holm, dsr, spa |
+
+N_cumulative: 834
+
+## Engine prereg 20261023_201105_gen_2310232015_000 (gen_2310232015_000, sha256 5275e1e2e2ce): rows #835-842 RESERVED (8 variants). Counted in N.
+N_cumulative: 842
+
+## Engine run 20261023_201105_gen_2310232015_000 (gen_2310232015_000): rows #835-842. 0/8 pass. PBO 0.271. Bar applied at N=842. Report: engine/runs/20261023_201105_gen_2310232015_000/report.md
+
+| # | variant | OOS ret/Sh/DD | B&H OOS | trades | cost/stop | twin p (rand med%) | Holm | DSR | SPA | pass | failed checks |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 835 | crypto|drop_revert(drop=0.05,hold=3,n=1)+rsi_band(hi=60) | -2.29/-0.47/-4.38 | 428.6 | 184 | 0.025 | 0.91808 (79.52) | 1.0 | 0.0279 | 0.9095 | False | oos_positive, beats_buy_hold, walk_forward, holm, dsr, spa |
+| 836 | crypto|drop_revert(drop=0.05,hold=3,n=5)+rsi_band(hi=60) | 2.16/0.2/-9.31 | 428.6 | 711 | 0.0426 | 0.89011 (167.66) | 1.0 | 0.1816 | 0.907 | False | beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 837 | crypto|drop_revert(drop=0.05,hold=5,n=1)+rsi_band(hi=60) | -1.98/-0.28/-4.02 | 428.6 | 179 | 0.0251 | 0.91808 (236.54) | 1.0 | 0.0632 | 0.909 | False | oos_positive, beats_buy_hold, walk_forward, holm, dsr, spa |
+| 838 | crypto|drop_revert(drop=0.05,hold=5,n=5)+rsi_band(hi=60) | 2.08/0.17/-13.08 | 428.6 | 690 | 0.043 | 0.89311 (185.76) | 1.0 | 0.1769 | 0.9055 | False | beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa |
+| 839 | crypto|drop_revert(drop=0.15,hold=3,n=1)+rsi_band(hi=60) | 0.0/0.0/0.0 | 428.6 | 4 | 0.0106 | 1.0 (42.03) | 1.0 | 0.0 | 0.909 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+| 840 | crypto|drop_revert(drop=0.15,hold=3,n=5)+rsi_band(hi=60) | -0.37/-0.45/-0.6 | 428.6 | 21 | 0.0132 | 0.93806 (234.93) | 1.0 | 0.0255 | 0.909 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+| 841 | crypto|drop_revert(drop=0.15,hold=5,n=1)+rsi_band(hi=60) | 0.0/0.0/0.0 | 428.6 | 4 | 0.0106 | 1.0 (312.99) | 1.0 | 0.0 | 0.909 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+| 842 | crypto|drop_revert(drop=0.15,hold=5,n=5)+rsi_band(hi=60) | -0.42/-0.26/-1.37 | 428.6 | 22 | 0.0133 | 0.93207 (271.64) | 1.0 | 0.0785 | 0.909 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+
+N_cumulative: 842
+
+## Engine prereg 20261023_201113_gen_2310232016_000 (gen_2310232016_000, sha256 592a49880eb9): rows #843-846 RESERVED (4 variants). Counted in N.
+N_cumulative: 846
+
+## Engine run 20261023_201113_gen_2310232016_000 (gen_2310232016_000): rows #843-846. 0/4 pass. PBO 0.609. Bar applied at N=846. Report: engine/runs/20261023_201113_gen_2310232016_000/report.md
+
+| # | variant | OOS ret/Sh/DD | B&H OOS | trades | cost/stop | twin p (rand med%) | Holm | DSR | SPA | pass | failed checks |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 843 | crypto_d|supertrend(atr_n=7,mult=3) | 5.54/0.28/-29.93 | 268.18 | 75 | 0.0184 | 0.84815 (117.51) | 1.0 | 0.45 | 0.8865 | False | beats_buy_hold, min_trades, walk_forward, holm, dsr, spa, pbo |
+| 844 | crypto_d|supertrend(atr_n=7,mult=4) | -1.28/0.18/-27.09 | 268.18 | 53 | 0.0189 | 0.9031 (75.97) | 1.0 | 0.4014 | 0.9045 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa, pbo |
+| 845 | crypto_d|supertrend(atr_n=14,mult=3) | -7.44/0.03/-30.33 | 268.18 | 75 | 0.0183 | 0.93906 (108.86) | 1.0 | 0.3325 | 0.904 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa, pbo |
+| 846 | crypto_d|supertrend(atr_n=14,mult=4) | 5.23/0.28/-24.16 | 268.18 | 47 | 0.0189 | 0.84515 (123.56) | 1.0 | 0.4496 | 0.8945 | False | beats_buy_hold, min_trades, walk_forward, holm, dsr, spa, pbo |
+
+N_cumulative: 846
+
+## Engine prereg 20261023_201115_gen_2310232017_000 (gen_2310232017_000, sha256 83553f7bd162): rows #847-878 RESERVED (32 variants). Counted in N.
+N_cumulative: 878
+
+## Engine run 20261023_201115_gen_2310232017_000 (gen_2310232017_000): rows #847-878. 0/32 pass. PBO 0.896. Bar applied at N=878. Report: engine/runs/20261023_201115_gen_2310232017_000/report.md
+
+| # | variant | OOS ret/Sh/DD | B&H OOS | trades | cost/stop | twin p (rand med%) | Holm | DSR | SPA | pass | failed checks |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 847 | megacap|drop_revert(drop=0.05,hold=5,n=3)+day_of_week(days=0) | -0.67/-0.02/-8.28 | 214.9 | 349 | 0.0293 | 1.0 (77.45) | 1.0 | 0.0003 | 0.49 | False | oos_positive, beats_buy_hold, walk_forward, holm, dsr, spa, pbo |
+| 848 | megacap|drop_revert(drop=0.05,hold=5,n=3)+day_of_week(days=1) | 20.28/0.74/-3.77 | 214.9 | 358 | 0.0298 | 1.0 (77.85) | 1.0 | 0.0013 | 0.495 | False | beats_buy_hold, holm, dsr, spa, pbo |
+| 849 | megacap|drop_revert(drop=0.05,hold=5,n=3)+day_of_week(days=2) | -14.15/-1.21/-19.49 | 214.9 | 352 | 0.0299 | 1.0 (77.92) | 1.0 | 0.0 | 0.497 | False | oos_positive, beats_buy_hold, walk_forward, holm, dsr, spa, pbo |
+| 850 | megacap|drop_revert(drop=0.05,hold=5,n=3)+day_of_week(days=3) | 12.0/0.96/-4.21 | 214.9 | 355 | 0.0293 | 1.0 (76.2) | 1.0 | 0.0479 | 0.4935 | False | beats_buy_hold, holm, dsr, spa, pbo |
+| 851 | megacap|drop_revert(drop=0.05,hold=5,n=5)+day_of_week(days=0) | -3.18/-0.18/-9.93 | 214.9 | 443 | 0.0319 | 1.0 (76.06) | 1.0 | 0.0001 | 0.488 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+| 852 | megacap|drop_revert(drop=0.05,hold=5,n=5)+day_of_week(days=1) | 13.45/0.5/-5.64 | 214.9 | 465 | 0.0318 | 0.999 (75.7) | 1.0 | 0.0013 | 0.4915 | False | beats_buy_hold, cost_stop, holm, dsr, spa, pbo |
+| 853 | megacap|drop_revert(drop=0.05,hold=5,n=5)+day_of_week(days=2) | -8.41/-0.57/-15.07 | 214.9 | 469 | 0.0322 | 1.0 (76.07) | 1.0 | 0.0 | 0.493 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+| 854 | megacap|drop_revert(drop=0.05,hold=5,n=5)+day_of_week(days=3) | 11.54/0.79/-4.14 | 214.9 | 462 | 0.0313 | 1.0 (76.11) | 1.0 | 0.0258 | 0.4915 | False | beats_buy_hold, cost_stop, holm, dsr, spa, pbo |
+| 855 | megacap|drop_revert(drop=0.05,hold=10,n=3)+day_of_week(days=0) | -2.05/-0.09/-9.93 | 214.9 | 562 | 0.0313 | 1.0 (73.84) | 1.0 | 0.0002 | 0.49 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+| 856 | megacap|drop_revert(drop=0.05,hold=10,n=3)+day_of_week(days=1) | 23.9/0.8/-5.25 | 214.9 | 599 | 0.0308 | 0.998 (75.84) | 1.0 | 0.0035 | 0.497 | False | beats_buy_hold, cost_stop, holm, dsr, spa, pbo |
+| 857 | megacap|drop_revert(drop=0.05,hold=10,n=3)+day_of_week(days=2) | -16.03/-1.04/-23.14 | 214.9 | 591 | 0.031 | 1.0 (74.3) | 1.0 | 0.0 | 0.501 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+| 858 | megacap|drop_revert(drop=0.05,hold=10,n=3)+day_of_week(days=3) | 10.75/0.6/-8.07 | 214.9 | 599 | 0.0306 | 1.0 (73.44) | 1.0 | 0.0153 | 0.492 | False | beats_buy_hold, cost_stop, holm, dsr, spa, pbo |
+| 859 | megacap|drop_revert(drop=0.05,hold=10,n=5)+day_of_week(days=0) | -1.68/-0.07/-9.93 | 214.9 | 682 | 0.033 | 1.0 (73.21) | 1.0 | 0.0002 | 0.4935 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+| 860 | megacap|drop_revert(drop=0.05,hold=10,n=5)+day_of_week(days=1) | 23.65/0.75/-6.0 | 214.9 | 734 | 0.0331 | 0.99401 (73.11) | 1.0 | 0.0051 | 0.4935 | False | beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+| 861 | megacap|drop_revert(drop=0.05,hold=10,n=5)+day_of_week(days=2) | -12.45/-0.67/-20.47 | 214.9 | 744 | 0.0331 | 1.0 (72.57) | 1.0 | 0.0 | 0.4985 | False | oos_positive, beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+| 862 | megacap|drop_revert(drop=0.05,hold=10,n=5)+day_of_week(days=3) | 9.46/0.52/-7.49 | 214.9 | 725 | 0.0324 | 1.0 (72.65) | 1.0 | 0.0085 | 0.4875 | False | beats_buy_hold, cost_stop, walk_forward, holm, dsr, spa, pbo |
+| 863 | megacap|drop_revert(drop=0.1,hold=5,n=3)+day_of_week(days=0) | -4.37/-0.58/-4.88 | 214.9 | 54 | 0.0212 | 1.0 (78.43) | 1.0 | 0.0 | 0.4965 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa, pbo |
+| 864 | megacap|drop_revert(drop=0.1,hold=5,n=3)+day_of_week(days=1) | 9.25/0.59/-1.96 | 214.9 | 53 | 0.0208 | 1.0 (81.47) | 1.0 | 0.0001 | 0.49 | False | beats_buy_hold, min_trades, holm, dsr, spa, pbo |
+| 865 | megacap|drop_revert(drop=0.1,hold=5,n=3)+day_of_week(days=2) | -0.58/-0.15/-2.49 | 214.9 | 50 | 0.0217 | 1.0 (79.69) | 1.0 | 0.0001 | 0.496 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa, pbo |
+| 866 | megacap|drop_revert(drop=0.1,hold=5,n=3)+day_of_week(days=3) | 4.56/0.89/-0.54 | 214.9 | 53 | 0.0203 | 1.0 (80.52) | 1.0 | 0.0001 | 0.4965 | False | beats_buy_hold, min_trades, walk_forward, holm, dsr, spa, pbo |
+| 867 | megacap|drop_revert(drop=0.1,hold=5,n=5)+day_of_week(days=0) | -4.73/-0.56/-7.01 | 214.9 | 94 | 0.023 | 1.0 (78.89) | 1.0 | 0.0 | 0.494 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa, pbo |
+| 868 | megacap|drop_revert(drop=0.1,hold=5,n=5)+day_of_week(days=1) | 10.08/0.59/-2.47 | 214.9 | 101 | 0.0238 | 1.0 (80.37) | 1.0 | 0.0003 | 0.4925 | False | beats_buy_hold, holm, dsr, spa, pbo |
+| 869 | megacap|drop_revert(drop=0.1,hold=5,n=5)+day_of_week(days=2) | 0.63/0.14/-3.28 | 214.9 | 90 | 0.023 | 1.0 (79.94) | 1.0 | 0.0008 | 0.493 | False | beats_buy_hold, min_trades, walk_forward, holm, dsr, spa, pbo |
+| 870 | megacap|drop_revert(drop=0.1,hold=5,n=5)+day_of_week(days=3) | 4.97/0.72/-1.85 | 214.9 | 101 | 0.0234 | 1.0 (78.21) | 1.0 | 0.0094 | 0.495 | False | beats_buy_hold, walk_forward, holm, dsr, spa, pbo |
+| 871 | megacap|drop_revert(drop=0.1,hold=10,n=3)+day_of_week(days=0) | -2.22/-0.21/-6.78 | 214.9 | 95 | 0.0212 | 1.0 (78.14) | 1.0 | 0.0 | 0.4925 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa, pbo |
+| 872 | megacap|drop_revert(drop=0.1,hold=10,n=3)+day_of_week(days=1) | 10.12/0.61/-2.85 | 214.9 | 94 | 0.0212 | 1.0 (80.19) | 1.0 | 0.0002 | 0.4925 | False | beats_buy_hold, min_trades, holm, dsr, spa, pbo |
+| 873 | megacap|drop_revert(drop=0.1,hold=10,n=3)+day_of_week(days=2) | -1.82/-0.34/-4.17 | 214.9 | 91 | 0.0218 | 1.0 (80.99) | 1.0 | 0.0001 | 0.4945 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa, pbo |
+| 874 | megacap|drop_revert(drop=0.1,hold=10,n=3)+day_of_week(days=3) | 5.22/0.8/-1.55 | 214.9 | 94 | 0.0212 | 1.0 (80.03) | 1.0 | 0.0046 | 0.493 | False | beats_buy_hold, min_trades, holm, dsr, spa, pbo |
+| 875 | megacap|drop_revert(drop=0.1,hold=10,n=5)+day_of_week(days=0) | -4.05/-0.39/-8.13 | 214.9 | 152 | 0.0237 | 1.0 (79.3) | 1.0 | 0.0 | 0.493 | False | oos_positive, beats_buy_hold, walk_forward, holm, dsr, spa, pbo |
+| 876 | megacap|drop_revert(drop=0.1,hold=10,n=5)+day_of_week(days=1) | 12.08/0.66/-3.08 | 214.9 | 166 | 0.0245 | 1.0 (79.16) | 1.0 | 0.0008 | 0.4935 | False | beats_buy_hold, holm, dsr, spa, pbo |
+| 877 | megacap|drop_revert(drop=0.1,hold=10,n=5)+day_of_week(days=2) | -0.41/-0.05/-4.91 | 214.9 | 155 | 0.024 | 1.0 (79.25) | 1.0 | 0.0003 | 0.494 | False | oos_positive, beats_buy_hold, walk_forward, holm, dsr, spa, pbo |
+| 878 | megacap|drop_revert(drop=0.1,hold=10,n=5)+day_of_week(days=3) | 3.72/0.46/-3.6 | 214.9 | 170 | 0.0239 | 1.0 (74.77) | 1.0 | 0.0033 | 0.4975 | False | beats_buy_hold, walk_forward, holm, dsr, spa, pbo |
+
+N_cumulative: 878
+
+## Engine prereg 20261023_201123_gen_2310232018_000 (gen_2310232018_000, sha256 b1ff3521dc9a): rows #879-886 RESERVED (8 variants). Counted in N.
+N_cumulative: 886
+
+## Engine run 20261023_201123_gen_2310232018_000 (gen_2310232018_000): rows #879-886. 0/8 pass. PBO 0.051. Bar applied at N=886. Report: engine/runs/20261023_201123_gen_2310232018_000/report.md
+
+| # | variant | OOS ret/Sh/DD | B&H OOS | trades | cost/stop | twin p (rand med%) | Holm | DSR | SPA | pass | failed checks |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 879 | sector_etf|drop_revert(drop=0.1,hold=3,n=1) | 0.0/0.0/0.0 | 63.33 | 8 | 0.0161 | 1.0 (28.52) | 1.0 | 0.0 | 0.4985 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+| 880 | sector_etf|drop_revert(drop=0.1,hold=3,n=3) | 5.2/0.34/-3.57 | 63.33 | 26 | 0.0275 | 0.999 (28.56) | 1.0 | 0.3779 | 0.4965 | False | beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+| 881 | sector_etf|drop_revert(drop=0.1,hold=5,n=1) | 0.0/0.0/0.0 | 63.33 | 7 | 0.017 | 1.0 (29.67) | 1.0 | 0.0 | 0.4985 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+| 882 | sector_etf|drop_revert(drop=0.1,hold=5,n=3) | 7.44/0.46/-3.57 | 63.33 | 24 | 0.0279 | 0.996 (28.09) | 1.0 | 0.4747 | 0.4955 | False | beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+| 883 | sector_etf|drop_revert(drop=0.15,hold=3,n=1) | 0.0/0.0/0.0 | 63.33 | 3 | 0.0153 | 1.0 (29.52) | 1.0 | 0.0 | 0.4985 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+| 884 | sector_etf|drop_revert(drop=0.15,hold=3,n=3) | 0.27/0.11/-0.93 | 63.33 | 7 | 0.0197 | 0.99001 (28.64) | 1.0 | 0.2531 | 0.498 | False | beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+| 885 | sector_etf|drop_revert(drop=0.15,hold=5,n=1) | 0.0/0.0/0.0 | 63.33 | 3 | 0.0153 | 1.0 (29.52) | 1.0 | 0.0 | 0.4985 | False | oos_positive, beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+| 886 | sector_etf|drop_revert(drop=0.15,hold=5,n=3) | 0.59/0.22/-0.93 | 63.33 | 7 | 0.0197 | 0.99201 (27.92) | 1.0 | 0.321 | 0.495 | False | beats_buy_hold, min_trades, walk_forward, holm, dsr, spa |
+
+N_cumulative: 886

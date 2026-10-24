@@ -1,0 +1,27 @@
+id: gen_2310232014_000
+hypothesis: 'grammar draw seed=2310232014: rsi_revert'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 3
+    - 5
+    entry:
+    - 5
+    - 20
+    exit:
+    - 60
+    - 80
+filters: []
+universe:
+  megacap_h:
+  - AAPL
+  - MSFT
+  - AMZN
+  - GOOGL
+  - META
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

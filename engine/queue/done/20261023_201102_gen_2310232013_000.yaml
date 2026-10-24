@@ -1,0 +1,26 @@
+id: gen_2310232013_000
+hypothesis: 'grammar draw seed=2310232013: sma_cross+vol_regime'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 20
+    - 50
+    slow:
+    - 50
+    - 200
+filters:
+- name: vol_regime
+  params:
+    max_atr_pct: 0.02
+universe:
+  defensive:
+  - GLD
+  - TLT
+  - LLY
+  - JPM
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

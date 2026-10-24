@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_201037_gen_2310232009_000",
+ "spec_hash": "ade992db81a8502dc4d64a8779fca38647c58da41c7ef791f62d7a58ed8e0db9",
+ "rows": {
+  "crypto|supertrend(atr_n=10,mult=2)": 787,
+  "crypto|supertrend(atr_n=10,mult=3)": 788,
+  "crypto|supertrend(atr_n=14,mult=2)": 789,
+  "crypto|supertrend(atr_n=14,mult=3)": 790
+ },
+ "N_after_reserve": 790,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T20:10:37.279911-04:00"
+}
