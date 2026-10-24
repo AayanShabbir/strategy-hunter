@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_100957_gen_2610241009_000",
+ "spec_hash": "00eb88188d6e78c62c47c43262e24ff2b42225c5170c545af06a712e44290d2e",
+ "rows": {
+  "BROAD|sma_cross(fast=10,slow=100)": 2323,
+  "BROAD|sma_cross(fast=10,slow=150)": 2324,
+  "BROAD|sma_cross(fast=50,slow=100)": 2325,
+  "BROAD|sma_cross(fast=50,slow=150)": 2326
+ },
+ "N_after_reserve": 2326,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T10:09:57.535530-04:00"
+}

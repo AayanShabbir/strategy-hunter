@@ -1,0 +1,22 @@
+id: gen_2610241013_000
+hypothesis: 'grammar draw seed=2610241013: donchian'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 20
+    - 55
+    exit_n:
+    - 10
+    - 20
+filters: []
+universe:
+  sectors:
+  - XLK
+  - XLF
+  - XLY
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

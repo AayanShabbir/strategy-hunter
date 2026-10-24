@@ -1,0 +1,25 @@
+id: gen_2610241005_000
+hypothesis: 'grammar draw seed=2610241005: donchian+trend_sma'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 20
+    - 100
+    exit_n:
+    - 10
+    - 20
+filters:
+- name: trend_sma
+  params:
+    n: 50
+universe:
+  crypto:
+  - BTC/USD
+  - ETH/USD
+  - SOL/USD
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

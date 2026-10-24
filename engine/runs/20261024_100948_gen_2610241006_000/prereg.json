@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_100948_gen_2610241006_000",
+ "spec_hash": "89a64a4e54c138ca0e0673340784269fc13490f274ebf4a00a83e6fe7595f880",
+ "rows": {
+  "index|sma_cross(fast=5,slow=150)+vol_regime(max_atr_pct=0.06)": 2303,
+  "index|sma_cross(fast=5,slow=200)+vol_regime(max_atr_pct=0.06)": 2304,
+  "index|sma_cross(fast=10,slow=150)+vol_regime(max_atr_pct=0.06)": 2305,
+  "index|sma_cross(fast=10,slow=200)+vol_regime(max_atr_pct=0.06)": 2306
+ },
+ "N_after_reserve": 2306,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T10:09:48.772781-04:00"
+}
