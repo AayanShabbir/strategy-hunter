@@ -73,10 +73,10 @@ Cost sensitivity of the rolling-OLS portfolio (test split):
 ## Runs
 * CSI300: existing pools s0/s1/s2 (Phase 2, 10,000 episodes each, the paper's CSI300 setting) re-scored; no re-run (the blueprint setting is what was run).
 * S&P 500: 20,000 episodes (AlphaSAGE App. D.2 setting for CSI500/S&P500), seed 0, splits 2010-16 / 2017 / 2018-20, survivorship-biased universe (`data_meta.survivorship = BIASED (current members only)`).
-* CSI500 / CSI1000: 20,000 episodes each, seed 0. Memory is fine (<= 1.3 GB/process of 16 GB) but each episode costs 0.5-1.1 s once the 50-member pool is full (O(pool x cells) correlations), i.e. 3-5 h per universe on one core; they were run one at a time at Aayan's request. CSI1000 has only 1,506 train days (the index starts 2014). See the status line below.
+* CSI500 / CSI1000: **deliberately stopped partway at Aayan's request (2026-10-24 ~1:06 AM ET); not scored, no results, and not a failure of the method.** Reasons: Chinese A-shares are not tradable by the desk, and each run needed hours of compute. Last logged episodes: CSI500 13,600 of 20,000; CSI1000 5,800 of 20,000 (the buffered `curve.csv` files lagged at 10,100 / 5,100). The partial run folders (config, pool, curve, weights) were moved out of the repo to a local scratch directory and are not committed. Their sampled formulas remain counted as trials in the ledger (and therefore in N for DSR). Nothing is claimed for these universes.
 
 <!--STATUS-->
-CSI500 / CSI1000: running / not yet scored at the time of this commit.
+CSI500 / CSI1000: stopped at Aayan's request, not scored (see Runs). US focus: S&P 500 seeds 1 and 2 are being added one at a time (table above is regenerated after each is scored).
 <!--/STATUS-->
 
 ## Blockers / things that could not be done exactly as written

@@ -63,7 +63,7 @@ Never committed: secrets/keys (`.env*`, `*.key`, `*.pem`), market data (`data/`,
 |---|---|---|
 | 1 | DSL AST grammar + RGCN encoder | done |
 | 2 | GFlowNet (TB + entropy), multi-faceted reward + factor pool, hash-chained ledger, Qlib/yfinance loader | done |
-| 3 | long-short leverage-normalised portfolio with costs, pool combiner, DSR / CSCV-PBO / CPCV / SPA / Ville e-process, multi-universe runs | done for CSI300 and S&P 500; **CSI500 / CSI1000 still training** (scored and added when they finish) |
+| 3 | long-short leverage-normalised portfolio with costs, pool combiner, DSR / CSCV-PBO / CPCV / SPA / Ville e-process, multi-universe runs | done for CSI300 and S&P 500 (seed 0; seeds 1–2 in progress). **CSI500 / CSI1000 were deliberately stopped partway at Aayan's request (not scored, no results, not a method failure; China is not tradable by the desk and the runs took hours). Focus is US stocks.** |
 | 4 | trial ledger + e-process promotion gate | built (ledger in Phase 2, e-process in Phase 3); the blueprint's full Phase-4 definition is not on the box |
 
 **Results vs blueprint targets (Sharpe ≥ 5.5, annual return ≥ 18%, PBO ≤ 10%): no run meets any target.** Best out-of-sample result is S&P 500 (survivorship-biased, equal-weight combiner) at test Sharpe 1.10 / AR 9.8% / PBO 57% / DSR 0.00; CSI300 is ≈ 0 after 5 bp costs with PBO 74%; no candidate gets near the e-process boundary (max evidence ≈ 2 vs 160). Full tables and open questions: [docs/sde_phase3.md](docs/sde_phase3.md).

@@ -13,7 +13,7 @@ Every trial is recorded in the blueprint's append-only ledger (Phase 4, `src/aud
   300-tree fuzz (parse/eval/encode), no-lookahead test (perturbing rows >= t cannot change rows < t).
   Implementation note: r1/r2 messages flow operand->operator (operator aggregates children), r3 = W_0 self-loop.
 - Phase 2 (GFlowNet policy, multi-faceted reward + factor pool, ledger, data loader, vectorized TsStd): DONE 2026-10-23 — see `docs/sde_phase2.md` (first CSI300 run: pool 1/1/0 of 50, no out-of-sample IC).
-- Phase 3 (long-short portfolio, combiner, DSR/CSCV/CPCV/SPA, Ville e-process, multi-universe runs): DONE 2026-10-23 for CSI300 and S&P 500 — see `docs/sde_phase3.md`. No blueprint target met. CSI500/CSI1000 runs still training at the time of v0.3.0; they are added when scored.
+- Phase 3 (long-short portfolio, combiner, DSR/CSCV/CPCV/SPA, Ville e-process, multi-universe runs): DONE 2026-10-23 for CSI300 and S&P 500 — see `docs/sde_phase3.md`. No blueprint target met. CSI500/CSI1000 were deliberately stopped partway (13,600 / 5,800 of 20,000 episodes) at Aayan's request on 2026-10-24: not scored, no results, not a method failure (Chinese markets are not tradable by the desk; hours of compute). Focus moved to US stocks: S&P 500 seeds 1 and 2, then a survivorship-reduced S&P 500 addition. The ledger snapshot was refreshed (`src/audit/ledger_20261024.jsonl.gz`).
 - Phase 4 (append-only ledger + e-process promotion gate): the components are built (`src/audit/ledger.py` in Phase 2, `src/validation/eprocess.py` writing `candidate`/`escore` rows in Phase 3). The blueprint's full Phase-4 definition is not on the box; anything beyond these is an open question (see `docs/sde_phase3.md`).
 
 ## Data plan (Phase 2+)

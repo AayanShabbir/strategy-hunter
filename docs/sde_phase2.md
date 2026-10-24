@@ -13,7 +13,7 @@ Research only. No trading, no broker keys, no market data or secrets committed.
 | `src/train/train_gfn.py`, `evaluate_pool.py` | Training on the train split only (val/test prices never loaded); one-shot val/test read of the final pool. |
 | `tests_sde/test_phase2.py`, `conftest.py` | 33 new tests. |
 | `runs_sde/csi300_s{0,1,2}_20261023/` | config, final pool, val/test evaluation (model weights and curve.csv stay local, gitignored). |
-| `src/audit/ledger_20261023.jsonl.gz` | Snapshot of the ledger (30,012 entries; head hash `017c25db…5a46`). `gunzip` then `Ledger(path).verify()`. |
+| `src/audit/ledger_<date>.jsonl.gz` | Snapshot of the ledger (the Phase 2 snapshot had 30,012 entries; the 2026-10-24 refresh `ledger_20261024.jsonl.gz` has 71,707, head hash `10cedad9…8dd3`). `gunzip` then `Ledger(path).verify()`. |
 
 ## Choices the blueprint text I had does not pin down (all logged in `config.json`)
 - **24 actions**: the DSL defines 14 tokens (4 features, Log, TsStd, Add, Sub, Div, 4 windows, SEP). The other 10 slots are reserved and permanently masked so the head is 24-wide without inventing operators. If the blueprint has a specific 24-token list, tell me and the vocabulary changes in one place.

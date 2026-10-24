@@ -1,6 +1,11 @@
 # Changelog
 All dates America/New_York.
 
+## 2026-10-24 (SDE: US focus)
+- CSI500 and CSI1000 runs deliberately stopped partway at Aayan's request (13,600 / 5,800 of 20,000 episodes at last log); not scored, no results, not a method failure. Reason: Chinese markets are not tradable by the desk; hours of compute. Partial run folders are not committed; their trials stay in the ledger / N.
+- Ledger snapshot refreshed after `Ledger.verify()` passed (71,707 entries, head hash `10cedad9…8dd3`): `src/audit/ledger_20261024.jsonl.gz` replaces `ledger_20261023.jsonl.gz` (the old one stays in git history).
+- Next: S&P 500 seeds 1 and 2 (same blueprint settings as seed 0), then an extra, clearly labelled survivorship-reduced S&P 500 evaluation.
+
 ## 2026-10-24 (v0.3.0-sde-phase3, repo restructure)
 ### Added
 - Root README (architecture diagram, quickstart, status), ARCHITECTURE.md, CONTRIBUTING.md, docs/README.md index, docs/runs_sde.md, LICENSE (proprietary), pyproject.toml (pytest + ruff), Makefile, .editorconfig, PR template, CI workflow (.github/workflows/ci.yml).
