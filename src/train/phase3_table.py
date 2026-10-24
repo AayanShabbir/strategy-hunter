@@ -1,5 +1,5 @@
 """Build the Phase 3 results tables (markdown) from runs_sde/*/phase3.json.   python -m src.train.phase3_table"""
-import json, glob, sys
+import json, glob, sys, re
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 
@@ -35,5 +35,14 @@ def cost_table():
     return "\n".join(out)
 
 
+def inject(path):
+    """Replace the blocks between <!--TABLE:main--> / <!--TABLE:cost--> markers in a markdown file."""
+    t = Path(path).read_text()
+    for tag, body in (("main", table()), ("cost", cost_table())):
+        t = re.sub(r"(<!--TABLE:%s-->).*?(<!--/TABLE:%s-->)" % (tag, tag), lambda m: m.group(1) + "\n" + body + "\n" + m.group(2), t, flags=re.S)
+    Path(path).write_text(t)
+
+
 if __name__ == "__main__":
-    print(table()); print(); print(cost_table())
+    if len(sys.argv) > 2 and sys.argv[1] == "--inject": inject(sys.argv[2])
+    else: print(table()); print(); print(cost_table())
