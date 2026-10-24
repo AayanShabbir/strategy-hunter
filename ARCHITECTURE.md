@@ -26,6 +26,9 @@ research_lab/
 ## SDE data flow
 `data.loader` (Qlib cn_data / yfinance, point-in-time for CSI, *survivorship-biased* for S&P 500) → `dsl.grammar` evaluates a formula on the panel → `rewards.multi_faceted` (|IC| + λ·SA + η·NOV, `FactorPool` cap 50) → `gflownet.policy` samples next formulas with trajectory balance. After training, `train.evaluate_pool` reads val/test once; `train.phase3_eval` builds the long-short book (`portfolio/`), runs `validation/` checks with N from the ledger, appends `candidate`/`escore`/`p3_eval` rows, and writes `runs_sde/<run>/phase3.json`.
 
+## Swarm (engine/swarm, engine/vault/publisher.py)
+Miner → backtest workers → Auditor (CPCV, PBO, DSR at global N, SPA) → Trader (ρ<0.30, ΔIC) → Publisher, coordinated through an SQLite WAL trial ledger at `data/ledger/trials.db` and launched by `./engine/hunt swarm-start`. It imports the SDE's DSL and validators from `src/` and reads search data only (train 2010-2016 + validation 2017). It does not touch the engine ledger/vault or the SDE ledger (both are read once, read-only, to seed an N_trials baseline offset). See `docs/swarm.md` and `docs/swarm_llm_mailbox.md`.
+
 ## Invariants
 1. Research only: no order code, no broker keys, no live routing.
 2. Every sampled formula / variant is a counted trial *before* its result is seen.

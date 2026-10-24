@@ -41,6 +41,7 @@ Answer every request at most once. If you cannot produce anything useful, still 
   "id": "req_20261024T020000Z_ab12cd34",
   "created_utc": "2026-10-24T02:00:00Z",
   "expires_at": "2026-10-24T03:00:00Z",
+  "abandon_after_utc": "2026-10-24T03:00:00Z",
   "kind": "propose",
   "persona": "volatility",
   "persona_brief": "Ideas about how risky a stock has been recently, and how that compares with price or volume.",
@@ -154,4 +155,6 @@ Invalid examples: `ts_mean(close, 20)` (unknown syntax), `TsStd($close, 15d)` (w
 
 * `cd /workspace/research_lab && ./engine/hunt swarm-llm-check '<expression>' ['<expression>' ...]` prints, for each
   string, `VALID <hash> <node_count>` or `INVALID <reason>`. Use it to self-check formulas before answering.
-* `./engine/hunt swarm-llm-ping` writes one small `propose` request and waits for the response (used to test the loop).
+* `./engine/hunt swarm-llm-ping [--timeout 600]` writes one small `propose` request (`persona: momentum`, `n: 2`) and waits for the
+  response, then prints each returned formula as `OK`/`BAD`. It is a diagnostic: nothing from a ping is backtested or counted as a
+  trial. Exit code 0 = valid answer, 2 = no answer before the timeout (a late answer is still fine), 1 = invalid answer.
