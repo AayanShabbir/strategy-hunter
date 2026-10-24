@@ -1,43 +1,72 @@
 # strategy-hunter
 
-Research-only strategy finder and backtest engine for Aayan's paper desk. **Places no orders; never touches the live desk.**
+Private research repo (owner: Aayan Shabbir). **Research only: it places no orders, holds no broker keys and never touches the live trading desk.**
 
-## Structure
-- `engine/` — Strategy Hunter (`./engine/hunt`): spec → pre-register (ledger N) → vectorbt backtest → pass bar (OOS, B&H, ≥100 trades, cost/stop ≤3%, walk-forward, random-entry twin + ledger-wide Holm, DSR, SPA, PBO) → one vault look for survivors. Tests: `engine/tests`.
-- `crypto/`, `reels/` — crypto research notes, ORB reel test. `hunts/` — hand-run hunts h7–h17. `ledger/` — human ledger. `nautilus/` — NautilusTrader confirmation harness. `docs/` — design notes (see `docs/frontier_upgrade.md`).
+It contains two independent systems that share one philosophy: every idea tried is counted (multiple-testing ledger), and anything that "passes" must survive deflation and out-of-sample checks before a human is even asked.
 
-## Run
+| system | what it is | where |
+|---|---|---|
+| **Strategy Hunter engine** | spec → pre-register (ledger N) → vectorbt backtest → pass bar (OOS, B&H, ≥100 trades, cost/stop ≤ 3%, walk-forward, random-entry twin + Holm, DSR, SPA, PBO) → one look at a sealed 12-month vault. Runs hourly/nightly unattended. | `engine/`, `ledger/` |
+| **Strategy Discovery Engine (SDE)** | Blueprint implementation of an alpha-factor search: DSL grammar → RGCN encoder → GFlowNet policy → multi-faceted reward + factor pool → long-short portfolio → DSR / CSCV-PBO / CPCV / SPA / Ville e-process, all logged in a hash-chained trial ledger. | `src/`, `tests_sde/`, `runs_sde/` |
+| **Hand-run research** | one-off hunts h7–h17, crypto batch, ORB reel test, NautilusTrader confirmation harness, vendored `pypbo`. | `hunts/`, `crypto/`, `reels/`, `nautilus/`, `vendor/` |
+
+## Architecture
+```mermaid
+flowchart LR
+  subgraph ENG["engine/ (live, unattended)"]
+    G[hunt generate / specs] --> Q[queue/pending] --> D[hunt drain] --> R[runs/ + engine/ledger N]
+    D --> V[(sealed vault: one look)]
+  end
+  subgraph SDE["src/ (SDE blueprint)"]
+    DSL[dsl/grammar] --> ENC[models/rgcn_encoder] --> POL[gflownet/policy] --> REW[rewards/multi_faceted + pool]
+    DAT[data/loader] --> REW
+    REW --> PF[portfolio/long_short + combine] --> VAL[validation: DSR CSCV CPCV SPA e-process]
+    POL -. every trial .-> AUD[(audit/ledger.jsonl hash chain)]
+    VAL -. candidate/escore .-> AUD
+  end
+  subgraph RES["research (frozen, hand-run)"]
+    H[hunts/ h7-h17] --- C[crypto/ reels/ nautilus/ vendor/pypbo]
+  end
+  HL[ledger/README.txt human ledger] --> ENG
+  RES --> HL
+  ENG -->|mirror| TD[/workspace/trading-desk/validation/results/]
 ```
-./engine/hunt status | validate SPEC | run SPEC | enqueue SPEC | drain [--dry]
-./engine/hunt generate --n 20 --seed 1 --universe '{"crypto":["SOL/USD","BTC/USD"]}' --out /tmp/gen
-./engine/hunt optimize SPEC --trials 50 --objective calmar
-cd engine && ../.venv17/bin/python -m pytest -q
+Details: [ARCHITECTURE.md](ARCHITECTURE.md). Doc index: [docs/README.md](docs/README.md).
+
+## Quickstart (on the box)
+```bash
+cd /workspace/research_lab
+# engine (research/paper only)
+./engine/hunt status
+./engine/hunt validate engine/specs/examples/example_donchian_filters.yaml
+# SDE
+PYTHONPATH=. .venv17/bin/python -m src.train.train_gfn --universe csi300 --episodes 10000 --seed 0 --run-id my_run
+PYTHONPATH=. .venv17/bin/python -m src.train.evaluate_pool --run-id my_run
+PYTHONPATH=. .venv17/bin/python -m src.train.phase3_eval  --run-id my_run
 ```
-Market-data keys come from env (`ALPACA_API_KEY`/`ALPACA_SECRET_KEY`) and are never stored. Data caches and the sealed vault data are git-ignored; re-fetch with `hunt seed-cache`.
+The interpreter is `.venv17/` (git-ignored; pinned versions in `requirements.lock.txt`). Market data keys, if any, come from the environment and are never stored.
+
+## Tests
+```bash
+make test            # both suites
+make test-sde        # PYTHONPATH=. pytest tests_sde      -> 73 tests, no market data needed
+make test-engine     # cd engine && pytest                 -> 18 tests
+make lint            # ruff correctness lint (src, tests_sde)
+```
+CI (`.github/workflows/ci.yml`) runs the SDE tests (CPU torch + numpy/pandas/scipy), ruff, a byte-compile of the engine and a forbidden-files check. The engine tests need the heavy vectorbt/numba/arch stack and stay a local `make test-engine` step.
+
+## Data and secrets policy
+Never committed: secrets/keys (`.env*`, `*.key`, `*.pem`), market data (`data/`, `*.parquet`, `*.csv`, `*.gz` except the ledger snapshot), the sealed vault data, model weights (`*.pt`), logs, virtualenvs and the live append-only SDE ledger (`src/audit/ledger.jsonl`, 50+ MB; a gzip snapshot `src/audit/ledger_<date>.jsonl.gz` is committed instead and is verifiable with `Ledger(path).verify()`). Convention for run folders: [docs/runs_sde.md](docs/runs_sde.md).
+
+## SDE status (honest)
+| phase | scope | state |
+|---|---|---|
+| 1 | DSL AST grammar + RGCN encoder | done |
+| 2 | GFlowNet (TB + entropy), multi-faceted reward + factor pool, hash-chained ledger, Qlib/yfinance loader | done |
+| 3 | long-short leverage-normalised portfolio with costs, pool combiner, DSR / CSCV-PBO / CPCV / SPA / Ville e-process, multi-universe runs | done for CSI300 and S&P 500; **CSI500 / CSI1000 still training** (scored and added when they finish) |
+| 4 | trial ledger + e-process promotion gate | built (ledger in Phase 2, e-process in Phase 3); the blueprint's full Phase-4 definition is not on the box |
+
+**Results vs blueprint targets (Sharpe ≥ 5.5, annual return ≥ 18%, PBO ≤ 10%): no run meets any target.** Best out-of-sample result is S&P 500 (survivorship-biased, equal-weight combiner) at test Sharpe 1.10 / AR 9.8% / PBO 57% / DSR 0.00; CSI300 is ≈ 0 after 5 bp costs with PBO 74%; no candidate gets near the e-process boundary (max evidence ≈ 2 vs 160). Full tables and open questions: [docs/sde_phase3.md](docs/sde_phase3.md).
 
 ## Credits
-vectorbt (polakowo, Apache-2.0 w/ Commons Clause), NautilusTrader (LGPL-3.0), Optuna (MIT), numba (BSD-2), arch (K. Sheppard, NCSA), pypbo (esvhd, MIT, vendored), skfolio (BSD-3), quantstats (Apache-2.0), alpaca-py (Apache-2.0), scipy/numpy/pandas (BSD). Methods: Bailey & López de Prado (PBO, DSR, False Strategy Theorem), Hansen (SPA), Holm. Full list: `THIRD_PARTY_LICENSES.md`.
-
----
-# research_lab — shared hunt stack (research only, never places orders)
-
-Isolated env: `/workspace/research_lab/.venv` (separate from the trading desk runtime). Run with `.venv/bin/python`.
-Layout: `data/alpaca/` (one shared parquet cache of Alpaca bars), `lab/` (shared glue), `hunts/<hunt_id>/`, `ledger/` (cumulative tried-variant count N).
-
-## How an agent runs a hunt
-1. `mkdir hunts/<id>` and write **prereg.yaml first** (rule, params, costs ≥5 bps/side, IS/OOS split, benchmark, pass bar). Commit nothing else until it exists; never edit it after results.
-2. Load bars from `data/alpaca/` (fetch once with alpaca-py paper data keys from env; never print keys).
-3. Backtest with **vectorbt** (signal on completed bar, fill next bar open, fees from prereg).
-4. Robustness checks:
-   - **CPCV**: `skfolio.model_selection.CombinatorialPurgedCV` — distribution of OOS Sharpe across paths.
-   - **PBO + DSR**: `pypbo` (CSCV PBO; deflated Sharpe using the ledger's cumulative N).
-   - **Holm**: `statsmodels.stats.multitest.multipletests(method="holm")` over all N variants in the ledger.
-   - **SPA**: `arch.bootstrap.SPA` — strategy (or 70/15/15 blend) vs SPY / 70% SPY core.
-5. `quantstats.reports.html(strategy, benchmark=SPY)` → `hunts/<id>/tearsheet.html`.
-6. Append the result and new N to `ledger/`. Pass only if every check passes; nothing is switched on without Aayan's OK.
-
-Example: `hunts/h7_overnight_repro/` (reproduces Hunt #7 overnight_after_down1 exactly).
-
-## Strategy Discovery Engine (SDE, in progress)
-New package `src/` per the SDE blueprint, see `docs/sde_plan.md`. Phase 1 (DSL AST grammar + RGCN encoder) and Phase 2 (GFlowNet search, reward/pool, ledger, data; `docs/sde_phase2.md`) done;
-tests: `.venv17/bin/python -m pytest tests_sde`. Credits: AlphaGen, GFlowNets/TB, R-GCN, Benhamou et al. 2026 (see THIRD_PARTY_LICENSES.md).
+vectorbt, NautilusTrader, Optuna, numba, arch, pypbo (vendored), skfolio, quantstats, alpaca-py, PyTorch; methods by Bailey & López de Prado (PBO, DSR), Hansen (SPA), Holm, AlphaGen/AlphaSAGE, GFlowNets, R-GCN, Benhamou et al. 2026 (e-process). See [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md). License: private, all rights reserved ([LICENSE](LICENSE)).
