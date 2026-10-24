@@ -104,3 +104,7 @@ wrapt==2.5.2rc1
 yfinance==1.7.0
 optuna==5.0.0  # added 2026-10-23 (MIT)
 torch==2.14.1+cpu  # SDE Phase 1, CPU wheel from download.pytorch.org/whl/cpu
+mlflow-skinny==3.17.2  # swarm publisher run metadata, SQLite store (Apache-2.0)
+SQLAlchemy==2.1.6  # mlflow sqlite backend (MIT)
+alembic==1.20.1  # mlflow sqlite backend (MIT)
+Mako==1.4.3  # alembic dependency (MIT)

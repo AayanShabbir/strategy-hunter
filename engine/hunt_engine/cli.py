@@ -22,7 +22,10 @@ def main(argv=None):
     g.add_argument("--timeframe", default="1Day"); g.add_argument("--out", required=True); g.add_argument("--schema", action="store_true")
     o = sub.add_parser("optimize", help="Optuna IS-only search; every trial counted in ledger N"); o.add_argument("spec")
     o.add_argument("--trials", type=int, default=50); o.add_argument("--objective", choices=["sharpe", "calmar"], default="sharpe"); o.add_argument("--top-k", type=int, default=4)
+    from swarm.cli import add_subparsers as _swarm_cmds, dispatch as _swarm_dispatch   # additive: swarm-* commands (engine/swarm)
+    _swarm_cmds(sub)
     a = ap.parse_args(argv)
+    if a.cmd.startswith("swarm-"): sys.exit(_swarm_dispatch(a))
     if a.cmd == "init":
         st = ledger.migrate(_readme_N(), paths()["human_ledger"]); print("ledger:", st); print("vault:", vault.seal())
     elif a.cmd == "seed-cache": print("cached files:", data.seed_cache())
