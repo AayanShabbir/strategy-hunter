@@ -1,0 +1,31 @@
+id: gen_2410240021_000
+hypothesis: 'grammar draw seed=2410240021: supertrend+rsi_band'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 10
+    - 14
+    mult:
+    - 3
+    - 4
+filters:
+- name: rsi_band
+  params:
+    hi: 60
+universe:
+  sectors:
+  - XLK
+  - XLF
+  - XLE
+  - XLV
+  - XLI
+  - XLY
+  - XLP
+  - XLU
+  - XLB
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

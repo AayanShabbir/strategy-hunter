@@ -1,0 +1,24 @@
+id: gen_2410240031_000
+hypothesis: 'grammar draw seed=2410240031: sma_cross'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 5
+    - 10
+    slow:
+    - 50
+    - 100
+filters: []
+universe:
+  semis:
+  - NVDA
+  - AMD
+  - AVGO
+  - MU
+  - SMCI
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

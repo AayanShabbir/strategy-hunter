@@ -1,0 +1,28 @@
+id: gen_2410240011_001
+hypothesis: 'grammar draw seed=2410240011: rsi_revert+relvol'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 2
+    - 3
+    entry:
+    - 5
+    - 10
+    exit:
+    - 60
+    - 70
+filters:
+- name: relvol
+  params:
+    min_ratio: 1.2
+universe:
+  crypto:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

@@ -1,0 +1,27 @@
+id: gen_2410240001_000
+hypothesis: 'grammar draw seed=2410240001: supertrend+rsi_band'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 10
+    - 14
+    mult:
+    - 3
+    - 4
+filters:
+- name: rsi_band
+  params:
+    hi: 80
+universe:
+  crypto_d:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+  - AVAX/USD
+  - LINK/USD
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

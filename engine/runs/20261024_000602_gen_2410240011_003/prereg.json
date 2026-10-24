@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_000602_gen_2410240011_003",
+ "spec_hash": "655d422f983d563e41032908544b770595f4b92b4e3bb690ddeab8a69eeb85f0",
+ "rows": {
+  "crypto|sma_cross(fast=10,slow=150)+vol_regime(max_atr_pct=0.04)": 1323,
+  "crypto|sma_cross(fast=10,slow=200)+vol_regime(max_atr_pct=0.04)": 1324,
+  "crypto|sma_cross(fast=50,slow=150)+vol_regime(max_atr_pct=0.04)": 1325,
+  "crypto|sma_cross(fast=50,slow=200)+vol_regime(max_atr_pct=0.04)": 1326
+ },
+ "N_after_reserve": 1326,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T00:06:02.850933-04:00"
+}

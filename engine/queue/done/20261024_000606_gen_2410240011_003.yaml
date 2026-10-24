@@ -1,0 +1,25 @@
+id: gen_2410240011_003
+hypothesis: 'grammar draw seed=2410240011: sma_cross+vol_regime'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 10
+    - 50
+    slow:
+    - 150
+    - 200
+filters:
+- name: vol_regime
+  params:
+    max_atr_pct: 0.04
+universe:
+  crypto:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

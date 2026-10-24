@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_000620_gen_2410240031_002",
+ "spec_hash": "907f12889d771029a39ad282e60ac71100a5dcc393271e20806c08698f08f0ec",
+ "rows": {
+  "semis|sma_cross(fast=20,slow=50)+trend_sma(n=200)": 1347,
+  "semis|sma_cross(fast=20,slow=150)+trend_sma(n=200)": 1348,
+  "semis|sma_cross(fast=50,slow=50)+trend_sma(n=200)": 1349,
+  "semis|sma_cross(fast=50,slow=150)+trend_sma(n=200)": 1350
+ },
+ "N_after_reserve": 1350,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T00:06:20.485691-04:00"
+}

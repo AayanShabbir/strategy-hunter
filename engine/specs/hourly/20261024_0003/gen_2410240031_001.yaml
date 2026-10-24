@@ -1,0 +1,27 @@
+id: gen_2410240031_001
+hypothesis: 'grammar draw seed=2410240031: donchian+relvol'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 55
+    - 100
+    exit_n:
+    - 10
+    - 20
+filters:
+- name: relvol
+  params:
+    min_ratio: 1.0
+universe:
+  semis:
+  - NVDA
+  - AMD
+  - AVGO
+  - MU
+  - SMCI
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_000615_gen_2410240031_000",
+ "spec_hash": "151b5d59f9eb1def24295df73946d81feabd88f941e8b9f285858cce12f78c6d",
+ "rows": {
+  "semis|sma_cross(fast=5,slow=50)": 1339,
+  "semis|sma_cross(fast=5,slow=100)": 1340,
+  "semis|sma_cross(fast=10,slow=50)": 1341,
+  "semis|sma_cross(fast=10,slow=100)": 1342
+ },
+ "N_after_reserve": 1342,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T00:06:15.758722-04:00"
+}

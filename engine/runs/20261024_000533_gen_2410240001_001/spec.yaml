@@ -1,0 +1,34 @@
+id: gen_2410240001_001
+hypothesis: 'grammar draw seed=2410240001: drop_revert+day_of_week'
+base:
+  idea: drop_revert
+  params:
+    n:
+    - 1
+    - 5
+    drop:
+    - 0.05
+    - 0.1
+    hold:
+    - 3
+    - 5
+filters:
+- name: day_of_week
+  params:
+    days:
+    - 0
+    - 1
+    - 2
+    - 3
+universe:
+  crypto_d:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+  - AVAX/USD
+  - LINK/USD
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100
