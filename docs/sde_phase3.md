@@ -44,6 +44,8 @@ Blueprint targets available in `docs/sde_plan.md`: **Sharpe >= 5.5, annual retur
 | sp500_s0_20261023 | 50 | 63900 / 20000 | equal | 1.10 | 9.81% | -12.3% | 27.8 | 1.36 | 56.7% | 0.000 |  |  |  |
 | sp500_s1_20261024 | 50 | 89479 / 40000 | rolling_ols | 0.02 | 0.15% | -16.3% | 134.0 | -0.29 | 60.0% | 0.000 | 0.477 | 0.90 | 1.13 / 160 |
 | sp500_s1_20261024 | 50 | 89479 / 40000 | equal | 0.91 | 7.36% | -12.0% | 24.4 | 1.22 | 60.0% | 0.000 |  |  |  |
+| sp500_s2_20261024 | 50 | 109479 / 60000 | rolling_ols | 0.87 | 7.14% | -10.9% | 114.4 | 0.20 | 52.3% | 0.000 | 0.046 | 0.58 | 4.57 / 160 |
+| sp500_s2_20261024 | 50 | 109479 / 60000 | equal | 0.86 | 7.76% | -13.9% | 23.4 | 1.31 | 52.3% | 0.000 |  |  |  |
 <!--/TABLE:main-->
 
 Cost sensitivity of the rolling-OLS portfolio (test split):
@@ -67,6 +69,10 @@ Cost sensitivity of the rolling-OLS portfolio (test split):
 | sp500_s1_20261024 | 5 | 0.02 | 0.15% | -16.3% | 134.0 |
 | sp500_s1_20261024 | 10 | -0.75 | -6.55% | -26.2% | 134.0 |
 | sp500_s1_20261024 | 20 | -2.27 | -19.94% | -47.4% | 134.0 |
+| sp500_s2_20261024 | 0 | 1.57 | 12.86% | -6.2% | 114.4 |
+| sp500_s2_20261024 | 5 | 0.87 | 7.14% | -10.9% | 114.4 |
+| sp500_s2_20261024 | 10 | 0.17 | 1.42% | -16.8% | 114.4 |
+| sp500_s2_20261024 | 20 | -1.22 | -10.02% | -32.9% | 114.4 |
 <!--/TABLE:cost-->
 
 ### Reading the numbers (honest summary)
@@ -80,7 +86,24 @@ Cost sensitivity of the rolling-OLS portfolio (test split):
 All still **survivorship-biased** (today's constituents applied to all dates). N is the global ledger count at scoring time, so it is larger for later runs.
 <!--SEEDS-->
 * **seed 1 (`sp500_s1_20261024`)**: pool 50. Out-of-sample IC holds up but is weaker than seed 0: ensemble IC train 0.066 / val 0.038 / test 0.049 (ICIR 0.34; seed 0 test 0.063 / 0.40). Long-short test Sharpe: **rolling-OLS combiner 0.02 (AR 0.15%, MDD -16.3%, turnover 134/yr)**, **equal-weight 0.91 (AR 7.36%, MDD -12.0%, turnover 24/yr)**; at 0 bp the OLS combiner earns 0.78 and at 10 bp -0.75 (costs eat it: turnover is 134x/yr). PBO 60.0%, DSR(test, N=89,479) 0.000, SPA p 0.477 (single combined candidate), CPCV mean path Sharpe 0.90, e-process max 1.13 vs boundary 160. **No target met** (Sharpe >= 5.5, AR >= 18%, PBO <= 10%, DSR > 0.95, SPA < 0.05, e-process >= 160). Seed 1 reproduces seed 0's pattern: real-looking but small IC, a ~1.0 Sharpe only for the equal-weight book on the biased universe, nothing statistically significant after deflation.
+* **seed 2 (`sp500_s2_20261024`)**: pool 50. Ensemble IC train 0.064 / val 0.039 / test 0.055 (test ICIR 0.34). Long-short test Sharpe: **rolling-OLS 0.87 at 5 bp (AR 7.1%, MDD -10.9%, turnover 114/yr; 1.57 at 0 bp, 0.17 at 10 bp, -1.22 at 20 bp)**, **equal-weight 0.86 (AR 7.8%, MDD -13.9%, turnover 23/yr)**. PBO 52.3%, DSR(test, N=109,479) 0.000, CPCV mean path Sharpe 0.58, e-process max 4.57 vs boundary 160. SPA p = 0.046 for the single combined portfolio; this is a one-candidate bootstrap test (K=1) on a survivorship-biased universe and says nothing after deflation (DSR 0.000, PBO 52%), so it is **not** read as a discovery. **No target met.**
 <!--/SEEDS-->
+
+### Extra check: survivorship-REDUCED S&P 500 re-score (not a replacement of the blueprint run)
+The three fixed pools above (trained on today's constituents) are re-scored, without re-training, on a point-in-time universe built by `src/data/sp500_pit.py`: membership windows from the public MIT dataset `fja05680/sp500`, prices from yfinance, a ticker kept only if prices cover >= 95% of its membership days. Output: `runs_sde/<run>/phase3_pit.json` (no ledger writes). **This reduces but does not remove survivorship bias**: yfinance has no prices for most delisted/acquired tickers. Of 738 names that were members at some point in 2010-2020, 497 have usable prices; of the 240 names *removed* in 2010-2020 only 62 (26%) have prices. Usable members per day average 375 vs 501 true members (74.9% of point-in-time member-days; 326/day in 2010 rising to 436/day in 2020). Survivors are still over-represented, so these numbers are still optimistic; they are an upper-ish bound on what the pools would have earned, not a clean estimate.
+
+<!--TABLE:pit-->
+| run | pool | N (total / universe) | combiner | test Sharpe | test AR | test MDD | test turnover/yr | val Sharpe | PBO | DSR test (N total) | SPA p (combined, test) | CPCV mean path SR | e-process (max / bound) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| sp500_s0_20261023 | 50 | 109479 / 60000 | rolling_ols | -0.06 | -0.49% | -13.8% | 114.5 | -1.62 | 45.7% | 0.000 | 1.000 | -0.10 | 1.46 / 160 |
+| sp500_s0_20261023 | 50 | 109479 / 60000 | equal | 0.24 | 2.36% | -18.1% | 27.7 | -0.53 | 45.7% | 0.000 |  |  |  |
+| sp500_s1_20261024 | 50 | 109479 / 60000 | rolling_ols | 0.08 | 0.62% | -13.6% | 137.3 | -0.34 | 48.0% | 0.000 | 0.438 | 0.07 | 1.37 / 160 |
+| sp500_s1_20261024 | 50 | 109479 / 60000 | equal | 0.18 | 1.64% | -16.6% | 24.6 | -0.71 | 48.0% | 0.000 |  |  |  |
+| sp500_s2_20261024 | 50 | 109479 / 60000 | rolling_ols | -0.35 | -2.62% | -20.4% | 118.3 | -2.61 | 33.8% | 0.000 | 1.000 | 0.38 | 1.39 / 160 |
+| sp500_s2_20261024 | 50 | 109479 / 60000 | equal | 0.16 | 1.58% | -18.9% | 22.9 | -0.62 | 33.8% | 0.000 |  |  |  |
+<!--/TABLE:pit-->
+
+**Reading: once survivorship bias is partly removed, the S&P 500 edge mostly vanishes.** Test Sharpe at 5 bp, biased -> reduced universe: equal-weight 1.10 / 0.91 / 0.86 -> 0.24 / 0.18 / 0.16 (AR 9.8 / 7.4 / 7.8% -> 2.4 / 1.6 / 1.6%); rolling-OLS 0.49 / 0.02 / 0.87 -> -0.06 / 0.08 / -0.35. Validation Sharpe turns negative for every seed, DSR stays 0.000, e-process max evidence is 1.4-1.5 vs 160, and the (still optimistic, since 74% of member-days are covered) reduced universe gives no target met. Across seeds 0-2 the biased-universe result was never stable either (OLS Sharpe 0.49 / 0.02 / 0.87). The PIT numbers use the ledger's N at re-score time and the PIT panel for the CSCV/SPA family, so PBO/DSR differ slightly from the biased-universe rows.
 
 ## Runs
 * CSI300: existing pools s0/s1/s2 (Phase 2, 10,000 episodes each, the paper's CSI300 setting) re-scored; no re-run (the blueprint setting is what was run).
@@ -88,7 +111,7 @@ All still **survivorship-biased** (today's constituents applied to all dates). N
 * CSI500 / CSI1000: **deliberately stopped partway at Aayan's request (2026-10-24 ~1:06 AM ET); not scored, no results, and not a failure of the method.** Reasons: Chinese A-shares are not tradable by the desk, and each run needed hours of compute. Last logged episodes: CSI500 13,600 of 20,000; CSI1000 5,800 of 20,000 (the buffered `curve.csv` files lagged at 10,100 / 5,100). The partial run folders (config, pool, curve, weights) were moved out of the repo to a local scratch directory and are not committed. Their sampled formulas remain counted as trials in the ledger (and therefore in N for DSR). Nothing is claimed for these universes.
 
 <!--STATUS-->
-CSI500 / CSI1000: stopped at Aayan's request, not scored (see Runs). US focus: S&P 500 seed 1 scored (above); seed 2 and the survivorship-reduced re-score are in progress (the table is regenerated after each is scored).
+CSI500 / CSI1000: stopped at Aayan's request, not scored (see Runs). US focus: US focus: S&P 500 seeds 0, 1, 2 scored (above, all survivorship-biased) plus the survivorship-reduced re-score (extra check).
 <!--/STATUS-->
 
 ## Blockers / things that could not be done exactly as written

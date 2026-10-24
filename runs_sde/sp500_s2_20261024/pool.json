@@ -1,0 +1,357 @@
+{
+ "episode": 20000,
+ "size": 50,
+ "max_pairwise_corr": 0.6975833831589959,
+ "members": [
+  {
+   "expr": "Div(Add(Add($close, Add(Sub($close, $low), TsStd(Div(Log(Log($low)), $low), 20d))), Add(Log($low), TsStd(Add($close, Log(TsStd(TsStd(TsStd($volume, 10d), 60d), 5d))), 60d))), $close)",
+   "ast_hash": "d170ab39333ee260ba87595cdde32b6d6d23cdcdec6f6038436cb77cf9e030a1",
+   "train_ic": 0.058519699052067595,
+   "train_icir": 0.544954460217535,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Add($high, TsStd(Add($low, Div($low, Div(TsStd(Sub($close, Add($close, Sub(Div(Add($high, Log(Div(Sub(Log(Div($volume, $close)), $close), $close))), $volume), $close))), 20d), $low))), 10d)))",
+   "ast_hash": "2d8764e9c0c7c00bcdf864f9bd3837ea7e3dd63ba5918e5f210b26a46221112b",
+   "train_ic": -0.04197253114572529,
+   "train_icir": -0.37581481984928206,
+   "sign": -1
+  },
+  {
+   "expr": "TsStd(Log(Log(Sub($high, Sub($high, Log(Sub(Add(Div($close, Add($high, $volume)), Log(Log(Log(Add($low, $volume))))), $high)))))), 10d)",
+   "ast_hash": "540a6c5c4ecf13739eb2e13965ef7382c7ea05951a647312a56b75fd85f322cb",
+   "train_ic": 0.038230920562502636,
+   "train_icir": 0.3627023263362948,
+   "sign": 1
+  },
+  {
+   "expr": "Log(TsStd($high, 20d))",
+   "ast_hash": "502b07013a5b50d5a81e71614ce5869585271b7aef05b7a28537d0867333ef4a",
+   "train_ic": -0.038051762181512336,
+   "train_icir": -0.4725859779584585,
+   "sign": -1
+  },
+  {
+   "expr": "Sub(Sub($close, Div($close, Div(TsStd(Div($volume, Sub(Sub($low, $volume), $close)), 10d), Sub(Log(Log(Add(Add($high, $volume), Sub(TsStd($volume, 5d), $high)))), Div(Log($low), $close))))), $high)",
+   "ast_hash": "fcaaf4dd57ce1cf71cf728eb5657de0a68879b5167c0154e28313465ab061e63",
+   "train_ic": 0.03836436618763461,
+   "train_icir": 0.4694976200039891,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Add($low, Div(Div(Div($low, Add($volume, Div($low, TsStd(Div($high, TsStd(Div($volume, TsStd(Div(TsStd(Add($high, TsStd($low, 20d)), 60d), $low), 20d)), 5d)), 10d)))), $high), $low)))",
+   "ast_hash": "12e04c415d909c3b5baa43a0827418af139821f2bbc098f552c3b53078ad265b",
+   "train_ic": -0.042930673200608255,
+   "train_icir": -0.5106154979308896,
+   "sign": -1
+  },
+  {
+   "expr": "Div(Add($close, Sub($low, $low)), Div(Div($high, TsStd(Add($volume, Add($close, TsStd(Div(Add($high, $low), $close), 5d))), 5d)), Add($high, Add(Log($volume), Sub(Sub($high, $volume), $high)))))",
+   "ast_hash": "0428f5b4bbf104098db5ac348ad63279c4a5404dccce191a2320155dc3ffe39a",
+   "train_ic": 0.03836889629190602,
+   "train_icir": 0.5053819956589223,
+   "sign": 1
+  },
+  {
+   "expr": "Sub(Sub(Sub($high, $close), Div($high, $close)), Log(Sub($high, Log($close))))",
+   "ast_hash": "2bf689f5bfd09719a9507ba0b15faa9c0c0ed044331000760f5a64662494ce93",
+   "train_ic": 0.043411539252582246,
+   "train_icir": 0.4629042242701022,
+   "sign": 1
+  },
+  {
+   "expr": "Sub(Log(Add($close, Log($high))), Log($high))",
+   "ast_hash": "11d8551edbe6fcbccdb9da799fbf3b981094cd50f036fd43153e68385a17e59f",
+   "train_ic": 0.03948329712527031,
+   "train_icir": 0.47360476544875924,
+   "sign": 1
+  },
+  {
+   "expr": "Div($close, Add($low, TsStd(Log(Div($close, Add($low, Add($low, Sub(Div(Sub(Add($low, Div(Add($high, Div($volume, Add($low, Sub($high, $volume)))), $close)), $close), $low), $volume))))), 10d)))",
+   "ast_hash": "bf292ce35695b9e36a8b37ef42cde5dff0dfd69d4bf7fd999916df999a2f285a",
+   "train_ic": -0.04835401028566613,
+   "train_icir": -0.597097685670177,
+   "sign": -1
+  },
+  {
+   "expr": "Sub(Div($high, Div(Div(Log(Div(Div(TsStd(Add($volume, Sub(Sub(Div(Add($high, Log($volume)), Sub(TsStd(Log($low), 60d), $high)), $high), $volume)), 5d), $high), $low)), $volume), $close)), $close)",
+   "ast_hash": "8815e9936485e2d8d3a77b3b120d5cfe84e20347e2fabea3d9d744e64da90e99",
+   "train_ic": 0.0377427099775252,
+   "train_icir": 0.5228410497804707,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Div(TsStd(TsStd(TsStd(Log(Div(Add($volume, Sub(Sub(Add($high, Sub(Sub(TsStd(Div(Log(Log(Log($low))), $low), 5d), $volume), $low)), $high), $close)), $close)), 60d), 5d), 10d), $close))",
+   "ast_hash": "b20fdc62ae1e39d9612c259a09e1f36e6223642c8b1e4637b872513c04c3623a",
+   "train_ic": 0.0400513567453038,
+   "train_icir": 0.3564780632626441,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Div(Add($low, Sub($close, Log($close))), $high))",
+   "ast_hash": "1c54341641b362663f277e8fb216e8d9e4d68f7c0d2f422b8adebead3bcafe01",
+   "train_ic": -0.03918340715206292,
+   "train_icir": -0.40803705854121325,
+   "sign": -1
+  },
+  {
+   "expr": "Add(TsStd(Add($close, $low), 10d), TsStd(Div(Div($low, Div(Sub($low, Log(TsStd(Log(Add(TsStd($high, 20d), TsStd(TsStd(Add($close, $low), 5d), 60d))), 60d))), $volume)), $close), 20d))",
+   "ast_hash": "75b7a76e19f6fab3fa37fa7773c5cee058e5ed4207f238e29a0767a1ec092c77",
+   "train_ic": 0.039223047133247375,
+   "train_icir": 0.3684056233403132,
+   "sign": 1
+  },
+  {
+   "expr": "Div(TsStd(Div($high, $close), 10d), Add($high, Add(Div($close, Sub($high, Add($low, TsStd(Sub(Sub($close, Add(Add($volume, $volume), Div($high, $low))), $close), 60d)))), Div(Log($high), $low))))",
+   "ast_hash": "28f27747a61ebe067c80a41f552a4f994ed20749bc6b21ce83a1a4815f460a4d",
+   "train_ic": 0.059430990162038844,
+   "train_icir": 0.5124352773344093,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Div(Log(Div(Div(Log(Div(Log(Sub($close, Log(Sub($high, Sub(Sub($volume, $high), $close))))), $high)), $high), Log(Sub($high, $low)))), $low))",
+   "ast_hash": "1b7a3b5005ac983f2557336ccb907ad39b14f24004de711babbf505be8551f9b",
+   "train_ic": 0.040121937906130264,
+   "train_icir": 0.5703881837593892,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Log(Log(Div(Div(Sub(Sub($low, Div($close, Sub($low, $low))), TsStd(Div($close, $close), 60d)), Log(Log(Add($low, Log(Div(Log(Div(TsStd($volume, 10d), $volume)), $low)))))), $high))))",
+   "ast_hash": "bd2dc23b538e0fd4d3ae6591fd249f3e3fcd443bbbe8cdcb282a4fade018db1d",
+   "train_ic": 0.03951641832224827,
+   "train_icir": 0.4550895383502582,
+   "sign": 1
+  },
+  {
+   "expr": "TsStd(Log(Add($high, Log(TsStd(Add($low, Log(Add($volume, TsStd(Div(Sub(Add($low, Log(Div(Add($high, TsStd(Div(Log($close), $volume), 10d)), $close))), $high), $close), 20d)))), 10d)))), 5d)",
+   "ast_hash": "f9ac9e1b3b28606efa4447076a83bd4d23a04f9858dd2cc942a8c3dec6324f70",
+   "train_ic": 0.03861838759545607,
+   "train_icir": 0.3596143936528397,
+   "sign": 1
+  },
+  {
+   "expr": "TsStd(Div(Log(Div(TsStd($high, 5d), $high)), Sub(Log(Sub($high, TsStd(Log(Log(Add($low, Add($close, TsStd(Add($low, Add($volume, Sub($volume, $volume))), 10d))))), 20d))), $high)), 5d)",
+   "ast_hash": "8ac9610e3fd6c4a814e53323483ccfa658e8797429981aa3cbff73fceccb6607",
+   "train_ic": 0.04153278552521291,
+   "train_icir": 0.45854981584043936,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Div(Div(Sub($high, Add(Log(TsStd(Sub(Sub(Sub($high, TsStd(Add($close, $high), 5d)), $volume), $low), 5d)), Sub($close, $close))), $low), $low))",
+   "ast_hash": "3b09edbc51feaf0764ccd29d93028e6d5f4df182d5b6e0502e0e7e71a9ee2989",
+   "train_ic": 0.04231141825867247,
+   "train_icir": 0.47135324158058245,
+   "sign": 1
+  },
+  {
+   "expr": "TsStd(Log(Sub(Sub(Div($volume, $volume), Add($low, Div($high, Div(Sub(Log(Sub(TsStd(Sub(Add($high, Log(Div(Div($low, $low), $low))), $high), 5d), $high)), $high), $low)))), $low)), 60d)",
+   "ast_hash": "8e796593111c2e69765d33e61ba2e91e50425ad6cc46bbf9e0b375e4c53e01a3",
+   "train_ic": 0.05474784519500679,
+   "train_icir": 0.40343905890163606,
+   "sign": 1
+  },
+  {
+   "expr": "Div($low, Sub($high, Sub($close, Div($high, Add($close, $low)))))",
+   "ast_hash": "717eb7a2414d02197cdb22307dc7691b71d7ba0ace2948b0d5f17327c04195ef",
+   "train_ic": -0.037735977076872255,
+   "train_icir": -0.4073045443827045,
+   "sign": -1
+  },
+  {
+   "expr": "Log(Div(TsStd(Log(Div(TsStd(Log(Sub(Sub($close, Add($close, Div($low, Sub($volume, TsStd(Add(Add($high, $low), Add($low, Div($volume, $close))), 10d))))), $high)), 10d), $volume)), 10d), $high))",
+   "ast_hash": "00ed561791e82f9a5aa7a081d0dac7c53c40c244571fb673c731a0f085c78db0",
+   "train_ic": 0.044016439697583246,
+   "train_icir": 0.4574916594578022,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Div(Div(TsStd(TsStd(Div($close, Log(Div(Sub(Div(TsStd(Add($high, TsStd(Sub(Log(Sub(Div($close, $high), $high)), $low), 60d)), 60d), $close), $volume), $low))), 20d), 5d), $low), $low))",
+   "ast_hash": "f734b6738549f32bbef0dca40791dad1d41af472e0034b72a047da13d394e3c4",
+   "train_ic": 0.0379472280350815,
+   "train_icir": 0.3716437717444447,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Sub(Log(Sub(Log($low), Div(Div(Sub(Log(Add($volume, Add($volume, Log(Add(Log(Log($high)), Sub(Log(Div(Sub($high, $low), $high)), $low)))))), $low), $high), $low))), Log($close)))",
+   "ast_hash": "91eab041a60e78e4e97eb42e0de23e6b82c55c328002c2c6608ad4596c0c7d13",
+   "train_ic": -0.04188485934322418,
+   "train_icir": -0.5277406240374319,
+   "sign": -1
+  },
+  {
+   "expr": "Log(Log(Div(Sub(Log(Log($low)), TsStd(Sub(Sub(Log($close), Div(Div(Add($low, Sub(Add($high, Log(Sub(Log(Sub($high, $volume)), $volume))), $high)), $close), $volume)), $low), 5d)), $close)))",
+   "ast_hash": "0dd409065ada8bcf71256f6a4e81ba7375801ef60e2833ecae72f43d64646710",
+   "train_ic": -0.03924146594381784,
+   "train_icir": -0.4807792506350315,
+   "sign": -1
+  },
+  {
+   "expr": "Log(Div(TsStd(TsStd(TsStd(Log(Sub(Sub(Add($volume, Div(Div(Div(Add($close, TsStd(TsStd(Log(Sub($volume, $close)), 10d), 5d)), $volume), $close), $low)), $close), $high)), 10d), 20d), 20d), $high))",
+   "ast_hash": "d93ec836a60b390b492090ef40ab185b5223b4ac06f7964520135e04f6a18024",
+   "train_ic": 0.044346620873891324,
+   "train_icir": 0.5679326013181276,
+   "sign": 1
+  },
+  {
+   "expr": "TsStd(Log(Add($high, Log(Div(Log(Log(Div(Log(TsStd(TsStd(Log(Div(Add($close, Div(Sub(Div(TsStd(Log($close), 10d), $low), $volume), $low)), $close)), 10d), 5d)), $close))), $close)))), 20d)",
+   "ast_hash": "fc5e3123105634d597746aeb032d2e84f6796e55f7e0e0de53d60bc3fbf104cb",
+   "train_ic": 0.04836254040278863,
+   "train_icir": 0.4967283701967839,
+   "sign": 1
+  },
+  {
+   "expr": "Log(TsStd(Div(Log(TsStd(Sub(TsStd(TsStd(Div(Add($close, Sub(Div(Sub(Div(Log(Log($low)), Sub($volume, $close)), $volume), $high), $close)), Log($close)), 20d), 20d), $low), 20d)), $close), 5d))",
+   "ast_hash": "367647a8e30befc862543583a22caf39dbe2f80b0f80879f556285cba6b31b59",
+   "train_ic": 0.042133302815612624,
+   "train_icir": 0.418545092703693,
+   "sign": 1
+  },
+  {
+   "expr": "Div(Sub(Sub(Log(Log(Log(Log(Log($low))))), Log(Add($close, TsStd(Add($low, Div(Add($close, Sub(Log(Log(Div(Div(Log($high), $low), $low))), $low)), $close)), 10d)))), $close), $low)",
+   "ast_hash": "8299085ffabf893da77723b9b8d3f49f143b0f41baa11e8bce20e352389ef49a",
+   "train_ic": -0.03980865100368901,
+   "train_icir": -0.43437526418824113,
+   "sign": -1
+  },
+  {
+   "expr": "Div($close, Sub(Log(Sub(Sub(Div($low, $low), Sub(Log(Div(Add($low, Add($close, Div(Log(Log(Sub(Sub(Log(Sub($high, $high)), $high), $high))), $close))), $high)), $high)), $high)), $high))",
+   "ast_hash": "b6e21723ff7c18d6e5be671afddc537ff837f3dbf20d77185f361c708bff67b8",
+   "train_ic": 0.04632115038769217,
+   "train_icir": 0.45161102092207567,
+   "sign": 1
+  },
+  {
+   "expr": "Add($low, Sub(Div(Add(Log($low), Log($low)), TsStd(Log(Log(Add($volume, Div(Div(Add($close, Add($low, Add($volume, Sub(Sub(Log($low), $high), $high)))), $low), $low)))), 60d)), $high))",
+   "ast_hash": "fc30b0af9e06711327b439190c57c2a5c53b87ac522c5cf92feb7572575bb64c",
+   "train_ic": -0.05875752386980779,
+   "train_icir": -0.615758757774522,
+   "sign": -1
+  },
+  {
+   "expr": "Log(Sub(TsStd(Sub(Div(Div(Div(Sub(Log(Add($high, Sub(Add($volume, Sub(Add($volume, Div(Div(Log($high), $volume), $volume)), $high)), $high))), $volume), $low), $high), $high), $high), 20d), $close))",
+   "ast_hash": "681065b93d60b46197cee8707e9511175a7c49f2a2e9bd4e5b900b8ca66bb12a",
+   "train_ic": 0.037395269523186815,
+   "train_icir": 0.38266486689522894,
+   "sign": 1
+  },
+  {
+   "expr": "Div(Log(Add($close, $high)), Sub(Log(Add($low, Log(Log(TsStd(Div(Log(Log(Log(Div(Add($high, Log(Div(Div(Div($close, Log($volume)), $close), $high))), $close)))), $close), 5d))))), $high))",
+   "ast_hash": "7b2cb2d09424d794cfddc6352fe3c5432c9f2c14d3cc1f0b22fb48995636fc95",
+   "train_ic": -0.044032929366484785,
+   "train_icir": -0.4605743715685622,
+   "sign": -1
+  },
+  {
+   "expr": "Log(Div(Div(Div(Add($close, Sub($volume, Sub(TsStd(TsStd(Log(Sub(Add($close, Add($high, Add($high, TsStd(Add($high, Log($high)), 20d)))), $volume)), 5d), 10d), $high))), $volume), $low), $low))",
+   "ast_hash": "74cfc3e14fe7c9a3fe759aa23074df9d3c3c284621b9ca022997cd851740bd23",
+   "train_ic": 0.03763203413194966,
+   "train_icir": 0.46855427475394545,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Log(Div(Log(TsStd(Log(Div(Div($high, TsStd(Sub(Sub(Div(Add($high, Sub(Log(Log(Sub(Log(Sub($close, $close)), $high))), $volume)), $low), $low), $high), 5d)), $high)), 5d)), $close)))",
+   "ast_hash": "66d3630e7874acff94bf2b369d3adb6e05d8f858f5c026feb6101a5337c54c16",
+   "train_ic": -0.04450147957445467,
+   "train_icir": -0.514936415094493,
+   "sign": -1
+  },
+  {
+   "expr": "Div(Div(Log(Div($close, $low)), $close), Div(Add($low, Add(Log($high), Sub(Add($high, Div(TsStd(Div(Add($close, TsStd(Log(Div($low, $close)), 5d)), $high), 5d), $low)), $close))), $high))",
+   "ast_hash": "af561a3d2c7bf62977ea2977dc9049e2ec384d0bbb266071028d4a2ec86a095d",
+   "train_ic": 0.04183328980238523,
+   "train_icir": 0.4194643474997224,
+   "sign": 1
+  },
+  {
+   "expr": "Div(Log(Add($low, Log(Log(Add($high, Add($high, Add($high, Div(Log(Div(Sub(TsStd($low, 60d), Log($close)), Log(Add($close, Sub(Add($low, Log($high)), $close))))), $low)))))))), $high)",
+   "ast_hash": "5f7cc612064f3f3bc842ddf9d9b5c2d857dbfd0d85a62776cec58897c255bed8",
+   "train_ic": 0.04238767599300961,
+   "train_icir": 0.48805937522309284,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Div(Sub(Div($close, Add($close, Log(Add($volume, TsStd(Sub(Div(Add($high, Div($close, Sub(Add($close, Div(Log(Sub($close, $close)), $high)), $low))), $volume), $close), 5d))))), $low), $low))",
+   "ast_hash": "dae445eaa9e97d24f9539b3709c9073171b6be976ed3db5027358f678ac55604",
+   "train_ic": -0.04559222007256297,
+   "train_icir": -0.5440490389082195,
+   "sign": -1
+  },
+  {
+   "expr": "Add($low, TsStd(Div(Log($high), Div(Div(Div(Div(Log($low), Log(Div(Div($close, $high), Add($high, Div(TsStd(Add($close, Log(Log($high))), 5d), $volume))))), $volume), $close), $high)), 10d))",
+   "ast_hash": "bc1b441f2eb8fdfb3ee788438935a73329b6b15ca73a746d5ea6dc5747bdf8de",
+   "train_ic": 0.03991445816163158,
+   "train_icir": 0.49252335448500795,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Add($close, Div($close, Div(Sub(Div(Add($close, TsStd(Add($low, Sub($high, TsStd(Div(Div($volume, Log(Div(Div(Log($volume), $volume), $high))), $high), 10d))), 60d)), $close), $high), $volume))))",
+   "ast_hash": "f34dc46131faae0ec02becfe092c725e6bbe4b946a8970924e8ed92b379fe7c2",
+   "train_ic": -0.04968752730044406,
+   "train_icir": -0.6017008163936708,
+   "sign": -1
+  },
+  {
+   "expr": "TsStd(Div(Add(Log(Add($close, $high)), Log(Div(Add($volume, Add($low, Sub(TsStd(Sub(Add($low, TsStd(Sub(Div($high, $low), Log($close)), 5d)), $high), 20d), $close))), $close))), $close), 60d)",
+   "ast_hash": "bdf5c4067c3fef0a09a3aebf04ecc6fd3c339483127cfd32e1aec177253676ef",
+   "train_ic": 0.04366742313886577,
+   "train_icir": 0.3889506271828154,
+   "sign": 1
+  },
+  {
+   "expr": "Div(Log(TsStd(Add($high, Div(Add($low, Div(Div(Sub($volume, Add($high, Div(Sub(TsStd(Add(Log($high), TsStd(Log($high), 60d)), 5d), $volume), $high))), $high), $low)), $volume)), 10d)), $low)",
+   "ast_hash": "58dc8f6a698d1630dc1d7774f13c7107bb55a0af9534a8398e7e68ffa8ef2816",
+   "train_ic": -0.04140310428832136,
+   "train_icir": -0.46773147150521793,
+   "sign": -1
+  },
+  {
+   "expr": "Log(Div(Log(Log(Log(TsStd(Log(Div(Sub(Add($volume, Sub($volume, Div(Log(TsStd(Add($low, Log(Div(Sub(Add($high, $volume), $volume), $close))), 20d)), $high))), $volume), $low)), 5d)))), $high))",
+   "ast_hash": "d3d10ec6302b964f084c36284828157c0fd3184f36689fb8c9f18319f7a72a61",
+   "train_ic": 0.03856506353854854,
+   "train_icir": 0.5006908989416479,
+   "sign": 1
+  },
+  {
+   "expr": "TsStd(Div(Log(TsStd(Add($close, Sub(TsStd(Div(Div(Log(Div(Div(Log(Sub($high, Div(TsStd(TsStd($low, 5d), 60d), $high))), $high), $high)), $low), $close), 10d), $close)), 60d)), $high), 5d)",
+   "ast_hash": "caaa1e548338a956f15d5453aa10c63f86f953bfcf923c89f8e0c5b16833e4ab",
+   "train_ic": 0.04165799664260111,
+   "train_icir": 0.35171784509780674,
+   "sign": 1
+  },
+  {
+   "expr": "Log(Sub(Div($high, TsStd(Log(Add($volume, Sub(Div(Add($low, TsStd(Div(Sub(Div(Log($low), Sub(Log(Add($high, Log($high))), $close)), $close), $high), 20d)), $low), $low))), 10d)), $low))",
+   "ast_hash": "f2c730dfd55b5555d2b5a762ab2e678d3318768bc1b05a0c4e89f9aea86eeef6",
+   "train_ic": -0.043067305984596835,
+   "train_icir": -0.4975269511978762,
+   "sign": -1
+  },
+  {
+   "expr": "Log(Div(Log(Log(Div(Log(Div($close, Add($high, Sub(TsStd(Sub(Add($high, Sub(Sub(Add($volume, Div(Div($low, Log($high)), $close)), $volume), $close)), $close), 10d), $low)))), $low))), $close))",
+   "ast_hash": "4f6d41de2506f44e3a0d5c323d10f4148a5fda35309310446522f2d02a52ed31",
+   "train_ic": 0.03726136944841869,
+   "train_icir": 0.44680139055546814,
+   "sign": 1
+  },
+  {
+   "expr": "Div(TsStd(Log(Add($close, Log(Sub(Log(TsStd(Sub(Add($high, Log(Log(Div(Div(Add($close, Log(Div(Log(Add($close, $volume)), $high))), $volume), $high)))), $volume), 5d)), $low)))), 10d), $close)",
+   "ast_hash": "bf66a60653181e8dc78918698c9c289a77b22d38044e1304d1d447823abf9a77",
+   "train_ic": 0.04083949149397395,
+   "train_icir": 0.39151400492720556,
+   "sign": 1
+  },
+  {
+   "expr": "Div(Div(Sub(Sub(Sub(Sub(Log(Sub(Sub(Log(TsStd(Sub(Div($low, $high), TsStd(Div($high, Sub($high, $close)), 60d)), 5d)), $high), $close)), Log($high)), $high), $close), $high), $close), $high)",
+   "ast_hash": "0164f77fe0fc614fcf6266dcca3dc327ce0a33121f3414b57f973323afd0f54d",
+   "train_ic": -0.04097555650048792,
+   "train_icir": -0.4517619336298119,
+   "sign": -1
+  },
+  {
+   "expr": "Sub(Log($close), Log(Log(Log(Sub(Log(Add($high, Sub(Add($high, Log(Div(Sub(Add($close, Sub(Div(Div(Log(Log(Log($volume))), $volume), $high), $volume)), $volume), $high))), $close))), $low)))))",
+   "ast_hash": "bc1892c448f4efb5b131d6ff1ab6ee44933623da77c60e24a112f539808e4fba",
+   "train_ic": -0.03965663163813152,
+   "train_icir": -0.5000225017464459,
+   "sign": -1
+  }
+ ]
+}

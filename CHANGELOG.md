@@ -4,7 +4,8 @@ All dates America/New_York.
 ## 2026-10-24 (SDE: US focus)
 - CSI500 and CSI1000 runs deliberately stopped partway at Aayan's request (13,600 / 5,800 of 20,000 episodes at last log); not scored, no results, not a method failure. Reason: Chinese markets are not tradable by the desk; hours of compute. Partial run folders are not committed; their trials stay in the ledger / N.
 - Ledger snapshot refreshed after `Ledger.verify()` passed (71,707 entries, head hash `10cedad9…8dd3`): `src/audit/ledger_20261024.jsonl.gz` replaces `ledger_20261023.jsonl.gz` (the old one stays in git history).
-- Next: S&P 500 seeds 1 and 2 (same blueprint settings as seed 0), then an extra, clearly labelled survivorship-reduced S&P 500 evaluation.
+- S&P 500 seeds 1 and 2 trained (20,000 episodes, same settings as seed 0) and scored: no target met (see docs/sde_phase3.md).
+- Added `src/data/sp500_pit.py` + `src/train/phase3_pit.py`: extra, clearly labelled survivorship-REDUCED S&P 500 re-score of the fixed pools (point-in-time windows from fja05680/sp500, MIT; prices yfinance; 74.9% of member-days priced). Equal-weight test Sharpe 1.10/0.91/0.86 -> 0.24/0.18/0.16.
 
 ## 2026-10-24 (v0.3.0-sde-phase3, repo restructure)
 ### Added
