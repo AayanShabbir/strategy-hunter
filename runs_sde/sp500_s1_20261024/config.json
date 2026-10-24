@@ -1,0 +1,26 @@
+{
+  "universe": "sp500",
+  "episodes": 20000,
+  "seed": 1,
+  "run_id": "sp500_s1_20261024",
+  "lr": 0.0001,
+  "lr_logz": 0.1,
+  "entropy": 0.01,
+  "update_every": 16,
+  "log_every": 100,
+  "ckpt_every": 500,
+  "ledger": "/workspace/research_lab/src/audit/ledger.jsonl",
+  "split_train": [
+    "2010-01-01",
+    "2016-12-31"
+  ],
+  "n_assets": 503,
+  "n_cells": 785479,
+  "n_days": 1762,
+  "data_meta": {
+    "source": "yfinance (auto-adjusted)",
+    "universe": "sp500",
+    "membership": "CURRENT constituents applied to all dates",
+    "survivorship": "BIASED (current members only)"
+  }
+}
