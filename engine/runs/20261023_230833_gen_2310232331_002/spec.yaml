@@ -1,0 +1,33 @@
+id: gen_2310232331_002
+hypothesis: 'grammar draw seed=2310232331: rsi_revert+day_of_week'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 2
+    - 3
+    entry:
+    - 10
+    - 20
+    exit:
+    - 60
+    - 70
+filters:
+- name: day_of_week
+  params:
+    days:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+universe:
+  crypto:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

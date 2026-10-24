@@ -1,0 +1,25 @@
+{
+ "run_id": "20261023_230819_gen_2310232321_003",
+ "spec_hash": "58e4b0fb9ffadd2f980c9868d4ef432afaa1f8371261d3568e4797eb563c636d",
+ "rows": {
+  "megacap|sma_cross(fast=5,slow=50)+day_of_week(days=0)": 1191,
+  "megacap|sma_cross(fast=5,slow=50)+day_of_week(days=1)": 1192,
+  "megacap|sma_cross(fast=5,slow=50)+day_of_week(days=2)": 1193,
+  "megacap|sma_cross(fast=5,slow=50)+day_of_week(days=3)": 1194,
+  "megacap|sma_cross(fast=5,slow=150)+day_of_week(days=0)": 1195,
+  "megacap|sma_cross(fast=5,slow=150)+day_of_week(days=1)": 1196,
+  "megacap|sma_cross(fast=5,slow=150)+day_of_week(days=2)": 1197,
+  "megacap|sma_cross(fast=5,slow=150)+day_of_week(days=3)": 1198,
+  "megacap|sma_cross(fast=20,slow=50)+day_of_week(days=0)": 1199,
+  "megacap|sma_cross(fast=20,slow=50)+day_of_week(days=1)": 1200,
+  "megacap|sma_cross(fast=20,slow=50)+day_of_week(days=2)": 1201,
+  "megacap|sma_cross(fast=20,slow=50)+day_of_week(days=3)": 1202,
+  "megacap|sma_cross(fast=20,slow=150)+day_of_week(days=0)": 1203,
+  "megacap|sma_cross(fast=20,slow=150)+day_of_week(days=1)": 1204,
+  "megacap|sma_cross(fast=20,slow=150)+day_of_week(days=2)": 1205,
+  "megacap|sma_cross(fast=20,slow=150)+day_of_week(days=3)": 1206
+ },
+ "N_after_reserve": 1206,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T23:08:19.587484-04:00"
+}

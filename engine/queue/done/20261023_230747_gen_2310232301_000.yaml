@@ -1,0 +1,22 @@
+id: gen_2310232301_000
+hypothesis: 'grammar draw seed=2310232301: donchian'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 55
+    - 100
+    exit_n:
+    - 10
+    - 20
+filters: []
+universe:
+  crypto_d:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

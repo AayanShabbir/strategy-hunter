@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_230824_gen_2310232331_000",
+ "spec_hash": "b3b63b1c2030f6e06aa2eb36ef355ef61ba695d9643e5aa71d9c2533d4cb8c53",
+ "rows": {
+  "crypto|sma_cross(fast=5,slow=50)+trend_sma(n=50)": 1207,
+  "crypto|sma_cross(fast=5,slow=200)+trend_sma(n=50)": 1208,
+  "crypto|sma_cross(fast=10,slow=50)+trend_sma(n=50)": 1209,
+  "crypto|sma_cross(fast=10,slow=200)+trend_sma(n=50)": 1210
+ },
+ "N_after_reserve": 1210,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T23:08:24.753577-04:00"
+}

@@ -1,0 +1,13 @@
+{
+ "run_id": "20261023_230811_gen_2310232321_000",
+ "spec_hash": "9a02e314cbd5e0825329a56d54c354cc34aaa193bc218b1cf066d59d0d9e8204",
+ "rows": {
+  "megacap|sma_cross(fast=5,slow=100)+rsi_band(hi=80)": 1175,
+  "megacap|sma_cross(fast=5,slow=150)+rsi_band(hi=80)": 1176,
+  "megacap|sma_cross(fast=10,slow=100)+rsi_band(hi=80)": 1177,
+  "megacap|sma_cross(fast=10,slow=150)+rsi_band(hi=80)": 1178
+ },
+ "N_after_reserve": 1178,
+ "written_before_any_results": true,
+ "ts": "2026-10-23T23:08:11.972719-04:00"
+}

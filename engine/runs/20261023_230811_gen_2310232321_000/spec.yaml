@@ -1,0 +1,25 @@
+id: gen_2310232321_000
+hypothesis: 'grammar draw seed=2310232321: sma_cross+rsi_band'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 5
+    - 10
+    slow:
+    - 100
+    - 150
+filters:
+- name: rsi_band
+  params:
+    hi: 80
+universe:
+  megacap:
+  - AAPL
+  - MSFT
+  - NVDA
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100
