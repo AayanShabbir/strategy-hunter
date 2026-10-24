@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_010752_gen_2410240111_003",
+ "spec_hash": "0d74e5fef3c45cbab6f237c90b0ddfceb5292f9088b52c69efe826b40c6a75b3",
+ "rows": {
+  "megacap|donchian(entry_n=20,exit_n=10)+vol_regime(max_atr_pct=0.06)": 1427,
+  "megacap|donchian(entry_n=20,exit_n=20)+vol_regime(max_atr_pct=0.06)": 1428,
+  "megacap|donchian(entry_n=100,exit_n=10)+vol_regime(max_atr_pct=0.06)": 1429,
+  "megacap|donchian(entry_n=100,exit_n=20)+vol_regime(max_atr_pct=0.06)": 1430
+ },
+ "N_after_reserve": 1430,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T01:07:52.134130-04:00"
+}

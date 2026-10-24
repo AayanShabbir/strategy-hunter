@@ -1,0 +1,28 @@
+id: gen_2410240111_003
+hypothesis: 'grammar draw seed=2410240111: donchian+vol_regime'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 20
+    - 100
+    exit_n:
+    - 10
+    - 20
+filters:
+- name: vol_regime
+  params:
+    max_atr_pct: 0.06
+universe:
+  megacap:
+  - AAPL
+  - MSFT
+  - NVDA
+  - AMZN
+  - META
+  - GOOGL
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

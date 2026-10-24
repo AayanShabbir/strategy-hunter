@@ -1,0 +1,38 @@
+id: gen_2410240131_002
+hypothesis: 'grammar draw seed=2410240131: drop_revert+day_of_week'
+base:
+  idea: drop_revert
+  params:
+    n:
+    - 3
+    - 5
+    drop:
+    - 0.05
+    - 0.15
+    hold:
+    - 5
+    - 10
+filters:
+- name: day_of_week
+  params:
+    days:
+    - 0
+    - 1
+    - 2
+    - 3
+universe:
+  sectors:
+  - XLK
+  - XLF
+  - XLE
+  - XLV
+  - XLI
+  - XLY
+  - XLP
+  - XLU
+  - XLB
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100
