@@ -1,0 +1,22 @@
+id: gen_2610241109_000
+hypothesis: 'grammar draw seed=2610241109: supertrend'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 7
+    - 10
+    mult:
+    - 2
+    - 3
+filters: []
+universe:
+  BROAD:
+  - GLD
+  - SLV
+  - TLT
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

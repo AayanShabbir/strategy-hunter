@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_110549_gen_2610241107_000",
+ "spec_hash": "bed28be09c3d28fd61f1f690e93a88df4b8df979cb3d8833dd6e1808961b0a4c",
+ "rows": {
+  "sectors|donchian(entry_n=20,exit_n=10)": 2423,
+  "sectors|donchian(entry_n=20,exit_n=20)": 2424,
+  "sectors|donchian(entry_n=100,exit_n=10)": 2425,
+  "sectors|donchian(entry_n=100,exit_n=20)": 2426
+ },
+ "N_after_reserve": 2426,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T11:05:49.053388-04:00"
+}

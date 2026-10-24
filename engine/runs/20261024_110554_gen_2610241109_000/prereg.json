@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_110554_gen_2610241109_000",
+ "spec_hash": "977d5ef1eb1e2ca9ecf25e302e138d10a76dde969c7f428166a53a7e1407466a",
+ "rows": {
+  "BROAD|supertrend(atr_n=7,mult=2)": 2431,
+  "BROAD|supertrend(atr_n=7,mult=3)": 2432,
+  "BROAD|supertrend(atr_n=10,mult=2)": 2433,
+  "BROAD|supertrend(atr_n=10,mult=3)": 2434
+ },
+ "N_after_reserve": 2434,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T11:05:54.362478-04:00"
+}

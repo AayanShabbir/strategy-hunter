@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_110540_gen_2610241104_000",
+ "spec_hash": "f83e7dab32d18c19127bcc096a934084c7ab29fa03b6283b84f663e7ebd59eae",
+ "rows": {
+  "BROAD|sma_cross(fast=10,slow=50)+rsi_band(hi=70)": 2403,
+  "BROAD|sma_cross(fast=10,slow=200)+rsi_band(hi=70)": 2404,
+  "BROAD|sma_cross(fast=20,slow=50)+rsi_band(hi=70)": 2405,
+  "BROAD|sma_cross(fast=20,slow=200)+rsi_band(hi=70)": 2406
+ },
+ "N_after_reserve": 2406,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T11:05:40.425434-04:00"
+}

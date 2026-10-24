@@ -1,0 +1,17 @@
+{
+ "run_id": "20261024_110543_gen_2610241105_000",
+ "spec_hash": "4c22390ea47a2372711197031b00ceb5f3be3ce7599ebf5fb27f535138e178b0",
+ "rows": {
+  "crypto|drop_revert(drop=0.1,hold=3,n=3)+trend_sma(n=200)": 2407,
+  "crypto|drop_revert(drop=0.1,hold=3,n=5)+trend_sma(n=200)": 2408,
+  "crypto|drop_revert(drop=0.1,hold=5,n=3)+trend_sma(n=200)": 2409,
+  "crypto|drop_revert(drop=0.1,hold=5,n=5)+trend_sma(n=200)": 2410,
+  "crypto|drop_revert(drop=0.15,hold=3,n=3)+trend_sma(n=200)": 2411,
+  "crypto|drop_revert(drop=0.15,hold=3,n=5)+trend_sma(n=200)": 2412,
+  "crypto|drop_revert(drop=0.15,hold=5,n=3)+trend_sma(n=200)": 2413,
+  "crypto|drop_revert(drop=0.15,hold=5,n=5)+trend_sma(n=200)": 2414
+ },
+ "N_after_reserve": 2414,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T11:05:43.117169-04:00"
+}

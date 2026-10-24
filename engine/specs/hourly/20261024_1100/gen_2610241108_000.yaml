@@ -1,0 +1,24 @@
+id: gen_2610241108_000
+hypothesis: 'grammar draw seed=2610241108: supertrend+vol_regime'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 7
+    - 14
+    mult:
+    - 2
+    - 4
+filters:
+- name: vol_regime
+  params:
+    max_atr_pct: 0.04
+universe:
+  index:
+  - SPY
+  - QQQ
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100
