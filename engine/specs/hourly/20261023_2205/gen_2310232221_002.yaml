@@ -1,0 +1,31 @@
+id: gen_2310232221_002
+hypothesis: 'grammar draw seed=2310232221: rsi_revert+relvol'
+base:
+  idea: rsi_revert
+  params:
+    n:
+    - 3
+    - 5
+    entry:
+    - 5
+    - 10
+    exit:
+    - 70
+    - 80
+filters:
+- name: relvol
+  params:
+    min_ratio: 1.0
+universe:
+  megacap:
+  - AAPL
+  - MSFT
+  - NVDA
+  - AMZN
+  - META
+  - GOOGL
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

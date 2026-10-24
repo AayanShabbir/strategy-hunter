@@ -1,0 +1,417 @@
+{
+ "variants": {
+  "crypto_d|drop_revert(drop=0.1,hold=5,n=3)+trend_sma(n=100)": {
+   "row": 999,
+   "IS": {
+    "ret": -23.78,
+    "sharpe": -0.37,
+    "maxdd": -29.83
+   },
+   "OOS": {
+    "ret": 14.29,
+    "sharpe": 0.71,
+    "maxdd": -10.48
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.06,
+    "frac_positive": 0.6,
+    "n_paths": 15
+   },
+   "trades": 112,
+   "time_in_mkt": 0.057,
+   "cost_stop": 0.0111,
+   "WF": [
+    4.89,
+    8.96
+   ],
+   "p_twin": 0.8042,
+   "random_median_oos": 119.32,
+   "real_twin_basis": 14.3,
+   "SPA": 0.884,
+   "holm": 1.0,
+   "DSR": 0.3496,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 45.08
+  },
+  "crypto_d|drop_revert(drop=0.1,hold=5,n=5)+trend_sma(n=100)": {
+   "row": 1000,
+   "IS": {
+    "ret": 9.75,
+    "sharpe": 0.24,
+    "maxdd": -26.23
+   },
+   "OOS": {
+    "ret": 16.6,
+    "sharpe": 0.77,
+    "maxdd": -10.3
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.46,
+    "frac_positive": 0.933,
+    "n_paths": 15
+   },
+   "trades": 130,
+   "time_in_mkt": 0.072,
+   "cost_stop": 0.0114,
+   "WF": [
+    7.35,
+    8.61
+   ],
+   "p_twin": 0.77223,
+   "random_median_oos": 72.34,
+   "real_twin_basis": 16.6,
+   "SPA": 0.885,
+   "holm": 1.0,
+   "DSR": 0.3795,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 45.26
+  },
+  "crypto_d|drop_revert(drop=0.1,hold=10,n=3)+trend_sma(n=100)": {
+   "row": 1001,
+   "IS": {
+    "ret": -19.56,
+    "sharpe": -0.21,
+    "maxdd": -33.31
+   },
+   "OOS": {
+    "ret": 35.78,
+    "sharpe": 1.14,
+    "maxdd": -18.85
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.17,
+    "frac_positive": 0.6,
+    "n_paths": 15
+   },
+   "trades": 120,
+   "time_in_mkt": 0.096,
+   "cost_stop": 0.0117,
+   "WF": [
+    14.82,
+    18.25
+   ],
+   "p_twin": 0.62438,
+   "random_median_oos": 93.15,
+   "real_twin_basis": 35.82,
+   "SPA": 0.868,
+   "holm": 1.0,
+   "DSR": 0.5582,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 36.71
+  },
+  "crypto_d|drop_revert(drop=0.1,hold=10,n=5)+trend_sma(n=100)": {
+   "row": 1002,
+   "IS": {
+    "ret": -3.97,
+    "sharpe": 0.07,
+    "maxdd": -41.45
+   },
+   "OOS": {
+    "ret": 22.58,
+    "sharpe": 0.79,
+    "maxdd": -16.17
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.44,
+    "frac_positive": 0.733,
+    "n_paths": 15
+   },
+   "trades": 140,
+   "time_in_mkt": 0.118,
+   "cost_stop": 0.0122,
+   "WF": [
+    1.03,
+    21.34
+   ],
+   "p_twin": 0.72028,
+   "random_median_oos": 61.37,
+   "real_twin_basis": 22.6,
+   "SPA": 0.8805,
+   "holm": 1.0,
+   "DSR": 0.3867,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 39.39
+  },
+  "crypto_d|drop_revert(drop=0.15,hold=5,n=3)+trend_sma(n=100)": {
+   "row": 1003,
+   "IS": {
+    "ret": -4.65,
+    "sharpe": -0.04,
+    "maxdd": -25.32
+   },
+   "OOS": {
+    "ret": 0.14,
+    "sharpe": 0.05,
+    "maxdd": -3.6
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": -0.05,
+    "frac_positive": 0.467,
+    "n_paths": 15
+   },
+   "trades": 38,
+   "time_in_mkt": 0.017,
+   "cost_stop": 0.0095,
+   "WF": [
+    0.75,
+    -0.6
+   ],
+   "p_twin": 0.96903,
+   "random_median_oos": 48.04,
+   "real_twin_basis": 0.15,
+   "SPA": 0.8975,
+   "holm": 1.0,
+   "DSR": 0.1194,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 51.96
+  },
+  "crypto_d|drop_revert(drop=0.15,hold=5,n=5)+trend_sma(n=100)": {
+   "row": 1004,
+   "IS": {
+    "ret": -14.4,
+    "sharpe": -0.3,
+    "maxdd": -24.02
+   },
+   "OOS": {
+    "ret": 9.08,
+    "sharpe": 0.71,
+    "maxdd": -8.11
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": -0.08,
+    "frac_positive": 0.467,
+    "n_paths": 15
+   },
+   "trades": 57,
+   "time_in_mkt": 0.027,
+   "cost_stop": 0.0103,
+   "WF": [
+    4.89,
+    3.99
+   ],
+   "p_twin": 0.83716,
+   "random_median_oos": 61.3,
+   "real_twin_basis": 9.09,
+   "SPA": 0.888,
+   "holm": 1.0,
+   "DSR": 0.3526,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 47.45
+  },
+  "crypto_d|drop_revert(drop=0.15,hold=10,n=3)+trend_sma(n=100)": {
+   "row": 1005,
+   "IS": {
+    "ret": -9.67,
+    "sharpe": -0.12,
+    "maxdd": -26.14
+   },
+   "OOS": {
+    "ret": 5.24,
+    "sharpe": 0.47,
+    "maxdd": -7.16
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.1,
+    "frac_positive": 0.6,
+    "n_paths": 15
+   },
+   "trades": 43,
+   "time_in_mkt": 0.03,
+   "cost_stop": 0.0101,
+   "WF": [
+    5.84,
+    -0.57
+   ],
+   "p_twin": 0.91409,
+   "random_median_oos": 38.8,
+   "real_twin_basis": 5.25,
+   "SPA": 0.893,
+   "holm": 1.0,
+   "DSR": 0.2479,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 48.4
+  },
+  "crypto_d|drop_revert(drop=0.15,hold=10,n=5)+trend_sma(n=100)": {
+   "row": 1006,
+   "IS": {
+    "ret": -11.36,
+    "sharpe": -0.15,
+    "maxdd": -28.3
+   },
+   "OOS": {
+    "ret": 12.89,
+    "sharpe": 0.78,
+    "maxdd": -9.77
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.02,
+    "frac_positive": 0.533,
+    "n_paths": 15
+   },
+   "trades": 59,
+   "time_in_mkt": 0.045,
+   "cost_stop": 0.0109,
+   "WF": [
+    2.35,
+    10.3
+   ],
+   "p_twin": 0.8022,
+   "random_median_oos": 117.92,
+   "real_twin_basis": 12.9,
+   "SPA": 0.885,
+   "holm": 1.0,
+   "DSR": 0.3837,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 45.79
+  }
+ },
+ "N": 1006,
+ "PBO": 0.458,
+ "n_pass": 0,
+ "min_trades": 100,
+ "window": {
+  "start": "2021-01-01",
+  "end": "2025-10-22",
+  "oos_start": "2024-05-14"
+ },
+ "ann_factor": 365,
+ "bar": {
+  "holm": 0.05,
+  "dsr": 0.95,
+  "spa": 0.05,
+  "pbo": 0.5,
+  "cost_stop": 0.03
+ },
+ "ts": "2026-10-23T22:07:53.096991-04:00",
+ "run_id": "20261023_220747_gen_2310232201_001",
+ "spec_id": "gen_2310232201_001",
+ "spec_hash": "dc7c827ce6adf676530ff746d6eb7f656e6ec8e9063b75b2ba5655f5a8b88a11"
+}

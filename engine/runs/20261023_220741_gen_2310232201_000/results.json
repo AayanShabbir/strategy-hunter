@@ -1,0 +1,417 @@
+{
+ "variants": {
+  "crypto_d|rsi_revert(entry=5,exit=70,n=3)": {
+   "row": 991,
+   "IS": {
+    "ret": 45.35,
+    "sharpe": 0.83,
+    "maxdd": -13.5
+   },
+   "OOS": {
+    "ret": 22.9,
+    "sharpe": 1.06,
+    "maxdd": -9.99
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.95,
+    "frac_positive": 1.0,
+    "n_paths": 15
+   },
+   "trades": 56,
+   "time_in_mkt": 0.062,
+   "cost_stop": 0.0127,
+   "WF": [
+    -0.78,
+    23.87
+   ],
+   "p_twin": 0.76024,
+   "random_median_oos": 121.35,
+   "real_twin_basis": 22.9,
+   "SPA": 0.879,
+   "holm": 1.0,
+   "DSR": 0.4693,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 45.57
+  },
+  "crypto_d|rsi_revert(entry=5,exit=70,n=5)": {
+   "row": 992,
+   "IS": {
+    "ret": 1.82,
+    "sharpe": 0.4,
+    "maxdd": -0.73
+   },
+   "OOS": {
+    "ret": 2.61,
+    "sharpe": 0.46,
+    "maxdd": -3.07
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.43,
+    "frac_positive": 0.6,
+    "n_paths": 15
+   },
+   "trades": 4,
+   "time_in_mkt": 0.007,
+   "cost_stop": 0.0148,
+   "WF": [
+    2.61,
+    0.0
+   ],
+   "p_twin": 0.98002,
+   "random_median_oos": 156.36,
+   "real_twin_basis": 2.6,
+   "SPA": 0.896,
+   "holm": 1.0,
+   "DSR": 0.2009,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 52.49
+  },
+  "crypto_d|rsi_revert(entry=5,exit=80,n=3)": {
+   "row": 993,
+   "IS": {
+    "ret": 7.91,
+    "sharpe": 0.22,
+    "maxdd": -36.36
+   },
+   "OOS": {
+    "ret": 32.13,
+    "sharpe": 1.28,
+    "maxdd": -10.04
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.85,
+    "frac_positive": 0.733,
+    "n_paths": 15
+   },
+   "trades": 52,
+   "time_in_mkt": 0.093,
+   "cost_stop": 0.0139,
+   "WF": [
+    2.08,
+    29.44
+   ],
+   "p_twin": 0.64535,
+   "random_median_oos": 128.22,
+   "real_twin_basis": 32.14,
+   "SPA": 0.873,
+   "holm": 1.0,
+   "DSR": 0.5851,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 45.52
+  },
+  "crypto_d|rsi_revert(entry=5,exit=80,n=5)": {
+   "row": 994,
+   "IS": {
+    "ret": 1.13,
+    "sharpe": 0.21,
+    "maxdd": -2.14
+   },
+   "OOS": {
+    "ret": 2.53,
+    "sharpe": 0.32,
+    "maxdd": -7.11
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.31,
+    "frac_positive": 0.6,
+    "n_paths": 15
+   },
+   "trades": 4,
+   "time_in_mkt": 0.014,
+   "cost_stop": 0.0148,
+   "WF": [
+    2.53,
+    0.0
+   ],
+   "p_twin": 0.98601,
+   "random_median_oos": 152.1,
+   "real_twin_basis": 2.53,
+   "SPA": 0.895,
+   "holm": 1.0,
+   "DSR": 0.1688,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": false,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 48.45
+  },
+  "crypto_d|rsi_revert(entry=20,exit=70,n=3)": {
+   "row": 995,
+   "IS": {
+    "ret": -12.01,
+    "sharpe": 0.16,
+    "maxdd": -59.4
+   },
+   "OOS": {
+    "ret": 47.68,
+    "sharpe": 0.84,
+    "maxdd": -24.91
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.44,
+    "frac_positive": 0.8,
+    "n_paths": 15
+   },
+   "trades": 290,
+   "time_in_mkt": 0.349,
+   "cost_stop": 0.0135,
+   "WF": [
+    15.66,
+    27.68
+   ],
+   "p_twin": 0.56044,
+   "random_median_oos": 78.05,
+   "real_twin_basis": 50.06,
+   "SPA": 0.835,
+   "holm": 1.0,
+   "DSR": 0.3703,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 30.65
+  },
+  "crypto_d|rsi_revert(entry=20,exit=70,n=5)": {
+   "row": 996,
+   "IS": {
+    "ret": -5.72,
+    "sharpe": 0.15,
+    "maxdd": -62.91
+   },
+   "OOS": {
+    "ret": 72.94,
+    "sharpe": 1.2,
+    "maxdd": -24.27
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.84,
+    "frac_positive": 0.667,
+    "n_paths": 15
+   },
+   "trades": 120,
+   "time_in_mkt": 0.271,
+   "cost_stop": 0.0132,
+   "WF": [
+    17.74,
+    46.89
+   ],
+   "p_twin": 0.5025,
+   "random_median_oos": 79.7,
+   "real_twin_basis": 76.61,
+   "SPA": 0.837,
+   "holm": 1.0,
+   "DSR": 0.5423,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 31.29
+  },
+  "crypto_d|rsi_revert(entry=20,exit=80,n=3)": {
+   "row": 997,
+   "IS": {
+    "ret": -45.56,
+    "sharpe": -0.07,
+    "maxdd": -76.97
+   },
+   "OOS": {
+    "ret": 36.62,
+    "sharpe": 0.69,
+    "maxdd": -32.11
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.38,
+    "frac_positive": 0.667,
+    "n_paths": 15
+   },
+   "trades": 224,
+   "time_in_mkt": 0.453,
+   "cost_stop": 0.014,
+   "WF": [
+    20.42,
+    13.45
+   ],
+   "p_twin": 0.61738,
+   "random_median_oos": 99.43,
+   "real_twin_basis": 39.47,
+   "SPA": 0.8595,
+   "holm": 1.0,
+   "DSR": 0.3046,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": true,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 23.45
+  },
+  "crypto_d|rsi_revert(entry=20,exit=80,n=5)": {
+   "row": 998,
+   "IS": {
+    "ret": -15.37,
+    "sharpe": 0.11,
+    "maxdd": -68.86
+   },
+   "OOS": {
+    "ret": 63.41,
+    "sharpe": 0.97,
+    "maxdd": -32.5
+   },
+   "BH_OOS": {
+    "ret": 234.6,
+    "sharpe": 1.03,
+    "maxdd": -55.56
+   },
+   "CPCV": {
+    "median_sharpe": 0.8,
+    "frac_positive": 0.667,
+    "n_paths": 15
+   },
+   "trades": 92,
+   "time_in_mkt": 0.405,
+   "cost_stop": 0.0134,
+   "WF": [
+    27.7,
+    27.96
+   ],
+   "p_twin": 0.53447,
+   "random_median_oos": 108.57,
+   "real_twin_basis": 66.65,
+   "SPA": 0.8365,
+   "holm": 1.0,
+   "DSR": 0.4307,
+   "pass": false,
+   "checks": {
+    "oos_positive": true,
+    "beats_buy_hold": false,
+    "min_trades": false,
+    "cost_stop": true,
+    "walk_forward": true,
+    "holm": false,
+    "dsr": false,
+    "spa": false,
+    "pbo": true
+   },
+   "dd_improvement_vs_bh": 23.06
+  }
+ },
+ "N": 998,
+ "PBO": 0.395,
+ "n_pass": 0,
+ "min_trades": 100,
+ "window": {
+  "start": "2021-01-01",
+  "end": "2025-10-22",
+  "oos_start": "2024-05-14"
+ },
+ "ann_factor": 365,
+ "bar": {
+  "holm": 0.05,
+  "dsr": 0.95,
+  "spa": 0.05,
+  "pbo": 0.5,
+  "cost_stop": 0.03
+ },
+ "ts": "2026-10-23T22:07:47.586641-04:00",
+ "run_id": "20261023_220741_gen_2310232201_000",
+ "spec_id": "gen_2310232201_000",
+ "spec_hash": "6db8a141afc8b71a8f064c2c6415b60caf288146bb16de8843a5eec6d860aa17"
+}

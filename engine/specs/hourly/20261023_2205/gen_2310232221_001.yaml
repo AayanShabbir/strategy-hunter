@@ -1,0 +1,25 @@
+id: gen_2310232221_001
+hypothesis: 'grammar draw seed=2310232221: donchian'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 20
+    - 55
+    exit_n:
+    - 10
+    - 20
+filters: []
+universe:
+  megacap:
+  - AAPL
+  - MSFT
+  - NVDA
+  - AMZN
+  - META
+  - GOOGL
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

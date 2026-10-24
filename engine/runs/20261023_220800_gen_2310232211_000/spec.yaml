@@ -1,0 +1,28 @@
+id: gen_2310232211_000
+hypothesis: 'grammar draw seed=2310232211: sma_cross'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 10
+    - 20
+    slow:
+    - 150
+    - 200
+filters: []
+universe:
+  sectors:
+  - XLK
+  - XLF
+  - XLE
+  - XLV
+  - XLI
+  - XLY
+  - XLP
+  - XLU
+  - XLB
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

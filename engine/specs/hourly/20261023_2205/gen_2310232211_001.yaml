@@ -1,0 +1,31 @@
+id: gen_2310232211_001
+hypothesis: 'grammar draw seed=2310232211: donchian+trend_sma'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 20
+    - 55
+    exit_n:
+    - 10
+    - 20
+filters:
+- name: trend_sma
+  params:
+    n: 200
+universe:
+  sectors:
+  - XLK
+  - XLF
+  - XLE
+  - XLV
+  - XLI
+  - XLY
+  - XLP
+  - XLU
+  - XLB
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

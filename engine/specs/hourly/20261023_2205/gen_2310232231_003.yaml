@@ -1,0 +1,25 @@
+id: gen_2310232231_003
+hypothesis: 'grammar draw seed=2310232231: sma_cross+trend_sma'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 20
+    - 50
+    slow:
+    - 50
+    - 200
+filters:
+- name: trend_sma
+  params:
+    n: 100
+universe:
+  crypto:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100
