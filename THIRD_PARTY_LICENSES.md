@@ -11,6 +11,7 @@
 | quantstats | 0.0.86 | Apache-2.0 | https://github.com/ranaroussi/quantstats | tearsheets vs SPY |
 | empyrical-reloaded | 0.7.0 | Apache-2.0 | https://github.com/stefan-jansen/empyrical-reloaded | perf metrics |
 | pypbo | git 4d723f06498267a2a6280cb9d7d5649348e961d1 (vendored in vendor/pypbo, not on PyPI) | AGPL-3.0 | https://github.com/esvhd/pypbo | PBO (CSCV), DSR, PSR |
+| fja05680/sp500 (data, downloaded at run time, not vendored) | master | MIT (c) 2019-2020 Farrell J. Aultman | https://github.com/fja05680/sp500 | point-in-time S&P 500 ticker windows for src/data/sp500_pit.py |
 
 Notes: pypbo is AGPL-3.0 — fine for private use; if this code is ever hosted as a service or distributed, its source obligations apply. Full dependency pins: requirements.lock.txt. Original license texts ship inside each package's dist-info (and vendor/pypbo/LICENSE).
 

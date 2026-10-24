@@ -9,10 +9,10 @@ def f(x, pct=False, d=2):
     return f"{100*x:.{d}f}%" if pct else f"{x:.{d}f}"
 
 
-def table():
+def table(fname="phase3.json"):
     rows = []; hdr = ("| run | pool | N (total / universe) | combiner | test Sharpe | test AR | test MDD | test turnover/yr | val Sharpe | PBO | DSR test (N total) | SPA p (combined, test) | CPCV mean path SR | e-process (max / bound) |\n"
                       "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|")
-    for p in sorted(glob.glob(str(ROOT / "runs_sde" / "*" / "phase3.json"))):
+    for p in sorted(glob.glob(str(ROOT / "runs_sde" / "*" / fname))):
         r = json.loads(Path(p).read_text()); cb = str(r["cost_bps"]); v = r["validity"]; N = r["N"]
         pbo = v["cscv"].get("pbo")
         if not r["portfolio"]:
@@ -25,9 +25,9 @@ def table():
     return hdr + "\n" + "\n".join(rows)
 
 
-def cost_table():
+def cost_table(fname="phase3.json"):
     out = ["| run | cost (bps/side) | test Sharpe | test AR | test MDD | test turnover/yr |", "|---|---|---|---|---|---|"]
-    for p in sorted(glob.glob(str(ROOT / "runs_sde" / "*" / "phase3.json"))):
+    for p in sorted(glob.glob(str(ROOT / "runs_sde" / "*" / fname))):
         r = json.loads(Path(p).read_text())
         if not r["portfolio"]: continue
         for c, m in r["portfolio"]["rolling_ols"]["by_cost"].items():
@@ -38,7 +38,7 @@ def cost_table():
 def inject(path):
     """Replace the blocks between <!--TABLE:main--> / <!--TABLE:cost--> markers in a markdown file."""
     t = Path(path).read_text()
-    for tag, body in (("main", table()), ("cost", cost_table())):
+    for tag, body in (("main", table()), ("cost", cost_table()), ("pit", table("phase3_pit.json"))):
         t = re.sub(r"(<!--TABLE:%s-->).*?(<!--/TABLE:%s-->)" % (tag, tag), lambda m: m.group(1) + "\n" + body + "\n" + m.group(2), t, flags=re.S)
     Path(path).write_text(t)
 
