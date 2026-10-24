@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_051233_gen_2410240514_000",
+ "spec_hash": "886b982d37691c6193a44114b8cf2f2e66460b7247b4233f617681c20e8f5393",
+ "rows": {
+  "BROAD|donchian(entry_n=55,exit_n=10)": 1815,
+  "BROAD|donchian(entry_n=55,exit_n=20)": 1816,
+  "BROAD|donchian(entry_n=100,exit_n=10)": 1817,
+  "BROAD|donchian(entry_n=100,exit_n=20)": 1818
+ },
+ "N_after_reserve": 1818,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T05:12:33.175771-04:00"
+}

@@ -1,0 +1,27 @@
+id: gen_2410240522_000
+hypothesis: 'grammar draw seed=2410240522: drop_revert'
+base:
+  idea: drop_revert
+  params:
+    n:
+    - 1
+    - 3
+    drop:
+    - 0.1
+    - 0.15
+    hold:
+    - 5
+    - 10
+filters: []
+universe:
+  BROAD:
+  - EWJ
+  - EWZ
+  - EFA
+  - EEM
+  - FXI
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

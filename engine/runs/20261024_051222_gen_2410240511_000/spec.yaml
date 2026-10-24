@@ -1,0 +1,25 @@
+id: gen_2410240511_000
+hypothesis: 'grammar draw seed=2410240511: supertrend+relvol'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 7
+    - 10
+    mult:
+    - 2
+    - 4
+filters:
+- name: relvol
+  params:
+    min_ratio: 1.2
+universe:
+  crypto:
+  - BTC/USD
+  - ETH/USD
+  - SOL/USD
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

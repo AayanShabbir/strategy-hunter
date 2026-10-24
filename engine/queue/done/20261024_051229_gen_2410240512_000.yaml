@@ -1,0 +1,24 @@
+id: gen_2410240512_000
+hypothesis: 'grammar draw seed=2410240512: sma_cross'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 5
+    - 10
+    slow:
+    - 100
+    - 150
+filters: []
+universe:
+  BROAD:
+  - AAPL
+  - MSFT
+  - NVDA
+  - AMD
+  - META
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

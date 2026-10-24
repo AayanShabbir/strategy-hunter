@@ -1,0 +1,28 @@
+id: gen_2410240519_000
+hypothesis: 'grammar draw seed=2410240519: drop_revert+rsi_band'
+base:
+  idea: drop_revert
+  params:
+    n:
+    - 1
+    - 5
+    drop:
+    - 0.05
+    - 0.1
+    hold:
+    - 3
+    - 10
+filters:
+- name: rsi_band
+  params:
+    hi: 80
+universe:
+  crypto:
+  - BTC/USD
+  - ETH/USD
+  - SOL/USD
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100
