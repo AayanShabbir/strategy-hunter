@@ -37,3 +37,7 @@ Layout: `data/alpaca/` (one shared parquet cache of Alpaca bars), `lab/` (shared
 6. Append the result and new N to `ledger/`. Pass only if every check passes; nothing is switched on without Aayan's OK.
 
 Example: `hunts/h7_overnight_repro/` (reproduces Hunt #7 overnight_after_down1 exactly).
+
+## Strategy Discovery Engine (SDE, in progress)
+New package `src/` per the SDE blueprint, see `docs/sde_plan.md`. Phase 1 (DSL AST grammar + RGCN encoder) done;
+tests: `.venv17/bin/python -m pytest tests_sde`. Credits: AlphaGen, GFlowNets/TB, R-GCN, Benhamou et al. 2026 (see THIRD_PARTY_LICENSES.md).

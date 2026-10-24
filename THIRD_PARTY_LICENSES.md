@@ -28,3 +28,10 @@ If any code from these repos is ever copied in, keep the MIT notice (claude-trad
 
 ## NautilusTrader 1.231.0
 LGPL-3.0, (c) Nautech Systems Pty Ltd. https://github.com/nautechsystems/nautilus_trader. Installed unmodified in research_lab/nautilus/.venv (backtest only).
+
+## SDE design credits (no code vendored)
+- PyTorch (BSD-3) — tensor/NN runtime for `src/models`.
+- AlphaGen (Yu et al., KDD 2023, "Generating Synergistic Formulaic Alpha Collections via RL", MIT) — synergy pool / formulaic alpha idea.
+- GFlowNets (Bengio et al. 2021; Malkin et al. 2022 Trajectory Balance) and GFlowNet alpha-mining work (e.g. AlphaSAGE) — Phase 2 design.
+- R-GCN (Schlichtkrull et al. 2018); reimplemented in plain torch, PyG not used.
+- Benhamou et al. 2026 (anytime-valid e-process promotion) — Phase 4 design.
