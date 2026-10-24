@@ -1,0 +1,44 @@
+{
+ "run_id": "csi300_s0_20261023",
+ "universe": "csi300",
+ "pool_size": 1,
+ "splits": {
+  "train": {
+   "n_days": 2674,
+   "mean_factor_ic": 0.043456657365902984,
+   "mean_factor_icir": 0.35369762127968873,
+   "frac_factors_positive_ic": 1.0,
+   "ensemble_ic": 0.036328231117557196,
+   "ensemble_icir": 0.36836880196973865
+  },
+  "val": {
+   "n_days": 243,
+   "mean_factor_ic": -0.020007988112814793,
+   "mean_factor_icir": -0.19131561304127195,
+   "frac_factors_positive_ic": 0.0,
+   "ensemble_ic": -0.019871032880242594,
+   "ensemble_icir": -0.1914628128917489
+  },
+  "test": {
+   "n_days": 726,
+   "mean_factor_ic": 0.005828865985830255,
+   "mean_factor_icir": 0.053110953178702645,
+   "frac_factors_positive_ic": 1.0,
+   "ensemble_ic": 0.0057498825701705085,
+   "ensemble_icir": 0.05255960162994739
+  }
+ },
+ "members": [
+  {
+   "expr": "TsStd(TsStd(Log(Sub(Log(Sub(Add($close, Add($volume, Log(Add($high, Div(TsStd(Sub(Add($volume, Log(Sub(Sub($volume, Log($volume)), $low))), $low), 60d), $volume))))), $close)), $volume)), 20d), 20d)",
+   "ast_hash": "c13ff630a862208922583ab6edc3d56428e13eeb88c836d7a062e94675ef939c",
+   "train_ic": 0.043456657365902984,
+   "train_icir": 0.35369762127968873,
+   "sign": -1,
+   "val_ic": -0.020007988112814793,
+   "val_icir": -0.19131561304127195,
+   "test_ic": 0.005828865985830255,
+   "test_icir": 0.053110953178702645
+  }
+ ]
+}

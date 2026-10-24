@@ -139,12 +139,28 @@ def parse_ast(s: str) -> ASTGraph:
 
 
 # ---------- causal evaluator: panel arrays shaped (dates, assets) ----------
-def _ts_std(x: np.ndarray, w: int) -> np.ndarray:
-    """Backward-looking rolling sample std (ddof=1); first w-1 rows NaN. No centering."""
+def _ts_std_loop(x: np.ndarray, w: int) -> np.ndarray:
+    """Phase 1 reference implementation (python loop). Kept only to cross-check the vectorized version in tests."""
     T = x.shape[0]; out = np.full_like(x, np.nan, dtype=float)
     for t in range(w - 1, T):
         out[t] = np.std(x[t - w + 1:t + 1], axis=0, ddof=1)
     return out
+
+
+def _ts_std(x: np.ndarray, w: int) -> np.ndarray:
+    """Backward-looking rolling sample std (ddof=1), vectorized (Phase 2; replaces the python time loop).
+
+    Row t uses rows t-w+1..t only; first w-1 rows are NaN; a window containing a non-finite value gives NaN
+    (same as np.std on that window). Implemented with pandas' C rolling kernel (online, O(T*N)); agrees with the
+    Phase 1 loop to <1e-9 absolute on price-like data (tests_sde/test_phase2.py).
+    """
+    import pandas as pd
+    x = np.asarray(x, dtype=float)
+    squeeze = x.ndim == 1
+    x2 = x[:, None] if squeeze else x
+    x2 = np.where(np.isfinite(x2), x2, np.nan)
+    out = pd.DataFrame(x2).rolling(w).std(ddof=1).to_numpy()
+    return out[:, 0] if squeeze else out
 
 
 def evaluate(node, panel: dict) -> np.ndarray:

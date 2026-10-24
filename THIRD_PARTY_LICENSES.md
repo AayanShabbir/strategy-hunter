@@ -35,3 +35,7 @@ LGPL-3.0, (c) Nautech Systems Pty Ltd. https://github.com/nautechsystems/nautilu
 - GFlowNets (Bengio et al. 2021; Malkin et al. 2022 Trajectory Balance) and GFlowNet alpha-mining work (e.g. AlphaSAGE) — Phase 2 design.
 - R-GCN (Schlichtkrull et al. 2018); reimplemented in plain torch, PyG not used.
 - Benhamou et al. 2026 (anytime-valid e-process promotion) — Phase 4 design.
+
+## SDE Phase 2 (added 2026-10-23)
+- AlphaSAGE (Chen et al., ICLR 2026, arXiv:2509.25055; repo BerkinChen/AlphaSAGE has no license file) — algorithm, reward and Table 4 hyper-parameters followed from the paper; **no code copied**.
+- Qlib public data via chenditc/investment_data (Apache-2.0) — downloaded to gitignored data/sde/; read with our own binary reader. yfinance (Apache-2.0), akshare (MIT), pandas/numpy/scipy (BSD-3).

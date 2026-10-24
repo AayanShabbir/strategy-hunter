@@ -1,0 +1,27 @@
+{
+  "universe": "csi300",
+  "episodes": 10000,
+  "seed": 1,
+  "run_id": "csi300_s1_20261023",
+  "lr": 0.0001,
+  "lr_logz": 0.1,
+  "entropy": 0.01,
+  "update_every": 16,
+  "log_every": 100,
+  "ckpt_every": 500,
+  "ledger": "/workspace/research_lab/src/audit/ledger.jsonl",
+  "split_train": [
+    "2010-01-01",
+    "2020-12-31"
+  ],
+  "n_assets": 707,
+  "n_cells": 777596,
+  "n_days": 2674,
+  "data_meta": {
+    "source": "qlib cn_data (chenditc/investment_data)",
+    "universe": "csi300",
+    "membership": "point-in-time (instruments file)",
+    "survivorship": "delisted names included per Qlib data",
+    "prices": "qlib-adjusted (normalized per stock; ratios valid, absolute level not)"
+  }
+}

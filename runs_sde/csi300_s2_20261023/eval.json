@@ -1,0 +1,32 @@
+{
+ "run_id": "csi300_s2_20261023",
+ "universe": "csi300",
+ "pool_size": 0,
+ "splits": {
+  "train": {
+   "n_days": 2674,
+   "mean_factor_ic": null,
+   "mean_factor_icir": null,
+   "frac_factors_positive_ic": null,
+   "ensemble_ic": NaN,
+   "ensemble_icir": NaN
+  },
+  "val": {
+   "n_days": 243,
+   "mean_factor_ic": null,
+   "mean_factor_icir": null,
+   "frac_factors_positive_ic": null,
+   "ensemble_ic": NaN,
+   "ensemble_icir": NaN
+  },
+  "test": {
+   "n_days": 726,
+   "mean_factor_ic": null,
+   "mean_factor_icir": null,
+   "frac_factors_positive_ic": null,
+   "ensemble_ic": NaN,
+   "ensemble_icir": NaN
+  }
+ },
+ "members": []
+}

@@ -12,7 +12,8 @@ Every trial is recorded in the blueprint's append-only ledger (Phase 4, `src/aud
   Blueprint assertions pass verbatim. Extra: invalid-syntax rejection, MaxLen=32, SHA-256 canonical hash,
   300-tree fuzz (parse/eval/encode), no-lookahead test (perturbing rows >= t cannot change rows < t).
   Implementation note: r1/r2 messages flow operand->operator (operator aggregates children), r3 = W_0 self-loop.
-- Phase 2–4: pending.
+- Phase 2 (GFlowNet policy, multi-faceted reward + factor pool, ledger, data loader, vectorized TsStd): DONE 2026-10-23 — see `docs/sde_phase2.md` (first CSI300 run: pool 1/1/0 of 50, no out-of-sample IC).
+- Phase 3–4: pending.
 
 ## Data plan (Phase 2+)
 Free public sources: Qlib public cn_data / us_data, akshare for CSI constituents, yfinance for S&P500.

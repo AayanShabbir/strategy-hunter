@@ -39,5 +39,5 @@ Layout: `data/alpaca/` (one shared parquet cache of Alpaca bars), `lab/` (shared
 Example: `hunts/h7_overnight_repro/` (reproduces Hunt #7 overnight_after_down1 exactly).
 
 ## Strategy Discovery Engine (SDE, in progress)
-New package `src/` per the SDE blueprint, see `docs/sde_plan.md`. Phase 1 (DSL AST grammar + RGCN encoder) done;
+New package `src/` per the SDE blueprint, see `docs/sde_plan.md`. Phase 1 (DSL AST grammar + RGCN encoder) and Phase 2 (GFlowNet search, reward/pool, ledger, data; `docs/sde_phase2.md`) done;
 tests: `.venv17/bin/python -m pytest tests_sde`. Credits: AlphaGen, GFlowNets/TB, R-GCN, Benhamou et al. 2026 (see THIRD_PARTY_LICENSES.md).

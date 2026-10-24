@@ -41,3 +41,8 @@ hunts/h12_original/kalshi_events.json
 hunts/h10_ig_carousel/*.html
 hunts/h10_ig_carousel/urls.txt
 hunts/h12_original/poly_markets.json
+*.pt
+
+# SDE live ledger (append-only, 20+ MB); a gzip snapshot is committed instead
+src/audit/ledger.jsonl
+!src/audit/ledger_*.jsonl.gz

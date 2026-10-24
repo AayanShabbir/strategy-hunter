@@ -1,6 +1,9 @@
 # Changelog
 All dates America/New_York.
 
+## 2026-10-23 (SDE Phase 2)
+- src/audit, src/data, src/gflownet, src/rewards, src/train; vectorized TsStd; 33 new tests; first CSI300 run (3 seeds) — see docs/sde_phase2.md.
+
 ## 2026-10-23
 ### Changed
 - Nightly/daily false-discovery variant budget for `hunt drain` raised from 200 to 2400 (default `--cap`), approved in writing by Aayan on 2026-10-23 19:57 ET so the hourly strategy search truly runs hourly. Pass-bar gates, vault, and ledger N counting are unchanged; every variant still counts toward N.
