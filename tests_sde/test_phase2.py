@@ -293,7 +293,7 @@ def test_panel_from_frames_and_cache_free(tmp_path):
 
 def test_data_cache_is_gitignored():
     ig = open(os.path.join(os.path.dirname(__file__), "..", ".gitignore")).read()
-    assert "data/" in ig.split() and "*.parquet" in ig and "*.pt" in ig
+    assert "/data/" in ig.split() and "*.parquet" in ig and "*.pt" in ig
 
 
 # ------------------------------------------------------------------ end-to-end (synthetic panel)
