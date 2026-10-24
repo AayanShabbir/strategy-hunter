@@ -1,0 +1,25 @@
+id: gen_2610240808_000
+hypothesis: 'grammar draw seed=2610240808: donchian+rsi_band'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 20
+    - 100
+    exit_n:
+    - 10
+    - 20
+filters:
+- name: rsi_band
+  params:
+    hi: 80
+universe:
+  crypto:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

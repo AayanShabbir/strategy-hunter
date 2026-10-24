@@ -1,0 +1,29 @@
+{
+ "run_id": "20261024_080326_gen_2610240803_000",
+ "spec_hash": "aea6bf9c0a06f96b731d101cc253515be24905543f3ec2da3d3168999ed42f80",
+ "rows": {
+  "BROAD|donchian(entry_n=20,exit_n=10)+day_of_week(days=0)": 2103,
+  "BROAD|donchian(entry_n=20,exit_n=10)+day_of_week(days=1)": 2104,
+  "BROAD|donchian(entry_n=20,exit_n=10)+day_of_week(days=2)": 2105,
+  "BROAD|donchian(entry_n=20,exit_n=10)+day_of_week(days=3)": 2106,
+  "BROAD|donchian(entry_n=20,exit_n=10)+day_of_week(days=4)": 2107,
+  "BROAD|donchian(entry_n=20,exit_n=20)+day_of_week(days=0)": 2108,
+  "BROAD|donchian(entry_n=20,exit_n=20)+day_of_week(days=1)": 2109,
+  "BROAD|donchian(entry_n=20,exit_n=20)+day_of_week(days=2)": 2110,
+  "BROAD|donchian(entry_n=20,exit_n=20)+day_of_week(days=3)": 2111,
+  "BROAD|donchian(entry_n=20,exit_n=20)+day_of_week(days=4)": 2112,
+  "BROAD|donchian(entry_n=55,exit_n=10)+day_of_week(days=0)": 2113,
+  "BROAD|donchian(entry_n=55,exit_n=10)+day_of_week(days=1)": 2114,
+  "BROAD|donchian(entry_n=55,exit_n=10)+day_of_week(days=2)": 2115,
+  "BROAD|donchian(entry_n=55,exit_n=10)+day_of_week(days=3)": 2116,
+  "BROAD|donchian(entry_n=55,exit_n=10)+day_of_week(days=4)": 2117,
+  "BROAD|donchian(entry_n=55,exit_n=20)+day_of_week(days=0)": 2118,
+  "BROAD|donchian(entry_n=55,exit_n=20)+day_of_week(days=1)": 2119,
+  "BROAD|donchian(entry_n=55,exit_n=20)+day_of_week(days=2)": 2120,
+  "BROAD|donchian(entry_n=55,exit_n=20)+day_of_week(days=3)": 2121,
+  "BROAD|donchian(entry_n=55,exit_n=20)+day_of_week(days=4)": 2122
+ },
+ "N_after_reserve": 2122,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T08:03:26.702368-04:00"
+}

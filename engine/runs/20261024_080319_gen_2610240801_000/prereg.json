@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_080319_gen_2610240801_000",
+ "spec_hash": "92e1b5764e89fed67e24b0434bd97c45ddb8f29316a62cf53a681663d9a4ca95",
+ "rows": {
+  "crypto|sma_cross(fast=5,slow=100)": 2095,
+  "crypto|sma_cross(fast=5,slow=150)": 2096,
+  "crypto|sma_cross(fast=20,slow=100)": 2097,
+  "crypto|sma_cross(fast=20,slow=150)": 2098
+ },
+ "N_after_reserve": 2098,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T08:03:19.491113-04:00"
+}

@@ -1,0 +1,29 @@
+{
+ "run_id": "20261024_080332_gen_2610240804_000",
+ "spec_hash": "701035cf6902db58c1e92aa3bbe2830be8e4314597412849d78f967c08e3e781",
+ "rows": {
+  "crypto|supertrend(atr_n=7,mult=2)+day_of_week(days=0)": 2123,
+  "crypto|supertrend(atr_n=7,mult=2)+day_of_week(days=1)": 2124,
+  "crypto|supertrend(atr_n=7,mult=2)+day_of_week(days=2)": 2125,
+  "crypto|supertrend(atr_n=7,mult=2)+day_of_week(days=3)": 2126,
+  "crypto|supertrend(atr_n=7,mult=2)+day_of_week(days=4)": 2127,
+  "crypto|supertrend(atr_n=7,mult=4)+day_of_week(days=0)": 2128,
+  "crypto|supertrend(atr_n=7,mult=4)+day_of_week(days=1)": 2129,
+  "crypto|supertrend(atr_n=7,mult=4)+day_of_week(days=2)": 2130,
+  "crypto|supertrend(atr_n=7,mult=4)+day_of_week(days=3)": 2131,
+  "crypto|supertrend(atr_n=7,mult=4)+day_of_week(days=4)": 2132,
+  "crypto|supertrend(atr_n=10,mult=2)+day_of_week(days=0)": 2133,
+  "crypto|supertrend(atr_n=10,mult=2)+day_of_week(days=1)": 2134,
+  "crypto|supertrend(atr_n=10,mult=2)+day_of_week(days=2)": 2135,
+  "crypto|supertrend(atr_n=10,mult=2)+day_of_week(days=3)": 2136,
+  "crypto|supertrend(atr_n=10,mult=2)+day_of_week(days=4)": 2137,
+  "crypto|supertrend(atr_n=10,mult=4)+day_of_week(days=0)": 2138,
+  "crypto|supertrend(atr_n=10,mult=4)+day_of_week(days=1)": 2139,
+  "crypto|supertrend(atr_n=10,mult=4)+day_of_week(days=2)": 2140,
+  "crypto|supertrend(atr_n=10,mult=4)+day_of_week(days=3)": 2141,
+  "crypto|supertrend(atr_n=10,mult=4)+day_of_week(days=4)": 2142
+ },
+ "N_after_reserve": 2142,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T08:03:32.697881-04:00"
+}

@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_080407_gen_2610240809_000",
+ "spec_hash": "2d451de6e9b562521b628ae700ef5f0fd66254b81ea43426286a8ba9dbe032a3",
+ "rows": {
+  "crypto|donchian(entry_n=20,exit_n=10)": 2171,
+  "crypto|donchian(entry_n=20,exit_n=20)": 2172,
+  "crypto|donchian(entry_n=55,exit_n=10)": 2173,
+  "crypto|donchian(entry_n=55,exit_n=20)": 2174
+ },
+ "N_after_reserve": 2174,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T08:04:07.424396-04:00"
+}

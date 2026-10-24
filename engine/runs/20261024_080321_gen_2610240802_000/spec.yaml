@@ -1,0 +1,31 @@
+id: gen_2610240802_000
+hypothesis: 'grammar draw seed=2610240802: donchian+vol_regime'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 20
+    - 55
+    exit_n:
+    - 10
+    - 20
+filters:
+- name: vol_regime
+  params:
+    max_atr_pct: 0.02
+universe:
+  sectors:
+  - XLK
+  - XLF
+  - XLE
+  - XLV
+  - XLI
+  - XLY
+  - XLP
+  - XLU
+  - XLB
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

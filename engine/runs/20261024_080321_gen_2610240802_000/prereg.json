@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_080321_gen_2610240802_000",
+ "spec_hash": "3806c9a17a9f1cc6e50fb99a68ab723f3133c83da90bba720d3bbd7a3f81248d",
+ "rows": {
+  "sectors|donchian(entry_n=20,exit_n=10)+vol_regime(max_atr_pct=0.02)": 2099,
+  "sectors|donchian(entry_n=20,exit_n=20)+vol_regime(max_atr_pct=0.02)": 2100,
+  "sectors|donchian(entry_n=55,exit_n=10)+vol_regime(max_atr_pct=0.02)": 2101,
+  "sectors|donchian(entry_n=55,exit_n=20)+vol_regime(max_atr_pct=0.02)": 2102
+ },
+ "N_after_reserve": 2102,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T08:03:21.609037-04:00"
+}

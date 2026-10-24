@@ -1,0 +1,32 @@
+id: gen_2610240803_000
+hypothesis: 'grammar draw seed=2610240803: donchian+day_of_week'
+base:
+  idea: donchian
+  params:
+    entry_n:
+    - 20
+    - 55
+    exit_n:
+    - 10
+    - 20
+filters:
+- name: day_of_week
+  params:
+    days:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+universe:
+  BROAD:
+  - GLD
+  - SLV
+  - USO
+  - DBC
+  - UNG
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100
