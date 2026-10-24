@@ -1,0 +1,4 @@
+{
+  "max_looks": 3,
+  "note": "Global cap on TOTAL sealed-holdout looks across all candidates. Change it only by editing this committed file; the vault logs every change (old/new value, file hash) in vault_log.jsonl before it takes effect."
+}

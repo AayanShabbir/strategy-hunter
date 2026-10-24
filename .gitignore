@@ -50,3 +50,7 @@ src/audit/ledger.jsonl
 # tooling caches
 .ruff_cache/
 .mypy_cache/
+
+# sealed 2021+ holdout (also covered by /data/ above; explicit so nobody un-ignores it by accident)
+/data/sealed_sde/
+src/vault/*.lock

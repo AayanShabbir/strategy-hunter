@@ -34,17 +34,43 @@ def finsaber_path(cache_dir: Path, download: bool = True) -> Path:
     return p
 
 
-def load_finsaber(cache_dir: Path, end: str = "2024-12-31") -> dict:
-    """{yfinance-style ticker: DataFrame[Close, High, Low, Volume]}. Close = adjusted_close; High/Low are scaled by adjusted/raw close
-    so the whole bar is on the adjusted basis. Volume is as published."""
+SEARCH_END = "2020-12-31"
+SEARCH_FNAME = "finsaber_sp500_le2020.csv"      # 2000..2020 rows only: what search-side code may read
+
+
+def _frames(d, start=None, end=None) -> dict:
     import pandas as pd
-    d = pd.read_csv(finsaber_path(cache_dir), parse_dates=["date"])
-    d = d[d.date <= end]
+    if start: d = d[d.date >= start]
+    if end: d = d[d.date <= end]
     f = (d["adjusted_close"] / d["close"]).where(d["close"] > 0)
-    d["High"] = d["high"] * f; d["Low"] = d["low"] * f; d["Close"] = d["adjusted_close"]; d["Volume"] = d["volume"].astype(float)
+    d = d.assign(High=d["high"] * f, Low=d["low"] * f, Close=d["adjusted_close"], Volume=d["volume"].astype(float))
     out = {}
     for s, g in d.groupby("symbol"):
         g = g.drop_duplicates("date", keep="last").set_index("date").sort_index()[["Close", "High", "Low", "Volume"]]
         g = g[g["Close"] > 0].dropna(subset=["Close"])
         if len(g): out[str(s).replace(".", "-")] = g
     return out
+
+
+def search_path(cache_dir: Path) -> Path:
+    """The search-safe copy (rows <= 2020-12-31). Created from the pinned original if missing; the original is the only file holding 2021+ rows."""
+    import pandas as pd
+    p = Path(cache_dir) / "external" / SEARCH_FNAME
+    if not p.exists():
+        d = pd.read_csv(finsaber_path(cache_dir), parse_dates=["date"])
+        d[d.date <= SEARCH_END].to_csv(p, index=False)
+    return p
+
+
+def load_finsaber(cache_dir: Path, end: str = SEARCH_END) -> dict:
+    """{yfinance-style ticker: DataFrame[Close, High, Low, Volume]} for the SEARCH window only (reads the <=2020 copy; `end` > 2020-12-31 is refused).
+    Close = adjusted_close; High/Low are scaled by adjusted/raw close so the whole bar is on the adjusted basis. Volume as published."""
+    import pandas as pd
+    if str(end) > SEARCH_END: raise ValueError("search-side FINSABER loader is capped at 2020-12-31 (2021+ is sealed)")
+    return _frames(pd.read_csv(search_path(cache_dir), parse_dates=["date"]), end=end)
+
+
+def load_finsaber_full(cache_dir: Path, start: str, end: str = "2024-12-31") -> dict:
+    """Sealed-holdout builder only (guard test forbids this name outside src/vault)."""
+    import pandas as pd
+    return _frames(pd.read_csv(finsaber_path(cache_dir), parse_dates=["date"]), start=start, end=end)

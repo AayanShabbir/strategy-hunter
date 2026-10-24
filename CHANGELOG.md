@@ -1,6 +1,11 @@
 # Changelog
 All dates America/New_York.
 
+## 2026-10-24 (SDE: better data + sealed fresh holdout)
+- Task A: `src/data/{alpaca_bars,external,multisource,dq_report}.py` merge yfinance, Alpaca (free SIP, 2016+) and the pinned FINSABER file with per-ticker provenance and overlap validation (alternate tickers only when validated). Coverage vs the old loader: 74.9% -> 95.9% of PIT member-days, 26% -> 85% of removed names priced. Report: `docs/data_quality_sp500.md`. `load_sp500` and `load_sp500_pit` and every existing run result are unchanged.
+- Task B: sealed 2021-01-01->2026-10-22 panel in git-ignored `data/sealed_sde/` (623 tickers, 99.9% of member-days priced); committed SHA-256 manifest `src/vault/sealed_manifest.json`; single-use vault `src/vault/vault.py` (one look per spec hash, global cap 3 in `vault_config.json`, swarm-APPROVED + pre-registration required, chained `vault_log.jsonl`); `src/data/guard.py` tripwire; `src/portfolio/deployability.py` long-only/flat check. Nothing evaluated on the sealed set. See `docs/sealed_holdout.md`.
+- The ≤2020 FINSABER copy replaced the full file in the search cache. SDE search/reward/blueprint behaviour is unchanged.
+
 ## 2026-10-24 (SDE: US focus)
 - CSI500 and CSI1000 runs deliberately stopped partway at Aayan's request (13,600 / 5,800 of 20,000 episodes at last log); not scored, no results, not a method failure. Reason: Chinese markets are not tradable by the desk; hours of compute. Partial run folders are not committed; their trials stay in the ledger / N.
 - Ledger snapshot refreshed after `Ledger.verify()` passed (71,707 entries, head hash `10cedad9…8dd3`): `src/audit/ledger_20261024.jsonl.gz` replaces `ledger_20261023.jsonl.gz` (the old one stays in git history).

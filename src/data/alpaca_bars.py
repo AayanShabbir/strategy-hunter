@@ -62,6 +62,8 @@ def fetch_bars(tickers, start: str, end: str, batch: int = 40, feed: str = "sip"
 def fetch_cached(tickers, start: str, end: str, cache_dir: Path, tag: str = "alpaca") -> dict:
     """Same as fetch_bars, cached as one pickle per (tag, start, end, ticker-set hash) under cache_dir."""
     import hashlib, pickle
+    from src.data.guard import forbid_sealed
+    forbid_sealed(cache_dir, "use as a search-side cache")
     key = hashlib.sha256("|".join(sorted(set(tickers))).encode()).hexdigest()[:12]
     p = Path(cache_dir) / f"{tag}_{start}_{end}_{key}.pkl"
     if p.exists():
