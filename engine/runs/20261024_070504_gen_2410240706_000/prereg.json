@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_070504_gen_2410240706_000",
+ "spec_hash": "abeda84459c4df98904f0feb683099608a1e8eb9a9514161f3e33a00ab37d8f4",
+ "rows": {
+  "sectors|supertrend(atr_n=10,mult=2)+trend_sma(n=50)": 2023,
+  "sectors|supertrend(atr_n=10,mult=4)+trend_sma(n=50)": 2024,
+  "sectors|supertrend(atr_n=14,mult=2)+trend_sma(n=50)": 2025,
+  "sectors|supertrend(atr_n=14,mult=4)+trend_sma(n=50)": 2026
+ },
+ "N_after_reserve": 2026,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T07:05:04.763032-04:00"
+}

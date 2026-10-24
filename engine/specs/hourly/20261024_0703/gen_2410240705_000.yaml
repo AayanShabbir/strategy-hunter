@@ -1,0 +1,22 @@
+id: gen_2410240705_000
+hypothesis: 'grammar draw seed=2410240705: sma_cross'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 5
+    - 20
+    slow:
+    - 100
+    - 150
+filters: []
+universe:
+  crypto:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

@@ -1,0 +1,17 @@
+{
+ "run_id": "20261024_070510_gen_2410240708_000",
+ "spec_hash": "4edbf656f7330cb2f13906a9dc4698899feea930c963342b69499194fd90ca64",
+ "rows": {
+  "BROAD|drop_revert(drop=0.05,hold=3,n=3)+trend_sma(n=100)": 2031,
+  "BROAD|drop_revert(drop=0.05,hold=3,n=5)+trend_sma(n=100)": 2032,
+  "BROAD|drop_revert(drop=0.05,hold=10,n=3)+trend_sma(n=100)": 2033,
+  "BROAD|drop_revert(drop=0.05,hold=10,n=5)+trend_sma(n=100)": 2034,
+  "BROAD|drop_revert(drop=0.1,hold=3,n=3)+trend_sma(n=100)": 2035,
+  "BROAD|drop_revert(drop=0.1,hold=3,n=5)+trend_sma(n=100)": 2036,
+  "BROAD|drop_revert(drop=0.1,hold=10,n=3)+trend_sma(n=100)": 2037,
+  "BROAD|drop_revert(drop=0.1,hold=10,n=5)+trend_sma(n=100)": 2038
+ },
+ "N_after_reserve": 2038,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T07:05:10.106203-04:00"
+}

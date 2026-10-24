@@ -1,0 +1,17 @@
+{
+ "run_id": "20261024_070447_gen_2410240701_000",
+ "spec_hash": "43b432e663df47bea4af878e2357ef32e746de3f0503eac45b72c6743e4c39d9",
+ "rows": {
+  "sectors|drop_revert(drop=0.05,hold=3,n=3)+trend_sma(n=50)": 1995,
+  "sectors|drop_revert(drop=0.05,hold=3,n=5)+trend_sma(n=50)": 1996,
+  "sectors|drop_revert(drop=0.05,hold=5,n=3)+trend_sma(n=50)": 1997,
+  "sectors|drop_revert(drop=0.05,hold=5,n=5)+trend_sma(n=50)": 1998,
+  "sectors|drop_revert(drop=0.15,hold=3,n=3)+trend_sma(n=50)": 1999,
+  "sectors|drop_revert(drop=0.15,hold=3,n=5)+trend_sma(n=50)": 2000,
+  "sectors|drop_revert(drop=0.15,hold=5,n=3)+trend_sma(n=50)": 2001,
+  "sectors|drop_revert(drop=0.15,hold=5,n=5)+trend_sma(n=50)": 2002
+ },
+ "N_after_reserve": 2002,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T07:04:47.217431-04:00"
+}

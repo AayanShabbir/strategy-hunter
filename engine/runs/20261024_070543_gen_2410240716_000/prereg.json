@@ -1,0 +1,17 @@
+{
+ "run_id": "20261024_070543_gen_2410240716_000",
+ "spec_hash": "f0c8042613c5e6ad709f8defaf3da14ad2b36059f977c40678ab76f94ae0f0fc",
+ "rows": {
+  "sectors|drop_revert(drop=0.05,hold=3,n=1)+relvol(min_ratio=1.0)": 2083,
+  "sectors|drop_revert(drop=0.05,hold=3,n=5)+relvol(min_ratio=1.0)": 2084,
+  "sectors|drop_revert(drop=0.05,hold=10,n=1)+relvol(min_ratio=1.0)": 2085,
+  "sectors|drop_revert(drop=0.05,hold=10,n=5)+relvol(min_ratio=1.0)": 2086,
+  "sectors|drop_revert(drop=0.15,hold=3,n=1)+relvol(min_ratio=1.0)": 2087,
+  "sectors|drop_revert(drop=0.15,hold=3,n=5)+relvol(min_ratio=1.0)": 2088,
+  "sectors|drop_revert(drop=0.15,hold=10,n=1)+relvol(min_ratio=1.0)": 2089,
+  "sectors|drop_revert(drop=0.15,hold=10,n=5)+relvol(min_ratio=1.0)": 2090
+ },
+ "N_after_reserve": 2090,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T07:05:43.639000-04:00"
+}

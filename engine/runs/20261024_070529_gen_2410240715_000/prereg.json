@@ -1,0 +1,29 @@
+{
+ "run_id": "20261024_070529_gen_2410240715_000",
+ "spec_hash": "1c10ff2f9cfe4eb140587f11047632ffcbc30307b27a1dd1286295dc690259f5",
+ "rows": {
+  "crypto|sma_cross(fast=10,slow=100)+day_of_week(days=0)": 2063,
+  "crypto|sma_cross(fast=10,slow=100)+day_of_week(days=1)": 2064,
+  "crypto|sma_cross(fast=10,slow=100)+day_of_week(days=2)": 2065,
+  "crypto|sma_cross(fast=10,slow=100)+day_of_week(days=3)": 2066,
+  "crypto|sma_cross(fast=10,slow=100)+day_of_week(days=4)": 2067,
+  "crypto|sma_cross(fast=10,slow=150)+day_of_week(days=0)": 2068,
+  "crypto|sma_cross(fast=10,slow=150)+day_of_week(days=1)": 2069,
+  "crypto|sma_cross(fast=10,slow=150)+day_of_week(days=2)": 2070,
+  "crypto|sma_cross(fast=10,slow=150)+day_of_week(days=3)": 2071,
+  "crypto|sma_cross(fast=10,slow=150)+day_of_week(days=4)": 2072,
+  "crypto|sma_cross(fast=50,slow=100)+day_of_week(days=0)": 2073,
+  "crypto|sma_cross(fast=50,slow=100)+day_of_week(days=1)": 2074,
+  "crypto|sma_cross(fast=50,slow=100)+day_of_week(days=2)": 2075,
+  "crypto|sma_cross(fast=50,slow=100)+day_of_week(days=3)": 2076,
+  "crypto|sma_cross(fast=50,slow=100)+day_of_week(days=4)": 2077,
+  "crypto|sma_cross(fast=50,slow=150)+day_of_week(days=0)": 2078,
+  "crypto|sma_cross(fast=50,slow=150)+day_of_week(days=1)": 2079,
+  "crypto|sma_cross(fast=50,slow=150)+day_of_week(days=2)": 2080,
+  "crypto|sma_cross(fast=50,slow=150)+day_of_week(days=3)": 2081,
+  "crypto|sma_cross(fast=50,slow=150)+day_of_week(days=4)": 2082
+ },
+ "N_after_reserve": 2082,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T07:05:29.632792-04:00"
+}

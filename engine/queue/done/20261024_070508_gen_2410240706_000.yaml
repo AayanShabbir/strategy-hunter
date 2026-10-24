@@ -1,0 +1,31 @@
+id: gen_2410240706_000
+hypothesis: 'grammar draw seed=2410240706: supertrend+trend_sma'
+base:
+  idea: supertrend
+  params:
+    atr_n:
+    - 10
+    - 14
+    mult:
+    - 2
+    - 4
+filters:
+- name: trend_sma
+  params:
+    n: 50
+universe:
+  sectors:
+  - XLK
+  - XLF
+  - XLE
+  - XLV
+  - XLI
+  - XLY
+  - XLP
+  - XLU
+  - XLB
+timeframe: 1Day
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100

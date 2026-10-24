@@ -1,0 +1,13 @@
+{
+ "run_id": "20261024_070521_gen_2410240711_000",
+ "spec_hash": "d8e606d6bfae93b1cd57d56e3a5f8a5b1abba9cb26a9033450557bbcc4e3971e",
+ "rows": {
+  "sectors|sma_cross(fast=20,slow=50)": 2051,
+  "sectors|sma_cross(fast=20,slow=100)": 2052,
+  "sectors|sma_cross(fast=50,slow=50)": 2053,
+  "sectors|sma_cross(fast=50,slow=100)": 2054
+ },
+ "N_after_reserve": 2054,
+ "written_before_any_results": true,
+ "ts": "2026-10-24T07:05:21.628035-04:00"
+}

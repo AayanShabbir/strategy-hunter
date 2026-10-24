@@ -1,0 +1,30 @@
+id: gen_2410240715_000
+hypothesis: 'grammar draw seed=2410240715: sma_cross+day_of_week'
+base:
+  idea: sma_cross
+  params:
+    fast:
+    - 10
+    - 50
+    slow:
+    - 100
+    - 150
+filters:
+- name: day_of_week
+  params:
+    days:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 4
+universe:
+  crypto:
+  - SOL/USD
+  - BTC/USD
+  - ETH/USD
+timeframe: 1Hour
+costs:
+  fee_bps: 0
+  slippage_bps: 5
+min_trades: 100
