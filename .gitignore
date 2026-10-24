@@ -15,7 +15,7 @@ __pycache__/
 *.pyc
 .pytest_cache/
 # data (re-downloadable; never commit market data or the sealed vault)
-data/
+/data/
 engine/data_cache/
 engine/vault/data/
 *.parquet
